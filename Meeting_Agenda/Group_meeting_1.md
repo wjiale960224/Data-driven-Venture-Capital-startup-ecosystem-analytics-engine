@@ -16,7 +16,7 @@ Participants:
     
              Zihang Wei (u6123487)
     
-             Weikai Lv (u6695997)
+             Weikai Lu (u6695997)
     
              Xufeng Zhu(u6825259)
 
