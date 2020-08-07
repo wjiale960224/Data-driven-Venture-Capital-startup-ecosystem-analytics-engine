@@ -12,6 +12,7 @@
 | The client answers our various questions | 30min |
 | Client details the company's goals and status | 35min |
 | Scheduled next meeting | 5min |  
+
 **Note: **   
 
 
@@ -26,6 +27,7 @@
 | Client introduced the project | 10min |
 | Members introduced themselves and the client chose the members to form a project team | 30min |
 | Cilent choose the spokesman and leave the contact information | 10min |  
+
 **Note: **  
 * Client email is stella.xu@mseq.vc
 * Project introduction ：https://redmine.cecs.anu.edu.au/redmine/projects/data-driven-venture-capital-startup-ecosystem-analytics-engine
