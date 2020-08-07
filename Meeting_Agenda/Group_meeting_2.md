@@ -4,7 +4,8 @@ Meeting date: 7 August 2020
 
 Location: Remotely
 
-Participants: Jiale Wang (u6127777)
+Participants: 
+              Jiale Wang (u6127777)
 
 	         Yafei Liu (u6605935)
 
@@ -14,9 +15,9 @@ Participants: Jiale Wang (u6127777)
 
 	         Zihang Wei (u6123487)
 
-             Weikai Lv (u6695997)
+              Weikai Lv (u6695997)
 
-             Xufeng Zhu(u6825259)
+              Xufeng Zhu(u6825259)
 
 Agenda: 
 

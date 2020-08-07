@@ -4,7 +4,8 @@ Meeting date: 4 August 2020
 
 Location: Remotely
 
-Participants: Jiale Wang (u6127777)
+Participants: 
+             Jiale Wang (u6127777)
 
 	         Yafei Liu (u6605935)
 
@@ -38,20 +39,20 @@ Minutes (what was discussed):
 
 •	Job is to be broken down as follows
 
-o	Xing Meng. Erin Xiong – Collect data
+	 Xing Meng. Erin Xiong – Collect data
 
-o	Xufeng Zhu, Zihang Wei – Build ML model
+	 Xufeng Zhu, Zihang Wei – Build ML model
 
-o	Yafei Liu, Jiale Wang – Build Website
+	 Yafei Liu, Jiale Wang – Build Website
 
-o	Weikai – Database
+	 Weikai – Database
 
 •	Agreed roles:
 
-Team leader: Zihang Wei
+     Team leader: Zihang Wei
 
-Spokesperson: Zihang Wei, Erin Xiong
+     Spokesperson: Zihang Wei, Erin Xiong
 
-Project Manager: Jiale Wang
+     Project Manager: Jiale Wang
 
 •	Next Meeting: N/A
