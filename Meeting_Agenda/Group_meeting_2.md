@@ -4,7 +4,8 @@ Meeting date: 7 August 2020
 
 Location: Remotely
 
-Participants: 
+Participants:
+
               Jiale Wang (u6127777)
 
 	         Yafei Liu (u6605935)
@@ -54,5 +55,8 @@ Minutes (what was discussed):
      • Yafei Liu, Jiale Wang – Build Website
 
      • Weikai – Database
+
+     • Jiale - Project milestones, scheduling and deliverables
+
 
 •	Next Meeting: N/A

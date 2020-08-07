@@ -5,6 +5,7 @@ Meeting date: 4 August 2020
 Location: Remotely
 
 Participants: 
+
              Jiale Wang (u6127777)
 
 	         Yafei Liu (u6605935)
