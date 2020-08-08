@@ -14,6 +14,11 @@
 | Scheduled next meeting | 5min |  
 
 Note:   
+*  Web base application or dashboard (not excel but vitualization)
+*  Data source : getting data from outside; analyze data internal
+*  Mission: track what they have made before and modul out for new company
+*  Need to think: how to add the data in what the company, how to change the data,additional round, what kind of viruliszation, interect way
+*  Challenge: lot of data in excel,not good virulisazation
 
 
 
