@@ -20,8 +20,10 @@ Note:
 *  Need to think: how to add the data in what the company, how to change the data,additional round, what kind of viruliszation, interect way
 *  Challenge: lot of data in excel,not good virulisazation
 
-
-
+  
+  
+  
+  
 **Date:**  30/07/2020  
 **Time:** 50min  
 **Subject:** Client select people to form a project team    
