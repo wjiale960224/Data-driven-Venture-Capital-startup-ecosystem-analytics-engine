@@ -9,7 +9,7 @@
 
 Main Senquence Ventures manages the $240 million Innovation fund on behalf of the Australian Government, CSIRO and the private sector. It aims to inject funds into rising Australian startups, that have the potential to expand to global-scale businesses, in deep tech fields including space technology, quantum computing, life science and machine learning. In pursuit of this goal, Main Sequence encounters a problem. 
 
-Our client shared her concern about the current inefficient data analysis tool. She demanded a more user-friendly and customized tool for current portfolio tracking and insight extraction facilitating future investments. After discussion, we outlined the following objectives:
+Our client shared her concern about the current inefficient data analysis tool. She demanded a more user-friendly and customized tool for real-time portfolio tracking and extracting insights to facilitate future investments. After discussion, we outlined the following objectives:
 
 1. Build a website presenting an interactive dashboard for portfolio tracking and decision making. The dashboard should be able to clearly visualise key statistics, facilitate timeseries analysis, convenient comparisons between startups.
 2. Implement a database management system linked to the website, that can process small-scale data provided by the client.
@@ -70,7 +70,7 @@ Our client shared her concern about the current inefficient data analysis tool. 
 
 ## IP Agreement
 
-Clinet is assessing the agreement provided by ANU.
+Clinet is assessing the three-party agreement provided by ANU.
 
 
 
