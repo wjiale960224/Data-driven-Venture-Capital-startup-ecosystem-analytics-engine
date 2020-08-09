@@ -38,11 +38,11 @@ For detailed information, please refer to the **Stakeholders** section in [State
 
 ## Rules
 
-1. **Team decision**: Members will first state their own point, then we discuss it as a team. Regarding any conflicts or disagreements, we will vote for the final decision. If there is further conflict, we will elevate the issue to tutor or course convenor.
-2. **Team conflict**: Potential problems will be mainly remote issues for this special semester. Since it is impossible to arrange any face-to face meetings within the team, it is difficult to keep the entire team at the same pace. We set up a WeChat group to notify each other of the ongoing process. We can make any discussions in the group at a timely manner as well. In case there is no solution can be found within the team, we would notify the Course Convenor through email as soon as possible. 
-3. **Task distribution**: Task will be distributed evenly and according to members’ specialty. Tasks deadlines are set when they are distributed, normally 3 days before the hard deadline to allow time for team review. Everyone’s work should be reviewed by at least one other team member to ensure work quality.
-4. **Deadline penalty**: No penalty for valid reasons such as sickness. However, late for group work accomplishment may need to do extra tasks at the next project stage. Free riders will be reported to the convener immediately. 
-5. **Collaboration**: Each member is expected to collaborate with each other and communicate professionally.
+1. **Team decision**: Members contribute ideas, then we discuss as a team. Regarding any conflicts or disagreements, we will vote for the final decision. If there is further conflict, we will elevate the issue to tutor or course convenor.
+2. **Team conflict**: Potential problems can arise due to the remote nature of this semester. Since it is impossible to arrange face-to face team meetings, it is difficult to keep the entire team at the same pace. We set up a WeChat group to notify each other of the ongoing process. We can make any discussions in the groupchat at a timely manner as well. In case no solution can be reached within the team, we would notify the Course Convenor through email as soon as possible. 
+3. **Task distribution**: Task will be distributed evenly and according to members’ specialties. Tasks are distributed with a clearly defined dealine, normally 3 days before the hard deadline to facilitate team review. Everyone’s work should be reviewed by at least one other team member to ensure work quality.
+4. **Deadline penalty**: No penalty for valid reasons such as sickness. However, delay in work accomplishment may lead to extra tasks in the next project stage. Free riders will be reported to the convener immediately. 
+5. **Collaboration**: Members are expected to collaborate with each other actively, communicate professionally and timely.
 
 
 
