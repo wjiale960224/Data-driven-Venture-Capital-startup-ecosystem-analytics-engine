@@ -13,9 +13,9 @@ Main Sequence Ventures manages the $240 million Innovation fund on behalf of the
 
 Our client shared her concern about the current inefficient data analysis tool. She demanded a more user-friendly and customized tool for real-time portfolio tracking and extracting insights to facilitate future investments. After discussion, we outlined the following objectives:
 
-1. Build a website presenting an interactive dashboard for portfolio tracking and decision making. The dashboard should be able to clearly visualise key statistics, facilitate time series analysis, convenient comparisons between startups.
+1. Build a website presenting an interactive dashboard for portfolio tracking and decision making. The dashboard should be able to clearly visualise key statistics, facilitate time series analysis, and perform convenient comparisons between startups.
 2. Implement a database management system linked to the website, that can process small-scale data provided by the client.
-3. *Stretch*: Build a simple machine learning model that can predict potentially rising startups, contributing to client's future investment decisions.
+3. *Stretch*: Build a simple machine learning model that can predict rising startups with great potential to become large business, contributing to client's future investment decisions.
 4. *Stretch*: Generalise the tool for non-Australian or non-tech startups.
 
 
