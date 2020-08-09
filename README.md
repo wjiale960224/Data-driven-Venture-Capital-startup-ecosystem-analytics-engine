@@ -1,6 +1,6 @@
 # Data-driven Venture Capital
 
-We keep the project documents in separate Google Drive repository: [Document repository](https://drive.google.com/drive/folders/1PB2Ja2UhHJkkIbwobxBJhKy7C7qpRxUH?usp=sharing)
+We keep the project documents in separate [Google Drive repository](https://drive.google.com/drive/folders/1PB2Ja2UhHJkkIbwobxBJhKy7C7qpRxUH?usp=sharing). Key documents:
 
 - [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
 - [Decision log](https://drive.google.com/file/d/1DFppTwLN3lmgoFiX718v3_Xs2Ds9dxF-/view?usp=sharing)
@@ -48,8 +48,8 @@ For detailed information, please refer to the **Stakeholders** section in [State
 
 ## Project plan
 
-- Detailed explanation is in [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing).
-- [Project plan visualisation](https://drive.google.com/file/d/1Vag2psoXNIoqPkX7rn6Kx4EWGlwweBDL/view?usp=sharing) produced by the Project Manager.
+- Detailed explanation in [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
+- [Project plan visualisations](https://drive.google.com/file/d/1Vag2psoXNIoqPkX7rn6Kx4EWGlwweBDL/view?usp=sharing)
 
 
 
