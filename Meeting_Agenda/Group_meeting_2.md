@@ -57,6 +57,8 @@ Minutes (what was discussed):
      • Zihang Wei – Client's vision and objectives
     
      • Jiale - Project milestones, scheduling and deliverables
+     
+     • Xing Meng - Non-Disclosure Agreements completion
 
 
 •	Next Meeting: N/A
