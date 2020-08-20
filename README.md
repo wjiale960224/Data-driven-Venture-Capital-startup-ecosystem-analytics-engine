@@ -4,6 +4,7 @@ We keep the project documents in separate [Google Drive repository](https://driv
 
 - [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
 - [Decision log](https://drive.google.com/file/d/1DFppTwLN3lmgoFiX718v3_Xs2Ds9dxF-/view?usp=sharing)
+- [Meeting minutes](/Meeting_Agenda)
 
 
 
