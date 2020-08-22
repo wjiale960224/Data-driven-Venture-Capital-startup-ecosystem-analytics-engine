@@ -1,5 +1,10 @@
 package com.xxxx.entity.msg;
 
+/**
+ * 实体类
+ * 成功或者失败返回前端信息
+ */
+
 public class MessageModel {
     private Integer code = 1; //默认成功
     private String msg = "Success";

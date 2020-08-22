@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 接受请求（调用service层， 返回结果）
+ * 响应结果
+ */
+
 @WebServlet("/login")
 public class UserServlet extends HttpServlet {
     private UserService userService = new UserService();

@@ -7,6 +7,10 @@ import com.xxxx.util.GetSqlSession;
 import com.xxxx.util.StringUtil;
 import org.apache.ibatis.session.SqlSession;
 
+/**
+ * 业务逻辑判断
+ */
+
 public class UserService {
     public MessageModel userLogin(String uname, String upwd){
         MessageModel messageModel = new MessageModel();
