@@ -1,0 +1,48 @@
+header{
+    position: relative;
+    height: 80px;
+    background-color: pink;
+
+}
+header .first {
+        position: absolute;
+        top: 0;
+        width: 80px;
+        line-height: 80px;
+        background-color: red;
+    }
+
+header .second{
+        position: absolute;
+        top: 0;
+        left: 100px;
+        width: 80px;
+        line-height: 80px;
+        background-color: red;
+    }
+
+header .third{
+        position: absolute;
+        top: 0;
+        left: 200px;
+        width: 80px;
+        line-height: 80px;
+        background-color: red;
+ }
+
+.mainbox{
+    display: flex;
+    margin: 0 auto;
+    top: 300px;
+}
+
+.mainbox .column{
+    flex:1.5;
+    background-color: red;
+}
+.mainbox .column:nth-child(2){
+    flex: 5;
+}
+.mainbox .panel{
+    height: 400px;
+}
