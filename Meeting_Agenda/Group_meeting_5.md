@@ -1,4 +1,4 @@
-# COMP3500 Semester 2, 2020 - Group meeting 3
+# COMP3500 Semester 2, 2020 - Group meeting 5
 
 Meeting date: 18 August 2020
 
