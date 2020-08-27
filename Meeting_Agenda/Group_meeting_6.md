@@ -39,3 +39,6 @@ Minutes (what was discussed):
 •	More details will be discussed after tommorow's client meeting
 
 •	Next Meeting: 27/8/2020
+__________________________________________________________________________________
+Work to complete before next meeting:\
+(Received shadow team feedback to add this section.)
