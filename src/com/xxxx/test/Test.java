@@ -10,7 +10,7 @@ public class Test {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
         User user = userdao.queryUserByname("admin");
-        System.out.println();
+        System.out.println(user);
 
     }
 }
