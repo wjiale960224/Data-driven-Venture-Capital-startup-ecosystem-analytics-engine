@@ -9,6 +9,8 @@
 <html>
 <head>
     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="kiben" content="no-cache">
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="CSS/head_style.css" type="text/css">
 </head>
@@ -61,7 +63,7 @@
     </div>
 
 </section>
-<script src="${pageContext.request.contextPath}/JS/echarts.simple.js"></script>
+<script src="${pageContext.request.contextPath}/JS/echarts.js"></script>
 <script src="${pageContext.request.contextPath}/JS/index.js"></script>
 </body>
 </html>

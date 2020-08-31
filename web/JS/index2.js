@@ -192,6 +192,3 @@
     };
     myChart.setOption(option);
 })();
-
-
-
