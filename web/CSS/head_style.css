@@ -3,7 +3,6 @@ body{
     font-size:1em;
     vertical-align:middle;
     font-weight:normal;
-    background: linear-gradient(to right,lightskyblue,white);
 }
 
 
@@ -11,6 +10,7 @@ body{
 header{
     position: relative;
     height: 60px;
+    background-color: white;
 }
 header .first {
         position: absolute;
@@ -37,8 +37,9 @@ header .third{
 
 .mainbox{
     display: flex;
-    margin: 0 auto;
+    margin-left: -10px;
     top: 300px;
+    background: linear-gradient(to right,skyblue,white);
 }
 
 .mainbox .column{
@@ -46,7 +47,12 @@ header .third{
     margin: 0px;
 }
 .mainbox .column:nth-child(1){
-    height: 1000px;
+    height: 800px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: lightskyblue;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 .mainbox .column:nth-child(3) {
     flex:6;
@@ -80,6 +86,8 @@ li:hover{/*hover表示鼠标放上去之后的变化*/
 .column .panel_first{
     position: relative;
     height: 200px;
+    background-color: ghostwhite;
+    border-radius: 20px;
 }
 
 .panel_first .company{
@@ -131,35 +139,36 @@ li:hover{/*hover表示鼠标放上去之后的变化*/
 
 .column .panel_second{
     height: 400px;
-    border-style: solid;
-    border-width: medium;
-    border-color: whitesmoke;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px whitesmoke;
+    box-shadow: 10px 10px 10px 5px #888888;
+    margin-top: 40px;
 }
 
 .column .panel_third{
     height: 300px;
-    border-style: solid;
-    border-width: medium;
-    border-color: whitesmoke;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px whitesmoke;
+    box-shadow: 10px 10px 10px 5px #888888;
 }
 .sub_box{
+    margin-top: 40px;
     display: flex;
-    margin: 0 auto;
     top: 300px;
 }
 .sub_box .column_2{
     flex:1;
     margin: 0px;
+    border-radius: 20px;
 }
 
 .column_2 .panel_pie2{
     height: 400px;
+    margin-left:20px;
+    border-radius: 20px;
+    background-color: white;
 }
 
 .column_2 .panel_pie1{
     height: 400px;
+    border-radius: 20px;
+    background-color: whitesmoke;
 }

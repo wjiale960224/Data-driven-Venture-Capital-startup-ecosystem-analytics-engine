@@ -16,9 +16,11 @@
 </head>
 <body>
 <header>
-    <div class = "first">MSVC</div>
-    <div class = "second">aaaaaa</div>
-    <div class = "third">bbbbbbb</div>
+    <div class = "first">
+        <img src="${pageContext.request.contextPath}/Pic/MSV_CMYK.jpg" height="50px" width="280px">
+    </div>
+    <div class = "second"></div>
+    <div class = "third"></div>
 </header>
 
 <section class = "mainbox">

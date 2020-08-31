@@ -86,7 +86,6 @@
 (function (){
     var myChart = echarts.init(document.querySelector(".panel_pie2"));
     var option = {
-
         title: {
             text: 'Investment',
             left: 'center',
