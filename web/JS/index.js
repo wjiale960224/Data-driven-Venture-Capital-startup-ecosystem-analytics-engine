@@ -121,11 +121,11 @@
                 ].sort(function (a, b) { return a.value - b.value; }),
                 roseType: 'radius',
                 label: {
-                    color: 'rgba(255, 255, 255, 0.3)'
+                    color: 'rgba(0, 0, 0, 0.3)'
                 },
                 labelLine: {
                     lineStyle: {
-                        color: 'rgba(255, 255, 255, 0.3)'
+                        color: 'rgba(0, 0, 0, 0.3)'
                     },
                     smooth: 0.2,
                     length: 10,
@@ -173,7 +173,7 @@
                 emphasis: {
                     label: {
                         show: true,
-                        fontSize: '30',
+                        fontSize: '15',
                         fontWeight: 'bold'
                     }
                 },
