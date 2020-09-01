@@ -28,7 +28,7 @@
         <nav>
             <ul>
                 <li>Dashboard</li>
-                <li>Control_Button1</li>
+                <li>Company</li>
                 <li>Control_Button1</li>
                 <li>Control_Button1</li>
                 <li>Control_Button1</li>
@@ -65,7 +65,7 @@
     </div>
 
 </section>
-<script src="${pageContext.request.contextPath}/JS/echarts.js"></script>
+<script src="${pageContext.request.contextPath}/JS/echarts-en.js"></script>
 <script src="${pageContext.request.contextPath}/JS/index.js"></script>
 </body>
 </html>

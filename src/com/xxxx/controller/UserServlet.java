@@ -28,7 +28,7 @@ public class UserServlet extends HttpServlet {
         if (messageModel.getCode() == 1) {
             messageModel.setMsg("");
             req.getSession().setAttribute("user", messageModel.getObject());
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("mainpage.jsp");
         }
         else{
             /*int num = userService.userInsert(user_name,user_pwd);*/
