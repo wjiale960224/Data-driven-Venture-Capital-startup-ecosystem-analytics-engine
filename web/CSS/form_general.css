@@ -1,0 +1,146 @@
+/*----------------Body initial------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+}
+/*-----------------Header navigator style----------------*/
+.hea{
+    height: 25%;
+}
+.box-header{
+    position: static;
+    background-color: rgb(38,40,68);
+    height: 100%;
+}
+.nav{
+    list-style-type: none;
+    overflow: hidden; /*Child element set float, parent element losses height, hidden overflow can remove
+                                this influence*/
+    height: 100%;
+    margin: 0 5%;
+
+}
+.nav li{
+    margin-top: 20px;
+    float: left;
+}
+#icon{
+    width: 5%;
+}
+#deal-form, #com-form{
+    height: 22px;
+    margin: 20px 5px 0 5px;
+    width: 10%;
+    padding: 17px 0 16px 0;
+    font-size: 1em;
+}
+.nav li a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+.nav li:hover{
+    background-color: #3f4187;
+}
+
+/*----------------Sec initial----------------*/
+.sec{
+    height: 75%;
+    background-color: rgb(239,241,245);
+    background-repeat: repeat-y;
+}
+.box-table{
+    margin: 0 5%;
+    padding: 2.5%;
+    position: relative;
+    bottom: 15%;
+    background-color: rgb(255,255,255);
+}
+/*-----------------Form style---------------------*/
+.box-caption{
+    margin-bottom: 20px;
+}
+.box-form{
+    overflow: auto;
+}
+.form, .form th, .form td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.form th{
+    padding: 10px 5px;
+    text-align: left;
+    background-color: rgba(43,48,59,0.64);
+    background-image: linear-gradient(#f5f5f5,#DEDDD9);
+    font-size: 0.875em;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /*height: 16px;*/
+}
+.form td{
+    padding: 8px 5px;
+    text-align: left;
+    font-size: 1em;
+    font-family:  Arial, Helvetica, sans-serif;
+    tab-index: true;
+}
+
+tr:nth-child(odd){
+    background-color: rgb(216,227,241);
+}
+.form tr:hover{
+    background-color: rgb(241,245,250);
+}
+
+.first_cell{
+    padding-left: 0px;
+    padding-top: 0px;
+}
+/*--------------Remove function--------------*/
+.no{
+    display: block;
+}
+.rmspan{
+    display: block;
+    float: right;
+    cursor: pointer;
+}
+.rmspan:hover{
+    background-color: #DEDDD9;
+}
+.cellno{
+    width: 70px;
+}
+.tes{
+    padding: 0;
+}
+
+/*-------------------Buttons-----------------*/
+#box-add{
+    margin: 16px 8px;
+}
+#add_row,#content{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    /*background-color: #DEDDD9;*/
+}
+#content{
+    float: right;
+}
+#add_row:hover, #content:hover{
+    background-color: rgba(81,180,85,0.64);
+}
