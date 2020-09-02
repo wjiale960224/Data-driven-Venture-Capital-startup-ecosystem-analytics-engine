@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
     <link rel="stylesheet" type="text/css" href="CSS/form_deal.css">
+    <script src="${pageContext.request.contextPath}/JS/form.js"></script>
     <title>Create Form</title>
 </head>
 
@@ -14,7 +15,7 @@
     <div class="box-header">
         <ul class="nav">
             <li id="icon"><a href="${pageContext.request.contextPath}/mainpage.jsp"><img src="${pageContext.request.contextPath}/Pic/MSEQ_icon.png" alt="MSEQ"></a></li>
-            <li id="deal-form"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></li>
+            <li id="deal-form"><a href="${pageContext.request.contextPath}/formdeal.html">Deal Form</a></li>
             <li id="com-form"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a> </li>
         </ul>
     </div>
@@ -74,6 +75,6 @@
 
     </div>
 </section>
-<script src="${pageContext.request.contextPath}/JS/form.js"></script>
+
 </body>
 </html>

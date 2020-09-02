@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
     <link rel="stylesheet" type="text/css" href="CSS/form_company.css">
+    <script src="${pageContext.request.contextPath}/JS/form.js"></script>
     <title>Create Form</title>
 
 </head>
@@ -60,7 +61,7 @@
     </div>
 
 </section>
-<script src="${pageContext.request.contextPath}/JS/form.js"></script>
+
 </body>
 </html>
 
