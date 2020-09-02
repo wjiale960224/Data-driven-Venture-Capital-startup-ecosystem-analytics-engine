@@ -17,10 +17,12 @@
 <body>
 <header>
     <div class = "first">
-        <img src="${pageContext.request.contextPath}/Pic/MSV_CMYK.jpg" height="50px" width="280px">
+        <a href="${pageContext.request.contextPath}/mainpage.jsp">
+            <img src="${pageContext.request.contextPath}/Pic/MSV_CMYK.jpg" height="50px" width="280px"></a>
     </div>
-    <div class = "second"></div>
-    <div class = "third"></div>
+
+    <div class = "second"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></div>
+    <div class = "third"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a></div>
 </header>
 
 <section class = "mainbox">
@@ -28,7 +30,7 @@
         <nav>
             <ul>
                 <li>Dashboard</li>
-                <li>Company</li>
+                <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
                 <li>Control_Button1</li>
                 <li>Control_Button1</li>
                 <li>Control_Button1</li>

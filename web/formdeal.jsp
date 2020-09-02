@@ -15,7 +15,7 @@
     <div class="box-header">
         <ul class="nav">
             <li id="icon"><a href="${pageContext.request.contextPath}/mainpage.jsp"><img src="${pageContext.request.contextPath}/Pic/MSEQ_icon.png" alt="MSEQ"></a></li>
-            <li id="deal-form"><a href="${pageContext.request.contextPath}/formdeal.html">Deal Form</a></li>
+            <li id="deal-form"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></li>
             <li id="com-form"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a> </li>
         </ul>
     </div>
