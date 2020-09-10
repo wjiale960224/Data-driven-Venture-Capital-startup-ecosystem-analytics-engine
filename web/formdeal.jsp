@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
     <link rel="stylesheet" type="text/css" href="CSS/form_deal.css">
-    <script src="${pageContext.request.contextPath}/JS/form.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/deal_form.js"></script>
     <title>Create Form</title>
 </head>
 
@@ -31,8 +32,9 @@
         
     <div class="box-form">
         <table class="form" id="tb_deal"  contenteditable="true">
+            <thead>
             <tr  contenteditable="false">
-                <th>No.</th>
+                <th scope="col">No.</th>
                 <th>Company Name</th>
                 <th>Deal No.</th>
                 <th>Deal Date</th>
@@ -55,24 +57,15 @@
                 <th>Native Currency of Deal(TBD)</th>
                 <th>Year Founded</th>
             </tr>
-            <!--<tr>
-                <td class="tes">
-                    <div  class="cellno">
-                        <span class="rmspan" id="span11">&#9476</span>
-                        <span class="no">1</span>
-                    </div>
-                </td>
-            </tr>-->
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
 
     <div id="box-add">
-        <form id="submit-form" action=/workspace_Intellj_war_exploded/form" method="post">
-            <input id="content" name="deals" type="button" value="Submit">
-        </form>
+        <button id="content" name="deals">Submit</button>
         <button id="add_row">Add</button>
     </div>
-
     </div>
 </section>
 

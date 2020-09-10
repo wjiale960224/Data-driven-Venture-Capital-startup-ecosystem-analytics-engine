@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
     <link rel="stylesheet" type="text/css" href="CSS/form_company.css">
-    <script src="${pageContext.request.contextPath}/JS/form.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/deal_form.js"></script>
     <title>Create Form</title>
 
 </head>
@@ -29,6 +30,7 @@
 
         <div class="box-form">
             <table class="form" id="tb_deal"  contenteditable="true">
+                <thead>
                 <tr  contenteditable="false">
                     <th>No.</th>
                     <th>Company Name</th>
@@ -49,6 +51,8 @@
                     <th>Fund Return</th>
                     <th>Fund Return</th>
                 </tr>
+                </thead>
+                <tbody></tbody>
             </table>
         </div>
 
