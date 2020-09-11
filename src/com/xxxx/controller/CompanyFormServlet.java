@@ -6,6 +6,7 @@ import com.xxxx.entity.CompanyList;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,9 @@ import java.io.IOException;
  * @author Fei
  * @date 2020/9/11 11:09
  */
+
+@WebServlet("/company_form")
+
 public class CompanyFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +39,6 @@ public class CompanyFormServlet extends HttpServlet {
         }
 
         ServletOutputStream sos = resp.getOutputStream(); // Response
-        sos.print(cl.arrayList.get(0).Company_Name + ", " + cl.arrayList.get(1).Company_Name);
+        sos.print("Companies name: " + cl.arrayList.get(0).Company_Name + ", " + cl.arrayList.get(1).Company_Name);
     }
 }

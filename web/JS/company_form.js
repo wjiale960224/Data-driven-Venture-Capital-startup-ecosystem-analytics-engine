@@ -80,7 +80,7 @@ window.onload = function (){
         var company = JSON.stringify(collect_info());
         $.ajax({
             type: "POST",
-            url: "/workspace_Intellj_war_exploded/company_from",
+            url: "/workspace_Intellj_war_exploded/company_form",
             data: {
                 company: company,
             },
@@ -95,7 +95,7 @@ window.onload = function (){
     }
 
     // Initialize form
-    for (var i = 0; i < 7; i++){
+    for (var i = 0; i < 3; i++){
         btn_add.click();
     }
 

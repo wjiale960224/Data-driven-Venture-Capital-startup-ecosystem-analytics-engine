@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
     <link rel="stylesheet" type="text/css" href="CSS/form_company.css">
     <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
-    <script src="${pageContext.request.contextPath}/JS/deal_form.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/company_form.js"></script>
     <title>Create Form</title>
 
 </head>
