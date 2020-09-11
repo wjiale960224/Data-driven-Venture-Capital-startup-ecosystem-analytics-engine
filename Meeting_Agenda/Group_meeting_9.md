@@ -1,6 +1,6 @@
 Meeting date: 10 September 2020
 
-Location: Room, remotely
+Location: Zoom, remotely
 
 Participants:
 
