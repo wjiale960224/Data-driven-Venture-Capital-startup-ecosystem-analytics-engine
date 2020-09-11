@@ -24,7 +24,7 @@
     <div class="box-table">
 
         <div class="box-caption">
-            <h2>Deals</h2>
+            <h2>Companies</h2>
             <img src="">
         </div>
 
@@ -33,9 +33,9 @@
                 <thead>
                 <tr  contenteditable="false">
                     <th>No.</th>
-                    <th>Company Name</th>
+                    <th>Company_Name</th>
                     <th>Stage</th>
-                    <th>1st Inv Date</th>
+<%--                    <th>1st Inv Date</th>
                     <th>Initial amount</th>
                     <th>Follow On Date</th>
                     <th>Follow On amount</th>
@@ -49,7 +49,7 @@
                     <th>Current Valuation</th>
                     <th>Company Valuation to return</th>
                     <th>Fund Return</th>
-                    <th>Fund Return</th>
+                    <th>Fund Return</th>--%>
                 </tr>
                 </thead>
                 <tbody></tbody>

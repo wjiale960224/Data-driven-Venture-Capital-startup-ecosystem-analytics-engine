@@ -35,9 +35,9 @@
             <thead>
             <tr  contenteditable="false">
                 <th scope="col">No.</th>
-                <th>Company Name</th>
-                <th>Deal No.</th>
-                <th>Deal Date</th>
+                <th>Company_Name</th>
+                <th>Deal_No</th>
+<%--                <th>Deal Date</th>
                 <th>MSEQ investment amout</th>
                 <th>Deal Size</th>
                 <th>Deal Size Status</th>
@@ -55,7 +55,7 @@
                 <th>New Investors(optional)</th>
                 <th>Follow-on Investors(optional)</th>
                 <th>Native Currency of Deal(TBD)</th>
-                <th>Year Founded</th>
+                <th>Year Founded</th>--%>
             </tr>
             </thead>
             <tbody></tbody>

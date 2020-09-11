@@ -79,8 +79,8 @@ window.onload = function (){
     btn_submit.onclick = function (){
         var company = JSON.stringify(collect_info());
         $.ajax({
-            type: "GET",
-            url: "/workspace_Intellj_war_exploded/login",
+            type: "POST",
+            url: "/workspace_Intellj_war_exploded/company_from",
             data: {
                 company: company,
             },
