@@ -29,6 +29,7 @@ public class UserService {
             messageModel.setMsg("User name and password cannot be empty");
             return messageModel;
         }
+        // query database using DAO and relevant parameters
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
         User user = userdao.queryUserByname(uname);

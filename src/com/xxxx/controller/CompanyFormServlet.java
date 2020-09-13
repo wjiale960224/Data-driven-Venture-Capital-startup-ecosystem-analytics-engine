@@ -39,6 +39,6 @@ public class CompanyFormServlet extends HttpServlet {
         }
 
         ServletOutputStream sos = resp.getOutputStream(); // Response
-        sos.print("Companies name: " + cl.arrayList.get(0).Company_Name + ", " + cl.arrayList.get(1).Company_Name);
+        sos.print("Companies name: " + cl.arrayList.get(0).getCompany_name() + ", " + cl.arrayList.get(1).getCompany_name());
     }
 }

@@ -34,7 +34,7 @@ public class DealFormServlet extends HttpServlet {
         }
 
         ServletOutputStream sos = resp.getOutputStream(); // Response to front end
-        sos.print("Deals name: " + dl.arrayList.get(0).Company_Name + ", " + dl.arrayList.get(1).Company_Name);
+        sos.print("Deals name: " + dl.arrayList.get(0).getCompany().getCompany_name() + ", " + dl.arrayList.get(1).getCompany().getCompany_name());
     }
 
     // Split JSON Array string to JSON strings.
