@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * @author Fei
- * @date 2020/9/11 11:12
  * @author Zihang
  * @date 2020/9/14
  */
@@ -24,6 +22,8 @@ public class Deal {
     double fund_percentage; // auto-generated, no setter
     double own_percentage; // auto-generated, no setter
 
+
+
     public Deal(Company company, Date deal_date, double deal_size, Series series, double MSEQ_invest_amount) {
         this.did = UUID.randomUUID();
         this.company = company;
@@ -33,6 +33,8 @@ public class Deal {
         this.series = series;
         this.MSEQ_invest_amount = MSEQ_invest_amount;
     }
+
+
 
     public UUID getDid() {
         return did;

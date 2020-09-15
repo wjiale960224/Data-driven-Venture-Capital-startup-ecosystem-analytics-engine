@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author Fei
- * @date 2020/9/10 17:27
- * @author Zihang
- * @date 2020/9/14
- */
+
 public class Company {
     int cid;
     String company_name;
@@ -23,6 +18,8 @@ public class Company {
 
     public Company() {
     }
+
+
 
     public Company(String company_name, Theme theme) {
         this.cid = CompanyID.get_id();

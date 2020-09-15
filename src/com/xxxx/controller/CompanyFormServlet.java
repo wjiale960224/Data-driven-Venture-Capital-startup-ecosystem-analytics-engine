@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @author Fei
- * @date 2020/9/11 11:09
- */
+
 
 @WebServlet("/company_form")
 
