@@ -8,5 +8,8 @@
     <select id="queryUserByname" parameterType="String" resultType="com.xxxx.entity.User">
         select * from tb_user where user_name = #{user_name}
     </select>
+    <select id="queryPostValueByCompany" parameterType="String" resultType="java.lang.Double">
+        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
+    </select>
 
 </mapper>

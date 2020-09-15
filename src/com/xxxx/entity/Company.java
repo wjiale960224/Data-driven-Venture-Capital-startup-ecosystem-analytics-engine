@@ -16,10 +16,6 @@ public class Company {
     int employee_no;
     List<Double> revenue;
 
-    public Company() {
-    }
-
-
 
     public Company(String company_name, Theme theme) {
         this.cid = CompanyID.get_id();
@@ -27,6 +23,10 @@ public class Company {
         this.theme = theme;
         this.raised_to_date = new ArrayList<>();
         this.revenue = new ArrayList<>();
+        // update Portfolio composition
+        if (!Portfolio.portfolio.contains(company_name)) {
+            Portfolio.portfolio.add(company_name);
+        }
     }
 
     public int getCid() {
@@ -95,5 +95,11 @@ public class Company {
 
     public void addRevenue(double revenue) {
         this.revenue.add(revenue);
+    }
+
+    // may be called manually, or automatically after certain event
+    public void delete(String company_name) {
+        Portfolio.portfolio.remove(company_name);
+        // TODO What need to be updated when a company is removed from the portfolio?
     }
 }
