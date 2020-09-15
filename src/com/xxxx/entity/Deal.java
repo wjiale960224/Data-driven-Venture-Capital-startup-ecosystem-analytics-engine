@@ -1,5 +1,6 @@
 package com.xxxx.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -19,8 +20,8 @@ public class Deal {
     double MSEQ_invest_amount;
     Vehicle vehicle;
     List<String> co_investor;
-    double fund_percentage; // auto-generated, no setter
-    double own_percentage; // auto-generated, no setter
+    double fund_percentage; // auto-generated
+    double own_percentage; // auto-generated
 
 
 
@@ -110,5 +111,19 @@ public class Deal {
 
     public void removeCo_investor(String co_investor) {
         this.co_investor.remove(co_investor);
+    }
+
+    public void resetCo_investor(String co_investor) {
+        this.co_investor.clear();
+    }
+
+    // should only be called by service level
+    protected void setFund_percentage(double fund_percentage) {
+        this.fund_percentage = fund_percentage;
+    }
+
+    // should only be called by service level
+    protected void setOwn_percentage(double own_percentage) {
+        this.own_percentage = own_percentage;
     }
 }
