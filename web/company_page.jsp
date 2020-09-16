@@ -14,28 +14,17 @@
     <link rel="stylesheet" href="CSS/company.css" type="text/css">
 </head>
 <body>
-<header>
-    <div class = "first">
-        <a href="${pageContext.request.contextPath}/mainpage.jsp">
-            <img src="${pageContext.request.contextPath}/Pic/MSV_CMYK.jpg" height="50px" width="280px"></a>
-    </div>
-
-    <div class = "second"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></div>
-    <div class = "third"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a></div>
-</header>
+<jsp:include page="header.jsp"></jsp:include>
 
 <section class = "mainbox">
     <div class = "column">
         <nav>
             <ul>
-                <li>Dashboard</li>
-                <li>Company1</li>
-                <li>Company2</li>
-                <li>Company3</li>
-                <li>Company4</li>
-                <li>Company5</li>
-                <li>Company6</li>
-                <li></li>
+                <li>Exponential Machines</li>
+                <li>Feeding 10B People</li>
+                <li>Humanity Scale Healthcare</li>
+                <li>New Society</li>
+                <li>Space & Transport</li>
             </ul>
         </nav>
     </div>

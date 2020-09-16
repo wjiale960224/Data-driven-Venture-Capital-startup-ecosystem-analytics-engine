@@ -6,43 +6,10 @@ body{
 }
 
 
-header{
-    position: relative;
-    height: 60px;
-    background-color: white;
-}
-header .first {
-    position: absolute;
-    top: 0;
-    width: 280px;
-    line-height: 60px;
-}
-
-header .second{
-    position: absolute;
-    top: 0;
-    left: 250px;
-    width: 180px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-}
-
-header .third{
-    position: absolute;
-    top: 0;
-    left: 400px;
-    width: 180px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-}
-
 .mainbox{
     display: flex;
     margin-left: -10px;
     top: 300px;
-    background: linear-gradient(to right,skyblue,white);
 }
 
 .mainbox .column{
@@ -54,7 +21,7 @@ header .third{
     height: 800px;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: lightskyblue;
+    background-color: ghostwhite;
     margin-left: -10px;
     margin-right: -10px;
 }
@@ -72,12 +39,17 @@ header .third{
     list-style-type: none;
     margin-left: -40px;
     text-align: center;
+    margin-top: 0px;
 }
 
 .column li{
-    list-style-type: none;/*隐藏圆点*/
-    line-height: 40px;/*行高*/
+    list-style-type: none;
+    line-height: 20px;
     padding: 20px;
+}
+
+li:hover{
+    font-weight: bold;
 }
 
 .column .panel_first{

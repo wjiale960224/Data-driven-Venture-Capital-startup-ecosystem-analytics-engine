@@ -15,31 +15,10 @@
     <link rel="stylesheet" href="CSS/head_style.css" type="text/css">
 </head>
 <body>
-<header>
-    <div class = "first">
-        <a href="${pageContext.request.contextPath}/mainpage.jsp">
-            <img src="${pageContext.request.contextPath}/Pic/MSV_CMYK.jpg" height="50px" width="280px"></a>
-    </div>
-
-    <div class = "second"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></div>
-    <div class = "third"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a></div>
-</header>
+<jsp:include page="header.jsp"></jsp:include>
 
 <section class = "mainbox">
-    <div class = "column">
-        <nav>
-            <ul>
-                <li>Dashboard</li>
-                <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-                <li>Control_Button1</li>
-                <li>Control_Button1</li>
-                <li>Control_Button1</li>
-                <li>Control_Button1</li>
-                <li>Control_Button1</li>
-                <li>Control_Button1</li>
-            </ul>
-        </nav>
-    </div>
+    <jsp:include page="left_guide.jsp"></jsp:include>
     <div class = "column">
         <div class = "panel_first">
             <div class = "company">
@@ -47,7 +26,7 @@
             </div>
             <div class = "deals"><span>Total Deals:</span>&nbsp 6</div>
             <div class = "invested"><span>Invested:</span>&nbsp 2.5M</div>
-            <div class = "left"><span>Left:</span>&nbsp 1.2M</div>
+            <div class = "l"><span>Left:</span>&nbsp 1.2M</div>
         </div>
         <div class = "panel_second">
         </div>
