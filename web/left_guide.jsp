@@ -17,10 +17,10 @@
 <div class = "left">
     <nav>
         <ul>
-            <li>Overview</li>
+            <li><a href="${pageContext.request.contextPath}/mainpage.jsp">Overview</a></li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li>Theme</li>
-            <li>last 5 deals</li>
+            <li><a href="">Theme</a></li>
+            <li><a href="">last 5 deals</a></li>
         </ul>
     </nav>
 </div>

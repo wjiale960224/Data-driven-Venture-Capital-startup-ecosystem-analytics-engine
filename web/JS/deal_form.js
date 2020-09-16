@@ -95,7 +95,7 @@ window.onload = function (){
     }
 
     // Initialize form
-    for (var i = 0; i < 3; i++){
+    for (var i = 0; i < 10; i++){
         btn_add.click();
     }
 

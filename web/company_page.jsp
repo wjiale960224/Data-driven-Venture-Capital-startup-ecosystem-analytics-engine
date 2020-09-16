@@ -19,12 +19,58 @@
 <section class = "mainbox">
     <div class = "column">
         <nav>
-            <ul>
-                <li>Exponential Machines</li>
-                <li>Feeding 10B People</li>
-                <li>Humanity Scale Healthcare</li>
-                <li>New Society</li>
-                <li>Space & Transport</li>
+            <ul class="nav">
+                <li>Exponential Machines
+                    <span class="dropdown"></span>
+                    <ul class="sub">
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                    </ul>
+                </li>
+                <li>Feeding 10B People
+                    <ul class="sub">
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                    </ul>
+                </li>
+                <li>Humanity Scale Healthcare
+                    <ul class="sub">
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                    </ul>
+                </li>
+                <li>New Society
+                    <ul class="sub">
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                    </ul>
+                </li>
+                <li>Space & Transport
+                    <ul class="sub">
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                        <li>Company1</li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
@@ -60,6 +106,7 @@
 
 </section>
 <script src="${pageContext.request.contextPath}/JS/echarts-en.js"></script>
+<script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
 <script src="${pageContext.request.contextPath}/JS/index_company.js"></script>
 
 </body>

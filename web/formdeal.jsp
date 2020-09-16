@@ -12,19 +12,10 @@
 </head>
 
 <body>
-<header class="hea">
-    <div class="box-header">
-        <ul class="nav">
-            <li id="icon"><a href="${pageContext.request.contextPath}/mainpage.jsp"><img src="${pageContext.request.contextPath}/Pic/MSEQ_icon.png" alt="MSEQ"></a></li>
-            <li id="deal-form"><a href="${pageContext.request.contextPath}/formdeal.jsp">Deal Form</a></li>
-            <li id="com-form"><a href="${pageContext.request.contextPath}/formcompany.jsp">Company Form</a> </li>
-        </ul>
-    </div>
-</header>
-
-<section class="sec">
+<jsp:include page="header.jsp"></jsp:include>
+<section class="mainbox">
+    <jsp:include page="left_guide.jsp"></jsp:include>
     <div class="box-table">
-
     <div class="box-caption">
         <h2>Deals</h2>
         <img src="">
@@ -37,7 +28,7 @@
                 <th scope="col">No.</th>
                 <th>Company_Name</th>
                 <th>Deal_No</th>
-<%--                <th>Deal Date</th>
+                <th>Deal Date</th>
                 <th>MSEQ investment amout</th>
                 <th>Deal Size</th>
                 <th>Deal Size Status</th>
@@ -55,7 +46,7 @@
                 <th>New Investors(optional)</th>
                 <th>Follow-on Investors(optional)</th>
                 <th>Native Currency of Deal(TBD)</th>
-                <th>Year Founded</th>--%>
+                <th>Year Founded</th>
             </tr>
             </thead>
             <tbody></tbody>

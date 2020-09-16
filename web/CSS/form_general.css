@@ -1,73 +1,39 @@
 /*----------------Body initial------------------------*/
-*{
-    margin: 0;
-    padding: 0;
+body{
+    font-family:Lucida Family,sans-serif;
+    font-size:1em;
+    vertical-align:middle;
+    font-weight:normal;
 }
-html, body{
-    height: 100%;
-}
-/*-----------------Header navigator style----------------*/
-.hea{
-    height: 25%;
-}
-.box-header{
-    position: static;
-    background-color: rgb(38,40,68);
-    height: 100%;
-}
-.nav{
-    list-style-type: none;
-    overflow: hidden; /*Child element set float, parent element losses height, hidden overflow can remove
-                                this influence*/
-    height: 100%;
-    margin: 0 5%;
 
+.mainbox{
+    display: flex;
+    margin-left: -10px;
+    top: 300px;
+    width: 1200px;
 }
-.nav li{
-    margin-top: 20px;
-    float: left;
-}
-#icon{
-    width: 5%;
-}
-#deal-form, #com-form{
-    height: 22px;
-    margin: 20px 5px 0 5px;
-    width: 10%;
-    padding: 17px 0 16px 0;
-    font-size: 1em;
-}
-.nav li a{
-    display: block;
-    width: 100%;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-}
-.nav li:hover{
-    background-color: #3f4187;
-}
+
 
 /*----------------Sec initial----------------*/
-.sec{
-    height: 75%;
-    background-color: rgb(239,241,245);
-    background-repeat: repeat-y;
-}
-.box-table{
-    margin: 0 5%;
-    padding: 2.5%;
-    position: relative;
-    bottom: 15%;
+
+.mainbox .box-table{
+    margin: 0 40px;
     background-color: rgb(255,255,255);
+    width: 100%;
 }
 /*-----------------Form style---------------------*/
 .box-caption{
-    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 .box-form{
-    overflow: auto;
+    overflow-x: scroll;
 }
+.form{
+    table-layout: fixed;
+    width: 100%;
+}
+
 .form, .form th, .form td{
     border: 1px solid black;
     border-collapse: collapse;
@@ -76,24 +42,16 @@ html, body{
 .form th{
     padding: 10px 5px;
     text-align: left;
-    background-color: rgba(43,48,59,0.64);
-    background-image: linear-gradient(#f5f5f5,#DEDDD9);
-    font-size: 0.875em;
-    font-family: Arial, Helvetica, sans-serif;
-
-    /*height: 16px;*/
+    background-color: ghostwhite;
+    width: 150px;
 }
 .form td{
     padding: 8px 5px;
     text-align: left;
-    font-size: 1em;
-    font-family:  Arial, Helvetica, sans-serif;
     tab-index: true;
 }
 
-tr:nth-child(odd){
-    background-color: rgb(216,227,241);
-}
+
 .form tr:hover{
     background-color: rgb(241,245,250);
 }
