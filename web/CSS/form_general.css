@@ -8,6 +8,7 @@ body{
 
 .mainbox{
     display: flex;
+    flex-direction: row;
     margin-left: -10px;
     top: 300px;
     width: 1200px;
@@ -17,6 +18,9 @@ body{
 /*----------------Sec initial----------------*/
 
 .mainbox .box-table{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     margin: 0 40px;
     background-color: rgb(255,255,255);
     width: 100%;
@@ -81,14 +85,13 @@ body{
 
 /*-------------------Buttons-----------------*/
 #box-add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 1200px;
     margin: 16px 8px;
-    text-align: center;
 }
-#box-add>a{
-    display: inline-block;
-    margin-top: 10px;
-}
+
 #add_row,#content{
     background-color: #4CAF50;
     border: none;
@@ -103,12 +106,13 @@ body{
     /*background-color: #DEDDD9;*/
 }
 
-#add_row{
-    float: left;
+#box-add div{
+    margin-top: 20px;
 }
-#content{
-    float: right;
+#box-add div a{
+    margin: 0 10px;
 }
+
 #add_row:hover, #content:hover{
     background-color: rgba(81,180,85,0.64);
 }
