@@ -56,6 +56,10 @@
     <div id="box-add">
         <button id="content" name="deals">Submit</button>
         <button id="add_row">Add</button>
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+
     </div>
     </div>
 </section>

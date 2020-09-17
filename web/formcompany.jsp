@@ -48,10 +48,11 @@
         </div>
 
         <div id="box-add">
-            <form id="submit-form" action=/workspace_Intellj_war_exploded/form" method="post">
-                <input id="content" name="deals" type="button" value="Submit">
-            </form>
+            <button id="content" name="deals">Submit</button>
             <button id="add_row">Add</button>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
         </div>
     </div>
 </section>

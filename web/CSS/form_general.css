@@ -81,7 +81,13 @@ body{
 
 /*-------------------Buttons-----------------*/
 #box-add{
+    width: 1200px;
     margin: 16px 8px;
+    text-align: center;
+}
+#box-add>a{
+    display: inline-block;
+    margin-top: 10px;
 }
 #add_row,#content{
     background-color: #4CAF50;
@@ -95,6 +101,10 @@ body{
     cursor: pointer;
     border-radius: 8px;
     /*background-color: #DEDDD9;*/
+}
+
+#add_row{
+    float: left;
 }
 #content{
     float: right;
