@@ -17,16 +17,15 @@
 <div class = "left">
     <nav>
         <ul class = "nav">
-            <li><a href="${pageContext.request.contextPath}/mainpage.jsp">Overview</a></li>
+            <li id = "Overview">Overview</li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
             <li><span class="tet">Theme</span>
                 <ul class="sub">
-                    <li>Company1</li>
-                    <li>Company1</li>
-                    <li>Company1</li>
-                    <li>Company1</li>
-                    <li>Company1</li>
-                    <li>Company1</li>
+                    <li id = "EM">Exponential Machines</li>
+                    <li id = "FP">Feeding 10B People</li>
+                    <li id = "HCH">Humanity Scale Healthcare</li>
+                    <li id = "NS">New Society</li>
+                    <li id = "ST">Space & Transport</li>
                 </ul>
             </li>
             <li><a href="">last 5 deals</a></li>

@@ -1,4 +1,50 @@
-(function (){
+$(function(){
+        $("#FP").click(function (){
+        var myChart = echarts.init(document.querySelector(".panel_second"));
+        var option = {
+            title: {
+                text: 'Investment'
+            },
+            tooltip: {},
+            legend: {
+                data:['value']
+            },
+            xAxis: {
+                data: ["deal 1","deal 2","deal 3","deal 4","deal 5","deal 6"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'value',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        myChart.setOption(option);
+    })
+    $("#EM").click(function (){
+        var myChart = echarts.init(document.querySelector(".panel_second"));
+        var option = {
+            title: {
+                text: 'Investment'
+            },
+            tooltip: {},
+            legend: {
+                data:['value']
+            },
+            xAxis: {
+                data: ["deal 1","deal 2","deal 3","deal 4","deal 5","deal 6"]
+            },
+            yAxis: {},
+            series: [{
+                name: 'value',
+                type: 'bar',
+                data: [2, 2, 3, 1, 1, 2]
+            }]
+        };
+        myChart.setOption(option);
+    })
+})
+/*(function (){
     var myChart = echarts.init(document.querySelector(".panel_second"));
     var option = {
         title: {
@@ -19,9 +65,9 @@
         }]
     };
     myChart.setOption(option);
-})();
+})();*/
 
-(function (){
+/*(function (){
     var myChart = echarts.init(document.querySelector(".column .panel_third"));
     var option = {
         title: {
@@ -190,7 +236,7 @@
         ]
     };
     myChart.setOption(option);
-})();
+})();*/
 
 
 
