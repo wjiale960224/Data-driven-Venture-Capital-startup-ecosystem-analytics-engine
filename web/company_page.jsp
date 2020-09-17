@@ -20,7 +20,7 @@
     <div class = "column">
         <nav>
             <ul class="nav">
-                <li>Exponential Machines
+                <li><span class="tet">Exponential Machines</span>
                     <span class="dropdown"></span>
                     <ul class="sub">
                         <li>Company1</li>
@@ -31,7 +31,7 @@
                         <li>Company1</li>
                     </ul>
                 </li>
-                <li>Feeding 10B People
+                <li><span class="tet">Feeding 10B People</span>
                     <ul class="sub">
                         <li>Company1</li>
                         <li>Company1</li>
@@ -41,7 +41,7 @@
                         <li>Company1</li>
                     </ul>
                 </li>
-                <li>Humanity Scale Healthcare
+                <li><span class="tet">Humanity Scale Healthcare</span>
                     <ul class="sub">
                         <li>Company1</li>
                         <li>Company1</li>
@@ -51,7 +51,7 @@
                         <li>Company1</li>
                     </ul>
                 </li>
-                <li>New Society
+                <li><span class="tet">New Society</span>
                     <ul class="sub">
                         <li>Company1</li>
                         <li>Company1</li>
@@ -61,7 +61,7 @@
                         <li>Company1</li>
                     </ul>
                 </li>
-                <li>Space & Transport
+                <li><span class="tet">Space & Transport</span>
                     <ul class="sub">
                         <li>Company1</li>
                         <li>Company1</li>

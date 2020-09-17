@@ -52,8 +52,12 @@ body{
     cursor: pointer;
 }
 
+.nav>li>.tet:hover{
+    color: rgb(173,139,46);
+}
+
 .current{
-    font-weight: bold;
+    color: rgb(173,139,46);
 }
 
 .sub{

@@ -25,8 +25,8 @@
                 <tr  contenteditable="false">
                     <th>No.</th>
                     <th>Company_Name</th>
-                    <th>Stage</th>
-                    <th>1st Inv Date</th>
+                    <th>Theme</th>
+                    <th>Year_Founded</th>
                     <th>Initial amount</th>
                     <th>Follow On Date</th>
                     <th>Follow On amount</th>

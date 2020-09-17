@@ -19,8 +19,7 @@
         <ul class = "nav">
             <li><a href="${pageContext.request.contextPath}/mainpage.jsp">Overview</a></li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li>Theme
-                <span class="dropdown"></span>
+            <li><span class="tet">Theme</span>
                 <ul class="sub">
                     <li>Company1</li>
                     <li>Company1</li>
@@ -34,6 +33,7 @@
         </ul>
     </nav>
 </div>
+<script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
 <script src="${pageContext.request.contextPath}/JS/dropdown.js"></script>
 </body>
 </html>
