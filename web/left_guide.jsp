@@ -16,13 +16,24 @@
 <body>
 <div class = "left">
     <nav>
-        <ul>
+        <ul class = "nav">
             <li><a href="${pageContext.request.contextPath}/mainpage.jsp">Overview</a></li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li><a href="">Theme</a></li>
+            <li>Theme
+                <span class="dropdown"></span>
+                <ul class="sub">
+                    <li>Company1</li>
+                    <li>Company1</li>
+                    <li>Company1</li>
+                    <li>Company1</li>
+                    <li>Company1</li>
+                    <li>Company1</li>
+                </ul>
+            </li>
             <li><a href="">last 5 deals</a></li>
         </ul>
     </nav>
 </div>
+<script src="${pageContext.request.contextPath}/JS/dropdown.js"></script>
 </body>
 </html>

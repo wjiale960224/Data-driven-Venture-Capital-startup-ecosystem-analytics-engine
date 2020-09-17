@@ -108,6 +108,7 @@
 <script src="${pageContext.request.contextPath}/JS/echarts-en.js"></script>
 <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
 <script src="${pageContext.request.contextPath}/JS/index_company.js"></script>
+<script src="${pageContext.request.contextPath}/JS/dropdown.js"></script>
 
 </body>
 </html>

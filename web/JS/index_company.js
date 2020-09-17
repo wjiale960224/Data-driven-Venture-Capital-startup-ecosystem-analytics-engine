@@ -147,7 +147,7 @@
     myChart.setOption(option);
 })();
 
-$(function(){
+/*$(function(){
     var $index = -1;
     // Click li, slide down it and slide up other li.
     $(".nav>li").click(function(){
@@ -176,4 +176,4 @@ $(function(){
     $(".sub>li").click(function(){
         return false; // prevent bubble event.
     })
-})
+})*/
