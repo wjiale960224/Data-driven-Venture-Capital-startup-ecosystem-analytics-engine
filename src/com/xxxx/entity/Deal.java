@@ -21,7 +21,7 @@ public class Deal {
     Vehicle vehicle;
     List<String> co_investor;
     double fund_percentage; // auto-generated
-    double own_percentage; // auto-generated
+    double own_percentage; // manually input
 
 
 
@@ -122,8 +122,7 @@ public class Deal {
         this.fund_percentage = fund_percentage;
     }
 
-    // should only be called by service level
-    protected void setOwn_percentage(double own_percentage) {
+    public void setOwn_percentage(double own_percentage) {
         this.own_percentage = own_percentage;
     }
 }
