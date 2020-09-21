@@ -23,13 +23,13 @@
             <ul class="nav">
                 <li id = "EM"><span class="tet">Exponential Machines</span>
                 </li>
-                <li><span class="tet">Feeding 10B People</span>
+                <li id = "FP"><span class="tet">Feeding 10B People</span>
                 </li>
-                <li><span class="tet">Humanity Scale Healthcare</span>
+                <li id = "HSH"><span class="tet">Humanity Scale Healthcare</span>
                 </li>
-                <li><span class="tet">New Society</span>
+                <li id = "NS"><span class="tet">New Society</span>
                 </li>
-                <li><span class="tet">Space & Transport</span>
+                <li id = "ST"><span class="tet">Space & Transport</span>
                 </li>
             </ul>
         </nav>
@@ -38,7 +38,9 @@
         <div class = "top_box">
             <div class = "top_column">
                 <div class="text_info"><span id="total_company">10</span><br><span>Total company in this theme</span></div>
+                <div id = "total_company_pie"></div>
                 <div class="text_info"><span id="total_amount">23 M</span><br><span>Total Inv amount in this theme</span></div>
+                <div id = "total_inv_pie"></div>
             </div>
             <div class = "top_column" id = "valuation">
             </div>
