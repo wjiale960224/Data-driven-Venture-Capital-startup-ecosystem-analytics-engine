@@ -238,6 +238,8 @@ $(function() {
             ]
         };
         myChart_bar.setOption(option_bar);
+
+        $("#theme_table_cell").html("Exponential Machines");
     })
     $("#FP").click(function () {
         var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
@@ -419,6 +421,8 @@ $(function() {
             ]
         };
         myChart_bar.setOption(option_bar);
+
+        $("#theme_table_cell").html("Feeding 10B People");
     })
     $("#HSH").click(function () {
         var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
@@ -600,6 +604,8 @@ $(function() {
             ]
         };
         myChart_bar.setOption(option_bar);
+
+        $("#theme_table_cell").html("Humanity Scale Healthcare");
     })
     $("#NS").click(function () {
         var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
@@ -781,6 +787,8 @@ $(function() {
             ]
         };
         myChart_bar.setOption(option_bar);
+        $("#theme_table_cell").html("New Society");
+
     })
     $("#ST").click(function () {
         var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
@@ -962,5 +970,7 @@ $(function() {
             ]
         };
         myChart_bar.setOption(option_bar);
+
+        $("#theme_table_cell").html("Space & Transport");
     })
 })

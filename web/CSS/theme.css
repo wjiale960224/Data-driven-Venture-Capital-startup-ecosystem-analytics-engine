@@ -81,34 +81,48 @@
 
 .top_box .top_column:nth-child(1){
     flex-grow: 1;
+    display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 0 20px;
     border-radius: 40px;
     background-color: ghostwhite;
 }
+#total_company_div{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+#total_amount_div{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
 
 .text_info{
-    height: 100px;
-    width: 400px;
-    margin: 20px auto;
+    margin: 20px 20px;
     padding: 20px 0 0 0;
-    text-align: left;
+    text-align: center;
 }
 
 
 #total_company_pie{
     height: 100px;
     width: 100px;
-    margin-top: -120px;
-    margin-left: 300px;
+    position: absolute;
+    top: 40px;
+    right: 20px;
     border-radius: 20px;
     background-color: white;
 }
 #total_inv_pie{
     height: 100px;
     width: 100px;
-    margin-top: -120px;
-    margin-left: 300px;
+    position: absolute;
+    top: 40px;
+    right: 20px;
     border-radius: 20px;
     background-color: white;
 }
@@ -142,6 +156,7 @@
 #div_table{
     flex: 2 1 400px;
     margin: 20px;
+
 }
 #bar_chart{
     flex: 1 2 200px;
@@ -152,10 +167,12 @@
 
 #div_table{
     overflow-y: scroll;
+    background-color: ghostwhite;
 }
 .table{
     table-layout: fixed;
     font-size: 0.5em;
+
 }
 .table, .table th, .table td{
     border: 1px solid black;

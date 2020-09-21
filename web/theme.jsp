@@ -37,10 +37,14 @@
     <div class = "column">
         <div class = "top_box">
             <div class = "top_column">
-                <div class="text_info"><span id="total_company">10</span><br><span>Total company in this theme</span></div>
-                <div id = "total_company_pie"></div>
-                <div class="text_info"><span id="total_amount">23 M</span><br><span>Total Inv amount in this theme</span></div>
-                <div id = "total_inv_pie"></div>
+                <div id="total_company_div">
+                    <div class="text_info"><span id="total_company">10</span><br><span>Total company in this theme</span></div>
+                    <div id = "total_company_pie"></div>
+                </div>
+                <div id="total_amount_div">
+                    <div class="text_info"><span id="total_amount">23 M</span><br><span>Total Inv amount in this theme</span></div>
+                    <div id = "total_inv_pie"></div>
+                </div>
             </div>
             <div class = "top_column" id = "valuation">
             </div>
@@ -59,7 +63,7 @@
                     <th>IRR</th>
                     </thead>
                     <tr style="background-color: rgb(173,139,46);">
-                        <td colspan="7">Exponential Machines</td>
+                        <td id="theme_table_cell" colspan="7">Exponential Machines</td>
                     </tr>
                     <tr>
                         <td>.</td>
