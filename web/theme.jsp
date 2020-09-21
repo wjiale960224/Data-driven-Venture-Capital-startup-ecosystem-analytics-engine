@@ -37,13 +37,142 @@
     <div class = "column">
         <div class = "top_box">
             <div class = "top_column">
+                <div class="text_info"><span id="total_company">10</span><br><span>Total company in this theme</span></div>
+                <div class="text_info"><span id="total_amount">23 M</span><br><span>Total Inv amount in this theme</span></div>
             </div>
             <div class = "top_column" id = "valuation">
             </div>
         </div>
         <div class = "bot_box">
-            <div class = "bot_column" id = "MSEQ_investment"></div>
-            <div class = "bot_column" ></div>
+            <div class = "bot_column" id ="MSEQ_investment"></div>
+            <div class = "bot_column" id="div_table">
+                <table class="table">
+                    <thead>
+                    <th>Company</th>
+                    <th>Investment Date</th>
+                    <th>Cost<br>(AUD M\)</th>
+                    <th>% Owned</th>
+                    <th>Current Valuation<br>(AUD M\)</th>
+                    <th>Investment Multiple</th>
+                    <th>IRR</th>
+                    </thead>
+                    <tr style="background-color: rgb(173,139,46);">
+                        <td colspan="7">Exponential Machines</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+
+                    </tr>
+
+
+                </table>
+            </div>
             <div class = "bot_column" id = "bar_chart"></div>
         </div>
     </div>

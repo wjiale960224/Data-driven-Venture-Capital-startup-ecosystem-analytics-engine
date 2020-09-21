@@ -19,7 +19,7 @@
         <ul class = "nav">
             <li id = "Overview">Overview</li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li><span class="tet">Theme</span>
+            <li><span class="tet"><a href="theme.jsp">Theme</a></span>
                 <ul class="sub">
                     <li id = "EM">Exponential Machines</li>
                     <li id = "FP">Feeding 10B People</li>
