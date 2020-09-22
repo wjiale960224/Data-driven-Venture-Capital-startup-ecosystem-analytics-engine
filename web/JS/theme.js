@@ -1,4 +1,7 @@
 $(function() {
+    $("li").click(function (){
+        $(this).addClass("selected").siblings().removeClass("selected");
+    })
     $("#EM").click(function () {
         var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
         var option_invest = {
