@@ -188,3 +188,6 @@
     padding: 8px 5px;
     text-align: left;
 }
+.selected{
+    color: rgb(173,139,46);
+}

@@ -19,16 +19,7 @@
         <ul class = "nav">
             <li id = "Overview">Overview</li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li><span class="tet"><a href="theme.jsp">Theme</a></span>
-                <ul class="sub">
-                    <li id = "EM">Exponential Machines</li>
-                    <li id = "FP">Feeding 10B People</li>
-                    <li id = "HCH">Humanity Scale Healthcare</li>
-                    <li id = "NS">New Society</li>
-                    <li id = "ST">Space & Transport</li>
-                </ul>
-            </li>
-            <li><a href="">last 5 deals</a></li>
+            <li><span class="tet"><a href="theme.jsp">Theme</a></span></li>
         </ul>
     </nav>
 </div>
