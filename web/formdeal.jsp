@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
-    <link rel="stylesheet" type="text/css" href="CSS/form_deal.css">
     <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
     <script src="${pageContext.request.contextPath}/JS/deal_form.js"></script>
     <title>Create Form</title>
@@ -15,38 +14,30 @@
 <jsp:include page="header.jsp"></jsp:include>
 <section class="mainbox">
     <jsp:include page="left_guide.jsp"></jsp:include>
-    <div class="box-table">
-        <div class="box-caption">
-            <h2>Deals</h2>
-            <img src="">
+    <div class="table_whole_div">
+        <div class="table_caption">
+            <div><h2>Companies</h2></div>
+            <div class="edit_box">
+                <label for="edit">Edit</label>
+                <input type='checkbox' value='edit' id="edit">
+            </div>
         </div>
         
-        <div class="box-form">
-            <table class="form" id="tb_deal"  contenteditable="true">
+        <div class="table_div">
+            <table class="table" id="tb_deal" contenteditable="true">
                 <thead>
                 <tr  contenteditable="false">
                     <th scope="col">No.</th>
                     <th>Company_Name</th>
-                    <th>Deal_No</th>
-                    <th>Deal Date</th>
-                    <th>MSEQ investment amout</th>
-                    <th>Deal Size</th>
-                    <th>Deal Size Status</th>
-                    <th>Pre-money Value</th>
-                    <th>Post Valuation</th>
-                    <th>Post Valuation Status</th>
-                    <th>%Acquired</th>
-                    <th>Raised to Date</th>
-                    <th>MSEQ total investment to date</th>
-                    <th>investment return multiple to date</th>
-                    <th>Investment vehicle</th>
+                    <th>Deal_Date</th>
+                    <th>Deal_Size</th>
+                    <th>Deal_Status</th>
                     <th>Series</th>
-                    <th>Deal Status</th>
-                    <th>co-Investors name(option)</th>
-                    <th>New Investors(optional)</th>
-                    <th>Follow-on Investors(optional)</th>
-                    <th>Native Currency of Deal(TBD)</th>
-                    <th>Year Founded</th>
+                    <th>MSEQ_Invest_amount</th>
+                    <th>Invest_Vehicle</th>
+                    <th>Co_Investor</th>
+                    <th>Fund_Percent</th>
+                    <th>Own_Percent</th>
                 </tr>
                 </thead>
                 <tbody></tbody>
@@ -54,12 +45,8 @@
         </div>
         <div id="box-add">
             <button id="add_row">Add</button>
-            <div>
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-            </div>
-            <button id="content" name="deals">Submit</button>
+
+            <button id="submit" name="deals">Submit</button>
         </div>
     </div>
 </section>

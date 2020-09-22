@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/form_general.css">
-    <link rel="stylesheet" type="text/css" href="CSS/form_company.css">
     <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
     <script src="${pageContext.request.contextPath}/JS/company_form.js"></script>
     <title>Create Form</title>
@@ -14,34 +13,32 @@
 <jsp:include page="header.jsp"></jsp:include>
 <section class="mainbox">
     <jsp:include page="left_guide.jsp"></jsp:include>
-    <div class="box-table">
-        <div class="box-caption">
-            <h2>Companies</h2>
-            <img src="">
+    <div class="table_whole_div">
+        <div class="table_caption">
+            <div><h2>Companies</h2></div>
+            <div class="edit_box">
+                <label for="edit">Edit</label>
+                <input type='checkbox' value='edit' id="edit">
+            </div>
         </div>
-        <div class="box-form">
-            <table class="form" id="tb_deal"  contenteditable="true">
+        <div class="table_div">
+            <table class="table" id="table_id" contenteditable="true">
                 <thead>
-                <tr  contenteditable="false">
-                    <th>No.</th>
-                    <th>Company_Name</th>
-                    <th>Theme</th>
-                    <th>Year_Founded</th>
-                    <th>Initial amount</th>
-                    <th>Follow On Date</th>
-                    <th>Follow On amount</th>
-                    <th>Future</th>
-                    <th>Total</th>
-                    <th>% of Fund</th>
-                    <th>Invested Cumulative</th>
-                    <th>Inv & Reserves Cumulative</th>
-                    <th>% own</th>
-                    <th>Runway end date</th>
-                    <th>Current Valuation</th>
-                    <th>Company Valuation to return</th>
-                    <th>Fund Return</th>
-                    <th>Fund Return</th>
-                </tr>
+                    <tr  contenteditable="false">
+                        <th>No.</th>
+                        <th>Company_Name</th>
+                        <th>Theme</th>
+<%--                        <th>Year_Founded</th>
+                        <th>Runway_End_Date</th>
+                        <th>Runway_Month</th>
+                        <th>Raise_to_Date</th>
+                        <th>Employee_No</th>
+                        <th>Revenue</th>
+                        <th>Present_Valuation</th>
+                        <th>Valuation_Change_reason</th>
+                        <th>MSEQ_Investment_Cur_Val</th>
+                        <th>Own_Percent</th>--%>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -49,12 +46,7 @@
 
         <div id="box-add">
             <button id="add_row">Add</button>
-            <div>
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-            </div>
-            <button id="content" name="deals">Submit</button>
+            <button id="submit" name="deals">Submit</button>
         </div>
     </div>
 </section>

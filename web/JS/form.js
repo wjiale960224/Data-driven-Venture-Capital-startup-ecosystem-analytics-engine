@@ -1,7 +1,6 @@
 window.onload = function (){
     ///Add button
-    var btn_add = document.getElementById("add_row"); // add button
-    btn_add.onclick = function () {
+    $("#add_row").click(function(){
         var tb_deal = document.getElementById("tb_deal"); // table
         var tbody = document.getElementsByTagName("tbody")[0]; // tbody
         var th_deal = document.getElementsByTagName("th"); // table heads
@@ -33,7 +32,7 @@ window.onload = function (){
 
             update_rm();
         }
-    }
+    });
 
 
     /// update number
@@ -56,7 +55,7 @@ window.onload = function (){
 
 
     // submit button
-    var btn_submit = document.getElementById("content");
+    var btn_submit = document.getElementById("submit");
     btn_submit.onclick = function (){
         alert("TBD")
     }

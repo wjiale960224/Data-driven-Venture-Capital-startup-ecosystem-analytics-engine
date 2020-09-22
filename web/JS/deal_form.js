@@ -1,64 +1,42 @@
 window.onload = function (){
-    ///Add button
-    var btn_add = document.getElementById("add_row"); // add button
-    btn_add.onclick = function () {
-        var tb_deal = document.getElementById("tb_deal"); // table
-        var tbody = document.getElementsByTagName("tbody")[0]; // tbody
-        var th_deal = $("thead>tr>th"); // table heads
-        var tr = document.createElement("tr");
-        tbody.appendChild(tr);
-        for (var i = 0; i < th_deal.length; i++){
-            if (i===0){
-                var th = document.createElement("th");
-                th.tabIndex = (tb_deal.rows.length-1)*(th_deal.length-1)+i;
-                th.className = "tes";
-                var div = document.createElement("div");
-                div.className = "cellno";
-                var span1 = document.createElement("span");
-                span1.className = "rmspan";
-                span1.innerHTML = "&#128683"; // &#128683,&#128686,&#9924,&#10062,&#9746,&#10062
-                var span2 = document.createElement("span");
-                span2.className = "no";
-                span2.innerHTML = String(tb_deal.rows.length-1);
-                th.contentEditable = "false";
+    $(function(){
+        var $index = -1;
+        $("#add_row").click(function(event){
+            $index = $(".table>tbody>tr").length+1;
+            var $tbody = $(".table>tbody"); // table
+            var $checked = $("#edit").is(":checked");
+            var $td = "<td></td>";
+            var $tds = "";
+            for (var i = 0; i < $("thead th").length-1; i++){
+                $tds += $td;
+            }
+            $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
+                "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
+            event.stopPropagation();
 
-                div.appendChild(span1);
-                div.appendChild(span2);
-                th.appendChild(div);
-                tr.appendChild(th);
+        });
+
+        $(".table").delegate(".delete", "click", function(){
+            $(this).parent().parent().parent().remove();
+            var $index = $(".index");
+            for (var i = 0; i < $index.length; i++){
+                $index.eq(i).html(i+1);
+            }
+        });
+
+        $("#edit").click(function(){
+            var $toby = $("tbody");
+            if ($(this).is(":checked") === true){
+                $toby.children("tr").attr({contentEditable:true})
+                $toby.children("th").attr({contentEditable:false})
             }else {
-                var td = document.createElement("td");
-                td.tabIndex = (tb_deal.rows.length-1)*(th_deal.length-1)+i;
-                // td.headers="company";
-                var tx = document.createTextNode("");
-                td.appendChild(tx);
-                tr.appendChild(td);
+                $toby.children("tr").attr({contentEditable:false})
             }
-
-            update_rm();
-        }
-    }
+        });
+    });
 
 
-    /// update number
-    function update_rm(){
-        var rm = document.getElementsByClassName("rmspan");
-        var no = document.getElementsByClassName("no");
-
-        for (var i = 0; i < rm.length; i++){
-            rm[i].onclick = function(){
-                var tbody = this.parentElement.parentElement.parentElement.parentElement;
-                var tr1 = this.parentElement.parentElement.parentElement;
-                tbody.removeChild(tr1);
-
-                for (var i = 0; i < no.length; i++){
-                    no[i].innerHTML = String(i+1);
-                }
-            }
-        }
-    }
-
-    // Collect a company's information
+    // Collect a deal's information
     function collect_info() {
         var $tr = $("tbody>tr");
         var companyList = [];
@@ -75,7 +53,7 @@ window.onload = function (){
     }
 
     // submit button
-    var btn_submit = document.getElementById("content");
+    var btn_submit = document.getElementById("submit");
     btn_submit.onclick = function (){
         var deal = JSON.stringify(collect_info());
         $.ajax({
@@ -92,11 +70,6 @@ window.onload = function (){
                 console.log("No,data not delivered.");
             }
         });
-    }
-
-    // Initialize form
-    for (var i = 0; i < 10; i++){
-        btn_add.click();
     }
 
 }
