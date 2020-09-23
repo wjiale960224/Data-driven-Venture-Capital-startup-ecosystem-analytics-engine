@@ -85,30 +85,37 @@ window.onload = function (){
                 type: "GET",
                 url: "/workspace_Intellj_war_exploded/company_form",
                 data: {
-                    refresh: "22",
+                    refresh: "[]",
                 },
                 success:function(company_info){
                     console.log("yes,refreshed.");
-                    var companies = company_info.substring(1,company_info.length-1).split("},{"); // Get rid of "[]" in "[{},{}]", and split deals
-                    for (var i = 0; i < companies.length; i++){ // Get rid of [] and split each item up.
-                        if (i === 0) {
-                            companies[i] += "}";
-                        }else if (i === companies.length-1){
-                            companies[i] = "{" + companies[i];
-                        }else {
-                            companies[i] = "{" + companies[i] + "}";
+                    if (company_info === "[]"){
+                        for (var i = 0; i < 5; i++){
+                            $("#add_row").click();
+                        }
+                    }else {
+                        var companies = company_info.substring(1,company_info.length-1).split("},{"); // Get rid of "[]" in "[{},{}]", and split deals
+                        for (i = 0; i < companies.length; i++){ // Get rid of [] and split each item up.
+                            if (i === 0) {
+                                companies[i] += "}";
+                            }else if (i === companies.length-1){
+                                companies[i] = "{" + companies[i];
+                            }else {
+                                companies[i] = "{" + companies[i] + "}";
+                            }
+                        }
+                        for (i = 0; i < companies.length; i++){ // Refresh table according to data in database
+                            console.log(companies[i]);
+                            var $company = JSON.parse(companies[i]); // Reconstruct string format to object format
+                            $('#add_row').click();
+                            var $trs = $("tbody>tr");
+                            for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){ // Update table
+                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                                $trs[$trs.length-1].cells[j].innerHTML = $company[attr];
+                            }
                         }
                     }
-                    for (i = 0; i < companies.length; i++){ // Reconstruct string format to object format
-                        console.log(companies[i]);
-                        var $company = JSON.parse(companies[i]);
-                        $('#add_row').click();
-                        var $trs = $("tbody>tr");
-                        for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
-                            var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
-                            $trs[$trs.length-1].cells[j].innerHTML = $company[attr];
-                        }
-                    }
+
                 },
                 error: function(){
                     console.log("No,something wrong.");

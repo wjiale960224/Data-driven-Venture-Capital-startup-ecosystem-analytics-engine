@@ -17,12 +17,13 @@ import java.io.IOException;
 @WebServlet("/company_form")
 
 public class CompanyFormServlet extends HttpServlet {
-    String whole = "";
+    String whole = "[]";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String refresh = req.getParameter("refresh");
         ServletOutputStream sos = resp.getOutputStream(); // Response
-        sos.print("[{\"Company_Name\":\"av\",\"Theme\":\"1\"},{\"Company_Name\":\"v\",\"Theme\":\"2\"}]");
+//        sos.print("[{\"Company_Name\":\"av\",\"Theme\":\"1\"},{\"Company_Name\":\"v\",\"Theme\":\"2\"}]");
+        sos.print(whole);
     }
 
     @Override

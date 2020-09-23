@@ -89,24 +89,30 @@ window.onload = function (){
                 },
                 success:function(deal_info){
                     console.log("yes,refreshed.");
-                    var deals = deal_info.substring(1,deal_info.length-1).split("},{"); // Get rid of "[]" in "[{},{}]", and split deals
-                    for (var i = 0; i < deals.length; i++){ // Get rid of [] and split each item up.
-                        if (i === 0) {
-                            deals[i] += "}";
-                        }else if (i === deals.length-1){
-                            deals[i] = "{" + deals[i];
-                        }else {
-                            deals[i] = "{" + deals[i] + "}";
+                    if (deal_info === "[]"){
+                        for (var i = 0; i < 5; i++){
+                            $("#add_row").click();
                         }
-                    }
-                    for (i = 0; i < deals.length; i++){ // Reconstruct string format to object format
-                        console.log(deals[i]);
-                        var $deal = JSON.parse(deals[i]);
-                        $('#add_row').click();
-                        var $trs = $("tbody>tr");
-                        for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
-                            var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
-                            $trs[$trs.length-1].cells[j].innerHTML = $deal[attr];
+                    }else {
+                        var deals = deal_info.substring(1,deal_info.length-1).split("},{"); // Get rid of "[]" in "[{},{}]", and split deals
+                        for (i = 0; i < deals.length; i++){ // Get rid of [] and split each item up.
+                            if (i === 0) {
+                                deals[i] += "}";
+                            }else if (i === deals.length-1){
+                                deals[i] = "{" + deals[i];
+                            }else {
+                                deals[i] = "{" + deals[i] + "}";
+                            }
+                        }
+                        for (i = 0; i < deals.length; i++){ // Reconstruct string format to object format
+                            console.log(deals[i]);
+                            var $deal = JSON.parse(deals[i]);
+                            $('#add_row').click();
+                            var $trs = $("tbody>tr");
+                            for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
+                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                                $trs[$trs.length-1].cells[j].innerHTML = $deal[attr];
+                            }
                         }
                     }
                 },
