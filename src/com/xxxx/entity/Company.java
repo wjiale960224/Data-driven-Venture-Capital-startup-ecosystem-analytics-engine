@@ -6,8 +6,9 @@ import java.util.List;
 
 
 public class Company {
-    final int cid;
-    String company_name;
+    // Field name must match the attribute name in database, otherwise DAO cannot create Company instance correctly.
+    Integer cid;
+    String c_name;
     Theme theme;
     int year_founded;
     Date runway_end_date;
@@ -16,10 +17,12 @@ public class Company {
     int employee_no;
     List<Double> revenue;
 
+    public Company() {
+    }
 
     public Company(String company_name, Theme theme) {
         this.cid = CompanyID.get_id();
-        this.company_name = company_name;
+        this.c_name = company_name;
         this.theme = theme;
         this.raised_to_date = new ArrayList<>();
         this.revenue = new ArrayList<>();
@@ -34,11 +37,11 @@ public class Company {
     }
 
     public String getCompany_name() {
-        return company_name;
+        return c_name;
     }
 
     public void setCompany_name(String company_name) {
-        this.company_name = company_name;
+        this.c_name = company_name;
     }
 
     public Theme getTheme() {

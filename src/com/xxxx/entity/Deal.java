@@ -12,32 +12,33 @@ import java.util.*;
  */
 
 public class Deal {
-    final int did;
+    Integer deal_id;
     String company_name; // to get company_id
     Date deal_date;
     double deal_size;
     DealStatus deal_status;
     Series series;
-    double MSEQ_invest_amount;
+    double mseq_invest_amount;
     Vehicle vehicle;
     List<String> co_investor;
-    double fund_percentage; // auto-generated
-    double own_percentage; // manually input
+    double fund_percent; // auto-generated
+    double own_percent; // manually input
 
-
+    public Deal() {
+    }
 
     public Deal(Date deal_date, double deal_size, Series series, double MSEQ_invest_amount) {
-        this.did = DealID.get_id();
+        this.deal_id = DealID.get_id();
         this.deal_date = deal_date;
         this.deal_size = deal_size;
         this.deal_status = DealStatus.Completed; // default status is Completed
         this.series = series;
-        this.MSEQ_invest_amount = MSEQ_invest_amount;
+        this.mseq_invest_amount = MSEQ_invest_amount;
     }
 
 
     public int getDid() {
-        return did;
+        return deal_id;
     }
 
     public Company getCompany() {
@@ -63,7 +64,7 @@ public class Deal {
     }
 
     public double getMSEQ_invest_amount() {
-        return MSEQ_invest_amount;
+        return mseq_invest_amount;
     }
 
     public Vehicle getVehicle() {
@@ -75,11 +76,11 @@ public class Deal {
     }
 
     public double getFund_percentage() {
-        return fund_percentage;
+        return fund_percent;
     }
 
     public double getOwn_percentage() {
-        return own_percentage;
+        return own_percent;
     }
 
     public void setDeal_date(Date deal_date) {
@@ -99,7 +100,7 @@ public class Deal {
     }
 
     public void setMSEQ_invest_amount(double MSEQ_invest_amount) {
-        this.MSEQ_invest_amount = MSEQ_invest_amount;
+        this.mseq_invest_amount = MSEQ_invest_amount;
     }
 
     public void setVehicle(Vehicle vehicle) {
@@ -120,10 +121,10 @@ public class Deal {
 
     // should only be called by service level
     protected void setFund_percentage(double fund_percentage) {
-        this.fund_percentage = fund_percentage;
+        this.fund_percent = fund_percentage;
     }
 
     public void setOwn_percentage(double own_percentage) {
-        this.own_percentage = own_percentage;
+        this.own_percent = own_percentage;
     }
 }
