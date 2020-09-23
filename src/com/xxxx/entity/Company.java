@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class Company {
-    int cid;
+    final int cid;
     String company_name;
     Theme theme;
     int year_founded;

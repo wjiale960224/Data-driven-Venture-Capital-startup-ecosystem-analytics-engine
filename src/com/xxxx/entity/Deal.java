@@ -1,9 +1,10 @@
 package com.xxxx.entity;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import com.xxxx.dao.Userdao;
+import com.xxxx.util.GetSqlSession;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.*;
 
 /**
  * @author Zihang
@@ -11,8 +12,8 @@ import java.util.UUID;
  */
 
 public class Deal {
-    final UUID did;
-    final Company company; // to get company_id
+    final int did;
+    String company_name; // to get company_id
     Date deal_date;
     double deal_size;
     DealStatus deal_status;
@@ -25,9 +26,8 @@ public class Deal {
 
 
 
-    public Deal(Company company, Date deal_date, double deal_size, Series series, double MSEQ_invest_amount) {
-        this.did = UUID.randomUUID();
-        this.company = company;
+    public Deal(Date deal_date, double deal_size, Series series, double MSEQ_invest_amount) {
+        this.did = DealID.get_id();
         this.deal_date = deal_date;
         this.deal_size = deal_size;
         this.deal_status = DealStatus.Completed; // default status is Completed
@@ -36,13 +36,14 @@ public class Deal {
     }
 
 
-
-    public UUID getDid() {
+    public int getDid() {
         return did;
     }
 
     public Company getCompany() {
-        return company;
+        SqlSession session = GetSqlSession.createSqlSession();
+        Userdao userdao = session.getMapper(Userdao.class);
+        return userdao.queryCompanyByName(company_name);
     }
 
     public Date getDeal_date() {

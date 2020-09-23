@@ -13,9 +13,11 @@ import java.util.List;
 public interface Userdao {
     // call SQL query prepared in Userdao.xml
 
-    public User queryUserByname(String user_name);
+    User queryUserByname(String user_name);
 
-    public int add(@Param("user_name") String user_name, @Param("user_pwd") String user_pwd);
+    int add(@Param("user_name") String user_name, @Param("user_pwd") String user_pwd);
 
-    public List<Double> queryPostValueByCompany(String company_name);
+    List<Double> queryPostValueByCompany(String company_name);
+
+    Company queryCompanyByName(String company_name);
 }
