@@ -1,5 +1,10 @@
 package com.xxxx.entity;
 
+import com.xxxx.dao.Userdao;
+import com.xxxx.util.GetSqlSession;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,49 +13,77 @@ import java.util.List;
  */
 
 public class Valuation {
-    Company company;
-    List<Double> pre_values;
-    List<Double> post_values;
-    List<String> val_change_reason;
-    List<Double> MSEQ_invest_current_val;
+    // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
+    Integer val_id;
+    Integer cid;
+    Date update_date;
+    Double present_value;
+    String val_change_reason;
+    Double mseq_investment_cur_val;
+    Double own_percent;
 
-    public Valuation(Company company) {
-        this.company = company;
+    public Valuation() {
     }
 
-    public Company getCompany() {
-        return company;
+    public Valuation(Integer cid, Date update_date, Double present_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
+        this.val_id = ValuationID.get_id();
+        this.cid = cid;
+        this.update_date = update_date;
+        this.present_value = present_value;
+        this.val_change_reason = val_change_reason;
+        this.mseq_investment_cur_val = mseq_investment_cur_val;
+        this.own_percent = own_percent;
     }
 
-    public List<Double> getPre_values() {
-        return pre_values;
+    public Integer getVal_id() {
+        return val_id;
     }
 
-    public void addPre_values(double pre_values) {
-        this.pre_values.add(pre_values);
+    public Integer getCid() {
+        return cid;
     }
 
-    public List<Double> getPost_values() {
-        return post_values;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
-    public void addPost_values(double post_values) {
-        this.post_values.add(post_values);
+    public Date getUpdate_date() {
+        return update_date;
     }
 
-    public List<String> getVal_change_reason() {
+    public void setUpdate_date(Date update_date) {
+        this.update_date = update_date;
+    }
+
+    public Double getPresent_value() {
+        return present_value;
+    }
+
+    public void setPresent_value(Double present_value) {
+        this.present_value = present_value;
+    }
+
+    public String getVal_change_reason() {
         return val_change_reason;
     }
 
-    public void addVal_change_reason(String val_change_reason) {
-        this.val_change_reason.add(val_change_reason);
+    public void setVal_change_reason(String val_change_reason) {
+        this.val_change_reason = val_change_reason;
     }
 
-    public List<Double> getMSEQ_invest_current_val() {
-        return MSEQ_invest_current_val;
+    public Double getMseq_investment_cur_val() {
+        return mseq_investment_cur_val;
     }
 
-    public void addMSEQ_invest_current_val(double MSEQ_invest_current_val) {
-        this.MSEQ_invest_current_val.add(MSEQ_invest_current_val);
+    public void setMseq_investment_cur_val(Double mseq_investment_cur_val) {
+        this.mseq_investment_cur_val = mseq_investment_cur_val;
+    }
+
+    public Double getOwn_percent() {
+        return own_percent;
+    }
+
+    public void setOwn_percent(Double own_percent) {
+        this.own_percent = own_percent;
     }
 }

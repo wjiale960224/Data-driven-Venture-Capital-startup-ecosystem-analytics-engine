@@ -12,17 +12,18 @@ import java.util.*;
  */
 
 public class Deal {
+    // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
     Integer deal_id;
     String company_name; // to get company_id
     Date deal_date;
-    double deal_size;
+    Double deal_size;
     DealStatus deal_status;
     Series series;
-    double mseq_invest_amount;
-    Vehicle vehicle;
+    Double mseq_invest_amount;
+    Vehicle invest_vehicle;
     List<String> co_investor;
-    double fund_percent; // auto-generated
-    double own_percent; // manually input
+    Double fund_percent; // auto-generated
+    Double own_percent; // manually input
 
     public Deal() {
     }
@@ -68,7 +69,7 @@ public class Deal {
     }
 
     public Vehicle getVehicle() {
-        return vehicle;
+        return invest_vehicle;
     }
 
     public List<String> getCo_investor() {
@@ -104,7 +105,7 @@ public class Deal {
     }
 
     public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+        this.invest_vehicle = vehicle;
     }
 
     public void addCo_investor(String co_investor) {
