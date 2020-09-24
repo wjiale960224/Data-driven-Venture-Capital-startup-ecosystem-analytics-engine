@@ -83,7 +83,7 @@ window.onload = function (){
         (function refresh(){
             $.ajax({
                 type: "GET",
-                url: "/workspace_Intellj_war_exploded/company_form",
+                url: "/workspace_Intellj_war_exploded/company_form",  // Here to change back end receive url.
                 data: {
                     refresh: "[]",
                 },

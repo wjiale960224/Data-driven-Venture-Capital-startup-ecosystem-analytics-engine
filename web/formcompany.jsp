@@ -28,7 +28,7 @@
                         <th>No.</th>
                         <th>Company_Name</th>
                         <th>Theme</th>
-<%--                        <th>Year_Founded</th>
+                        <th>Year_Founded</th>
                         <th>Runway_End_Date</th>
                         <th>Runway_Month</th>
                         <th>Raise_to_Date</th>
@@ -37,7 +37,7 @@
                         <th>Present_Valuation</th>
                         <th>Valuation_Change_reason</th>
                         <th>MSEQ_Investment_Cur_Val</th>
-                        <th>Own_Percent</th>--%>
+                        <th>Own_Percent</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

@@ -50,15 +50,15 @@ public class CompanyFormServlet extends HttpServlet {
         o.put("Theme", company.getTheme());
         writer.write(o.toString());
 
-        /*String[] companyAry = DealFormServlet.SplitStrings(company);// Get JSON format strings
+/*        String[] companyAry = DealFormServlet.SplitStrings(company);// Get JSON format strings
 
         CompanyList cl = new CompanyList(); // Convert JSON strings to Java deal class
         for (String s : companyAry) {
             Company c = g.fromJson(s, Company.class);
             cl.arrayList.add(c);
-        }*/
+        }
 
-//        ServletOutputStream sos = resp.getOutputStream(); // Response
-//        sos.print(whole);
+        ServletOutputStream sos = resp.getOutputStream(); // Response
+        sos.print(whole);*/
     }
 }

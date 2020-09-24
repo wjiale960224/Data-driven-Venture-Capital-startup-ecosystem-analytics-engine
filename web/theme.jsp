@@ -12,7 +12,6 @@
     <meta http-equiv="kiben" content="no-cache">
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="CSS/theme.css" type="text/css">
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
