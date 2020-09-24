@@ -29,8 +29,8 @@ public class CompanyService {
             companyList.add(company);
         }
         for(Company c : companyList){
-            output = output +  "[{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},";
+            output = output +  "{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},";
         }
-        return output;
+        return "[" + output + "]";
     }
 }
