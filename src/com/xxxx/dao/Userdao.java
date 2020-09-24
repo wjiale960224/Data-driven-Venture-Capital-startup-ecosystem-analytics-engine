@@ -20,4 +20,6 @@ public interface Userdao {
     List<Double> queryPostValueByCompany(String company_name);
 
     Company queryCompanyByName(String company_name);
+
+    List<String> listCompanyByName();
 }

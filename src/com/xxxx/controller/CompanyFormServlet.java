@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.CompanyList;
+import com.xxxx.service.CompanyService;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
@@ -22,17 +23,13 @@ import java.io.PrintWriter;
 
 public class CompanyFormServlet extends HttpServlet {
     String whole = "[]";
+    CompanyService companyService = new CompanyService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //String refresh = req.getParameter("refresh");
         ServletOutputStream sos = resp.getOutputStream(); // Response
         //sos.print("[{\"Company_Name\":\"av\",\"Theme\":\"1\"},{\"Company_Name\":\"v\",\"Theme\":\"2\"}]");
-
-        SqlSession session = GetSqlSession.createSqlSession();
-        Userdao userdao = session.getMapper(Userdao.class);
-        Company company = userdao.queryCompanyByName("Assignar");
-        Company company2 = userdao.queryCompanyByName("Lumina Networks");
-        sos.print("[{\"Company_Name\":\"" + company.getCompany_name() + "\",\"Theme\":\"" + company.getTheme() + "\"},{\"Company_Name\":\"" + company2.getCompany_name() + "\",\"Theme\":\"" + company2.getTheme() + "\"}]");
+        sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
     }
 
     @Override

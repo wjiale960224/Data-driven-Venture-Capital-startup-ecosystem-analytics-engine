@@ -4,5 +4,6 @@ public enum Theme {
     Healthcare,
     Robotics,
     Agtech,
-    Space
+    Space,
+    AI,
 }
