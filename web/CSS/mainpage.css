@@ -1,0 +1,50 @@
+.mainbox{
+    display: flex;
+    margin-left: -10px;
+    top: 300px;
+}
+
+.mainbox .column{
+    flex:1;
+    margin: 0px;
+}
+
+
+.mainbox .column:nth-child(2){
+    flex:6.5;
+}
+
+.top_box{
+    height: 300px;
+    background-color: pink;
+}
+
+
+.column .bot_box{
+    display: flex;
+    height: 500px;
+    margin-top: 20px;
+}
+.bot_box .bot_column{
+    margin: 0px;
+}
+
+#double_pie{
+    flex: 1 2 200px;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin: 20px;
+}
+#mseq_bar{
+    flex: 1 2 400px;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin:20px;
+
+}
+#two_pie{
+    flex: 1 2 200px;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin:20px;
+}
