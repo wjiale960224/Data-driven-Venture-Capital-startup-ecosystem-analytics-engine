@@ -10,5 +10,5 @@ public enum Theme {
     Robotics,
     Agtech,
     Space,
-    AI,
+    AI
 }

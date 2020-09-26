@@ -26,6 +26,7 @@ public class CompanyService {
         String output = "";
         for(String c: company_names){
             Company company = userdao.queryCompanyByName(c);
+            companyList.add(company);
         }
         for(Company c : companyList){
             output = output +  "{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() +
