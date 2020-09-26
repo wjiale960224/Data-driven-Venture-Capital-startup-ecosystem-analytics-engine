@@ -22,4 +22,6 @@ public interface Userdao {
     Company queryCompanyByName(String company_name);
 
     List<String> listCompanyByName();
+
+    int addCompany(Company company);
 }

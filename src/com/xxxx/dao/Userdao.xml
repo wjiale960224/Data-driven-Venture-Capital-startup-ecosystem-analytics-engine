@@ -23,4 +23,13 @@
         select c_name from company
     </select>
 
+    <insert id="addCompany" parameterType="com.xxxx.entity.Company">
+        insert into company(cid, c_name, theme, year_founded, runway_end_date,runway_month, raised_to_date, employee_no, revenue)
+        values (#{cid},#{c_name},#{theme},#{year_founded},#{runway_end_date},
+        TIMESTAMPDIFF(MONTH,#{runway_end_date},DATE_FORMAT(NOW(), '%Y-%m-%d')),#{raised_to_date},#{employee_no},#{revenue});
+    </insert>
+
+
+
+
 </mapper>

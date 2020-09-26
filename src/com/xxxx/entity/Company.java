@@ -11,11 +11,11 @@ public class Company {
     String c_name;
     Theme theme;
     Integer year_founded;
-    Date runway_end_date;
+    String runway_end_date;
     Integer runway_month;
-    List<Double> raised_to_date;
+    Double raised_to_date;
     Integer employee_no;
-    List<Double> revenue;
+    Double revenue;
 
     public Company() {
     }
@@ -24,13 +24,32 @@ public class Company {
         this.cid = CompanyID.get_id();
         this.c_name = company_name;
         this.theme = theme;
-        this.raised_to_date = new ArrayList<>();
-        this.revenue = new ArrayList<>();
+        this.raised_to_date = 0.00;
+        this.revenue = 0.00;
         // update Portfolio composition
         if (!Portfolio.portfolio.contains(company_name)) {
             Portfolio.portfolio.add(company_name);
         }
     }
+
+    public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_end_date,
+                   Double raised_to_date, Integer employee_no, Double revenue) {
+        this.cid = cid;
+        this.c_name = c_name;
+        this.theme = theme;
+        this.year_founded = year_founded;
+        this.runway_end_date = runway_end_date;
+        this.raised_to_date = raised_to_date;
+        this.employee_no = employee_no;
+        this.revenue = revenue;
+//        this.raised_to_date = new ArrayList<>();
+//        this.revenue = new ArrayList<>();
+        // update Portfolio composition
+        if (!Portfolio.portfolio.contains(c_name)) {
+            Portfolio.portfolio.add(c_name);
+        }
+    }
+
 
     public Integer getCid() {
         return cid;
@@ -60,11 +79,11 @@ public class Company {
         this.year_founded = year_founded;
     }
 
-    public Date getRunway_end_date() {
+    public String getRunway_end_date() {
         return runway_end_date;
     }
 
-    public void setRunway_end_date(Date runway_end_date) {
+    public void setRunway_end_date(String runway_end_date) {
         this.runway_end_date = runway_end_date;
     }
 
@@ -76,13 +95,10 @@ public class Company {
         this.runway_month = runway_month;
     }
 
-    public List<Double> getRaised_to_date() {
+    public Double getRaised_to_date() {
         return raised_to_date;
     }
 
-    public void addRaised_to_date(Double raised_to_date) {
-        this.raised_to_date.add(raised_to_date);
-    }
 
     public Integer getEmployee_no() {
         return employee_no;
@@ -92,13 +108,10 @@ public class Company {
         this.employee_no = employee_no;
     }
 
-    public List<Double> getRevenue() {
+    public Double getRevenue() {
         return revenue;
     }
 
-    public void addRevenue(double revenue) {
-        this.revenue.add(revenue);
-    }
 
     // may be called manually, or automatically after certain event
     public void delete(String company_name) {
