@@ -23,4 +23,8 @@
         select c_name from company
     </select>
 
+    <select id="queryValuationByCID" parameterType="Integer" resultType="com.xxxx.entity.Valuation">
+        select * from valuation where cid = #{company_id}
+    </select>
+
 </mapper>

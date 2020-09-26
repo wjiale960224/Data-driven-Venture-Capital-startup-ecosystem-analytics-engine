@@ -2,6 +2,7 @@ package com.xxxx.dao;
 
 import com.xxxx.entity.Company;
 import com.xxxx.entity.User;
+import com.xxxx.entity.Valuation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface Userdao {
     Company queryCompanyByName(String company_name);
 
     List<String> listCompanyByName();
+
+    Valuation queryValuationByCID(Integer company_id);
 }
