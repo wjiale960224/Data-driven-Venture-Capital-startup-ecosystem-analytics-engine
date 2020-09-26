@@ -26,7 +26,8 @@ public class DealFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream sos = resp.getOutputStream();
-        sos.print(dealService.getDealId().toString());
+        //sos.print(dealService.getDealId().toString());
+        sos.print(dealService.getDealInfo(dealService.getDealId()));
         /*Gson g = new Gson(); // JSON class
 
         String deal = req.getParameter("deal");

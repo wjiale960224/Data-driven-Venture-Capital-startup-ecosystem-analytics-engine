@@ -23,6 +23,13 @@ public class DealService {
         Userdao userdao = session.getMapper(Userdao.class);
         List<Deal> dealList = new ArrayList<>();
         String output = "";
-        return "";
+        for (Integer d : deal_IDs) {
+            Deal deal = userdao.queryDealById(d);
+            dealList.add(deal);
+        }
+        for (Deal d : dealList) {
+            output += "{\"No.\":\"" + d.getDid() + "\"}";
+        }
+        return "[" + output.substring(0, output.length() - 1) + "]";
     }
 }

@@ -31,4 +31,8 @@
         select deal_id from deal
     </select>
 
+    <select id="queryDealById" parameterType="Integer" resultType="com.xxxx.entity.Deal">
+        select * from deal where deal_id = #{deal_id};
+    </select>
+
 </mapper>

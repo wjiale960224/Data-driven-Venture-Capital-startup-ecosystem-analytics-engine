@@ -1,6 +1,7 @@
 package com.xxxx.dao;
 
 import com.xxxx.entity.Company;
+import com.xxxx.entity.Deal;
 import com.xxxx.entity.User;
 import com.xxxx.entity.Valuation;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,6 @@ public interface Userdao {
     Valuation queryValuationByCID(Integer cid); // get the latest present value of the company
 
     List<Integer> listDealById();
+
+    Deal queryDealById(Integer deal_id);
 }
