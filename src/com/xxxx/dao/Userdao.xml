@@ -27,4 +27,8 @@
         select * from valuation where cid = #{company_id}
     </select>
 
+    <select id="listDealById" resultType="java.lang.Integer">
+        select deal_id from deal
+    </select>
+
 </mapper>
