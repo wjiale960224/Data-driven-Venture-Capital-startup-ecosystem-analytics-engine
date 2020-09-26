@@ -26,7 +26,7 @@
 }
 
 #overview_info{
-    flex-grow: 1;
+    flex: 1;
     background-color: ghostwhite;
     border-radius: 20px;
     margin: 0 20px;
@@ -64,7 +64,7 @@
 #TVPI_curve{
 /*    height: 200px;
     width: 200px;*/
-    flex-grow: 1.5;
+    flex: 2;
     background-color: ghostwhite;
     border-radius: 20px;
     margin: 0 20px 0 0;
