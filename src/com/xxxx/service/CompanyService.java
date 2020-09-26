@@ -30,7 +30,7 @@ public class CompanyService {
         String output = "";
         for(String c: company_names){
             Company company = userdao.queryCompanyByName(c);
-            //Valuation valuation = userdao.queryValuationByCID(company.getCid());
+            Valuation valuation = userdao.queryValuationByCID(company.getCid());
             companyList.add(company);
             companyValuationMap.put(company, new Valuation());
         }

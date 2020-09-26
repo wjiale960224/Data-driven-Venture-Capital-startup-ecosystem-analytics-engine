@@ -24,7 +24,7 @@
     </select>
 
     <select id="queryValuationByCID" parameterType="Integer" resultType="com.xxxx.entity.Valuation">
-        select * from valuation where cid = #{company_id}
+        select * from valuation where cid = #{cid}
     </select>
 
     <select id="listDealById" resultType="java.lang.Integer">

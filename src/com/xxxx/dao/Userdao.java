@@ -24,7 +24,7 @@ public interface Userdao {
 
     List<String> listCompanyByName();
 
-    Valuation queryValuationByCID(Integer company_id);
+    Valuation queryValuationByCID(Integer cid);
 
     List<Integer> listDealById();
 }
