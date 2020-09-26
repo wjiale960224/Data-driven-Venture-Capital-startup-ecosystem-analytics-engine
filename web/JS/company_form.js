@@ -82,7 +82,7 @@ window.onload = function (){
         // Refresh table according to database info.
         (function refresh(){
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "/workspace_Intellj_war_exploded/company_form",  // Here to change back end receive url.
                 data: {
                     refresh: "[]",
