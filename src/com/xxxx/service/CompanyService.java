@@ -26,10 +26,12 @@ public class CompanyService {
         String output = "";
         for(String c: company_names){
             Company company = userdao.queryCompanyByName(c);
-            companyList.add(company);
         }
         for(Company c : companyList){
-            output = output +  "{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},";
+            output = output +  "{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() +
+                    "\",\"Year_Founded\":\"" + c.getYear_founded() + "\",\"Runway_End_Date\":\"" + c.getRunway_end_date() +
+                    "\",\"Runway_Month\":\"" + c.getRunway_month() + "\",\"Raise_to_Date\":\"" + c.getRaised_to_date() +
+                    "\",\"Employee_No\":\"" + c.getEmployee_no() + "\",\"Revenue\":\"" + c.getRevenue() + "\"},";
         }
         return "[" + output.substring(0,output.length()-1) + "]";
     }

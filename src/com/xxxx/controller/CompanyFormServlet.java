@@ -26,39 +26,16 @@ public class CompanyFormServlet extends HttpServlet {
     CompanyService companyService = new CompanyService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String refresh = req.getParameter("refresh");
-        ServletOutputStream sos = resp.getOutputStream(); // Response
-        //sos.print("[{\"Company_Name\":\"av\",\"Theme\":\"1\"},{\"Company_Name\":\"v\",\"Theme\":\"2\"}]");
-        sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
+        this.doPost(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Gson g = new Gson();
+        ServletOutputStream sos = resp.getOutputStream();
+        sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
+    }
 
-        whole = req.getParameter("company");
-        SqlSession session = GetSqlSession.createSqlSession();
-        Userdao userdao = session.getMapper(Userdao.class);
-        Company company = userdao.queryCompanyByName("Assignar");
-
-        // output copmany info as JSON
-        resp.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json; charset=utf-8");
-        PrintWriter writer = resp.getWriter(); // PrintWriter object that can return character data to the client
-        JSONObject o = new JSONObject();
-        o.put("Company_Name", company.getCompany_name());
-        o.put("Theme", company.getTheme());
-        writer.write(o.toString());
-
-/*        String[] companyAry = DealFormServlet.SplitStrings(company);// Get JSON format strings
-
-        CompanyList cl = new CompanyList(); // Convert JSON strings to Java deal class
-        for (String s : companyAry) {
-            Company c = g.fromJson(s, Company.class);
-            cl.arrayList.add(c);
-        }
-
-        ServletOutputStream sos = resp.getOutputStream(); // Response
-        sos.print(whole);*/
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
