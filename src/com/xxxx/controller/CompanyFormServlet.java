@@ -33,6 +33,7 @@ public class CompanyFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream sos = resp.getOutputStream();
         sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
+        //sos.print(companyService.getCompanyNames().toString());
     }
 
     @Override
