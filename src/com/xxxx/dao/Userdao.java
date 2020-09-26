@@ -1,6 +1,7 @@
 package com.xxxx.dao;
 
 import com.xxxx.entity.Company;
+import com.xxxx.entity.Deal;
 import com.xxxx.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,4 +25,8 @@ public interface Userdao {
     List<String> listCompanyByName();
 
     int addCompany(Company company);
+
+    int addDeal(Deal deal);
+
+    int updateRunwayMonth();
 }

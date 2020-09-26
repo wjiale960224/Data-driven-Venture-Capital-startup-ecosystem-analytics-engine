@@ -11,6 +11,7 @@ public class Company {
     String c_name;
     Theme theme;
     Integer year_founded;
+    String runway_start_date;
     String runway_end_date;
     Integer runway_month;
     Double raised_to_date;
@@ -32,12 +33,13 @@ public class Company {
         }
     }
 
-    public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_end_date,
+    public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_start_date, String runway_end_date,
                    Double raised_to_date, Integer employee_no, Double revenue) {
         this.cid = cid;
         this.c_name = c_name;
         this.theme = theme;
         this.year_founded = year_founded;
+        this.runway_start_date = runway_start_date;
         this.runway_end_date = runway_end_date;
         this.raised_to_date = raised_to_date;
         this.employee_no = employee_no;
@@ -49,6 +51,7 @@ public class Company {
             Portfolio.portfolio.add(c_name);
         }
     }
+
 
 
     public Integer getCid() {
@@ -79,6 +82,10 @@ public class Company {
         this.year_founded = year_founded;
     }
 
+    public String getRunway_start_date() { return runway_start_date; }
+
+    public void setRunway_start_date(String runway_start_date) { this.runway_start_date = runway_start_date; }
+
     public String getRunway_end_date() {
         return runway_end_date;
     }
@@ -98,7 +105,6 @@ public class Company {
     public Double getRaised_to_date() {
         return raised_to_date;
     }
-
 
     public Integer getEmployee_no() {
         return employee_no;

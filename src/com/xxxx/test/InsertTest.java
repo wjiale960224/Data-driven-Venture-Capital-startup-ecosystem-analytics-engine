@@ -13,8 +13,8 @@ public class InsertTest {
         SqlSession mysql = GetSqlSession.createSqlSession();
         try {
             Userdao userdao =mysql.getMapper(Userdao.class);
-            userdao.addCompany(new Company(11110000,"hahaha", Theme.Exponential_Machines,2018,
-                    "2018-01-01",5000000.0000,200,300000.0000));
+            userdao.addCompany(new Company(11110000,"hahaha", Theme.Exponential_Machines,2015,
+                    "2018-01-01","2020-01-01",5000000.0000,200,300000.0000));
 
             mysql.commit();
         }catch (Exception e){
