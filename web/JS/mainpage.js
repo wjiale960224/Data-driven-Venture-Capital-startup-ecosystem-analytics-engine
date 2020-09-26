@@ -2,6 +2,38 @@
 
 
 $(function (){
+    var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
+    var TVPI_curve_option = {
+        title: {
+            text: 'TVPI curve',
+            left: 'left'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            left: '3%',
+            right: "20px",
+            bottom: '3%',
+            width: "730px",
+            // height: "100%",
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: ['0.0', '0.3', '0.6', '0.9', '1.2', '1.5', '1.8','2.1','6'],
+            boundaryGap: false
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [0, 0.8, 1.5, 3.8, 6, 6.7, 6, 4, 0],
+            type: 'line'
+        }]
+    };
+    TVPI_curve.setOption(TVPI_curve_option);
+
     var double_pie = echarts.init(document.querySelector("#double_pie"));
     var double_pie_option = {
         tooltip: {

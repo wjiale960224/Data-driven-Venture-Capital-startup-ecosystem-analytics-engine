@@ -19,7 +19,20 @@
 <section class = "mainbox">
     <div class = "column"><jsp:include page="left_guide.jsp"></jsp:include></div>
     <div class = "column">
-        <div class = "top_box"></div>
+        <div class = "top_box">
+            <div class="top_column" id="overview_info">
+                <ul >
+                    <li><span>Portfolio Value</span><span>A$50M</span></li>
+                    <li><span>Total Investment</span><span>A$30M</span></li>
+                    <li><span>Basis</span><span>A$10M</span></li>
+                    <li><span>Gain</span><span>A$2.53M</span></li>
+                    <li><span>Total company</span><span>30</span></li>
+                    <li><span>Round</span><span>43</span></li>
+                    <li><span>IRR</span><span>100</span></li>
+                </ul>
+            </div>
+            <div class="top_column" id="TVPI_curve"></div>
+        </div>
         <div class = "bot_box">
             <div class = "bot_column" id ="double_pie"></div>
             <div class = "bot_column" id="two_pie"></div>
