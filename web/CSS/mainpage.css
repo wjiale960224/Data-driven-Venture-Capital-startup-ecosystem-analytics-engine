@@ -16,9 +16,59 @@
 
 .top_box{
     height: 300px;
-    background-color: pink;
+    /*background-color: pink;*/
+    display: flex;
+    flex-direction: row;
 }
 
+.column .top_column{
+    margin: 0;
+}
+
+#overview_info{
+    flex-grow: 1;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin: 0 20px;
+}
+
+#overview_info>ul{
+    list-style: none;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /*justify-content: space-around;*/
+    margin: 20px;
+    padding: 0;
+}
+
+#overview_info ul li{
+    display: flex;
+    /*text-align: center;*/
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+#overview_info ul li:first-child{
+    font-size: 2em;
+}
+#overview_info ul li:last-child{
+    border: none;
+}
+
+
+#TVPI_curve{
+/*    height: 200px;
+    width: 200px;*/
+    flex-grow: 1.5;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin: 0 20px 0 0;
+}
 
 .column .bot_box{
     display: flex;
