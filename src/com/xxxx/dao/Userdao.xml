@@ -32,8 +32,11 @@
     <insert id="addDeal" parameterType="com.xxxx.entity.Deal">
         insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
         values ()
-
     </insert>
+
+    <update id="updateRunwayMonth" >
+        update company set runway_month = TIMESTAMPDIFF(MONTH,runway_start_date,DATE_FORMAT(NOW(), '%Y-%m-%d'));
+    </update>
 
 
 
