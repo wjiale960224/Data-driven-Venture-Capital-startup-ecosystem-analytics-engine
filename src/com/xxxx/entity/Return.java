@@ -31,7 +31,7 @@ public class Return {
         return IRR;
     }
 
-    public void addIRR(double IRR) {
+    public void addIRR(Double IRR) {
         this.IRR.add(IRR);
     }
 
@@ -39,23 +39,23 @@ public class Return {
         return TVPI;
     }
 
-    public void addTVPI(double TVPI) {
+    public void addTVPI(Double TVPI) {
         this.TVPI.add(TVPI);
     }
 
-    public double getFund_return_100() {
+    public Double getFund_return_100() {
         return fund_return_100;
     }
 
-    public void setFund_return_100(double fund_return_100) {
+    public void setFund_return_100(Double fund_return_100) {
         this.fund_return_100 = fund_return_100;
     }
 
-    public double getFund_return_250() {
+    public Double getFund_return_250() {
         return fund_return_250;
     }
 
-    public void setFund_return_250(double fund_return_250) {
+    public void setFund_return_250(Double fund_return_250) {
         this.fund_return_250 = fund_return_250;
     }
 }

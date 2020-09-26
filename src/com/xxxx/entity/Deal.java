@@ -28,7 +28,7 @@ public class Deal {
     public Deal() {
     }
 
-    public Deal(Date deal_date, double deal_size, Series series, double MSEQ_invest_amount) {
+    public Deal(Date deal_date, Double deal_size, Series series, Double MSEQ_invest_amount) {
         this.deal_id = DealID.get_id();
         this.deal_date = deal_date;
         this.deal_size = deal_size;
@@ -38,7 +38,7 @@ public class Deal {
     }
 
 
-    public int getDid() {
+    public Integer getDid() {
         return deal_id;
     }
 
@@ -52,7 +52,7 @@ public class Deal {
         return deal_date;
     }
 
-    public double getDeal_size() {
+    public Double getDeal_size() {
         return deal_size;
     }
 
@@ -64,7 +64,7 @@ public class Deal {
         return series;
     }
 
-    public double getMSEQ_invest_amount() {
+    public Double getMSEQ_invest_amount() {
         return mseq_invest_amount;
     }
 
@@ -76,11 +76,11 @@ public class Deal {
         return co_investor;
     }
 
-    public double getFund_percentage() {
+    public Double getFund_percentage() {
         return fund_percent;
     }
 
-    public double getOwn_percentage() {
+    public Double getOwn_percentage() {
         return own_percent;
     }
 
@@ -88,7 +88,7 @@ public class Deal {
         this.deal_date = deal_date;
     }
 
-    public void setDeal_size(double deal_size) {
+    public void setDeal_size(Double deal_size) {
         this.deal_size = deal_size;
     }
 
@@ -100,7 +100,7 @@ public class Deal {
         this.series = series;
     }
 
-    public void setMSEQ_invest_amount(double MSEQ_invest_amount) {
+    public void setMSEQ_invest_amount(Double MSEQ_invest_amount) {
         this.mseq_invest_amount = MSEQ_invest_amount;
     }
 
@@ -121,11 +121,11 @@ public class Deal {
     }
 
     // should only be called by service level
-    protected void setFund_percentage(double fund_percentage) {
+    protected void setFund_percentage(Double fund_percentage) {
         this.fund_percent = fund_percentage;
     }
 
-    public void setOwn_percentage(double own_percentage) {
+    public void setOwn_percentage(Double own_percentage) {
         this.own_percent = own_percentage;
     }
 }
