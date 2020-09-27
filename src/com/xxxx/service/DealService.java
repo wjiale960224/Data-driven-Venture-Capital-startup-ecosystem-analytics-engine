@@ -1,9 +1,7 @@
 package com.xxxx.service;
 
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
-import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DealService {
-    public List<Integer> getDealId(){
+    public List<Integer> getDealId() {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
         List<Integer> DealId = userdao.listDealById();
@@ -28,7 +26,13 @@ public class DealService {
             dealList.add(deal);
         }
         for (Deal d : dealList) {
-            output += "{\"No.\":\"" + d.getDid() + "\"}";
+            output += "{\"NoDealID.\":\"" + d.getDid() + "\"NoCID.\":\"" + d.getCompany() + "\",\"Deal_Date\":\"" +
+                    d.getDeal_date() + "\",\"Deal_Size\":\"" + d.getDeal_size() + "\",\"Deal_Status\":\"" + d.getDeal_status()
+                    + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
+                    + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
+                    + "\",\"Fund_Percent\":\"" +  d.getFund_percentage()+ "\",\"Own_Percent\":\"" +  d.getOwn_percentage()
+                    + "\"}";
+
         }
         return "[" + output.substring(0, output.length() - 1) + "]";
     }

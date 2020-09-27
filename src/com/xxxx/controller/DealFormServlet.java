@@ -1,7 +1,4 @@
 package com.xxxx.controller;
-import com.google.gson.Gson;
-import com.xxxx.entity.Deal;
-import com.xxxx.entity.DealList;
 import com.xxxx.service.DealService;
 
 import javax.servlet.ServletException;
@@ -11,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
 
 
 @WebServlet("/deal_form")
@@ -56,6 +52,10 @@ public class DealFormServlet extends HttpServlet {
             };
         }
         return ss;
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
 
