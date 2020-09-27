@@ -25,10 +25,17 @@ public interface Userdao {
 
     List<String> listCompanyByName();
 
+    int addCompany(Company company);
+
+    int addDeal(Deal deal);
+
+    int updateRunwayMonth();
+
     //TODO complete this method in Userdao.xml if the code in CompanyService is necessary
     Valuation queryValuationByCID(Integer cid); // get the latest present value of the company
 
     List<Integer> listDealById();
 
     Deal queryDealById(Integer deal_id);
+
 }
