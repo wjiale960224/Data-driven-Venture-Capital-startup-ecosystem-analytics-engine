@@ -3,7 +3,12 @@
 
 <mapper namespace="com.xxxx.dao.Userdao">
 
-    <select id="queryUserByname" parameterType="String" resultType="com.xxxx.entity.User">
+    <!--"com.xxxx.entity.User" => "User"
+        "com.xxxx.entity.Company" => "Company"
+        "com.xxxx.entity.Company" => "Deal"
+        "com.xxxx.entity.Valuation" => "Valuation" -->
+
+    <select id="queryUserByname" parameterType="String" resultType="User">
         select * from tb_user where user_name = #{user_name}
     </select>
 
@@ -15,7 +20,7 @@
         select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
     </select>
 
-    <select id="queryCompanyByName" parameterType="String" resultType="com.xxxx.entity.Company">
+    <select id="queryCompanyByName" parameterType="String" resultType="Company">
         select * from company where c_name = #{company_name}
     </select>
 
@@ -31,17 +36,17 @@
         select deal_id from deal
     </select>
 
-    <select id="queryDealById" parameterType="Integer" resultType="com.xxxx.entity.Deal">
+    <select id="queryDealById" parameterType="Integer" resultType="Deal">
         select * from deal where deal_id = #{deal_id};
     </select>
 
-    <insert id="addCompany" parameterType="com.xxxx.entity.Company">
+    <insert id="addCompany" parameterType="Company">
         insert into company(cid, c_name, theme, year_founded, runway_start_date, runway_end_date,runway_month, raised_to_date, employee_no, revenue)
         values (#{cid},#{c_name},#{theme},#{year_founded},#{runway_start_date},#{runway_end_date},
         TIMESTAMPDIFF(MONTH,#{runway_end_date},DATE_FORMAT(NOW(), '%Y-%m-%d')),#{raised_to_date},#{employee_no},#{revenue});
     </insert>
 
-    <insert id="addDeal" parameterType="com.xxxx.entity.Deal">
+    <insert id="addDeal" parameterType="Deal">
         insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
         values ()
     </insert>
@@ -49,8 +54,5 @@
     <update id="updateRunwayMonth" >
         update company set runway_month = TIMESTAMPDIFF(MONTH,runway_start_date,DATE_FORMAT(NOW(), '%Y-%m-%d'));
     </update>
-
-
-
 
 </mapper>

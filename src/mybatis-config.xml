@@ -5,6 +5,13 @@
 <configuration>
     <properties resource="mysql.properties"/>
 
+    <typeAliases>
+        <typeAlias type="com.xxxx.entity.User" alias="User"/>
+        <typeAlias type="com.xxxx.entity.Company" alias="Company"/>
+        <typeAlias type="com.xxxx.entity.Company" alias="Deal"/>
+        <typeAlias type="com.xxxx.entity.Valuation" alias="Valuation"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC" />
