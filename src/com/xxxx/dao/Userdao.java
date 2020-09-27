@@ -3,6 +3,7 @@ package com.xxxx.dao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
 import com.xxxx.entity.User;
+import com.xxxx.entity.Valuation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -24,9 +25,10 @@ public interface Userdao {
 
     List<String> listCompanyByName();
 
-    int addCompany(Company company);
+    //TODO complete this method in Userdao.xml if the code in CompanyService is necessary
+    Valuation queryValuationByCID(Integer cid); // get the latest present value of the company
 
-    int addDeal(Deal deal);
+    List<Integer> listDealById();
 
-    int updateRunwayMonth();
+    Deal queryDealById(Integer deal_id);
 }
