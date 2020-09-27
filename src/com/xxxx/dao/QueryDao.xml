@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xxxx.dao.QueryDao">
+
+    <!--e.g.
+        "com.xxxx.entity.User" => "user"
+        "com.xxxx.entity.Company" => "company"
+        "com.xxxx.entity.Company" => "deal"
+        "com.xxxx.entity.Valuation" => "valuation" -->
+
+    <select id="queryUserByname" parameterType="String" resultType="user">
+        select * from tb_user where user_name = #{user_name}
+    </select>
+
+    <select id="queryPostValueByCompany" parameterType="String" resultType="java.lang.Double">
+        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
+    </select>
+
+    <select id="queryCompanyByName" parameterType="String" resultType="company">
+        select * from company where c_name = #{company_name}
+    </select>
+
+    <select id="listCompanyByName" resultType="java.lang.String">
+        select c_name from company
+    </select>
+
+    <select id="queryValuationByCID" parameterType="Integer" resultType="valuation">
+        select * from valuation where cid = #{cid}
+    </select>
+
+    <select id="listDealById" resultType="java.lang.Integer">
+        select deal_id from deal
+    </select>
+
+    <select id="queryDealById" parameterType="Integer" resultType="deal">
+        select * from deal where deal_id = #{deal_id};
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xxxx.dao.InsertDao">
+
+    <!--e.g.
+        "com.xxxx.entity.User" => "user"
+        "com.xxxx.entity.Company" => "company"
+        "com.xxxx.entity.Company" => "deal"
+        "com.xxxx.entity.Valuation" => "valuation" -->
+
+    <insert id="add">
+        insert into tb_user(user_name, user_pwd) values (#{user_name},#{user_pwd})
+    </insert>
+
+    <insert id="addCompany" parameterType="company">
+        insert into company(cid, c_name, theme, year_founded, runway_start_date, runway_end_date,runway_month, raised_to_date, employee_no, revenue)
+        values (#{cid},#{c_name},#{theme},#{year_founded},#{runway_start_date},#{runway_end_date},
+        TIMESTAMPDIFF(MONTH,#{runway_end_date},DATE_FORMAT(NOW(), '%Y-%m-%d')),#{raised_to_date},#{employee_no},#{revenue});
+    </insert>
+
+    <insert id="addDeal" parameterType="deal">
+        insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
+        values ()
+    </insert>
+
+</mapper>

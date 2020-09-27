@@ -1,5 +1,6 @@
 package com.xxxx.test;
 
+import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Theme;
@@ -12,8 +13,8 @@ public class InsertTest {
     public static void main(String[] args) {
         SqlSession mysql = GetSqlSession.createSqlSession();
         try {
-            Userdao userdao =mysql.getMapper(Userdao.class);
-            userdao.addCompany(new Company(11110000,"hahaha", Theme.Exponential_Machines,2015,
+            InsertDao insertDao =mysql.getMapper(InsertDao.class);
+            insertDao.addCompany(new Company(11110000,"hahaha", Theme.Exponential_Machines,2015,
                     "2018-01-01","2020-01-01",5000000.0000,200,300000.0000));
 
             mysql.commit();
