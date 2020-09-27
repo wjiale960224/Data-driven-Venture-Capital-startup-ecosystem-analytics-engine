@@ -3,12 +3,13 @@
 
 <mapper namespace="com.xxxx.dao.Userdao">
 
-    <!--"com.xxxx.entity.User" => "User"
-        "com.xxxx.entity.Company" => "Company"
-        "com.xxxx.entity.Company" => "Deal"
-        "com.xxxx.entity.Valuation" => "Valuation" -->
+    <!--e.g.
+        "com.xxxx.entity.User" => "user"
+        "com.xxxx.entity.Company" => "company"
+        "com.xxxx.entity.Company" => "deal"
+        "com.xxxx.entity.Valuation" => "valuation" -->
 
-    <select id="queryUserByname" parameterType="String" resultType="User">
+    <select id="queryUserByname" parameterType="String" resultType="user">
         select * from tb_user where user_name = #{user_name}
     </select>
 
@@ -20,7 +21,7 @@
         select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
     </select>
 
-    <select id="queryCompanyByName" parameterType="String" resultType="Company">
+    <select id="queryCompanyByName" parameterType="String" resultType="company">
         select * from company where c_name = #{company_name}
     </select>
 
@@ -28,7 +29,7 @@
         select c_name from company
     </select>
 
-    <select id="queryValuationByCID" parameterType="Integer" resultType="com.xxxx.entity.Valuation">
+    <select id="queryValuationByCID" parameterType="Integer" resultType="valuation">
         select * from valuation where cid = #{cid}
     </select>
 
@@ -36,17 +37,17 @@
         select deal_id from deal
     </select>
 
-    <select id="queryDealById" parameterType="Integer" resultType="Deal">
+    <select id="queryDealById" parameterType="Integer" resultType="deal">
         select * from deal where deal_id = #{deal_id};
     </select>
 
-    <insert id="addCompany" parameterType="Company">
+    <insert id="addCompany" parameterType="company">
         insert into company(cid, c_name, theme, year_founded, runway_start_date, runway_end_date,runway_month, raised_to_date, employee_no, revenue)
         values (#{cid},#{c_name},#{theme},#{year_founded},#{runway_start_date},#{runway_end_date},
         TIMESTAMPDIFF(MONTH,#{runway_end_date},DATE_FORMAT(NOW(), '%Y-%m-%d')),#{raised_to_date},#{employee_no},#{revenue});
     </insert>
 
-    <insert id="addDeal" parameterType="Deal">
+    <insert id="addDeal" parameterType="deal">
         insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
         values ()
     </insert>
