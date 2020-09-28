@@ -21,23 +21,15 @@ public class DealFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletOutputStream sos = resp.getOutputStream();
-        //sos.print(dealService.getDealId().toString());
-        sos.print(dealService.getDealInfo(dealService.getDealId()));
-        /*Gson g = new Gson(); // JSON class
-
-        String deal = req.getParameter("deal");
-        String[] deals = SplitStrings(deal); // Get JSON format strings
-
-        DealList dl = new DealList(); // Convert JSON strings to Java deal class
-        for (String s : deals) {
-            Deal d = g.fromJson(s, Deal.class);
-            dl.arrayList.add(d);
+        String c = req.getParameter("dealId");
+        if (c == null) {
+            ServletOutputStream sos = resp.getOutputStream();
+            sos.print(dealService.getDealInfo(dealService.getDealId()));
+        } else {
+            dealService.updateDealInfo(c);
         }
-
-        ServletOutputStream sos = resp.getOutputStream(); // Response to front end
-        sos.print("Deals name: " + dl.arrayList.get(0).getCompany().getCompany_name() + ", " + dl.arrayList.get(1).getCompany().getCompany_name());*/
     }
+
 
     // Split JSON Array string to JSON strings.
     public static String[] SplitStrings(String s) {

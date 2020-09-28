@@ -1,7 +1,10 @@
 package com.xxxx.service;
 
+import com.google.gson.Gson;
+import com.xxxx.dao.InsertDao;
+import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.Deal;
+import com.xxxx.entity.*;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -35,5 +38,27 @@ public class DealService {
 
         }
         return "[" + output.substring(0, output.length() - 1) + "]";
+    }
+
+    public void updateDealInfo(String c) {
+        Gson gson = new Gson();
+        SqlSession session = GetSqlSession.createSqlSession();
+        InsertDao insertdao = session.getMapper(InsertDao.class);
+        QueryDao queryDao = session.getMapper((QueryDao.class));
+        List<Integer> dealIds = queryDao.listDealById();
+
+        DealList dealList = gson.fromJson(c, DealList.class);
+        for (Deal deal : dealList.arrayList) {
+            if (!dealIds.contains(deal)) {
+                insertdao.addDeal(deal); // insert new deal entry
+            } else {
+                // TODO implement 查重更新 deal entry
+
+            }
+
+            if (!Portfolio.getPortfolio1().contains(deal)) {
+                Portfolio.getPortfolio1().add(deal.getDid());
+            }
+        }
     }
 }
