@@ -1,7 +1,12 @@
 package com.xxxx.service;
 
+import com.google.gson.Gson;
+import com.xxxx.dao.InsertDao;
+import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
+import com.xxxx.entity.CompanyList;
+import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
@@ -45,5 +50,27 @@ public class CompanyService {
                     + "\",\"Own_Percent\":\"" + v.getOwn_percent() + "\"},";
         }
         return "[" + output.substring(0, output.length() - 1) + "]";
+    }
+
+    public void updateCompanyInfo(String c) {
+        Gson gson = new Gson();
+        SqlSession session = GetSqlSession.createSqlSession();
+        InsertDao insertdao = session.getMapper(InsertDao.class);
+        QueryDao queryDao = session.getMapper((QueryDao.class));
+        List<String> companys = queryDao.listCompanyByName();
+
+        CompanyList companyList = gson.fromJson(c, CompanyList.class);
+        for (Company company : companyList.arrayList) {
+            if (!companys.contains(company)) {
+                insertdao.addCompany(company); // insert new company entry
+            } else {
+                // TODO implement 查重更新 company entry
+
+            }
+
+            if (!Portfolio.getPortfolio().contains(company)) { // update Porfolio class
+                Portfolio.getPortfolio().add(company.getCompany_name());
+            }
+        }
     }
 }
