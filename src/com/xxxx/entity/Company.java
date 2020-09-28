@@ -44,8 +44,6 @@ public class Company {
         this.raised_to_date = raised_to_date;
         this.employee_no = employee_no;
         this.revenue = revenue;
-//        this.raised_to_date = new ArrayList<>();
-//        this.revenue = new ArrayList<>();
         // update Portfolio composition
         if (!Portfolio.portfolio.contains(c_name)) {
             Portfolio.portfolio.add(c_name);

@@ -21,12 +21,12 @@ public class DealFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String c = req.getParameter("dealId");
-        if (c == null) {
+        String d = req.getParameter("deal");
+        if (d == null) {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else {
-            dealService.updateDealInfo(c);
+            dealService.updateDealInfo(d);
         }
     }
 
@@ -44,10 +44,6 @@ public class DealFormServlet extends HttpServlet {
             };
         }
         return ss;
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
 

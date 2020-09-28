@@ -2,11 +2,12 @@ package com.xxxx.service;
 
 import com.google.gson.Gson;
 import com.xxxx.dao.InsertDao;
-import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.*;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class DealService {
             dealList.add(deal);
         }
         for (Deal d : dealList) {
-            output += "{\"NoDealID.\":\"" + d.getDid() + "\"NoCID.\":\"" + d.getCompany() + "\",\"Deal_Date\":\"" +
+            output += "{\"NoDealID.\":\"" + d.getDid() + "\"NoCID.\":\"" + d.getCompany().getCompany_name() + "\",\"Deal_Date\":\"" +
                     d.getDeal_date() + "\",\"Deal_Size\":\"" + d.getDeal_size() + "\",\"Deal_Status\":\"" + d.getDeal_status()
                     + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
                     + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
@@ -40,25 +41,21 @@ public class DealService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
-    public void updateDealInfo(String c) {
+    public void updateDealInfo(String d) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
-        QueryDao queryDao = session.getMapper((QueryDao.class));
-        List<Integer> dealIds = queryDao.listDealById();
 
-        DealList dealList = gson.fromJson(c, DealList.class);
-        for (Deal deal : dealList.arrayList) {
-            if (!dealIds.contains(deal)) {
-                insertdao.addDeal(deal); // insert new deal entry
-            } else {
-                // TODO implement 查重更新 deal entry
-
-            }
-
-            if (!Portfolio.getPortfolio1().contains(deal)) {
-                Portfolio.getPortfolio1().add(deal.getDid());
-            }
+        JSONObject jsonObject = new JSONObject(d);
+        JSONArray jsonArray = jsonObject.getJSONArray("deal");
+        int l = jsonArray.length();
+        for (int i = 0; i < l; i++) {
+            Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
+            insertdao.addDeal(deal); // insert new deal entry
         }
+        // It is not possible to check current deal and update since we cannot check by ID.
+        // Need to delete the deal and create a new entry.
     }
+
+    // TODO Implement delete function
 }

@@ -5,11 +5,12 @@ import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
-import com.xxxx.entity.CompanyList;
 import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,6 @@ public class CompanyService {
         List<String> Company_name = userdao.listCompanyByName();
         return Company_name;
     }
-
 
     public String getCompanyInfo(List<String> company_names) {
         SqlSession session = GetSqlSession.createSqlSession();
@@ -57,20 +57,27 @@ public class CompanyService {
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
         QueryDao queryDao = session.getMapper((QueryDao.class));
-        List<String> companys = queryDao.listCompanyByName();
+        List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
 
-        CompanyList companyList = gson.fromJson(c, CompanyList.class);
-        for (Company company : companyList.arrayList) {
-            if (!companys.contains(company)) {
+        // TODO string c passed from frontend must follow this format, Json containing an array called "company", apply to deal as well
+        // "{\"company\": [{\"c_name\": \"company1\", \"theme\": \"Space_Transport\"}, {\"c_name\": \"company2\", \"theme\": \"Exponential_Machine\"}]}"
+        JSONObject jsonObject = new JSONObject(c);
+        JSONArray jsonArray = jsonObject.getJSONArray("company");
+        int l = jsonArray.length();
+        for (int i = 0; i < l; i++) {
+            Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
+            if (!companys.contains(company.getCompany_name())) {
                 insertdao.addCompany(company); // insert new company entry
             } else {
                 // TODO implement 查重更新 company entry
 
             }
 
-            if (!Portfolio.getPortfolio().contains(company)) { // update Porfolio class
+            if (!Portfolio.getPortfolio().contains(company.getCompany_name())) { // update Porfolio class
                 Portfolio.getPortfolio().add(company.getCompany_name());
             }
         }
     }
+
+    // TODO Implement delete function
 }
