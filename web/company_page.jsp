@@ -75,39 +75,31 @@
         </nav>
     </div>
     <div class = "column">
-        <div class = "panel_first">
-            <div class = "row1">
-            <div class = "company">Company_theme</div>
-            <div class = "C_value"><span>Current_Valuation: </span>4M</div>
-            <div class = "RED"><span>R-E-D: </span>25/2/2021</div>
-            <div class = "own"><span>Own: </span>20%</div>
-            <div class = "R2"><span>R2Date: </span>35.29</div>
+        <div class = "top_box">
+            <div class="top_column" id="company_info">
+                <ul >
+                    <li><span>Total MSEQ Investment</span><span>A$10M</span></li>
+                    <li><span>Total deals</span><span>3</span></li>
+                    <li><span>Current Valuation(last update date: 21/09)</span><span>A$20M</span></li>
+                    <li><span>Runaway Month</span><span>11</span></li>
+                    <li><span>Stage</span><span>Growth</span></li>
+                    <li><span>Own</span><span>20%</span></li>
+                    <li><span>Return</span><span>10M</span></li>
+                </ul>
             </div>
-            <div class = "row2">
-                <div class = "MSEQ"><span>MSEQ inves: </span>8.2</div>
-                <div class = "Stage"><span>Stage: </span>Growth</div>
-                <div class = "Acq"><span>Acq: </span>34.7%</div>
-                <div class = "Return"><span>Return: </span>1250</div>
-            </div>
+            <div class="top_column" id = "TBD"></div>
         </div>
-            <section class="sub_box">
-                    <div class="column_2">
-                        <div class = "change"></div>
-                    </div>
-                    <div class = "column_2">
-                        <div class = "bar"></div>
-                    </div>
-                    <div class = "column_2">
-                        <div class = "line"></div>
-                    </div>
-                </section>
+        <div class = "bot_box">
+            <div class = "bot_column" id ="bar_chart"></div>
+            <div class = "bot_column" id="line_chart"></div>
+            <div class= "bot_column"  id="pie_chart"></div>
         </div>
     </div>
 
 </section>
 <script src="${pageContext.request.contextPath}/JS/echarts-en.js"></script>
 <script src="${pageContext.request.contextPath}/JS/jquery-3.5.1.js"></script>
-<script src="${pageContext.request.contextPath}/JS/index_company.js"></script>
+<script src="${pageContext.request.contextPath}/JS/companypage.js"></script>
 <script src="${pageContext.request.contextPath}/JS/dropdown.js"></script>
 
 </body>

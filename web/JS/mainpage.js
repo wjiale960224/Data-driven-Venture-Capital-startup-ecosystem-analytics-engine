@@ -36,6 +36,10 @@ $(function (){
 
     var double_pie = echarts.init(document.querySelector("#double_pie"));
     var double_pie_option = {
+        title: {
+            text: 'Overview % of Fund',
+            left:'center'
+        },
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -81,7 +85,7 @@ $(function (){
             {
                 name: 'MSEQ_overview',
                 type: 'pie',
-                radius: ['60%', '75%'],
+                radius: ['80%', '95%'],
                 label: {
                     show:false
                 },
@@ -109,7 +113,7 @@ $(function (){
     var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
     var mseq_bar_option = {
         title: {
-            text: 'Investment and Raised'
+            text: 'Invested and Raised'
         },
         color: ['rgb(173,139,46)'],
         legend: {
@@ -130,6 +134,10 @@ $(function (){
 
     var two_pie = echarts.init(document.querySelector("#two_pie"));
     var two_pie_option  = {
+        title:{
+          left:'left',
+          text: 'Initial Date VS Current Date',
+        },
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -139,7 +147,7 @@ $(function (){
                 name: 'Initial Date',
                 type: 'pie',
                 radius: '35%',
-                center: ['50%', '20%'],
+                center: ['50%', '30%'],
                 data: [
                     {value: 335, name: 'Series A'},
                     {value: 310, name: 'Series B'},

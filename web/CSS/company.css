@@ -89,181 +89,88 @@ body{
     margin-right: 30px;
 }
 }*/
-
-.column .panel_first{
-    position: relative;
+.top_box{
     height: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+.column .top_column{
+    margin: 50px;
+    flex: 2.5;
+}
+
+#company_info{
+    flex: 2;
     background-color: ghostwhite;
     border-radius: 20px;
-    margin-top: 20px;
-    box-shadow: 10px 10px 10px 5px #888888;
-    font-size: 20px;
-}
-.panel_first .row1 .company {
-    position: absolute;
-    text-align: center;
-    margin: 20px;
-    top: 0;
-    width: 180px;
-    height: 80px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
+    margin: 0 20px;
 }
 
-.row1 .R2{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 150px;
-    margin-top: 20px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row1 .RED{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 380px;
-    margin-top: 20px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row1 .C_value{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 610px;
-    margin-top: 20px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row1 .own{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 840px;
-    margin-top: 20px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.panel_first .row2 .MSEQ {
-    position: absolute;
-    text-align: center;
-    margin-left: 20px;
-    margin-top: 200px;
-    top: 0;
-    width: 180px;
-    height: 80px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row2 .Stage{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 150px;
-    margin-top: 200px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row2 .Acq{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 380px;
-    margin-top: 200px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-
-.row2 .Return{
-    position: absolute;
-    text-align: center;
-    top: 0;
-    margin-left: 610px;
-    margin-top: 200px;
-    width: 180px;
-    left: 100px;
-    line-height: 80px;
-    font-weight: bold;
-    border-color: black;
-    border-style: solid;
-    border-width: medium;
-}
-.panel_first span{
-    color: black;
-    font-weight: normal;
-    font-size: 14px;
-}
-
-.column:nth-child(2) .sub_box{
-    margin-top: 40px;
+#company_info>ul{
+    list-style: none;
+    height: 260px;
     display: flex;
-    top: 300px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /*justify-content: space-around;*/
+    margin: 20px;
+    padding: 0;
 }
-.sub_box .column_2{
-    flex:1;
+
+#company_info ul li{
+    display: flex;
+    /*text-align: center;*/
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+#company_info ul li:first-child{
+    font-size: 2em;
+}
+#company_info ul li:last-child{
+    border: none;
+}
+
+#TBD{
+    background-color: pink;
+}
+
+.column .bot_box{
+    display: flex;
+    height: 400px;
+    margin-top: 20px;
+}
+.bot_box .bot_column{
     margin: 0px;
 }
 
-.column_2 .change{
+#bar_chart{
+    flex: 2;
     height: 400px;
-    margin-left:20px;
+    width: 200px;
+    background-color: ghostwhite;
     border-radius: 20px;
+    margin: 20px;
 }
-
-.column_2 .bar{
+#line_chart{
+    flex: 2;
     height: 400px;
-    margin-left:20px;
-    border-radius: 20px;
+    width: 200px;
+    margin: 20px;
+    background-color: ghostwhite;
+
 }
-
-.column_2 .line{
+#pie_chart{
+    flex: 2;
     height: 400px;
-    margin-left:20px;
+    width: 200px;
+    background-color: ghostwhite;
     border-radius: 20px;
+    margin:20px;
 }
 
 
