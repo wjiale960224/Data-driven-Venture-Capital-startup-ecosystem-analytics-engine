@@ -101,7 +101,7 @@ body{
 }
 
 #company_info{
-    flex: 2;
+    flex: 1.8;
     background-color: ghostwhite;
     border-radius: 20px;
     margin: 0 20px;
@@ -135,9 +135,7 @@ body{
     border: none;
 }
 
-#TBD{
-    background-color: pink;
-}
+
 
 .column .bot_box{
     display: flex;
@@ -171,6 +169,41 @@ body{
     background-color: ghostwhite;
     border-radius: 20px;
     margin:20px;
+}
+
+#TBD{
+    flex: 1.8;
+    background-color: ghostwhite;
+    border-radius: 20px;
+    margin: 0 20px;
+}
+
+#TBD>ul{
+    list-style: none;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /*justify-content: space-around;*/
+    margin: 20px;
+    padding: 0;
+}
+
+#TBD ul li{
+    display: flex;
+    /*text-align: center;*/
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+#TBD ul li:first-child{
+    font-size: 2em;
+}
+#TBD ul li:last-child{
+    border: none;
 }
 
 
