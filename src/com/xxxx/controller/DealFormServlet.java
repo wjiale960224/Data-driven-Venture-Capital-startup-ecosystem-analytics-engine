@@ -21,11 +21,14 @@ public class DealFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String d = req.getParameter("deal");
-        if (d == null) {
+        String r = req.getParameter("refresh");
+
+        if (r == "[]") {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else {
+            String d = req.getParameter("deal");
+            d = "{\"deal\": " + d + "}";
             dealService.updateDealInfo(d);
         }
     }

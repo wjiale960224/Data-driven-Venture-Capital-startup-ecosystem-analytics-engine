@@ -1,7 +1,11 @@
 package com.xxxx.test;
 
 import com.google.gson.Gson;
+import com.xxxx.dao.InsertDao;
 import com.xxxx.entity.Company;
+import com.xxxx.entity.Theme;
+import com.xxxx.util.GetSqlSession;
+import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,10 +18,22 @@ public class GsonTest {
         JSONArray jsonArray = jsonObject.getJSONArray("company");
 
         int l = jsonArray.length();
-        for (int i = 0; i < l; i++) {
-            Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
-            System.out.println(company.getCompany_name());
-            System.out.println(company.getTheme());
+        SqlSession mysql = GetSqlSession.createSqlSession();
+        try {
+            InsertDao insertDao =mysql.getMapper(InsertDao.class);
+            for (int i = 0; i < l; i++) {
+                Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
+                company.setCid();
+                System.out.println(company.getCid());
+                System.out.println(company.getCompany_name());
+                System.out.println(company.getTheme());
+                insertDao.addCompany(company);
+            }
+            mysql.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            mysql.close();
         }
     }
 }

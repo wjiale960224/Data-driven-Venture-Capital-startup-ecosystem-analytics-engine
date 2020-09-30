@@ -31,12 +31,14 @@ public class CompanyFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String c = req.getParameter("company");
+        String r = req.getParameter("refresh");
 
-        if (c == null) { // frontend does not pass any data, so retrieve info from database
+        if (r == "[]") {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
         } else { // frontend passes company data as a list, need to update info in database
+            String c = req.getParameter("company");
+            c = "{\"company\": " + c + "}";
             companyService.updateCompanyInfo(c);
         }
     }
