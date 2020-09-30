@@ -32,12 +32,12 @@ public class CompanyFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String r = req.getParameter("refresh");
+        String c = req.getParameter("company");
 
-        if (r == "[]") {
+        if (r != null) {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
         } else { // frontend passes company data as a list, need to update info in database
-            String c = req.getParameter("company");
             c = "{\"company\": " + c + "}";
             companyService.updateCompanyInfo(c);
         }
