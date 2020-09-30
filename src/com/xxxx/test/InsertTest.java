@@ -15,7 +15,7 @@ public class InsertTest {
         try {
             InsertDao insertDao =mysql.getMapper(InsertDao.class);
             insertDao.addCompany(new Company(11110000,"hahaha", Theme.Exponential_Machines,2015,
-                    "2018-01-01","2020-01-01",5000000.0000,200,300000.0000));
+                    "2018-01-01","2020-01-01",5000000.0000,null,300000.0000));
 
             mysql.commit();
         }catch (Exception e){

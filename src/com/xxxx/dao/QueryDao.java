@@ -7,6 +7,7 @@ import com.xxxx.entity.Valuation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface QueryDao {
 
@@ -29,5 +30,7 @@ public interface QueryDao {
     List<Integer> listDealById();
 
     Deal queryDealById(Integer deal_id);
+
+    List<Map<String,String>> queryTheme();
 
 }

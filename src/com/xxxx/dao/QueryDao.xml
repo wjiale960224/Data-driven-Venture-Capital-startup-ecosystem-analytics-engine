@@ -37,4 +37,11 @@
         select * from deal where deal_id = #{deal_id};
     </select>
 
+    <select id="queryTheme" resultType="java.util.HashMap">
+        select c.theme, v.c_name, convert(v.post_value, char), v.update_date
+        from valuation v,company c
+        where v.cid = c.cid and c.theme = 'Space_Transport' and c.c_name = 'lakeba'
+        order by theme, c_name, update_date
+    </select>
+
 </mapper>
