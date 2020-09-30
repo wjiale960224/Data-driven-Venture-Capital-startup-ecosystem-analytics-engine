@@ -72,6 +72,7 @@ public class CompanyService {
 
             if (companys.contains(company.getCompany_name())) {
                 // TODO implement 查重更新 company entry
+
             } else {
                 insertdao.addCompany(company); // insert new company entry
             }
