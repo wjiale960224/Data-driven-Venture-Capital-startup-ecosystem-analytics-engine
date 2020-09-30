@@ -31,6 +31,6 @@ public interface QueryDao {
 
     Deal queryDealById(Integer deal_id);
 
-    List<Map<String,String>> queryTheme();
+    List<Map<String,Object>> queryTheme();
 
 }

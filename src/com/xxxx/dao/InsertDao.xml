@@ -19,6 +19,11 @@
         TIMESTAMPDIFF(MONTH,#{runway_end_date},DATE_FORMAT(NOW(), '%Y-%m-%d')),#{raised_to_date},#{employee_no},#{revenue});
     </insert>
 
+    <insert id="addCompanyByMap" parameterType="java.util.HashMap">
+        insert into company(cid, c_name, theme)
+        values (#{cid},#{c_name},#{theme});
+    </insert>
+
     <insert id="addDeal" parameterType="deal">
         insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
         values ()

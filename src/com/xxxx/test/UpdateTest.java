@@ -17,7 +17,7 @@ public class UpdateTest {
             updateDao.updateRunwayMonth();
 
             QueryDao queryDao = mysql.getMapper(QueryDao.class);
-            List<Map<String, String>> result;
+            List<Map<String, Object>> result;
             result = queryDao.queryTheme();
 
             System.out.println(result);
