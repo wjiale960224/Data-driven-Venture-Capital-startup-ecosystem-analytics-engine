@@ -64,9 +64,12 @@ public class CompanyService {
         // "{\"company\": [{\"c_name\": \"company1\", \"theme\": \"Space_Transport\"}, {\"c_name\": \"company2\", \"theme\": \"Exponential_Machine\"}]}"
         JSONObject jsonObject = new JSONObject(c);
         JSONArray jsonArray = jsonObject.getJSONArray("company");
+
         int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
+            company.setCid();
+
             if (companys.contains(company.getCompany_name())) {
                 // TODO implement 查重更新 company entry
             } else {
