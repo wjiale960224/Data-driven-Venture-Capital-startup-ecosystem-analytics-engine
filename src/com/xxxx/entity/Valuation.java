@@ -17,20 +17,20 @@ public class Valuation {
     Integer val_id;
     Integer cid;
     Date update_date;
-    Double present_value;
-    String val_change_reason;
+    Double post_value;
+    String valuation_change_reason;
     Double mseq_investment_cur_val;
     Double own_percent;
 
     public Valuation() {
     }
 
-    public Valuation(Integer cid, Date update_date, Double present_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
+    public Valuation(Integer cid, Date update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
         this.val_id = ValuationID.get_id();
         this.cid = cid;
         this.update_date = update_date;
-        this.present_value = present_value;
-        this.val_change_reason = val_change_reason;
+        this.post_value = post_value;
+        this.valuation_change_reason = val_change_reason;
         this.mseq_investment_cur_val = mseq_investment_cur_val;
         this.own_percent = own_percent;
     }
@@ -55,20 +55,20 @@ public class Valuation {
         this.update_date = update_date;
     }
 
-    public Double getPresent_value() {
-        return present_value;
+    public Double getPost_value() {
+        return post_value;
     }
 
-    public void setPresent_value(Double present_value) {
-        this.present_value = present_value;
+    public void setPost_value(Double post_value) {
+        this.post_value = post_value;
     }
 
     public String getVal_change_reason() {
-        return val_change_reason;
+        return valuation_change_reason;
     }
 
     public void setVal_change_reason(String val_change_reason) {
-        this.val_change_reason = val_change_reason;
+        this.valuation_change_reason = val_change_reason;
     }
 
     public Double getMseq_investment_cur_val() {
