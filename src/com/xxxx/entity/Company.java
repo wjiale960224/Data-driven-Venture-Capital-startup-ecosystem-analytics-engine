@@ -56,6 +56,10 @@ public class Company {
         return cid;
     }
 
+    public void setCid() {
+        this.cid = CompanyID.get_id();
+    }
+
     public String getCompany_name() {
         return c_name;
     }

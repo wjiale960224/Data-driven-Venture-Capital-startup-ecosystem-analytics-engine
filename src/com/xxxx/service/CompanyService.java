@@ -59,7 +59,7 @@ public class CompanyService {
         QueryDao queryDao = session.getMapper((QueryDao.class));
         List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
 
-        // TODO string c passed from frontend must follow this format, Json containing an array called "company", apply to deal as well
+        // string c passed from frontend must follow this format, Json containing an array called "company", apply to deal as well
         // "{\"company\": [{\"c_name\": \"company1\", \"theme\": \"Space_Transport\"}, {\"c_name\": \"company2\", \"theme\": \"Exponential_Machine\"}]}"
         JSONObject jsonObject = new JSONObject(c);
         JSONArray jsonArray = jsonObject.getJSONArray("company");
