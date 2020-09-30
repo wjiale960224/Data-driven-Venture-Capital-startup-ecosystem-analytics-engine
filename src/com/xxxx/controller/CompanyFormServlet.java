@@ -33,7 +33,7 @@ public class CompanyFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String r = req.getParameter("refresh");
 
-        if (r == "[]") {
+        if (r.equals("[]")) {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
         } else { // frontend passes company data as a list, need to update info in database
