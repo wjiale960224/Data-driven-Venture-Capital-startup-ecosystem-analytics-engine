@@ -1,14 +1,19 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
+import com.xxxx.dao.DelectDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.*;
+import com.xxxx.entity.Deal;
 import com.xxxx.util.GetSqlSession;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +39,7 @@ public class DealService {
                     d.getDeal_date() + "\",\"Deal_Size\":\"" + d.getDeal_size() + "\",\"Deal_Status\":\"" + d.getDeal_status()
                     + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
                     + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
-                    + "\",\"Fund_Percent\":\"" +  d.getFund_percentage()+ "\",\"Own_Percent\":\"" +  d.getOwn_percentage()
+                    + "\",\"Fund_Percent\":\"" + d.getFund_percentage() + "\",\"Own_Percent\":\"" + d.getOwn_percentage()
                     + "\"}";
 
         }
@@ -48,7 +53,7 @@ public class DealService {
 
         JSONObject jsonObject = new JSONObject(d);
         JSONArray jsonArray = jsonObject.getJSONArray("deal");
-        int l = jsonArray.length();
+        int l = jsonArray.size();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
             insertdao.addDeal(deal); // insert new deal entry
@@ -58,4 +63,19 @@ public class DealService {
     }
 
     // TODO Implement delete function
+    public void deleteDealInfo(String d) {
+        Gson gson = new Gson();
+        SqlSession session = GetSqlSession.createSqlSession();
+        DelectDao delectdao = session.getMapper(DelectDao.class);
+
+        JSONObject jsonObject = new JSONObject(d);
+        JSONArray jsonArray = jsonObject.getJSONArray("deal");
+        int l = jsonArray.size();
+        for (int i = 0; i < l; i++) {
+            Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
+            delectdao.delDeal(deal);
+        }
+    }
+
+
 }
