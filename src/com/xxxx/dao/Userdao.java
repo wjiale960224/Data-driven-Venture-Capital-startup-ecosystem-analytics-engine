@@ -13,6 +13,9 @@ import java.util.List;
  */
 
 public interface Userdao {
+
+
+
     // call SQL query prepared in Userdao.xml
 
     User queryUserByname(String user_name);
@@ -38,4 +41,5 @@ public interface Userdao {
 
     Deal queryDealById(Integer deal_id);
 
+    int delDealByDealId( int deal_id);
 }
