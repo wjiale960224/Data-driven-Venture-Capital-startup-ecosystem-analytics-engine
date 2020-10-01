@@ -1,6 +1,7 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
+import com.xxxx.controller.DealFormServlet;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
@@ -49,6 +50,7 @@ public class CompanyService {
                     + "\",\"Valuation_Change_reason\":\"" + v.getVal_change_reason() + "\",\"MSEQ_Investment_Cur_Val\":\"" + v.getMseq_investment_cur_val()
                     + "\",\"Own_Percent\":\"" + v.getOwn_percent() + "\"},";
         }
+
         System.out.println("check getCompanyInfo");
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
@@ -60,14 +62,9 @@ public class CompanyService {
         QueryDao queryDao = session.getMapper((QueryDao.class));
         List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
 
-        // string c passed from frontend must follow this format, Json containing an array called "company", apply to deal as well
-        // "{\"company\": [{\"c_name\": \"company1\", \"theme\": \"Space_Transport\"}, {\"c_name\": \"company2\", \"theme\": \"Exponential_Machine\"}]}"
-        JSONObject jsonObject = new JSONObject(c);
-        JSONArray jsonArray = jsonObject.getJSONArray("company");
-
-        int l = jsonArray.length();
-        for (int i = 0; i < l; i++) {
-            Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
+        String[] companies = DealFormServlet.SplitStrings(c);
+        for (String s : companies) {
+            Company company = gson.fromJson(s, Company.class);
             company.setCid();
 
             if (companys.contains(company.getCompany_name())) {

@@ -30,7 +30,8 @@ public class CompanyFormServlet extends HttpServlet {
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
         } else { // frontend passes company data as an array, need to update info in database
             String c = req.getParameter("company");
-            c = "{\"company\": " + c + "}";
+            //c = "{\"company\": " + c + "}";
+            System.out.println(c);
             companyService.updateCompanyInfo(c);
         }
     }
