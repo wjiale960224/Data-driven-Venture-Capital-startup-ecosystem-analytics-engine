@@ -45,4 +45,26 @@ public class BaseDao {
         else System.out.println("no");
     }
 
+    public int del(int id) {
+        Connection con;
+        PreparedStatement pst;
+        ResultSet rs;
+        int result=0;
+        con=getConn();
+        String sql="delete from xxxxxxxxxxxxxxxxxx";
+        try {
+            pst=con.prepareStatement(sql);
+            pst.setInt(1, id);
+            result=pst.executeUpdate();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        finally{
+            closeAll();
+        }
+        return result;
+    }
+
 }
