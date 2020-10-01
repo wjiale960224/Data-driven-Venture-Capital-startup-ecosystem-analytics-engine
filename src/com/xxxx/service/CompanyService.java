@@ -55,7 +55,7 @@ public class CompanyService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
-    public void updateCompanyInfo(String c) {
+    /*public void updateCompanyInfo(String c) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
@@ -69,9 +69,9 @@ public class CompanyService {
 
             if (companys.contains(company.getCompany_name())) {
                 // TODO implement 查重更新 company entry
-                /* if (parameter == Year_Founded) {
+                *//* if (parameter == Year_Founded) {
                 *   updatedao;
-                * }*/
+                * }*//*
             } else {
                 insertdao.addCompany(company); // insert new company entry
             }
@@ -80,6 +80,10 @@ public class CompanyService {
                 Portfolio.getPortfolio().add(company.getCompany_name());
             }
         }
+    }*/
+
+    public void updateCompanyInfo(String c) {
+        Gson gson = new Gson();
     }
 
     // TODO Implement delete function

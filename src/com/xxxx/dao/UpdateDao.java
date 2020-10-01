@@ -4,7 +4,7 @@ public interface UpdateDao {
 
     int updateRunwayMonth();
 
-    // TODO complete the update methods method
+    // TODO complete the update methods below
 
     int updateYearFounded();
 
