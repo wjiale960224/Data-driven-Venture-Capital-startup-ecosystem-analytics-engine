@@ -1,20 +1,11 @@
 package com.xxxx.dao;
 
+import com.xxxx.entity.Company;
+
 public interface UpdateDao {
 
     int updateRunwayMonth();
 
-    // TODO complete the update methods below
-
-    int updateYearFounded();
-
-    String updateRunwayStartDate();
-
-    String updateRunwayEndDate();
-
-    double updateRaisedToDate();
-
-    int updateEmployeeNo();
-
-    double updateRevenue();
+    // TODO If the method below can be implemented?
+    int updateCompany(Company company);
 }

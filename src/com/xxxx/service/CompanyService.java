@@ -7,6 +7,7 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
+import com.xxxx.entity.CompanyForm;
 import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
@@ -90,8 +91,18 @@ public class CompanyService {
         UpdateDao updateDao = session.getMapper(UpdateDao.class);
         QueryDao queryDao = session.getMapper((QueryDao.class));
         List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
+
+        String[] updateInfo = c.substring(1, c.length()-1).split(",");
+        for (String str : updateInfo) {
+            CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
+            Company company = companyform.toCompany();
+            if (companys.contains(company.getCompany_name())) {
+                insertdao.addCompany(company);
+            } else {
+                updateDao.updateCompany(company);
+            }
+        }
     }
 
-    // ""string": [{"name":"A","theme":"a","year":"1"},{"name":"B","theme":"b","year":"2"}.{"name":"C","theme":"c","year":"3"}]"
     // TODO Implement delete function
 }
