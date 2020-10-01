@@ -1,9 +1,10 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
+import com.xxxx.dao.DelectDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.*;
+import com.xxxx.entity.Deal;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
@@ -34,7 +35,7 @@ public class DealService {
                     d.getDeal_date() + "\",\"Deal_Size\":\"" + d.getDeal_size() + "\",\"Deal_Status\":\"" + d.getDeal_status()
                     + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
                     + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
-                    + "\",\"Fund_Percent\":\"" +  d.getFund_percentage()+ "\",\"Own_Percent\":\"" +  d.getOwn_percentage()
+                    + "\",\"Fund_Percent\":\"" + d.getFund_percentage() + "\",\"Own_Percent\":\"" + d.getOwn_percentage()
                     + "\"}";
 
         }
@@ -47,7 +48,7 @@ public class DealService {
         InsertDao insertdao = session.getMapper(InsertDao.class);
 
         JSONObject jsonObject = new JSONObject(d);
-        JSONArray jsonArray = jsonObject.getJSONArray("deal");
+        org.json.JSONArray jsonArray = jsonObject.getJSONArray("deal");
         int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
@@ -58,4 +59,19 @@ public class DealService {
     }
 
     // TODO Implement delete function
+    public void deleteDealInfo(String d) {
+        Gson gson = new Gson();
+        SqlSession session = GetSqlSession.createSqlSession();
+        DelectDao delectdao = session.getMapper(DelectDao.class);
+
+        JSONObject jsonObject = new JSONObject(d);
+        JSONArray jsonArray = jsonObject.getJSONArray("deal");
+        int l = jsonArray.length();
+        for (int i = 0; i < l; i++) {
+            Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
+            delectdao.delDeal(deal);
+        }
+    }
+
+
 }
