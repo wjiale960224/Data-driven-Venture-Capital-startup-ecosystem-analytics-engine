@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.xxxx.controller.DealFormServlet;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
+import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Portfolio;
@@ -84,7 +85,13 @@ public class CompanyService {
 
     public void updateCompanyInfo(String c) {
         Gson gson = new Gson();
+        SqlSession session = GetSqlSession.createSqlSession();
+        InsertDao insertdao = session.getMapper(InsertDao.class);
+        UpdateDao updateDao = session.getMapper(UpdateDao.class);
+        QueryDao queryDao = session.getMapper((QueryDao.class));
+        List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
     }
 
+    // ""string": [{"name":"A","theme":"a","year":"1"},{"name":"B","theme":"b","year":"2"}.{"name":"C","theme":"c","year":"3"}]"
     // TODO Implement delete function
 }
