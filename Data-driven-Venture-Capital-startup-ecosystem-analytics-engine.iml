@@ -27,6 +27,6 @@
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="mybatis-3.5.5" level="project" />
     <orderEntry type="library" name="gson-2.8.5" level="project" />
-    <orderEntry type="library" name="json-lib-2.2.3-jdk15" level="project" />
+    <orderEntry type="library" name="json-20140107" level="project" />
   </component>
 </module>

@@ -6,14 +6,10 @@ import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Deal;
 import com.xxxx.util.GetSqlSession;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +48,8 @@ public class DealService {
         InsertDao insertdao = session.getMapper(InsertDao.class);
 
         JSONObject jsonObject = new JSONObject(d);
-        JSONArray jsonArray = jsonObject.getJSONArray("deal");
-        int l = jsonArray.size();
+        org.json.JSONArray jsonArray = jsonObject.getJSONArray("deal");
+        int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
             insertdao.addDeal(deal); // insert new deal entry
@@ -70,7 +66,7 @@ public class DealService {
 
         JSONObject jsonObject = new JSONObject(d);
         JSONArray jsonArray = jsonObject.getJSONArray("deal");
-        int l = jsonArray.size();
+        int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
             delectdao.delDeal(deal);

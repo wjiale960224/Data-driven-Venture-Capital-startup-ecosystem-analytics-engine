@@ -8,9 +8,9 @@ import com.xxxx.entity.Company;
 import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +65,7 @@ public class CompanyService {
         JSONObject jsonObject = new JSONObject(c);
         JSONArray jsonArray = jsonObject.getJSONArray("company");
 
-        int l = jsonArray.size();
+        int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
             company.setCid();
