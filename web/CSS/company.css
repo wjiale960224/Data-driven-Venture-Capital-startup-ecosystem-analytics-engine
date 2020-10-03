@@ -131,6 +131,11 @@ body{
 #company_info ul li:first-child{
     font-size: 2em;
 }
+
+#company_name{
+    color: rgb(173,139,46);
+}
+
 #company_info ul li:last-child{
     border: none;
 }
@@ -198,9 +203,6 @@ body{
     border-collapse: collapse;
     flex-grow: 1;
     flex-shrink: 1;
-}
-#TBD ul li:first-child{
-    font-size: 2em;
 }
 #TBD ul li:last-child{
     border: none;

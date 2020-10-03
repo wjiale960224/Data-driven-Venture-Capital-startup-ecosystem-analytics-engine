@@ -44,29 +44,11 @@ $(function (){
             trigger: 'item',
             formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        handleColors(){
-            let color = '';
-            let r=Math.floor(Math.random()*256);
-            let g=Math.floor(Math.random()*256);
-            let b=Math.floor(Math.random()*256);
-            color = `rgb(${r},${g},${b})`;
-            return color;
-        },
-
-        setEchartColor(){
-            for (let i of this.data.data.series) {
-                let color = this.actions.handleColors();
-                console.log('color',color)
-                console.log('i',i)
-                i['itemStyle']={color:color}
-            }
-        },
         series: [
             {
-                name: 'theme1',
+                name: 'theme',
                 type: 'pie',
-                selectedMode: 'single',
-                radius: [0, '50%'],
+                radius: [0, '70%'],
 
                 label: {
                     position: 'inner'
@@ -75,12 +57,17 @@ $(function (){
                     show: false
                 },
                 data: [
-                    {value: 335, name: 'theme1', selected: true},
+                    {value: 335, name: 'theme1'},
                     {value: 679, name: 'theme2'},
                     {value: 1548, name: 'theme3'},
                     {value: 469, name: 'theme4'},
                     {value: 518, name: 'theme5'},
-                ]
+                ],
+                itemStyle:{
+                    normal:{
+                        color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+                    }
+                },
             },
             {
                 name: 'MSEQ_overview',
@@ -104,7 +91,12 @@ $(function (){
                     {value: 102, name: 'company9'},
                     {value: 469, name: 'company10'},
                     {value: 518, name: 'company11'},
-                ]
+                ],
+                itemStyle:{
+                    normal:{
+                        color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+                    }
+                },
             }
         ]
     };
@@ -115,9 +107,8 @@ $(function (){
         title: {
             text: 'Invested and Raised'
         },
-        color: ['rgb(173,139,46)'],
-        legend: {
-            data:['Value']
+        tooltip:{
+
         },
         xAxis: {
             data: ["MSEQ Invested","Total Capital Raised",]
@@ -127,7 +118,15 @@ $(function (){
             name: 'Value',
             type: 'bar',
             barWidth:40,
-            data: [5, 20,]
+            data: [5, 20,],
+            itemStyle:{
+                normal:{
+                    color: function(params) {
+                        var colorList = ['rgb(173,139,46)', 'rgb(0, 49, 60)'];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
         }]
     };
     mseq_bar.setOption(mseq_bar_option);

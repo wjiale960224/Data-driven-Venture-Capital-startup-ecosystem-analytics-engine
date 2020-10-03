@@ -47,7 +47,7 @@ $(function (){
     var line_chart_option = {
         title: {
             left: 'center',
-            text: 'Valuation Change'
+            text: 'Post-Valuation Change'
         },
         tooltip: {
             trigger: 'axis',
@@ -70,7 +70,7 @@ $(function (){
     var pie_chart = echarts.init(document.querySelector("#pie_chart"));
     var pie_chart_option  = {
         title: {
-            text: 'MSVC Investment',
+            text: 'MSEQ Investment',
             left: 'center',
         },
         tooltip: {
@@ -80,7 +80,7 @@ $(function (){
         legend: {
             orient: 'vertical',
             left: 10,
-            data: ['MSVC', 'Other',]
+            data: ['MSEQ', 'Other',]
         },
         series: [
             {
@@ -103,7 +103,7 @@ $(function (){
                     show: false
                 },
                 data: [
-                    {value: 8, name: 'MSVC'},
+                    {value: 8, name: 'MSEQ'},
                     {value: 21, name: 'Other'},
                 ]
             }

@@ -25,6 +25,9 @@
     margin: 0;
 }
 
+#pie{
+    flex: 1;
+}
 #overview_info{
     flex: 2;
     background-color: ghostwhite;
@@ -55,6 +58,7 @@
 }
 #overview_info ul li:first-child{
     font-size: 2em;
+    color: rgb(173,139,46);
 }
 #overview_info ul li:last-child{
     border: none;

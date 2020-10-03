@@ -17,9 +17,9 @@
 <div class = "left">
     <nav>
         <ul class = "nav">
-            <li id = "Overview">Overview</li>
+            <li id = "Overview"><a href="${pageContext.request.contextPath}/mainpage.jsp">Overview</a></li>
             <li><a href="${pageContext.request.contextPath}/company_page.jsp">Company</a></li>
-            <li><span class="tet"><a href="theme.jsp">Theme</a></span></li>
+            <li><span class="tet"><a href="${pageContext.request.contextPath}/theme.jsp">Theme</a></span></li>
         </ul>
     </nav>
 </div>
