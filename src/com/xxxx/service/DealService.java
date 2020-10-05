@@ -1,7 +1,7 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
-import com.xxxx.dao.DelectDao;
+import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Deal;
@@ -42,6 +42,7 @@ public class DealService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
+    // TODO deal_id, cid, post_val is not given in the input. Need to create deal_id, get cid, calculate post_val when add new Deal into database.
     public void updateDealInfo(String d) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
@@ -54,24 +55,20 @@ public class DealService {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
             insertdao.addDeal(deal); // insert new deal entry
         }
-        // It is not possible to check current deal and update since we cannot check by ID.
-        // Need to delete the deal and create a new entry.
     }
 
-    // TODO Implement delete function
+    // When to call this method?
     public void deleteDealInfo(String d) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
-        DelectDao delectdao = session.getMapper(DelectDao.class);
+        DeleteDao deleteDao = session.getMapper(DeleteDao.class);
 
         JSONObject jsonObject = new JSONObject(d);
         JSONArray jsonArray = jsonObject.getJSONArray("deal");
         int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
-            delectdao.delDeal(deal);
+            deleteDao.delDeal(deal);
         }
     }
-
-
 }

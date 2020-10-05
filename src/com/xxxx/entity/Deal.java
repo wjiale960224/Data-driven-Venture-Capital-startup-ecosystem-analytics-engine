@@ -14,12 +14,12 @@ import java.util.*;
 public class Deal {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
     Integer deal_id;
-    String company_name; // to get company_id
+    String c_name; // to get company_id
     Date deal_date;
     Double deal_size;
     DealStatus deal_status;
     Series series;
-    Double mseq_invest_amount;
+    Double mseq_invest_amt;
     Vehicle invest_vehicle;
     List<String> co_investor;
     Double fund_percent; // auto-generated
@@ -34,7 +34,7 @@ public class Deal {
         this.deal_size = deal_size;
         this.deal_status = DealStatus.Completed; // default status is Completed
         this.series = series;
-        this.mseq_invest_amount = MSEQ_invest_amount;
+        this.mseq_invest_amt = MSEQ_invest_amount;
     }
 
 
@@ -45,7 +45,7 @@ public class Deal {
     public Company getCompany() {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
-        return userdao.queryCompanyByName(company_name);
+        return userdao.queryCompanyByName(c_name);
     }
 
     public Date getDeal_date() {
@@ -65,7 +65,7 @@ public class Deal {
     }
 
     public Double getMSEQ_invest_amount() {
-        return mseq_invest_amount;
+        return mseq_invest_amt;
     }
 
     public Vehicle getVehicle() {
@@ -101,7 +101,7 @@ public class Deal {
     }
 
     public void setMSEQ_invest_amount(Double MSEQ_invest_amount) {
-        this.mseq_invest_amount = MSEQ_invest_amount;
+        this.mseq_invest_amt = MSEQ_invest_amount;
     }
 
     public void setVehicle(Vehicle vehicle) {

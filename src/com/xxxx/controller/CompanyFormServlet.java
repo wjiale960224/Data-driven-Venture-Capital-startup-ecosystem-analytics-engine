@@ -14,8 +14,8 @@ import java.io.IOException;
 @WebServlet("/company_form")
 
 public class CompanyFormServlet extends HttpServlet {
-    String whole = "[]";
     CompanyService companyService = new CompanyService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doPost(req, resp);
@@ -25,13 +25,12 @@ public class CompanyFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String r = req.getParameter("refresh");
 
-        if (r != null && r.equals("[]")) {
+        if (r != null && r.equals("[]")) { // retrieve data from database
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
-        } else { // frontend passes company data as an array, need to update info in database
+        } else { // update data in database
             String c = req.getParameter("company");
-            //c = "{\"company\": " + c + "}";
-            System.out.println(c);
+//            System.out.println(c);
             companyService.updateCompanyInfo(c);
         }
     }

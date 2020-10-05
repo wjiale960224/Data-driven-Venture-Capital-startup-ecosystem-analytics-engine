@@ -1,7 +1,6 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
-import com.xxxx.controller.DealFormServlet;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.UpdateDao;
@@ -11,9 +10,8 @@ import com.xxxx.entity.CompanyForm;
 import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
+import com.xxxx.util.StringUtil;
 import org.apache.ibatis.session.SqlSession;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CompanyService {
-
 
     public List<String> getCompanyNames() {
         SqlSession session = GetSqlSession.createSqlSession();
@@ -49,7 +46,7 @@ public class CompanyService {
                     + "\",\"Runway_End_Date\":\"" + c.getRunway_end_date() + "\",\"Runway_Month\":\"" + c.getRunway_month()
                     + "\",\"Raise_to_Date\":\"" + c.getRaised_to_date() + "\",\"Employee_No\":\"" + c.getEmployee_no()
                     + "\",\"Revenue\":\"" + c.getRevenue() + "\",\"Present_Valuation\":\"" + v.getPost_value()
-                    + "\",\"Valuation_Change_reason\":\"" + v.getVal_change_reason() + "\",\"MSEQ_Investment_Cur_Val\":\"" + v.getMseq_investment_cur_val()
+                    + "\",\"Valuation_Change_reason\":\"" + v.getValuation_change_reason() + "\",\"MSEQ_Investment_Cur_Val\":\"" + v.getMseq_investment_cur_val()
                     + "\",\"Own_Percent\":\"" + v.getOwn_percent() + "\"},";
         }
 
@@ -57,52 +54,34 @@ public class CompanyService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
-    /*public void updateCompanyInfo(String c) {
-        Gson gson = new Gson();
-        SqlSession session = GetSqlSession.createSqlSession();
-        InsertDao insertdao = session.getMapper(InsertDao.class);
-        QueryDao queryDao = session.getMapper((QueryDao.class));
-        List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
-
-        String[] companies = DealFormServlet.SplitStrings(c);
-        for (String s : companies) {
-            Company company = gson.fromJson(s, Company.class);
-            company.setCid();
-
-            if (companys.contains(company.getCompany_name())) {
-                // TODO implement 查重更新 company entry
-                *//* if (parameter == Year_Founded) {
-                *   updatedao;
-                * }*//*
-            } else {
-                insertdao.addCompany(company); // insert new company entry
-            }
-
-            if (!Portfolio.getPortfolio().contains(company.getCompany_name())) { // update Porfolio class
-                Portfolio.getPortfolio().add(company.getCompany_name());
-            }
-        }
-    }*/
-
     public void updateCompanyInfo(String c) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
         UpdateDao updateDao = session.getMapper(UpdateDao.class);
         QueryDao queryDao = session.getMapper((QueryDao.class));
-        List<String> companys = queryDao.listCompanyByName(); // check companies in current portfolio
+        List<String> companys = queryDao.listCompanyByName(); // get companies in current table
 
-        String[] updateInfo = c.substring(1, c.length()-1).split(",");
+        String[] updateInfo = StringUtil.SplitStrings(c);
         for (String str : updateInfo) {
+//            System.out.println(str);
             CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
             Company company = companyform.toCompany();
-            if (companys.contains(company.getCompany_name())) {
-                insertdao.addCompany(company);
+//            System.out.println(company.getCompany_name());
+//            System.out.println(company.getTheme());
+            if (!companys.contains(company.getCompany_name())) {
+                company.setCid(); // generate a new cid for new company only
+//                System.out.println(company.getCid());
+                insertdao.addCidCnameTheme(company); // no error, but no new entry in database
+                if (!Portfolio.getPortfolio().contains(company.getCompany_name())) {
+                    Portfolio.getPortfolio().add(company.getCompany_name());
+                }
             } else {
                 updateDao.updateCompany(company);
             }
+
+//            Valuation valuation = companyform.toValuation();
+//            insertdao.addValuation(valuation);
         }
     }
-
-    // TODO Implement delete function
 }

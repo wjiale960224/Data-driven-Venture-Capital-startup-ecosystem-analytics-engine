@@ -1,11 +1,7 @@
 package com.xxxx.entity;
 
-import com.xxxx.dao.Userdao;
-import com.xxxx.util.GetSqlSession;
-import org.apache.ibatis.session.SqlSession;
-
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Zihang
@@ -16,7 +12,8 @@ public class Valuation {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
     Integer val_id;
     Integer cid;
-    Date update_date;
+    String c_name;
+    LocalDate update_date;
     Double post_value;
     String valuation_change_reason;
     Double mseq_investment_cur_val;
@@ -25,7 +22,7 @@ public class Valuation {
     public Valuation() {
     }
 
-    public Valuation(Integer cid, Date update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
+    public Valuation(Integer cid, LocalDate update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
         this.val_id = ValuationID.get_id();
         this.cid = cid;
         this.update_date = update_date;
@@ -39,6 +36,10 @@ public class Valuation {
         return val_id;
     }
 
+    public void setVal_id() {
+        this.val_id = ValuationID.get_id();
+    }
+
     public Integer getCid() {
         return cid;
     }
@@ -47,11 +48,19 @@ public class Valuation {
         this.cid = cid;
     }
 
-    public Date getUpdate_date() {
+    public String getC_name() {
+        return c_name;
+    }
+
+    public void setC_name(String c_name) {
+        this.c_name = c_name;
+    }
+
+    public LocalDate getUpdate_date() {
         return update_date;
     }
 
-    public void setUpdate_date(Date update_date) {
+    public void setUpdate_date(LocalDate update_date) {
         this.update_date = update_date;
     }
 
@@ -63,12 +72,12 @@ public class Valuation {
         this.post_value = post_value;
     }
 
-    public String getVal_change_reason() {
+    public String getValuation_change_reason() {
         return valuation_change_reason;
     }
 
-    public void setVal_change_reason(String val_change_reason) {
-        this.valuation_change_reason = val_change_reason;
+    public void setValuation_change_reason(String valuation_change_reason) {
+        this.valuation_change_reason = valuation_change_reason;
     }
 
     public Double getMseq_investment_cur_val() {

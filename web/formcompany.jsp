@@ -35,7 +35,7 @@
                         <th>Employee_No</th>
                         <th>Revenue</th>
                         <th>Present_Valuation</th>
-                        <th>Valuation_Change_reason</th>
+                        <th>Valuation_Change_Reason</th>
                         <th>MSEQ_Investment_Cur_Val</th>
                         <th>Own_Percent</th>--%>
                     </tr>

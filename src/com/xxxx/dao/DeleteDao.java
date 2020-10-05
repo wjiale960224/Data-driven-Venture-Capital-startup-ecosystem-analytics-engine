@@ -6,7 +6,7 @@ import com.xxxx.entity.Deal;
 import java.util.Map;
 
 
-public interface DelectDao {
+public interface DeleteDao {
 
 
     int delCompany(Company company);

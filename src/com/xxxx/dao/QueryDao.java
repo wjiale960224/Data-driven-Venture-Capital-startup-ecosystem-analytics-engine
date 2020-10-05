@@ -33,4 +33,6 @@ public interface QueryDao {
 
     List<Map<String,Object>> queryTheme();
 
+    // TODO implement this query
+    Integer queryCidByCompanyName(String companyName);
 }

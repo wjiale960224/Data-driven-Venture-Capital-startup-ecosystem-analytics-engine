@@ -1,25 +1,13 @@
 package com.xxxx.controller;
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import com.xxxx.entity.Company;
-import com.xxxx.dao.Userdao;
-import com.xxxx.entity.CompanyList;
-import com.xxxx.entity.User;
 import com.xxxx.entity.msg.MessageModel;
 import com.xxxx.service.UserService;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * 接受请求（调用service层， 返回结果）
