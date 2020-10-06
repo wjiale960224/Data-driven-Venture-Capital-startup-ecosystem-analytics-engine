@@ -79,6 +79,7 @@ public class CompanyService {
             } else {
                 updateDao.updateCompany(company);
             }
+            session.commit();
 
 //            Valuation valuation = companyform.toValuation();
 //            insertdao.addValuation(valuation);
