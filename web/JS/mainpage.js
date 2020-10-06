@@ -2,14 +2,56 @@
 
 
 $(function (){
+    var pie = echarts.init(document.querySelector("#pie"));
+    var pie_option = {
+        title: {
+            text: 'Drawn & Undrawn Capital',
+            left: '50%',
+            textAlign: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            top: '10%',
+            orient: 'vertical',
+            left: 10,
+            data: ['Drawn', 'Undrawn',],
+        },
+        series: [
+            {
+                name: 'Total Fund',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                label:{show:false},
+                data: [
+                    {value: 2.53, name: 'Drawn'},
+                    {value: 10, name: 'Undrawn'},
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    pie.setOption(pie_option);
+
+
     var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
     var TVPI_curve_option = {
         title: {
             text: 'TVPI curve',
-            left: 'left'
+            left: '50%',
+            textAlign:'center',
         },
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
         },
         grid: {
             left: '3%',
@@ -17,19 +59,19 @@ $(function (){
             bottom: '3%',
             width: "730px",
             // height: "100%",
-            containLabel: true
+            containLabel: true,
         },
         xAxis: {
             type: 'category',
             data: ['0.0', '0.3', '0.6', '0.9', '1.2', '1.5', '1.8','2.1'],
-            boundaryGap: false
+            boundaryGap: false,
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
         },
         series: [{
             data: [0, 0.8, 1.5, 3.8, 6, 6.7, 6, 4],
-            type: 'line'
+            type: 'line',
         }]
     };
     TVPI_curve.setOption(TVPI_curve_option);
@@ -105,13 +147,15 @@ $(function (){
     var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
     var mseq_bar_option = {
         title: {
-            text: 'Invested and Raised'
+            text: 'Invested and Raised',
+            left:'50%',
+            textAlign:'center',
         },
         tooltip:{
 
         },
         xAxis: {
-            data: ["MSEQ Invested","Total Capital Raised",]
+            data: ["MSEQ Invested","Total Capital Raised",],
         },
         yAxis: {},
         series: [{
@@ -133,17 +177,27 @@ $(function (){
 
     var two_pie = echarts.init(document.querySelector("#two_pie"));
     var two_pie_option  = {
-        title:{
-          left:'left',
-          text: 'Initial Date VS Current Date',
-        },
+        title:[
+            {
+                text: 'Current Date',
+                left:'50%',
+                textAlign:'center',
+            },
+
+            {
+                text: 'Initial Date',
+                left:'50%',
+                top: '52.5%',
+                textAlign:'center'
+            }
+        ],
         tooltip: {
             trigger: 'item',
             formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         series: [
             {
-                name: 'Initial Date',
+                name: 'Current Date',
                 type: 'pie',
                 radius: '35%',
                 center: ['50%', '30%'],
@@ -163,7 +217,7 @@ $(function (){
             },
 
             {
-                name: 'Current Date',
+                name: 'Initial Date',
                 type: 'pie',
                 radius: '35%',
                 center: ['50%', '80%'],

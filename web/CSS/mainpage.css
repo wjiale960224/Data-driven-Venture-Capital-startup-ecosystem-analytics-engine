@@ -25,11 +25,9 @@
     margin: 0;
 }
 
-#pie{
-    flex: 1;
-}
+
 #overview_info{
-    flex: 2;
+    flex: 3;
     background-color: ghostwhite;
     border-radius: 20px;
     margin: 0 20px;
@@ -64,15 +62,17 @@
     border: none;
 }
 
+#pie{
+    flex: 2;
+    margin: 0 20px;
+    background-color: ghostwhite;
+}
 
 #TVPI_curve{
-/*    height: 200px;
-    width: 200px;*/
     flex: 3;
     background-color: ghostwhite;
     border-radius: 20px;
-    margin: 0 20px 0 0;
-    padding-top: 20px;
+    margin: 0 20px;
 }
 
 .column .bot_box{
