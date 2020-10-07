@@ -175,69 +175,100 @@ $(function (){
     };
     mseq_bar.setOption(mseq_bar_option);
 
-    var two_pie = echarts.init(document.querySelector("#two_pie"));
-    var two_pie_option  = {
-        title:[
-            {
-                text: 'Current Date',
-                left:'50%',
-                textAlign:'center',
-            },
 
-            {
-                text: 'Initial Date',
-                left:'50%',
-                top: '52.5%',
-                textAlign:'center'
-            }
-        ],
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        series: [
-            {
-                name: 'Current Date',
-                type: 'pie',
-                radius: '35%',
-                center: ['50%', '30%'],
-                data: [
-                    {value: 335, name: 'Series A'},
-                    {value: 310, name: 'Series B'},
-                    {value: 234, name: 'Series B1'},
-                    {value: 135, name: 'None'},
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+
+
+
+    (function refresh(){
+        var company_name = [];
+        var fund = [];
+        $.ajax({
+            type: "POST",
+            url: "/workspace_Intellj_war_exploded/mainpagedata",  // Here to change back end receive url.
+            data: {
+                refresh: "[]",
+            },
+            success:function(mainpage_info){
+                console.log("yes,refreshed.");
+                console.log(mainpage_info);
+                var mainpagedata = mainpage_info.substring(1,mainpage_info.length-1).split("},{");
+                for (i = 0; i < mainpagedata.length; i++){ // Get rid of [] and split each item up.
+                    if (i === 0) {
+                        mainpagedata[i] += "}";
+                    }else if (i === mainpagedata.length-1){
+                        mainpagedata[i] = "{" + mainpagedata[i];
+                    }else {
+                        mainpagedata[i] = "{" + mainpagedata[i] + "}";
                     }
                 }
-            },
-
-            {
-                name: 'Initial Date',
-                type: 'pie',
-                radius: '35%',
-                center: ['50%', '80%'],
-                data: [
-                    {value: 135, name: 'Series A'},
-                    {value: 410, name: 'Series B'},
-                    {value: 334, name: 'Series B1'},
-                    {value: 35, name: 'None'},
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
+                for (i = 0; i < mainpagedata.length; i++){ // Reconstruct string format to object format
+                    console.log(mainpagedata[i]);
+                    var $mainpagedata = JSON.parse(mainpagedata[i]);
+                    company_name.push($mainpagedata["company_name"]);
+                    fund.push($mainpagedata["fund"]);
                 }
-            }
-        ]
-    };
+                var two_pie = echarts.init(document.querySelector("#two_pie"));
+                var two_pie_option  = {
+                    title:[
+                        {
+                            text: 'Current Date',
+                            left:'50%',
+                            textAlign:'center',
+                        },
 
-    two_pie.setOption(two_pie_option);
+                        {
+                            text: 'Initial Date',
+                            left:'50%',
+                            top: '52.5%',
+                            textAlign:'center'
+                        }
+                    ],
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    legend: {
+                        data: company_name
+                    },
+                    series: [
+                        {
+                            name: 'Current Date',
+                            type: 'pie',
+                            radius: '35%',
+                            center: ['50%', '30%'],
+                            data: fund,
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        },
+
+                        {
+                            name: 'Initial Date',
+                            type: 'pie',
+                            radius: '35%',
+                            center: ['50%', '80%'],
+                            data: [],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                two_pie.setOption(two_pie_option);
+            },
+            error: function(){
+                console.log("No,something wrong.");
+            }
+        });
+    }());
 
 })

@@ -29,13 +29,14 @@ public class Deal {
     public Deal() {
     }
 
-    public Deal(Date deal_date, Double deal_size, Series series, Double MSEQ_invest_amount) {
+    public Deal(String c_name, Date deal_date, Double deal_size, Series series, Double MSEQ_invest_amount) {
         this.deal_id = DealID.get_id();
         this.deal_date = deal_date;
         this.deal_size = deal_size;
         this.deal_status = DealStatus.Completed; // default status is Completed
         this.series = series;
         this.mseq_invest_amt = MSEQ_invest_amount;
+        this.c_name = c_name;
     }
 
 
@@ -47,6 +48,14 @@ public class Deal {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
         return userdao.queryCompanyByName(c_name);
+    }
+
+    public String getC_name() {
+        return c_name;
+    }
+
+    public void setC_name(String c_name) {
+        this.c_name = c_name;
     }
 
     public Date getDeal_date() {
