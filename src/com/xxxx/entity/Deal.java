@@ -109,6 +109,8 @@ public class Deal {
         this.invest_vehicle = vehicle;
     }
 
+    public void setCo_investor(List<String> co_investor){this.co_investor = co_investor;}
+
     public void addCo_investor(String co_investor) {
         this.co_investor.add(co_investor);
     }

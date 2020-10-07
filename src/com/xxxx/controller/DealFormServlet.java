@@ -24,7 +24,7 @@ public class DealFormServlet extends HttpServlet {
         String r = req.getParameter("refresh");
         String d = req.getParameter("deal");
 
-        if (r.equals("[]")) {
+        if (r != null && r.equals("[]")) {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else {

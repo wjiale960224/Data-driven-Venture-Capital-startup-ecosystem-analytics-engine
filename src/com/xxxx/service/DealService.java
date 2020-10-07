@@ -36,7 +36,7 @@ public class DealService {
                     + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
                     + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
                     + "\",\"Fund_Percent\":\"" + d.getFund_percentage() + "\",\"Own_Percent\":\"" + d.getOwn_percentage()
-                    + "\"}";
+                    + "\"},";
 
         }
         return "[" + output.substring(0, output.length() - 1) + "]";
