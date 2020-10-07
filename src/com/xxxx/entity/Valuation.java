@@ -1,7 +1,6 @@
 package com.xxxx.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * @author Zihang
@@ -22,8 +21,9 @@ public class Valuation {
     public Valuation() {
     }
 
-    public Valuation(Integer cid, LocalDate update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
+    public Valuation(Integer cid, String c_name, LocalDate update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
         this.val_id = ValuationID.get_id();
+        this.c_name = c_name;
         this.cid = cid;
         this.update_date = update_date;
         this.post_value = post_value;
@@ -37,7 +37,7 @@ public class Valuation {
     }
 
     public void setVal_id() {
-        this.val_id = ValuationID.get_id();
+        this.val_id = CompanyID.get_id();
     }
 
     public Integer getCid() {

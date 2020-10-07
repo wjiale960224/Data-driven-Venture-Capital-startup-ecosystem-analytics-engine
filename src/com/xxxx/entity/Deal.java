@@ -20,6 +20,7 @@ public class Deal {
     DealStatus deal_status;
     Series series;
     Double mseq_invest_amt;
+    Float post_value;
     Vehicle invest_vehicle;
     List<String> co_investor;
     Double fund_percent; // auto-generated

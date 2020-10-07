@@ -21,12 +21,20 @@
         select * from company where c_name = #{company_name}
     </select>
 
+    <select id="queryValueByName" parameterType="String" resultType="valuation">
+        select * from valuation where c_name = #{company_name}
+    </select>
+
     <select id="listCompanyByName" resultType="java.lang.String">
         select c_name from company
     </select>
 
     <select id="queryValuationByCID" parameterType="Integer" resultType="valuation">
         select * from valuation where cid = #{cid}
+    </select>
+
+    <select id="queryLatestValuationByCID" parameterType="Integer" resultType="valuation">
+            SELECT * FROM valuation WHERE cid = #{cid} ORDER BY update_date desc LIMIT 1;
     </select>
 
     <select id="listDealById" resultType="java.lang.Integer">
@@ -42,6 +50,11 @@
         from valuation v,company c
         where v.cid = c.cid and c.theme = 'Space_Transport' and c.c_name = 'lakeba'
         order by theme, c_name, update_date
+    </select>
+
+
+    <select id="queryCid" parameterType="Integer" resultType="java.lang.Integer">
+        select cid from company;
     </select>
 
 </mapper>

@@ -28,16 +28,17 @@
                         <th>No.</th>
                         <th>Company_Name</th>
                         <th>Theme</th>
-<%--                        <th>Year_Founded</th>
+                        <th>Year_Founded</th>
+                        <th>Runway_Start_Date</th>
                         <th>Runway_End_Date</th>
                         <th>Runway_Month</th>
                         <th>Raise_to_Date</th>
                         <th>Employee_No</th>
                         <th>Revenue</th>
-                        <th>Present_Valuation</th>
+                        <th>Post_Valuation</th>
                         <th>Valuation_Change_Reason</th>
                         <th>MSEQ_Investment_Cur_Val</th>
-                        <th>Own_Percent</th>--%>
+                        <th>Own_Percent</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

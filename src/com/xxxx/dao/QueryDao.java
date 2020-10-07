@@ -22,10 +22,15 @@ public interface QueryDao {
 
     Company queryCompanyByName(String company_name);
 
+    Valuation queryValueByName(String company_name);
+
+
     List<String> listCompanyByName();
 
     //TODO complete this method in Userdao.xml if the code in CompanyService is necessary
-    Valuation queryValuationByCID(Integer cid); // get the latest present value of the company
+    Valuation[] queryValuationByCID(Integer cid); // get the latest present value of the company
+
+    Valuation queryLatestValuationByCID(Integer cid); // get the latest present value of the company
 
     List<Integer> listDealById();
 
@@ -35,4 +40,6 @@ public interface QueryDao {
 
     // TODO implement this query
     Integer queryCidByCompanyName(String companyName);
+
+    List<Integer> queryCid();
 }

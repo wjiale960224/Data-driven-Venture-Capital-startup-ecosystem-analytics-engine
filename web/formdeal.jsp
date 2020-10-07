@@ -34,6 +34,7 @@
                     <th>Deal_Status</th>
                     <th>Series</th>
                     <th>MSEQ_Invest_amount</th>
+                    <th>Post_Valuation</th>
                     <th>Invest_Vehicle</th>
                     <th>Co_Investor</th>
                     <th>Fund_Percent</th>

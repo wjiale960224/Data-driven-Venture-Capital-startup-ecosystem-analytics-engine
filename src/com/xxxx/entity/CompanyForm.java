@@ -11,19 +11,35 @@ public class CompanyForm {
     // Company fields
     String Company_Name;
     String Theme;
-    String Year_Founded;
+    Integer Year_Founded;
+    String Runway_Start_Date;
     String Runway_End_Date;
-    String Runway_Month;
-    String Raise_to_Date;
-    String Employee_No;
-    String Revenue;
+    Integer Runway_Month;
+    Double Raise_to_Date;
+    Integer Employee_No;
+    Double Revenue;
 
     // Valuation fields
-    String Present_Valuation;
+    Double Post_Valuation;
     String Valuation_Change_Reason;
-    String MSEQ_Investment_Cur_Val;
-    String Own_Percent;
+    Double MSEQ_Investment_Cur_Val;
+    Double Own_Percent;
 
+    public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
+        Company_Name = company_Name;
+        Theme = theme;
+        Year_Founded = year_Founded;
+        Runway_Start_Date = runway_Start_Date;
+        Runway_End_Date = runway_End_Date;
+        Runway_Month = runway_Month;
+        Raise_to_Date = raise_to_Date;
+        Employee_No = employee_No;
+        Revenue = revenue;
+        Post_Valuation = post_Valuation;
+        Valuation_Change_Reason = valuation_Change_Reason;
+        this.MSEQ_Investment_Cur_Val = MSEQ_Investment_Cur_Val;
+        Own_Percent = own_Percent;
+    }
 
     public CompanyForm() {}
 
