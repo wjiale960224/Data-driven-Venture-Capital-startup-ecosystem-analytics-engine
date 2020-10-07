@@ -22,7 +22,7 @@ public interface QueryDao {
 
     Company queryCompanyByName(String company_name);
 
-    Valuation queryValueByName(String company_name);
+    Valuation[] queryValueByName(String company_name);
 
 
     List<String> listCompanyByName();

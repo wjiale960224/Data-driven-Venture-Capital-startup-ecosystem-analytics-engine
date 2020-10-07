@@ -25,7 +25,7 @@ public class GsonTest {
                 Company company = gson.fromJson(jsonArray.getJSONObject(i).toString(), Company.class);
                 company.setCid();
                 System.out.println(company.getCid());
-                System.out.println(company.getCompany_name());
+                System.out.println(company.getC_name());
                 System.out.println(company.getTheme());
                 insertDao.addCompany(company);
             }

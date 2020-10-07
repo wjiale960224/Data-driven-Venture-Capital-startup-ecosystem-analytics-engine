@@ -7,16 +7,16 @@ import java.util.List;
 
 public class Company {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
-    Integer cid;
+    int cid;
     String c_name;
     Theme theme;
-    Integer year_founded;
+    int year_founded;
     String runway_start_date;
     String runway_end_date;
-    Integer runway_month;
-    Double raised_to_date;
-    Integer employee_no;
-    Double revenue;
+    int runway_month;
+    double raised_to_date;
+    int employee_no;
+    double revenue;
 
     public Company() {
     }
@@ -52,7 +52,7 @@ public class Company {
 
 
 
-    public Integer getCid() {
+    public int getCid() {
         return cid;
     }
 
@@ -60,12 +60,16 @@ public class Company {
         this.cid = CompanyID.get_id();
     }
 
-    public String getCompany_name() {
+    public void setCid(int ID) {
+        this.cid = ID;
+    }
+
+    public String getC_name() {
         return c_name;
     }
 
-    public void setCompany_name(String company_name) {
-        this.c_name = company_name;
+    public void setC_name(String c_name) {
+        this.c_name = c_name;
     }
 
     public Theme getTheme() {
@@ -76,17 +80,21 @@ public class Company {
         this.theme = theme;
     }
 
-    public Integer getYear_founded() {
+    public int getYear_founded() {
         return year_founded;
     }
 
-    public void setYear_founded(Integer year_founded) {
+    public void setYear_founded(int year_founded) {
         this.year_founded = year_founded;
     }
 
-    public String getRunway_start_date() { return runway_start_date; }
+    public String getRunway_start_date() {
+        return runway_start_date;
+    }
 
-    public void setRunway_start_date(String runway_start_date) { this.runway_start_date = runway_start_date; }
+    public void setRunway_start_date(String runway_start_date) {
+        this.runway_start_date = runway_start_date;
+    }
 
     public String getRunway_end_date() {
         return runway_end_date;
@@ -96,30 +104,37 @@ public class Company {
         this.runway_end_date = runway_end_date;
     }
 
-    public Integer getRunway_month() {
+    public int getRunway_month() {
         return runway_month;
     }
 
-    public void setRunway_month(Integer runway_month) {
+    public void setRunway_month(int runway_month) {
         this.runway_month = runway_month;
     }
 
-    public Double getRaised_to_date() {
+    public double getRaised_to_date() {
         return raised_to_date;
     }
 
-    public Integer getEmployee_no() {
+    public void setRaised_to_date(double raised_to_date) {
+        this.raised_to_date = raised_to_date;
+    }
+
+    public int getEmployee_no() {
         return employee_no;
     }
 
-    public void setEmployee_no(Integer employee_no) {
+    public void setEmployee_no(int employee_no) {
         this.employee_no = employee_no;
     }
 
-    public Double getRevenue() {
+    public double getRevenue() {
         return revenue;
     }
 
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
 
     // may be called manually, or automatically after certain event
     public void delete(String company_name) {

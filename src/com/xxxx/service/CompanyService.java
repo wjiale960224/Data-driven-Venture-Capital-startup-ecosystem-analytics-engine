@@ -42,7 +42,7 @@ public class CompanyService {
         for (Company c : companyValuationMap.keySet()) {
 
             Valuation v = companyValuationMap.get(c);
-            CompanyForm cf = new CompanyForm(c.getCompany_name(),c.getTheme().toString(),c.getYear_founded(),c.getRunway_start_date(),
+            CompanyForm cf = new CompanyForm(c.getC_name(),c.getTheme().toString(),c.getYear_founded(),c.getRunway_start_date(),
                     c.getRunway_end_date(),c.getRunway_month(),c.getRaised_to_date(),c.getEmployee_no(),c.getRevenue(),v.getPost_value(),
                     v.getValuation_change_reason(),v.getMseq_investment_cur_val(),v.getOwn_percent());
             Gson g = new Gson();
@@ -74,25 +74,41 @@ public class CompanyService {
         for (String str : updateInfo) {
 //            System.out.println(str);
             CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
-            Company company = companyform.toCompany();
+            Company companyInForm = companyform.toCompany();
+            Valuation valuationInForm = companyform.toValuation();
 //            System.out.println(company.getCompany_name());
 //            System.out.println(company.getTheme());
-            if (!companys.contains(company.getCompany_name())) {
-                company.setCid(); // generate a new cid for new company only
+            if (!companys.contains(companyInForm.getC_name())) {
+                companyInForm.setCid(); // generate a new cid for new company only
 //                System.out.println(company.getCid());
-                insertdao.addCompany(company); // no error, but no new entry in database
+                insertdao.addCompany(companyInForm); // no error, but no new entry in database
                 List<String> ls = Portfolio.getPortfolio();
-                if (!Portfolio.getPortfolio().contains(company.getCompany_name())) {
-                    Portfolio.getPortfolio().add(company.getCompany_name());
+//                if (!Portfolio.getPortfolio().contains(company.getCompany_name())) {
+//                    Portfolio.getPortfolio().add(company.getCompany_name());
+//                }
+            }else{
+                Company companyInDB = queryDao.queryCompanyByName(companyInForm.getC_name());
+                boolean same = CompareChange(companyInForm, companyInDB);
+                if (!same){
+                    companyInForm.setCid(companyInDB.getCid());
+                    updateDao.updateCompany(companyInForm);
                 }
-            } else {
-
-                updateDao.updateCompany(company);
             }
-            session.commit();
+
+//            if ()
 
 //            Valuation valuation = companyform.toValuation();
 //            insertdao.addValuation(valuation);
         }
+        session.commit();
+        session.close();
+    }
+
+    public static boolean CompareChange(Company c1, Company c2) {
+        return c1.getTheme() == c2.getTheme() && c1.getYear_founded() == c2.getYear_founded() && c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
+                c1.getRunway_end_date().equals(c2.getRunway_end_date()) && c1.getRunway_month() == c2.getRunway_month() &&
+                c1.getRaised_to_date() == c2.getRaised_to_date() && c1.getEmployee_no() == c2.getEmployee_no() &&
+                c1.getRevenue() == c2.getRevenue();
+
     }
 }

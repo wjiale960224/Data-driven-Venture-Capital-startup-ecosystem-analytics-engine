@@ -31,7 +31,7 @@ public class Test {
             companyList.add(company);
         }
         for(Company c : companyList){
-            output = output +  "[{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},";
+            output = output +  "[{\"Company_Name\":\"" + c.getC_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},";
         }
         return output;
     }
@@ -49,7 +49,7 @@ public class Test {
             companyList.add(company);
         }
         for(Company c : companyList){
-            output = output +  "{\"Company_Name\":\"" + c.getCompany_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},\n";
+            output = output +  "{\"Company_Name\":\"" + c.getC_name() + "\",\"Theme\":\"" + c.getTheme() + "\"},\n";
         }
         System.out.println(output);
     }

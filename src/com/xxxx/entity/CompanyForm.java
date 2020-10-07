@@ -11,19 +11,19 @@ public class CompanyForm {
     // Company fields
     String Company_Name;
     String Theme;
-    Integer Year_Founded;
+    int Year_Founded;
     String Runway_Start_Date;
     String Runway_End_Date;
-    Integer Runway_Month;
-    Double Raise_to_Date;
-    Integer Employee_No;
-    Double Revenue;
+    int Runway_Month;
+    double Raise_to_Date;
+    int Employee_No;
+    double Revenue;
 
     // Valuation fields
-    Double Post_Valuation;
+    double Post_Valuation;
     String Valuation_Change_Reason;
-    Double MSEQ_Investment_Cur_Val;
-    Double Own_Percent;
+    double MSEQ_Investment_Cur_Val;
+    double Own_Percent;
 
     public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
         Company_Name = company_Name;
@@ -46,7 +46,7 @@ public class CompanyForm {
     public Company toCompany() {
         Company result = new Company();
 
-        result.setCompany_name(this.Company_Name);
+        result.setC_name(this.Company_Name);
 
         if (this.Theme.toLowerCase().contains("exponential"))
             result.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
@@ -59,35 +59,38 @@ public class CompanyForm {
         if (this.Theme.toLowerCase().contains("space"))
             result.setTheme(com.xxxx.entity.Theme.Space_Transport);
 
-        //result.setYear_founded(Integer.parseInt(this.Year_Founded));
-
-        //result.setRunway_end_date(this.Runway_End_Date);
-
+        result.setYear_founded(this.Year_Founded);
+        result.setRunway_start_date(this.Runway_Start_Date);
+        result.setRunway_end_date(this.Runway_End_Date);
+        result.setRunway_month(this.Runway_Month);
+        result.setRaised_to_date(this.Raise_to_Date);
+        result.setEmployee_no(this.Employee_No);
+        result.setRevenue(this.Revenue);
         return result;
     }
 
-//    public Valuation toValuation() {
-//        SqlSession session = GetSqlSession.createSqlSession();
-//        QueryDao queryDao = session.getMapper((QueryDao.class));
-//
-//        Valuation valuation = new Valuation();
-//
+    public Valuation toValuation() {
+        SqlSession session = GetSqlSession.createSqlSession();
+        QueryDao queryDao = session.getMapper((QueryDao.class));
+
+        Valuation valuation = new Valuation();
+
 //        valuation.setVal_id();
-//
-//        valuation.setCid(queryDao.queryCidByCompanyName(this.Company_Name));
-//
-//        valuation.setC_name(this.Company_Name);
-//
-//        valuation.setUpdate_date(LocalDate.now());
-//
-//        valuation.setPost_value(Double.parseDouble( this.Present_Valuation));
-//
-//        valuation.setValuation_change_reason(this.Valuation_Change_Reason);
-//
-//        valuation.setMseq_investment_cur_val(Double.parseDouble( this.MSEQ_Investment_Cur_Val));
-//
-//        valuation.setOwn_percent(Double.parseDouble( this.Own_Percent));
-//
-//        return valuation;
-//    }
+
+        valuation.setCid(queryDao.queryCidByCompanyName(this.Company_Name));
+
+        valuation.setC_name(this.Company_Name);
+
+        valuation.setUpdate_date(LocalDate.now());
+
+        valuation.setPost_value(this.Post_Valuation);
+
+        valuation.setValuation_change_reason(this.Valuation_Change_Reason);
+
+        valuation.setMseq_investment_cur_val(this.MSEQ_Investment_Cur_Val);
+
+        valuation.setOwn_percent(this.Own_Percent);
+
+        return valuation;
+    }
 }
