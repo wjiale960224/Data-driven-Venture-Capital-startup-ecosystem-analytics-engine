@@ -4,10 +4,7 @@ import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.Company;
-import com.xxxx.entity.CompanyID;
-import com.xxxx.entity.Theme;
-import com.xxxx.entity.Valuation;
+import com.xxxx.entity.*;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -25,16 +22,24 @@ public class InsertTest {
             Userdao userdao = mysql.getMapper(Userdao.class);
             InsertDao insertDao =mysql.getMapper(InsertDao.class);
             QueryDao queryDao = mysql.getMapper(QueryDao.class);
-            Valuation vv = queryDao.queryLatestValuationByCID(18494191);
+
+
+            /*Valuation vv = queryDao.queryLatestValuationByCID(18494191);
             Company cc = queryDao.queryCompanyByName("lakeba");
             cc.setC_name("llke");
             cc.setCid(); // generate a new cid for new company only
             insertDao.addCompany(cc); // no error, but no new entry in database
             vv.setVal_id();
             vv.setCid(cc.getCid()); // change
-            insertDao.addValuation(vv);
+            insertDao.addValuation(vv);*/
 
+            Deal d = queryDao.queryDealById(106278);
+            DealForm df = new DealForm(d.getC_name(),d.getDeal_date_toString(),d.getDeal_size(),d.getDeal_status().toString(),d.getSeries_toString(),
+                    d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor(),d.getFund_percentage(),
+                    d.getOwn_percentage_toString());
 
+            String cc = d.getCo_investor();
+            System.out.println(cc);
 //            UpdateDao updateDao = mysql.getMapper(UpdateDao.class);
 //            Company c1 = queryDao.queryCompanyByName("lakeba");
 //            c1.setYear_founded(2014);

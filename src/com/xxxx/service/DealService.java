@@ -36,7 +36,7 @@ public class DealService {
 
         for (Deal d : dealList) {
             DealForm df = new DealForm(d.getC_name(),d.getDeal_date_toString(),d.getDeal_size(),d.getDeal_status().toString(),d.getSeries_toString(),
-                    d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor_toString(),d.getFund_percentage(),
+                    d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor(),d.getFund_percentage(),
                     d.getOwn_percentage_toString());
             output += g.toJson(df) + ",";
         }

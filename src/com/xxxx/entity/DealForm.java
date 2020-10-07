@@ -4,36 +4,35 @@ import java.util.Date;
 import java.util.List;
 
 public class DealForm {
-    Integer deal_id;
-    String c_name; // to get company_id
-    String deal_date;
-    Double deal_size;
-    String deal_status;
-    String series;
-    Double mseq_invest_amt;
-    Double post_value;
-    String invest_vehicle;
-    String co_investor;
-    Double fund_percent; // auto-generated
-    Double own_percent; // manually input
+    String Company_Name;
+    String Deal_Date;
+    Double Deal_Size;
+    String Deal_Status;
+    String Series;
+    Double MSEQ_Invest_amount;
+    Double Post_Valuation;
+    String Invest_Vehicle;
+    String Co_Investor;
+    Double Fund_Percent;
+    Double Own_Percent;
 
-    public DealForm(String c_name, String deal_date, Double deal_size, String deal_status, String series, Double mseq_invest_amt, Double post_value, String invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
-        this.c_name = c_name;
-        this.deal_date = deal_date;
-        this.deal_size = deal_size;
-        this.deal_status = deal_status;
-        this.series = series;
-        this.mseq_invest_amt = mseq_invest_amt;
-        this.post_value = post_value;
-        this.invest_vehicle = invest_vehicle;
-        this.co_investor = co_investor;
-        this.fund_percent = fund_percent;
-        this.own_percent = own_percent;
+    public DealForm(String company_Name, String deal_Date, Double deal_Size, String deal_Status, String series, Double MSEQ_Invest_amount, Double post_Valuation, String invest_Vehicle, String co_Investor, Double fund_Percent, Double own_Percent) {
+        Company_Name = company_Name;
+        Deal_Date = deal_Date;
+        Deal_Size = deal_Size;
+        Deal_Status = deal_Status;
+        Series = series;
+        this.MSEQ_Invest_amount = MSEQ_Invest_amount;
+        Post_Valuation = post_Valuation;
+        Invest_Vehicle = invest_Vehicle;
+        Co_Investor = co_Investor;
+        Fund_Percent = fund_Percent;
+        Own_Percent = own_Percent;
     }
 
     public Deal toDealFrom(){
         Deal dl = new Deal();
-        if (this.deal_status.toLowerCase().contains("completed"))
+/*        if (this.deal_status.toLowerCase().contains("completed"))
             dl.setDeal_status(DealStatus.Completed);
         if (this.deal_status.toLowerCase().contains("in_progress"))
             dl.setDeal_status(DealStatus.In_Progress);
@@ -46,7 +45,7 @@ public class DealForm {
         if (this.series.toLowerCase().contains("c"))
             dl.setSeries(Series.Series_C);
         if (this.series.toLowerCase().contains("d"))
-            dl.setSeries(Series.Series_D);
+            dl.setSeries(Series.Series_D);*/
 
 /*        dl.setDeal_date(this.deal_date);
         dl.setDeal_size(this.deal_size);

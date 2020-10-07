@@ -19,7 +19,7 @@ public class Deal {
     Double mseq_invest_amt;
     Double post_value;
     Vehicle invest_vehicle;
-    List<String> co_investor;
+    String co_investor;
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
 
@@ -91,13 +91,10 @@ public class Deal {
         }
     }
 
-    public List<String> getCo_investor() {
+    public String getCo_investor() {
         return co_investor;
     }
 
-    public String getCo_investor_toString() {
-        return co_investor.toString();
-    }
     public Double getFund_percentage() {
         return fund_percent;
     }
@@ -146,9 +143,7 @@ public class Deal {
         this.invest_vehicle = vehicle;
     }
 
-    public void setCo_investor(List<String> co_investor){this.co_investor = co_investor;}
-
-    public void addCo_investor(String co_investor) {
+    /*public void addCo_investor(String co_investor) {
         this.co_investor.add(co_investor);
     }
 
@@ -158,7 +153,7 @@ public class Deal {
 
     public void resetCo_investor(String co_investor) {
         this.co_investor.clear();
-    }
+    }*/
 
     // should only be called by service level
     protected void setFund_percentage(Double fund_percentage) {
