@@ -48,13 +48,6 @@ public class CompanyService {
             Gson g = new Gson();
             output += g.toJson(cf) + ",";
 
-//            output = output + "{\"No.\":\"" + c.getCid() + "\",\"Company_Name\":\"" + c.getCompany_name()
-//                    + "\",\"Theme\":\"" + c.getTheme() + "\",\"Year_Founded\":\"" + c.getYear_founded()
-//                    + "\",\"Runway_End_Date\":\"" + c.getRunway_end_date() + "\",\"Runway_Month\":\"" + c.getRunway_month()
-//                    + "\",\"Raise_to_Date\":\"" + c.getRaised_to_date() + "\",\"Employee_No\":\"" + c.getEmployee_no()
-//                    + "\",\"Revenue\":\"" + c.getRevenue() + "\",\"Present_Valuation\":\"" + v.getPost_value()
-//                    + "\",\"Valuation_Change_reason\":\"" + v.getValuation_change_reason() + "\",\"MSEQ_Investment_Cur_Val\":\"" + v.getMseq_investment_cur_val()
-//                    + "\",\"Own_Percent\":\"" + v.getOwn_percent() + "\"},";
         }
         System.out.println("check getCompanyInfo");
         return "[" + output.substring(0, output.length() - 1) + "]";
@@ -66,39 +59,36 @@ public class CompanyService {
         InsertDao insertdao = session.getMapper(InsertDao.class);
         UpdateDao updateDao = session.getMapper(UpdateDao.class);
         QueryDao queryDao = session.getMapper((QueryDao.class));
-
-
-
         List<String> companys = queryDao.listCompanyByName(); // get companies in current table
         String[] updateInfo = StringUtil.SplitStrings(c);
         for (String str : updateInfo) {
-//            System.out.println(str);
             CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
             Company companyInForm = companyform.toCompany();
             Valuation valuationInForm = companyform.toValuation();
-//            System.out.println(company.getCompany_name());
-//            System.out.println(company.getTheme());
-            if (!companys.contains(companyInForm.getC_name())) {
+            double[] valuationsInDB = null;
+            int cidInDB = 0;
+            if (!companys.contains(companyInForm.getC_name())) { // Add company and valuation
                 companyInForm.setCid(); // generate a new cid for new company only
-//                System.out.println(company.getCid());
                 insertdao.addCompany(companyInForm); // no error, but no new entry in database
-                List<String> ls = Portfolio.getPortfolio();
-//                if (!Portfolio.getPortfolio().contains(company.getCompany_name())) {
-//                    Portfolio.getPortfolio().add(company.getCompany_name());
-//                }
+                valuationInForm.setVal_id();
+                valuationInForm.setCid(companyInForm.getCid()); // change
+                insertdao.addValuation(valuationInForm);
             }else{
+                valuationsInDB = queryDao.queryValueByName(companyInForm.getC_name());
                 Company companyInDB = queryDao.queryCompanyByName(companyInForm.getC_name());
+                cidInDB = companyInDB.getCid();
                 boolean same = CompareChange(companyInForm, companyInDB);
-                if (!same){
+                if (!same){ // Update company info
                     companyInForm.setCid(companyInDB.getCid());
                     updateDao.updateCompany(companyInForm);
                 }
+                if (!HasPostValue(valuationsInDB, valuationInForm.getPost_value())){ // Update post value info
+                    valuationInForm.setVal_id();
+                    valuationInForm.setCid(cidInDB);
+                    insertdao.addValuation(valuationInForm);
+                }
             }
 
-//            if ()
-
-//            Valuation valuation = companyform.toValuation();
-//            insertdao.addValuation(valuation);
         }
         session.commit();
         session.close();
@@ -110,5 +100,14 @@ public class CompanyService {
                 c1.getRaised_to_date() == c2.getRaised_to_date() && c1.getEmployee_no() == c2.getEmployee_no() &&
                 c1.getRevenue() == c2.getRevenue();
 
+    }
+
+    public static boolean HasPostValue(double[] postValuations, double v){
+        for (double pv : postValuations){
+            if (pv == v){
+                return true;
+            }
+        }
+        return false;
     }
 }

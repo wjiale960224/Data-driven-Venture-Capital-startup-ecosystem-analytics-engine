@@ -48,6 +48,10 @@ public class Valuation {
         this.cid = cid;
     }
 
+    public void setCid() {
+        this.cid = CompanyID.get_id();
+    }
+
     public String getC_name() {
         return c_name;
     }

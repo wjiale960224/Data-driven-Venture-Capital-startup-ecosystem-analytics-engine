@@ -5,6 +5,7 @@ import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Deal;
+import com.xxxx.entity.DealForm;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
@@ -26,18 +27,18 @@ public class DealService {
         Userdao userdao = session.getMapper(Userdao.class);
         List<Deal> dealList = new ArrayList<>();
         String output = "";
+        Gson g = new Gson();
+
         for (Integer d : deal_IDs) {
             Deal deal = userdao.queryDealById(d);
             dealList.add(deal);
         }
-        for (Deal d : dealList) {
-            output += "{\"NoDealID.\":\"" + d.getDid() + "\"NoCID.\":\"" + d.getCompany().getC_name() + "\",\"Deal_Date\":\"" +
-                    d.getDeal_date() + "\",\"Deal_Size\":\"" + d.getDeal_size() + "\",\"Deal_Status\":\"" + d.getDeal_status()
-                    + "\",\"Series\":\"" + d.getSeries() + "\",\"MSEQ_Amount\":\"" + d.getMSEQ_invest_amount()
-                    + "\",\"Invest_vehicle\":\"" + d.getVehicle() + "\",\"Co_Investor\":\"" + d.getCo_investor()
-                    + "\",\"Fund_Percent\":\"" + d.getFund_percentage() + "\",\"Own_Percent\":\"" + d.getOwn_percentage()
-                    + "\"},";
 
+        for (Deal d : dealList) {
+            DealForm df = new DealForm(d.getC_name(),d.getDeal_date_toString(),d.getDeal_size(),d.getDeal_status().toString(),d.getSeries_toString(),
+                    d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor_toString(),d.getFund_percentage(),
+                    d.getOwn_percentage_toString());
+            output += g.toJson(df) + ",";
         }
         return "[" + output.substring(0, output.length() - 1) + "]";
     }

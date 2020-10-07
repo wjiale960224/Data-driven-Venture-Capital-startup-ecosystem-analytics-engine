@@ -16,7 +16,7 @@
     <jsp:include page="left_guide.jsp"></jsp:include>
     <div class="table_whole_div">
         <div class="table_caption">
-            <div><h2>Companies</h2></div>
+            <div><h2>Deals</h2></div>
             <div class="edit_box">
                 <label for="edit">Edit</label>
                 <input type='checkbox' value='edit' id="edit">

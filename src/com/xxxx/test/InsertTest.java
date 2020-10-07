@@ -23,14 +23,22 @@ public class InsertTest {
         SqlSession mysql = GetSqlSession.createSqlSession();
         try {
             Userdao userdao = mysql.getMapper(Userdao.class);
-//            Valuation v = userdao.queryRecentValuationByCID(18494191);
-//            InsertDao insertDao =mysql.getMapper(InsertDao.class);
-
+            InsertDao insertDao =mysql.getMapper(InsertDao.class);
             QueryDao queryDao = mysql.getMapper(QueryDao.class);
-            UpdateDao updateDao = mysql.getMapper(UpdateDao.class);
-            Company c1 = queryDao.queryCompanyByName("lakeba");
-            c1.setYear_founded(2014);
-            updateDao.updateCompany(c1);
+            Valuation vv = queryDao.queryLatestValuationByCID(18494191);
+            Company cc = queryDao.queryCompanyByName("lakeba");
+            cc.setC_name("llke");
+            cc.setCid(); // generate a new cid for new company only
+            insertDao.addCompany(cc); // no error, but no new entry in database
+            vv.setVal_id();
+            vv.setCid(cc.getCid()); // change
+            insertDao.addValuation(vv);
+
+
+//            UpdateDao updateDao = mysql.getMapper(UpdateDao.class);
+//            Company c1 = queryDao.queryCompanyByName("lakeba");
+//            c1.setYear_founded(2014);
+//            updateDao.updateCompany(c1);
 //            List<Integer> l = queryDao.queryCid();
 //
 //            Valuation[] vs = queryDao.queryValuationByCID(10179991);

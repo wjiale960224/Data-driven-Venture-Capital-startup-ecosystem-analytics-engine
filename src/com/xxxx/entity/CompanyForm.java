@@ -70,14 +70,7 @@ public class CompanyForm {
     }
 
     public Valuation toValuation() {
-        SqlSession session = GetSqlSession.createSqlSession();
-        QueryDao queryDao = session.getMapper((QueryDao.class));
-
         Valuation valuation = new Valuation();
-
-//        valuation.setVal_id();
-
-        valuation.setCid(queryDao.queryCidByCompanyName(this.Company_Name));
 
         valuation.setC_name(this.Company_Name);
 

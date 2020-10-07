@@ -21,8 +21,8 @@
         select * from company where c_name = #{company_name}
     </select>
 
-    <select id="queryValueByName" parameterType="String" resultType="valuation">
-        select * from valuation where c_name = #{company_name}
+    <select id="queryValueByName" parameterType="String" resultType="double">
+        select post_value from valuation where c_name = #{company_name}
     </select>
 
     <select id="listCompanyByName" resultType="java.lang.String">

@@ -4,12 +4,9 @@ import com.xxxx.dao.Userdao;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * @author Zihang
- * @date 2020/9/14
- */
 
 public class Deal {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
@@ -20,7 +17,7 @@ public class Deal {
     DealStatus deal_status;
     Series series;
     Double mseq_invest_amt;
-    Float post_value;
+    Double post_value;
     Vehicle invest_vehicle;
     List<String> co_investor;
     Double fund_percent; // auto-generated
@@ -29,15 +26,6 @@ public class Deal {
     public Deal() {
     }
 
-    public Deal(String c_name, Date deal_date, Double deal_size, Series series, Double MSEQ_invest_amount) {
-        this.deal_id = DealID.get_id();
-        this.deal_date = deal_date;
-        this.deal_size = deal_size;
-        this.deal_status = DealStatus.Completed; // default status is Completed
-        this.series = series;
-        this.mseq_invest_amt = MSEQ_invest_amount;
-        this.c_name = c_name;
-    }
 
 
     public Integer getDid() {
@@ -62,6 +50,11 @@ public class Deal {
         return deal_date;
     }
 
+    public String getDeal_date_toString() {
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+        return ft.format(this.getDeal_date());
+    }
+
     public Double getDeal_size() {
         return deal_size;
     }
@@ -74,6 +67,14 @@ public class Deal {
         return series;
     }
 
+    public String getSeries_toString(){
+        if (this.getSeries() == null){
+            return null;
+        }else {
+            return this.getSeries().toString();
+        }
+    }
+
     public Double getMSEQ_invest_amount() {
         return mseq_invest_amt;
     }
@@ -82,10 +83,21 @@ public class Deal {
         return invest_vehicle;
     }
 
+    public String getVehicle_toString() {
+        if (this.getVehicle() == null){
+            return null;
+        }else {
+            return invest_vehicle.toString();
+        }
+    }
+
     public List<String> getCo_investor() {
         return co_investor;
     }
 
+    public String getCo_investor_toString() {
+        return co_investor.toString();
+    }
     public Double getFund_percentage() {
         return fund_percent;
     }
@@ -94,12 +106,28 @@ public class Deal {
         return own_percent;
     }
 
+    public Double getOwn_percentage_toString() {
+        if (this.getOwn_percentage() == null){
+            return null;
+        }else {
+            return this.getOwn_percentage();
+        }
+    }
+
     public void setDeal_date(Date deal_date) {
         this.deal_date = deal_date;
     }
 
     public void setDeal_size(Double deal_size) {
         this.deal_size = deal_size;
+    }
+
+    public Double getPost_value() {
+        return post_value;
+    }
+
+    public void setPost_value(Double post_value) {
+        this.post_value = post_value;
     }
 
     public void setDeal_status(DealStatus deal_status) {

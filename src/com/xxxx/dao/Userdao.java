@@ -35,7 +35,9 @@ public interface Userdao {
     int updateRunwayMonth();
 
     //TODO complete this method in Userdao.xml if the code in CompanyService is necessary
-    Valuation queryValuationByCID(Integer cid); // get the latest present value of the company
+    Valuation queryValuationByCID(Integer cid);
+
+    Valuation queryLatestValuationByCID(Integer cid); // get the latest present value of the company
 
     List<Integer> listDealById();
 

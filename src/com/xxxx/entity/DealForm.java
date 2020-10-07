@@ -6,19 +6,18 @@ import java.util.List;
 public class DealForm {
     Integer deal_id;
     String c_name; // to get company_id
-    Date deal_date;
+    String deal_date;
     Double deal_size;
     String deal_status;
     String series;
     Double mseq_invest_amt;
-    Float post_value;
-    Vehicle invest_vehicle;
-    List<String> co_investor;
+    Double post_value;
+    String invest_vehicle;
+    String co_investor;
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
 
-    public DealForm(Integer deal_id, String c_name, Date deal_date, Double deal_size, String deal_status, String series, Double mseq_invest_amt, Float post_value, Vehicle invest_vehicle, List<String> co_investor, Double fund_percent, Double own_percent) {
-        this.deal_id = deal_id;
+    public DealForm(String c_name, String deal_date, Double deal_size, String deal_status, String series, Double mseq_invest_amt, Double post_value, String invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
         this.c_name = c_name;
         this.deal_date = deal_date;
         this.deal_size = deal_size;
@@ -31,7 +30,6 @@ public class DealForm {
         this.fund_percent = fund_percent;
         this.own_percent = own_percent;
     }
-
 
     public Deal toDealFrom(){
         Deal dl = new Deal();
@@ -50,13 +48,13 @@ public class DealForm {
         if (this.series.toLowerCase().contains("d"))
             dl.setSeries(Series.Series_D);
 
-        dl.setDeal_date(this.deal_date);
+/*        dl.setDeal_date(this.deal_date);
         dl.setDeal_size(this.deal_size);
         dl.setFund_percentage(this.fund_percent);
         dl.setMSEQ_invest_amount(this.mseq_invest_amt);
         dl.setOwn_percentage(this.own_percent);
         dl.setVehicle(this.invest_vehicle);
-        dl.setCo_investor(this.co_investor);
+        dl.setCo_investor(this.co_investor);*/
         return dl;
     }
 }
