@@ -4,13 +4,16 @@ import com.google.gson.Gson;
 import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.Userdao;
+import com.xxxx.entity.CompanyForm;
 import com.xxxx.entity.Deal;
 import com.xxxx.entity.DealForm;
 import com.xxxx.util.GetSqlSession;
+import com.xxxx.util.StringUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,18 +47,24 @@ public class DealService {
     }
 
     // TODO deal_id, cid, post_val is not given in the input. Need to create deal_id, get cid, calculate post_val when add new Deal into database.
-    public void updateDealInfo(String d) {
+    public void updateDealInfo(String d) throws ParseException {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
 
-        JSONObject jsonObject = new JSONObject(d);
+        String[] updateInfo = StringUtil.SplitStrings(d);
+        for (String str : updateInfo) {
+            DealForm dealForm = gson.fromJson(str, DealForm.class);
+            Deal deal = dealForm.toDeal();
+        }
+
+        /*JSONObject jsonObject = new JSONObject(d);
         org.json.JSONArray jsonArray = jsonObject.getJSONArray("deal");
         int l = jsonArray.length();
         for (int i = 0; i < l; i++) {
             Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
             insertdao.addDeal(deal); // insert new deal entry
-        }
+        }*/
     }
 
     // When to call this method?

@@ -1,8 +1,9 @@
 package com.xxxx.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 public class DealForm {
     String Company_Name;
     String Deal_Date;
@@ -30,30 +31,38 @@ public class DealForm {
         Own_Percent = own_Percent;
     }
 
-    public Deal toDealFrom(){
+    public Deal toDeal() throws ParseException {
         Deal dl = new Deal();
-/*        if (this.deal_status.toLowerCase().contains("completed"))
+        if (this.Deal_Status.toLowerCase().contains("completed"))
             dl.setDeal_status(DealStatus.Completed);
-        if (this.deal_status.toLowerCase().contains("in_progress"))
+        if (this.Deal_Status.toLowerCase().contains("in_progress"))
             dl.setDeal_status(DealStatus.In_Progress);
-        if (this.deal_status.toLowerCase().contains("fail"))
+        if (this.Deal_Status.toLowerCase().contains("fail"))
             dl.setDeal_status(DealStatus.Failed);
-        if (this.series.toLowerCase().contains("a"))
-            dl.setSeries(Series.Series_A);
-        if (this.series.toLowerCase().contains("b"))
-            dl.setSeries(Series.Series_B);
-        if (this.series.toLowerCase().contains("c"))
-            dl.setSeries(Series.Series_C);
-        if (this.series.toLowerCase().contains("d"))
-            dl.setSeries(Series.Series_D);*/
+        if (this.Series.toLowerCase().contains("a"))
+            dl.setSeries(com.xxxx.entity.Series.Series_A);
+        if (this.Series.toLowerCase().contains("b"))
+            dl.setSeries(com.xxxx.entity.Series.Series_B);
+        if (this.Series.toLowerCase().contains("c"))
+            dl.setSeries(com.xxxx.entity.Series.Series_C);
+        if (this.Series.toLowerCase().contains("d"))
+            dl.setSeries(com.xxxx.entity.Series.Series_D);
 
-/*        dl.setDeal_date(this.deal_date);
-        dl.setDeal_size(this.deal_size);
-        dl.setFund_percentage(this.fund_percent);
-        dl.setMSEQ_invest_amount(this.mseq_invest_amt);
-        dl.setOwn_percentage(this.own_percent);
-        dl.setVehicle(this.invest_vehicle);
-        dl.setCo_investor(this.co_investor);*/
+
+//        dl.setDeal_date(this.Deal_Date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = simpleDateFormat.parse(this.Deal_Date);
+        dl.setDeal_date(date);
+        dl.setDeal_size(this.Deal_Size);
+        dl.setFund_percentage(this.Fund_Percent);
+        dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount);
+        dl.setOwn_percentage(this.Own_Percent);
+        if (this.Invest_Vehicle.toLowerCase().contains("equities"))
+            dl.setVehicle(Vehicle.Equities);
+        if (this.Invest_Vehicle.toLowerCase().contains("notes"))
+            dl.setVehicle(Vehicle.Notes);
+
+        dl.setCo_investor(this.Co_Investor);
         return dl;
     }
 }

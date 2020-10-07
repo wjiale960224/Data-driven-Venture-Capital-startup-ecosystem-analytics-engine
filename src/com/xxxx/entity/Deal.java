@@ -91,9 +91,6 @@ public class Deal {
         }
     }
 
-    public String getCo_investor() {
-        return co_investor;
-    }
 
     public Double getFund_percentage() {
         return fund_percent;
@@ -109,6 +106,14 @@ public class Deal {
         }else {
             return this.getOwn_percentage();
         }
+    }
+
+    public void setCo_investor(String co_investor) {
+        this.co_investor = co_investor;
+    }
+
+    public String getCo_investor() {
+        return co_investor;
     }
 
     public void setDeal_date(Date deal_date) {
