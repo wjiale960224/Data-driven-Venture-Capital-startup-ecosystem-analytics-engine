@@ -22,9 +22,10 @@
         <div class = "top_box">
             <div class="top_column" id="overview_info">
                 <ul >
-                    <li><span>Total Fund Size</span><span>A$12.53M</span></li>
+                    <li><span>Total Fund Size</span><span>A$12.83M</span></li>
                     <li><span>Drawn Capital</span><span>A$2.53M</span></li>
                     <li><span>Undrawn Capital</span><span>A$10M</span></li>
+                    <li><span>Management Fee</span><span>A$0.3M</span></li>
                     <li><span>Total companies</span><span>30</span></li>
                     <li><span>Total Deals</span><span>23</span></li>
                     <li><span>Per Deal</span><span>A$0.56M</span></li>

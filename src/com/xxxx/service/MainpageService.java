@@ -47,6 +47,10 @@ public class MainpageService {
         }
         int no_company = data.size();
         int no_deal = dealIds.size();
+        for(Deal d : deal){
+            total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
+        }
+        double total_mseq_invest_output = total_mseq_invest/1000000;
         Gson g = new Gson();
         for(Company c : data){
             double fund = 0;
@@ -60,7 +64,7 @@ public class MainpageService {
         }
 
         perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
-        OverviewInfo oi = new OverviewInfo(1.1,1.1,1.1,1,1,1.1,1,1.1);
+        OverviewInfo oi = new OverviewInfo(1.1,total_mseq_invest_output,1.1,1.1,no_company,no_deal,total_mseq_invest_output/no_deal,1,1.1);
         String ovInfo = g.toJson(oi);
         ovInfo = "OvInfo[" + ovInfo + "]";
 
