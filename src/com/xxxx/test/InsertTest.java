@@ -5,6 +5,7 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.*;
+import com.xxxx.service.DealService;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -33,14 +34,17 @@ public class InsertTest {
             vv.setCid(cc.getCid()); // change
             insertDao.addValuation(vv);*/
 
-            Deal d = queryDao.queryDealById(106278);
+            Deal d = queryDao.queryDealById(133361);
             DealForm df = new DealForm(d.getC_name(),d.getDeal_date_toString(),d.getDeal_size(),d.getDeal_status().toString(),d.getSeries_toString(),
                     d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor(),d.getFund_percentage(),
                     d.getOwn_percentage_toString());
-
             Deal d2 = df.toDeal();
-            String cc = d.getCo_investor();
-            System.out.println(cc);
+
+            DealService ds = new DealService();
+            boolean bb = d2.equals(d);
+            System.out.println(d.equals(d2));
+//            String cc = d.getCo_investor();
+//            System.out.println(cc);
 //            UpdateDao updateDao = mysql.getMapper(UpdateDao.class);
 //            Company c1 = queryDao.queryCompanyByName("lakeba");
 //            c1.setYear_founded(2014);

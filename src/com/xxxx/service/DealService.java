@@ -5,9 +5,7 @@ import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
-import com.xxxx.entity.CompanyForm;
-import com.xxxx.entity.Deal;
-import com.xxxx.entity.DealForm;
+import com.xxxx.entity.*;
 import com.xxxx.util.GetSqlSession;
 import com.xxxx.util.StringUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -16,6 +14,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DealService {
@@ -59,7 +58,11 @@ public class DealService {
             DealForm dealForm = gson.fromJson(str, DealForm.class);
             Deal dealInForm = dealForm.toDeal();
 
-//            if (dealsInDB)
+            for (Deal deal: dealsInDB){
+                if (deal.equals(dealInForm)){
+
+                }
+            }
         }
 
         /*JSONObject jsonObject = new JSONObject(d);
@@ -85,4 +88,5 @@ public class DealService {
             deleteDao.delDeal(deal);
         }
     }
+
 }

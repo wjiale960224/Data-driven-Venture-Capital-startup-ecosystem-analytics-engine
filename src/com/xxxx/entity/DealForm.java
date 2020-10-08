@@ -68,6 +68,7 @@ public class DealForm {
 //        dl.setDeal_date(this.Deal_Date);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = simpleDateFormat.parse(this.Deal_Date);
+        dl.setC_name(this.Company_Name);
         dl.setDeal_date(date);
         dl.setDeal_size(this.Deal_Size);
         dl.setFund_percentage(this.Fund_Percent);

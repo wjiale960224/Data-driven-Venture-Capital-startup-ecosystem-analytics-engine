@@ -31,6 +31,14 @@ public class Deal {
         return cid;
     }
 
+    public Integer getDeal_id() {
+        return deal_id;
+    }
+
+    public void setDeal_id(Integer deal_id) {
+        this.deal_id = deal_id;
+    }
+
     public void setCid(Integer cid) {
         this.cid = cid;
     }
@@ -174,5 +182,40 @@ public class Deal {
 
     public void setOwn_percentage(Double own_percentage) {
         this.own_percent = own_percentage;
+    }
+
+//    @Override
+    public boolean equals(Deal B){
+        boolean cName = this.c_name.equals(B.c_name);
+        boolean dealDate = this.deal_date.equals(B.deal_date);
+        boolean deaSize = this.deal_size.equals(B.deal_size);
+        boolean dealStatus = this.deal_status.equals(B.deal_status);
+        boolean dealSeries = this.CompareString(this.series,B.series);
+
+        boolean mseq = this.mseq_invest_amt.equals(B.mseq_invest_amt) ;
+        boolean postV = this.post_value.equals(B.post_value);
+        boolean investV;
+        if (this.invest_vehicle == null && B.invest_vehicle == null){
+            investV = true;
+        }else if (this.invest_vehicle.equals(B.invest_vehicle)){
+            investV = true;
+        }else {
+            investV = false;
+        }
+
+        boolean coInv = this.CompareString(this.co_investor,B.co_investor);
+        boolean fundPct = this.fund_percent.equals(B.fund_percent);
+        boolean ownPct = this.CompareString(this.own_percent, B.own_percent);
+
+        return cName & dealDate & deaSize & dealStatus & dealSeries & mseq & postV & investV & coInv & fundPct & ownPct;
+    }
+
+    public boolean CompareString(Object a, Object b){
+        if (a == null && b == null){
+            return true;
+        }else if (a == null || b ==null){
+            return false;
+        }
+        else return a.equals(b);
     }
 }
