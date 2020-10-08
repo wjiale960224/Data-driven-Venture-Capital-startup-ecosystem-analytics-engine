@@ -55,11 +55,11 @@ public class DealService {
         String[] updateInfo = StringUtil.SplitStrings(d);
         List<Deal> dealsInDB = queryDao.queryDeals();
         for (String str : updateInfo) {
-            DealForm dealForm = gson.fromJson(str, DealForm.class);
-            Deal dealInForm = dealForm.toDeal();
+            DealForm dealForm = gson.fromJson(str, DealForm.class); // Deal form instance
+            Deal dealInForm = dealForm.toDeal(); // deal instance
 
             for (Deal deal: dealsInDB){
-                if (deal.equals(dealInForm)){
+                if (deal.equals(dealInForm)){ // Compare two deals, if same return true.
 
                 }
             }

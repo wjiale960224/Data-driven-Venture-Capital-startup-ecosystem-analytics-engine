@@ -6,6 +6,7 @@ import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
 import com.xxxx.entity.MainpageData;
+import com.xxxx.entity.overview.OverviewInfo;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -34,6 +35,7 @@ public class MainpageService {
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
         String output = "";
+        String perOfFund = "";
         double total_mseq_invest = 0;
         for(String c : company_names){
             Company company = queryDao.queryCompanyByName(c);
@@ -45,6 +47,7 @@ public class MainpageService {
         }
         int no_company = data.size();
         int no_deal = dealIds.size();
+        Gson g = new Gson();
         for(Company c : data){
             double fund = 0;
             for(Deal d : deal){
@@ -53,9 +56,15 @@ public class MainpageService {
                 }
             }
             MainpageData mainpageData = new MainpageData(c.getC_name(),c.getTheme().toString(),fund);
-            Gson g = new Gson();
-            output += g.toJson(mainpageData) + ",";
-            }
-        return "[" + output.substring(0, output.length() - 1) + "]";
+            perOfFund += g.toJson(mainpageData) + ",";
+        }
+
+        perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
+        OverviewInfo oi = new OverviewInfo(1.1,1.1,1.1,1,1,1.1,1,1.1);
+        String ovInfo = g.toJson(oi);
+        ovInfo = "OvInfo[" + ovInfo + "]";
+
+        output = perOfFund + ovInfo;
+        return output;
     }
 }

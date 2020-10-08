@@ -176,9 +176,6 @@ $(function (){
     mseq_bar.setOption(mseq_bar_option);
 
 
-
-
-
     (function refresh(){
         var company_name = [];
         var fund = [];
@@ -190,7 +187,28 @@ $(function (){
             },
             success:function(mainpage_info){
                 console.log("yes,refreshed.");
-                console.log(mainpage_info);
+                // console.log(mainpage_info);
+
+                var temp = mainpage_info.split("PerOfFun");
+                var infos = temp[1].split("OvInfo");
+
+
+                var per_of_funds = split_string(infos[0]);
+                var over_infos = split_string(infos[1]);
+                console.log(per_of_funds);
+                console.log(over_infos);
+
+                for (var i = 0; i < per_of_funds.length; i++){ // Reconstruct string format to object format
+                    var obj = JSON.parse(per_of_funds[i]);
+                    console.log(obj);
+                }
+                for (i = 0; i < over_infos.length; i++){ // Reconstruct string format to object format
+                    var obj2 = JSON.parse(over_infos[i]);
+                    console.log(obj2);
+                }
+
+                /*console.log(c[0]);
+                console.log(c[1]);
                 var mainpagedata = mainpage_info.substring(1,mainpage_info.length-1).split("},{");
                 for (i = 0; i < mainpagedata.length; i++){ // Get rid of [] and split each item up.
                     if (i === 0) {
@@ -263,12 +281,29 @@ $(function (){
                     ]
                 };
 
-                two_pie.setOption(two_pie_option);
+                two_pie.setOption(two_pie_option);*/
             },
             error: function(){
                 console.log("No,something wrong.");
             }
         });
     }());
+
+    function split_string(str){
+        var strings = str.substring(1,str.length-1).split("},{");
+        if (strings.length === 1){
+            return strings
+        }
+        for (i = 0; i < strings.length; i++){ // Get rid of [] and split each item up.
+            if (i === 0) {
+                strings[i] += "}";
+            }else if (i === strings.length-1){
+                strings[i] = "{" + strings[i];
+            }else {
+                strings[i] = "{" + strings[i] + "}";
+            }
+        }
+        return strings;
+    }
 
 })
