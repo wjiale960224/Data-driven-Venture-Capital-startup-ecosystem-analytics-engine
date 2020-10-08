@@ -42,4 +42,7 @@ public interface QueryDao {
     Integer queryCidByCompanyName(String companyName);
 
     List<Integer> queryCid();
+
+    List<Deal> queryDeals();
+
 }

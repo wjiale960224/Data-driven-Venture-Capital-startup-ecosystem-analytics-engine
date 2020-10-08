@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
 
 
 @WebServlet("/deal_form")
@@ -29,7 +30,11 @@ public class DealFormServlet extends HttpServlet {
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else {
             d = "{\"deal\": " + d + "}";
-            dealService.updateDealInfo(d);
+            try {
+                dealService.updateDealInfo(d);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

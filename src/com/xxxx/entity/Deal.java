@@ -11,6 +11,7 @@ import java.util.*;
 public class Deal {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
     Integer deal_id;
+    Integer cid;
     String c_name; // to get company_id
     Date deal_date;
     Double deal_size;
@@ -26,7 +27,13 @@ public class Deal {
     public Deal() {
     }
 
+    public Integer getCid() {
+        return cid;
+    }
 
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
 
     public Integer getDid() {
         return deal_id;

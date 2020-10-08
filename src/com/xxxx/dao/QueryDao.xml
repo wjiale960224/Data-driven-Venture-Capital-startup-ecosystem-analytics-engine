@@ -57,4 +57,7 @@
         select cid from company;
     </select>
 
+    <select id="queryDeals" resultType="deal">
+        select * from deal;
+    </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.xxxx.service;
 import com.google.gson.Gson;
 import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
+import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.CompanyForm;
 import com.xxxx.entity.Deal;
@@ -51,11 +52,14 @@ public class DealService {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
-
+        QueryDao queryDao = session.getMapper(QueryDao.class);
         String[] updateInfo = StringUtil.SplitStrings(d);
+        List<Deal> dealsInDB = queryDao.queryDeals();
         for (String str : updateInfo) {
             DealForm dealForm = gson.fromJson(str, DealForm.class);
-            Deal deal = dealForm.toDeal();
+            Deal dealInForm = dealForm.toDeal();
+
+//            if (dealsInDB)
         }
 
         /*JSONObject jsonObject = new JSONObject(d);

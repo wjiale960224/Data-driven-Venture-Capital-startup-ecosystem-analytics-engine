@@ -33,21 +33,37 @@ public class DealForm {
 
     public Deal toDeal() throws ParseException {
         Deal dl = new Deal();
-        if (this.Deal_Status.toLowerCase().contains("completed"))
-            dl.setDeal_status(DealStatus.Completed);
-        if (this.Deal_Status.toLowerCase().contains("in_progress"))
-            dl.setDeal_status(DealStatus.In_Progress);
-        if (this.Deal_Status.toLowerCase().contains("fail"))
-            dl.setDeal_status(DealStatus.Failed);
-        if (this.Series.toLowerCase().contains("a"))
-            dl.setSeries(com.xxxx.entity.Series.Series_A);
-        if (this.Series.toLowerCase().contains("b"))
-            dl.setSeries(com.xxxx.entity.Series.Series_B);
-        if (this.Series.toLowerCase().contains("c"))
-            dl.setSeries(com.xxxx.entity.Series.Series_C);
-        if (this.Series.toLowerCase().contains("d"))
-            dl.setSeries(com.xxxx.entity.Series.Series_D);
+        switch (this.Deal_Status.toLowerCase()){
+            case "completed":
+                dl.setDeal_status(DealStatus.Completed);
+                break;
+            case "in_progress":
+                dl.setDeal_status(DealStatus.In_Progress);
+                break;
+            case "fail":
+                dl.setDeal_status(DealStatus.Failed);
+                break;
+        }
 
+        switch (this.Series.toLowerCase()){
+            case "series_a":
+                dl.setSeries(com.xxxx.entity.Series.Series_A);
+                break;
+            case "series_b":
+                dl.setSeries(com.xxxx.entity.Series.Series_B);
+                break;
+            case "series_c":
+                dl.setSeries(com.xxxx.entity.Series.Series_C);
+                break;
+            case "series_d":
+                dl.setSeries(com.xxxx.entity.Series.Series_D);
+                break;
+        }
+
+        Integer deal_id;
+        Integer cid;
+        String c_name; // to get company_id
+        String co_investor;
 
 //        dl.setDeal_date(this.Deal_Date);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,12 +73,16 @@ public class DealForm {
         dl.setFund_percentage(this.Fund_Percent);
         dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount);
         dl.setOwn_percentage(this.Own_Percent);
-        if (this.Invest_Vehicle.toLowerCase().contains("equities"))
-            dl.setVehicle(Vehicle.Equities);
-        if (this.Invest_Vehicle.toLowerCase().contains("notes"))
-            dl.setVehicle(Vehicle.Notes);
-
+        dl.setPost_value(this.Post_Valuation);
         dl.setCo_investor(this.Co_Investor);
+        if (this.Invest_Vehicle == null){
+            dl.setVehicle(null);
+        }else {
+            if (this.Invest_Vehicle.toLowerCase().contains("equities"))
+                dl.setVehicle(Vehicle.Equities);
+            if (this.Invest_Vehicle.toLowerCase().contains("notes"))
+                dl.setVehicle(Vehicle.Notes);
+        }
         return dl;
     }
 }

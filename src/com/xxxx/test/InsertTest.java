@@ -38,6 +38,7 @@ public class InsertTest {
                     d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor(),d.getFund_percentage(),
                     d.getOwn_percentage_toString());
 
+            Deal d2 = df.toDeal();
             String cc = d.getCo_investor();
             System.out.println(cc);
 //            UpdateDao updateDao = mysql.getMapper(UpdateDao.class);
