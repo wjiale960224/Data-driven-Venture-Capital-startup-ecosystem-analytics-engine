@@ -190,13 +190,14 @@ $(function (){
                 console.log("yes,refreshed.");
                 console.log(mainpage_info);
 
-                var temp = mainpage_info.split("PerOfFun");
-                var infos = temp[1].split("OvInfo");
-
-                var per_of_funds = split_string(infos[0]);
-                var over_infos = split_string(infos[1]);
-                console.log(per_of_funds);
-                console.log(over_infos);
+                var symbols = new Array();
+                symbols.push("PerOfFun");
+                symbols.push("OvInfo");
+                symbols.push("ThemeOfFund");
+                var map = get_infos(symbols,mainpage_info);
+                var per_of_funds = split_string(map.get("PerOfFun"));
+                var over_infos = split_string(map.get("OvInfo"));
+                var theme_of_fund = split_string(map.get("ThemeOfFund"));
 
                 for (var i = 0; i < per_of_funds.length; i++){ // Reconstruct string format to object format
                     var obj = JSON.parse(per_of_funds[i]);
@@ -212,6 +213,10 @@ $(function (){
                     document.getElementById("No_company").innerHTML ="A$" + obj2["Total_Companies"] + "M";
                 }
 
+                for (i = 0; i < theme_of_fund.length; i++){
+                    var obj3 = JSON.parse(theme_of_fund[i]);
+                    console.log(obj3);
+                }
 
                 var two_pie = echarts.init(document.querySelector("#two_pie"));
                 var two_pie_option  = {
@@ -289,6 +294,27 @@ $(function (){
             }
         }
         return strings;
+    }
+
+    function get_infos(symbols, msg){
+        var map = new Map;
+        if (symbols.length === 1){
+            map.put(symbols[0], msg.split(symbols[0])[1]);
+            return map;
+        }
+        var rest = "";
+        for (var i = 0; i < symbols.length; i++){
+            if (i === 0){
+                rest = msg.split(symbols[i])[1];
+            }else if (i < symbols.length - 1){
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                rest = rest.split(symbols[i])[1];
+            }else{
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                map.set(symbols[i],rest.split(symbols[i])[1]);
+            }
+        }
+        return map;
     }
 
 })
