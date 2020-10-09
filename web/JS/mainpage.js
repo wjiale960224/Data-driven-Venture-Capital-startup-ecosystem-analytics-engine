@@ -179,6 +179,7 @@ $(function (){
     (function refresh(){
         var company_name = [];
         var fund = [];
+        var mydata = [];
         $.ajax({
             type: "POST",
             url: "/workspace_Intellj_war_exploded/mainpagedata",  // Here to change back end receive url.
@@ -187,11 +188,10 @@ $(function (){
             },
             success:function(mainpage_info){
                 console.log("yes,refreshed.");
-                // console.log(mainpage_info);
+                console.log(mainpage_info);
 
                 var temp = mainpage_info.split("PerOfFun");
                 var infos = temp[1].split("OvInfo");
-
 
                 var per_of_funds = split_string(infos[0]);
                 var over_infos = split_string(infos[1]);
@@ -200,31 +200,19 @@ $(function (){
 
                 for (var i = 0; i < per_of_funds.length; i++){ // Reconstruct string format to object format
                     var obj = JSON.parse(per_of_funds[i]);
-                    console.log(obj);
+                    company_name.push(obj["company_name"]);
+                    fund.push(obj["fund"]);
+                    mydata[i] = {value: fund[i], name: company_name[i]};
                 }
                 for (i = 0; i < over_infos.length; i++){ // Reconstruct string format to object format
                     var obj2 = JSON.parse(over_infos[i]);
-                    console.log(obj2);
+                    document.getElementById("No_deals").innerHTML = "A$" + obj2["Total_Deals"] + "M";
+                    document.getElementById("drawn_capital").innerHTML = "A$" + obj2["Drawn_Capital"] + "M";
+                    document.getElementById("per_deal").innerHTML ="A$" + obj2["Per_Deal"] + "M";
+                    document.getElementById("No_company").innerHTML ="A$" + obj2["Total_Companies"] + "M";
                 }
 
-                /*console.log(c[0]);
-                console.log(c[1]);
-                var mainpagedata = mainpage_info.substring(1,mainpage_info.length-1).split("},{");
-                for (i = 0; i < mainpagedata.length; i++){ // Get rid of [] and split each item up.
-                    if (i === 0) {
-                        mainpagedata[i] += "}";
-                    }else if (i === mainpagedata.length-1){
-                        mainpagedata[i] = "{" + mainpagedata[i];
-                    }else {
-                        mainpagedata[i] = "{" + mainpagedata[i] + "}";
-                    }
-                }
-                for (i = 0; i < mainpagedata.length; i++){ // Reconstruct string format to object format
-                    console.log(mainpagedata[i]);
-                    var $mainpagedata = JSON.parse(mainpagedata[i]);
-                    company_name.push($mainpagedata["company_name"]);
-                    fund.push($mainpagedata["fund"]);
-                }
+
                 var two_pie = echarts.init(document.querySelector("#two_pie"));
                 var two_pie_option  = {
                     title:[
@@ -245,16 +233,13 @@ $(function (){
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
                     },
-                    legend: {
-                        data: company_name
-                    },
                     series: [
                         {
                             name: 'Current Date',
                             type: 'pie',
                             radius: '35%',
                             center: ['50%', '30%'],
-                            data: fund,
+                            data: mydata,
                             emphasis: {
                                 itemStyle: {
                                     shadowBlur: 10,
@@ -281,7 +266,7 @@ $(function (){
                     ]
                 };
 
-                two_pie.setOption(two_pie_option);*/
+                two_pie.setOption(two_pie_option);
             },
             error: function(){
                 console.log("No,something wrong.");

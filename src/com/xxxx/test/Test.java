@@ -4,9 +4,6 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
-import com.xxxx.entity.MainpageData;
-import com.xxxx.entity.User;
-import com.xxxx.service.CompanyService;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
