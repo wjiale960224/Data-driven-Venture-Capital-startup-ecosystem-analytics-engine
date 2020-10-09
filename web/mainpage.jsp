@@ -23,12 +23,12 @@
             <div class="top_column" id="overview_info">
                 <ul >
                     <li><span>Total Fund Size</span><span>A$12.83M</span></li>
-                    <li><span>Drawn Capital</span><span>A$2.53M</span></li>
+                    <li><span>Drawn Capital</span><span id = "drawn_capital"></span></li>
                     <li><span>Undrawn Capital</span><span>A$10M</span></li>
                     <li><span>Management Fee</span><span>A$0.3M</span></li>
-                    <li><span>Total companies</span><span>30</span></li>
-                    <li><span>Total Deals</span><span>23</span></li>
-                    <li><span>Per Deal</span><span>A$0.56M</span></li>
+                    <li><span>Total companies</span><span id = "No_company"></span></li>
+                    <li><span>Total Deals</span><span id = "No_deals"></span></li>
+                    <li><span>Per Deal</span><span id = "per_deal"></span></li>
                     <li><span>Rounds</span><span>43</span></li>
                     <li><span>IRR</span><span>39%</span></li>
                 </ul>
