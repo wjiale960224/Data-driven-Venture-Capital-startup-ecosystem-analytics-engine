@@ -25,7 +25,7 @@ public class CompanyPageServlet extends HttpServlet {
         Userdao userdao = session.getMapper(Userdao.class);
         Company company = userdao.queryCompanyByName("Assignar");
 
-        // output copmany info as JSON
+        // output company info as JSON
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("application/json; charset=utf-8");
         PrintWriter writer = resp.getWriter(); // PrintWriter object that can return character data to the client
