@@ -89,28 +89,13 @@ public class MainpageService {
                 feed_fund = feed_fund + m.getFund();
             }
         }
-        for (MainpageData m : dataMainpage){
-            if(m.getTheme().contains("Spa")){
-                ThemeInfo themeInfo = new ThemeInfo(m.getTheme(),spa_fund);
-                themeOfFund += g.toJson(themeInfo)+",";
-            }
-            else if (m.getTheme().contains("New")){
-                ThemeInfo themeInfo = new ThemeInfo(m.getTheme(),new_fund);
-                themeOfFund += g.toJson(themeInfo)+",";
-            }
-            else if (m.getTheme().contains("Human")){
-                ThemeInfo themeInfo = new ThemeInfo(m.getTheme(),human_fund);
-                themeOfFund += g.toJson(themeInfo)+",";
-            }
-            else if (m.getTheme().contains("Exp")){
-                ThemeInfo themeInfo = new ThemeInfo(m.getTheme(),Exp_fund);
-                themeOfFund += g.toJson(themeInfo)+",";
-            }
-            else if (m.getTheme().contains("Feed")){
-                ThemeInfo themeInfo = new ThemeInfo(m.getTheme(),feed_fund);
-                themeOfFund += g.toJson(themeInfo)+",";
-            }
-        }
+        ThemeInfo themeInfo = new ThemeInfo("Space_Transport",spa_fund);
+        ThemeInfo themeInfo1 = new ThemeInfo("New_Society",new_fund);
+        ThemeInfo themeInfo2 = new ThemeInfo("Humanity_Scale_Healthcare",human_fund);
+        ThemeInfo themeInfo3 = new ThemeInfo("Feeding_10B_People",feed_fund);
+        ThemeInfo themeInfo4 = new ThemeInfo("Exponential_Machines",Exp_fund);
+        themeOfFund = g.toJson(themeInfo)+","+g.toJson(themeInfo1)+","+g.toJson(themeInfo2)+","+g.toJson(themeInfo3)+","+g.toJson(themeInfo4)+",";
+
         themeOfFund = "ThemeOfFund[" + themeOfFund.substring(0,themeOfFund.length()-1)+"]";
         perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
         OverviewInfo oi = new OverviewInfo(1.1,total_mseq_invest_output,1.1,1.1,no_company,no_deal,total_mseq_invest_output/no_deal,1,1.1);

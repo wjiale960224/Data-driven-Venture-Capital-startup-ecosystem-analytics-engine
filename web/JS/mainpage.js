@@ -76,73 +76,61 @@ $(function (){
     };
     TVPI_curve.setOption(TVPI_curve_option);
 
-    var double_pie = echarts.init(document.querySelector("#double_pie"));
-    var double_pie_option = {
-        title: {
-            text: 'Overview % of Fund',
-            left:'center'
-        },
+    var two_pie = echarts.init(document.querySelector("#two_pie"));
+    var two_pie_option  = {
+        title:[
+            {
+                text: 'Current Date',
+                left:'50%',
+                textAlign:'center',
+            },
+
+            {
+                text: 'Initial Date',
+                left:'50%',
+                top: '52.5%',
+                textAlign:'center'
+            }
+        ],
         tooltip: {
             trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         series: [
             {
-                name: 'theme',
+                name: 'Current Date',
                 type: 'pie',
-                radius: [0, '70%'],
-
-                label: {
-                    position: 'inner'
-                },
-                labelLine: {
-                    show: false
-                },
-                data: [
-                    {value: 335, name: 'theme1'},
-                    {value: 679, name: 'theme2'},
-                    {value: 1548, name: 'theme3'},
-                    {value: 469, name: 'theme4'},
-                    {value: 518, name: 'theme5'},
-                ],
-                itemStyle:{
-                    normal:{
-                        color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+                radius: '35%',
+                center: ['50%', '30%'],
+                data: [],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
-                },
+                }
             },
+
             {
-                name: 'MSEQ_overview',
+                name: 'Initial Date',
                 type: 'pie',
-                radius: ['80%', '95%'],
-                label: {
-                    show:false
-                },
-                labelLine: {
-                    show:false
-                },
-                data: [
-                    {value: 135, name: 'company1'},
-                    {value: 200, name: 'company2'},
-                    {value: 310, name: 'company3'},
-                    {value: 234, name: 'company4'},
-                    {value: 135, name: 'company5'},
-                    {value: 1048, name: 'company6'},
-                    {value: 251, name: 'company7'},
-                    {value: 147, name: 'company8'},
-                    {value: 102, name: 'company9'},
-                    {value: 469, name: 'company10'},
-                    {value: 518, name: 'company11'},
-                ],
-                itemStyle:{
-                    normal:{
-                        color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+                radius: '35%',
+                center: ['50%', '80%'],
+                data: [],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
-                },
+                }
             }
         ]
     };
-    double_pie.setOption(double_pie_option);
+
+    two_pie.setOption(two_pie_option);
+
 
     var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
     var mseq_bar_option = {
@@ -179,7 +167,8 @@ $(function (){
     (function refresh(){
         var company_name = [];
         var fund = [];
-        var mydata = [];
+        var mydata_company = [];
+        var mydata_theme = [];
         $.ajax({
             type: "POST",
             url: "/workspace_Intellj_war_exploded/mainpagedata",  // Here to change back end receive url.
@@ -203,7 +192,7 @@ $(function (){
                     var obj = JSON.parse(per_of_funds[i]);
                     company_name.push(obj["company_name"]);
                     fund.push(obj["fund"]);
-                    mydata[i] = {value: fund[i], name: company_name[i]};
+                    mydata_company[i] = {value: fund[i], name: company_name[i]};
                 }
                 for (i = 0; i < over_infos.length; i++){ // Reconstruct string format to object format
                     var obj2 = JSON.parse(over_infos[i]);
@@ -215,63 +204,54 @@ $(function (){
 
                 for (i = 0; i < theme_of_fund.length; i++){
                     var obj3 = JSON.parse(theme_of_fund[i]);
+                    mydata_theme[i] = {value: obj3["fund"], name:obj3["theme"]};
                     console.log(obj3);
                 }
-
-                var two_pie = echarts.init(document.querySelector("#two_pie"));
-                var two_pie_option  = {
-                    title:[
-                        {
-                            text: 'Current Date',
-                            left:'50%',
-                            textAlign:'center',
-                        },
-
-                        {
-                            text: 'Initial Date',
-                            left:'50%',
-                            top: '52.5%',
-                            textAlign:'center'
-                        }
-                    ],
+                var double_pie = echarts.init(document.querySelector("#double_pie"));
+                var double_pie_option = {
+                    title: {
+                        text: 'Overview % of Fund',
+                        left:'center'
+                    },
                     tooltip: {
                         trigger: 'item',
-                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        formatter: '{a} <br/>{b}: {c} ({d}%)'
                     },
                     series: [
                         {
-                            name: 'Current Date',
+                            name: 'theme',
                             type: 'pie',
-                            radius: '35%',
-                            center: ['50%', '30%'],
-                            data: mydata,
-                            emphasis: {
-                                itemStyle: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
+                            radius: [0, '70%'],
+                            label: {
+                                show:false
+                            },
+                            labelLine: {
+                                show: false
+                            },
+                            data: mydata_theme,
                         },
-
                         {
-                            name: 'Initial Date',
+                            name: 'MSEQ_overview',
                             type: 'pie',
-                            radius: '35%',
-                            center: ['50%', '80%'],
-                            data: [],
-                            emphasis: {
-                                itemStyle: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            radius: ['80%', '95%'],
+                            label: {
+                                show:false
+                            },
+                            labelLine: {
+                                show:false
+                            },
+                            data: mydata_company,
+                            itemStyle:{
+                                normal:{
+                                    color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
                                 }
-                            }
+                            },
                         }
                     ]
                 };
+                double_pie.setOption(double_pie_option);
 
-                two_pie.setOption(two_pie_option);
+
             },
             error: function(){
                 console.log("No,something wrong.");
