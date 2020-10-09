@@ -44,29 +44,29 @@ public class CompanyForm {
     public CompanyForm() {}
 
     public Company toCompany() {
-        Company result = new Company();
+        Company company = new Company();
 
-        result.setC_name(this.Company_Name);
+        company.setC_name(this.Company_Name);
 
         if (this.Theme.toLowerCase().contains("exponential"))
-            result.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
+            company.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
         if (this.Theme.toLowerCase().contains("feeding"))
-            result.setTheme(com.xxxx.entity.Theme.Feeding_10B_People);
+            company.setTheme(com.xxxx.entity.Theme.Feeding_10B_People);
         if (this.Theme.toLowerCase().contains("humanity"))
-            result.setTheme(com.xxxx.entity.Theme.Humanity_Scale_Healthcare);
+            company.setTheme(com.xxxx.entity.Theme.Humanity_Scale_Healthcare);
         if (this.Theme.toLowerCase().contains("society"))
-            result.setTheme(com.xxxx.entity.Theme.New_Society);
+            company.setTheme(com.xxxx.entity.Theme.New_Society);
         if (this.Theme.toLowerCase().contains("space"))
-            result.setTheme(com.xxxx.entity.Theme.Space_Transport);
+            company.setTheme(com.xxxx.entity.Theme.Space_Transport);
 
-        result.setYear_founded(this.Year_Founded);
-        result.setRunway_start_date(this.Runway_Start_Date);
-        result.setRunway_end_date(this.Runway_End_Date);
-        result.setRunway_month(this.Runway_Month);
-        result.setRaised_to_date(this.Raise_to_Date);
-        result.setEmployee_no(this.Employee_No);
-        result.setRevenue(this.Revenue);
-        return result;
+        company.setYear_founded(this.Year_Founded);
+        company.setRunway_start_date(this.Runway_Start_Date);
+        company.setRunway_end_date(this.Runway_End_Date);
+        company.setRunway_month(this.Runway_Month);
+        company.setRaised_to_date(this.Raise_to_Date);
+        company.setEmployee_no(this.Employee_No);
+        company.setRevenue(this.Revenue);
+        return company;
     }
 
     public Valuation toValuation() {
