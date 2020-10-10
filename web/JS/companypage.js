@@ -1,4 +1,23 @@
 $(function (){
+    (function refresh(){
+        $.ajax({
+            type: "POST",
+            url: "/workspace_Intellj_war_exploded/companypageinfo",  // Here to change back end receive url.
+            data: {
+                refresh: "[]",
+            },
+            success:function(companypage_info){
+                console.log("yes,refreshed.");
+                console.log(companypage_info);
+            },
+            error: function(){
+                console.log("No,something wrong.");
+            }
+        });
+    }());
+
+
+
     var bar_chart = echarts.init(document.querySelector("#bar_chart"));
     var bar_chart_option = {
         color: ['rgb(173,139,46)'],
