@@ -1,4 +1,21 @@
 $(function() {
+    (function refresh(){
+        $.ajax({
+            type: "POST",
+            url: "/workspace_Intellj_war_exploded/themepagedata",  // Here to change back end receive url.
+            data: {
+                refresh: "[]",
+            },
+            success:function(themepage_info){
+                console.log("yes,refreshed.");
+                console.log(themepage_info);
+            },
+            error: function(){
+                console.log("No,something wrong.");
+            }
+        });
+    }());
+
     $("li").click(function (){
         $(this).addClass("selected").siblings().removeClass("selected");
     })
@@ -976,4 +993,42 @@ $(function() {
 
         $("#theme_table_cell").html("Space & Transport");
     })
+
+    function split_string(str){
+        var strings = str.substring(1,str.length-1).split("},{");
+        if (strings.length === 1){
+            return strings
+        }
+        for (i = 0; i < strings.length; i++){ // Get rid of [] and split each item up.
+            if (i === 0) {
+                strings[i] += "}";
+            }else if (i === strings.length-1){
+                strings[i] = "{" + strings[i];
+            }else {
+                strings[i] = "{" + strings[i] + "}";
+            }
+        }
+        return strings;
+    }
+
+    function get_infos(symbols, msg){
+        var map = new Map;
+        if (symbols.length === 1){
+            map.put(symbols[0], msg.split(symbols[0])[1]);
+            return map;
+        }
+        var rest = "";
+        for (var i = 0; i < symbols.length; i++){
+            if (i === 0){
+                rest = msg.split(symbols[i])[1];
+            }else if (i < symbols.length - 1){
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                rest = rest.split(symbols[i])[1];
+            }else{
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                map.set(symbols[i],rest.split(symbols[i])[1]);
+            }
+        }
+        return map;
+    }
 })

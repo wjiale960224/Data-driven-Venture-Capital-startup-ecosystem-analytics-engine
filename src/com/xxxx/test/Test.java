@@ -4,6 +4,7 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
+import com.xxxx.entity.themeinfo.CompanyInfo;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -44,6 +45,7 @@ public class Test {
         List<Integer> dealIds = userdao.listDealById();
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
+        List<CompanyInfo> companyInfos = new ArrayList<>();
         String output = "";
         for(String c : company_names){
             Company company = queryDao.queryCompanyByName(c);
@@ -52,16 +54,18 @@ public class Test {
         for (Integer id: dealIds){
             Deal d = userdao.queryDealById(id);
             deal.add(d);
-            System.out.println(d.getC_name());
         }
-        for(Company c : data) {
-            double fund = 0;
-            for (Deal d : deal) {
-                if (c.getC_name().equals(d.getC_name())) {
-                    fund = fund + d.getMSEQ_invest_amount();
+        for (Company c : data){
+            int i = 1;
+            for (Deal d : deal){
+                if (c.getC_name().equals(d.getC_name())){
+                    String deal_no = "deal" + i;
+                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
+                    companyInfos.add(companyInfo);
                 }
+                i=i+1;
             }
         }
-        System.out.println(output);
+        System.out.println(companyInfos);
     }
 }
