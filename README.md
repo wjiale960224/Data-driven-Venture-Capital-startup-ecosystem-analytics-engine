@@ -3,7 +3,7 @@
 We keep the project documents in separate [Google Drive repository](https://drive.google.com/drive/folders/1PB2Ja2UhHJkkIbwobxBJhKy7C7qpRxUH?usp=sharing). Key documents:
 
 - [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
-- [Decision Making](https://drive.google.com/file/d/12uuMljOKIoH41LWq6AV423ZkKggNbBdr/view?usp=sharing)
+- [Decision Making](https://drive.google.com/drive/folders/1V7mJKAwYReknpl4sy5APs-oxugcXsDBQ?usp=sharing)
 - [Meeting minutes](/Meeting_Agenda)
 
 
