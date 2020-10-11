@@ -1,9 +1,15 @@
 # Data-driven Venture Capital
 
-We keep the project documents in separate [Google Drive repository](https://drive.google.com/drive/folders/1PB2Ja2UhHJkkIbwobxBJhKy7C7qpRxUH?usp=sharing). Key documents:
+We keep the project documents in a separate [Google Drive repository](https://drive.google.com/drive/folders/1PB2Ja2UhHJkkIbwobxBJhKy7C7qpRxUH?usp=sharing).
 
 - [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
+- [Audit 3 materials](https://drive.google.com/drive/folders/1niKMk0qxY6l7tFxQgXOcPo3FhXosDyj0?usp=sharing)
+- [Showcase video](https://drive.google.com/file/d/12oRxkhICAmbj9Ot77HxSESQH2y5wOrV-/view?usp=sharing)
+- [UI demo video](https://drive.google.com/file/d/1lfFKLbQrRRPzCR8pupclVVRznXNBw2wr/view?usp=sharing)
 - [Decision Making](https://drive.google.com/drive/folders/1V7mJKAwYReknpl4sy5APs-oxugcXsDBQ?usp=sharing)
+- [Communication](https://drive.google.com/drive/folders/1JQ0wod3dZFKAjTsDaIb7aU0EWP6SIWRF?usp=sharing)
+- [Reflection](https://drive.google.com/drive/folders/1YzKVO-hKowSN6W2GSN2P3xgRFgJ7xwpq?usp=sharing)
+- [Teamwork](https://drive.google.com/drive/folders/1O0xtyXaGjvJRqUuMH71vxS5pC4HBkUrQ?usp=sharing)
 - [Meeting minutes](/Meeting_Agenda)
 
 
