@@ -50,7 +50,7 @@ For detailed information, please refer to the **Stakeholders** section in [State
 ## Project plan
 
 - Detailed explanation in [Statement of Work](https://drive.google.com/file/d/1kGevoO1vWdXFJ8O-ZVJhRVoJN46gLBBE/view?usp=sharing)
-- [Project plan visualisations](https://drive.google.com/drive/folders/1wyoHfMhIKLlPyCZ7vkr_MQctRLBRlsV0)
+- [Project plan visualisations](https://drive.google.com/file/d/12uuMljOKIoH41LWq6AV423ZkKggNbBdr/view?usp=sharing)
 
 
 
