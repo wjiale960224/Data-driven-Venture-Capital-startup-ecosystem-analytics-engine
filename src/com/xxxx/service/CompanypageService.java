@@ -96,6 +96,8 @@ public class CompanypageService {
             }
             companyinfostring += g.toJson(c) + ",";
         }
+        companyinfostring = "CompanyInfo[" + companyinfostring.substring(0,companyinfostring.length()-1)+ "]";
+        dealinfostring = "DealInfo[" + dealinfostring.substring(0,dealinfostring.length()-1)+ "]";
         output = companyinfostring + dealinfostring;
 
         return output;

@@ -9,6 +9,22 @@ $(function() {
             success:function(themepage_info){
                 console.log("yes,refreshed.");
                 console.log(themepage_info);
+
+                var symbols = new Array();
+                symbols.push("CompanyInFo");
+                symbols.push("ThemeOfFund");
+                var map = get_infos(symbols,themepage_info);
+                var com_infos = split_string(map.get("CompanyInFo"));
+                var theme_of_fund = split_string(map.get("ThemeOfFund"));
+
+                var menu_themes = $(".tet");
+                for (i = 0; i < theme_of_fund.length; i++){
+                    var obj3 = JSON.parse(theme_of_fund[i]);
+                    menu_themes[i].innerHTML = obj3["theme"].replace(/_/g," ");
+                    // mydata_theme[i] = {value: obj3["fund"], name:obj3["theme"]};
+                }
+
+
             },
             error: function(){
                 console.log("No,something wrong.");

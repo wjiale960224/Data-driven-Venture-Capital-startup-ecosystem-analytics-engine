@@ -20,55 +20,30 @@
     <div class = "column">
         <nav>
             <ul class="nav">
-                <li><span class="tet">Exponential Machines</span>
+                <li class="theme"><span class="tet">Exponential Machines</span>
                     <span class="dropdown"></span>
-                    <ul class="sub">
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
+                    <ul class="sub EMclass">
+
                     </ul>
                 </li>
-                <li><span class="tet">Feeding 10B People</span>
-                    <ul class="sub">
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
+                <li class="theme"><span class="tet">Feeding 10B People</span>
+                    <ul class="sub FPclass">
+
                     </ul>
                 </li>
-                <li><span class="tet">Humanity Scale Healthcare</span>
-                    <ul class="sub">
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
+                <li class="theme"><span class="tet">Humanity Scale Healthcare</span>
+                    <ul class="sub HSHclass">
+
                     </ul>
                 </li>
-                <li><span class="tet">New Society</span>
-                    <ul class="sub">
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
+                <li class="theme"><span class="tet">New Society</span>
+                    <ul class="sub NSclass">
+
                     </ul>
                 </li>
-                <li><span class="tet">Space & Transport</span>
-                    <ul class="sub">
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
-                        <li>Company1</li>
+                <li class="theme"><span class="tet">Space & Transport</span>
+                    <ul class="sub STclass">
+
                     </ul>
                 </li>
             </ul>

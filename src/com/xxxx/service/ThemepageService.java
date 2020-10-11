@@ -44,6 +44,7 @@ public class ThemepageService {
             Company company = queryDao.queryCompanyByName(c);
             data.add(company);
         }
+
         for (Integer id: deal_id){
             Deal d = userdao.queryDealById(id);
             deal.add(d);
@@ -93,13 +94,14 @@ public class ThemepageService {
                 feed_company_no += 1;
             }
         }
-        ThemeInfomation themeInfo = new ThemeInfomation("Space_Transport",spa_company_no,spa_fund);
-        ThemeInfomation themeInfo1 = new ThemeInfomation("New_Society",new_company_no,new_fund);
+        ThemeInfomation themeInfo = new ThemeInfomation("Exponential_Machines",Exp_company_no,Exp_fund);
+        ThemeInfomation themeInfo1 = new ThemeInfomation("Feeding_10B_People",feed_company_no,feed_fund);
         ThemeInfomation themeInfo2 = new ThemeInfomation("Humanity_Scale_Healthcare",human_company_no,human_fund);
-        ThemeInfomation themeInfo3 = new ThemeInfomation("Feeding_10B_People",feed_company_no,feed_fund);
-        ThemeInfomation themeInfo4 = new ThemeInfomation("Exponential_Machines",Exp_company_no,Exp_fund);
+        ThemeInfomation themeInfo3 = new ThemeInfomation("New_Society",new_company_no,new_fund);
+        ThemeInfomation themeInfo4 = new ThemeInfomation("Space_&_Transport",spa_company_no,spa_fund);
         themeOffund = g.toJson(themeInfo)+","+g.toJson(themeInfo1)+","+g.toJson(themeInfo2)+","+g.toJson(themeInfo3)+","+g.toJson(themeInfo4)+",";
         themeOffund = "ThemeOfFund[" + themeOffund.substring(0,themeOffund.length()-1)+"]";
+        companyInfoString = "CompanyInFo[" + companyInfoString.substring(0,companyInfoString.length()-1)+"]";
         output = companyInfoString + themeOffund;
         return output;
     }

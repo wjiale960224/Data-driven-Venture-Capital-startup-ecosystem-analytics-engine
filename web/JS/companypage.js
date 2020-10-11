@@ -8,7 +8,81 @@ $(function (){
             },
             success:function(companypage_info){
                 console.log("yes,refreshed.");
-                console.log(companypage_info);
+                // console.log(companypage_info);
+                var symbols = new Array();
+                symbols.push("CompanyInfo");
+                symbols.push("DealInfo");
+                var map = get_infos(symbols,companypage_info);
+                var com_infos = split_string(map.get("CompanyInfo"));
+                var deal_infos = split_string(map.get("DealInfo"));
+
+                var companies = [];
+                for (var i = 0; i < com_infos.length; i++){
+                    companies[i] = JSON.parse(com_infos[i]);
+                }
+
+                for (i = 0; i < companies.length; i++){
+                    if (companies[i]["theme"] === "Exponential_Machines"){
+                        $(".EMclass").append("<li>" + companies[i]["company_name"] + "</li>");
+
+                    }else if (companies[i]["theme"] === "Feeding_10B_People"){
+                        $(".FPclass").append("<li>" + companies[i]["company_name"] + "</li>");
+
+                    }else if (companies[i]["theme"] === "Humanity_Scale_Healthcare"){
+                        $(".HSHclass").append("<li>" + companies[i]["company_name"] + "</li>");
+
+                    }else if (companies[i]["theme"] === "New_Society"){
+                        $(".NSclass").append("<li>" + companies[i]["company_name"] + "</li>");
+
+                    }else if (companies[i]["theme"] === "Space_Transport"){
+                        $(".STclass").append("<li>" + companies[i]["company_name"] + "</li>");
+
+                    }
+                }
+
+                var j = -1;
+                for (i = 0; i < $(".EMclass>li").length; i++){
+                    j = i+1;
+                    $(".EMclass>li:nth-child(" + j + ")").click(function(e){
+                        e.stopPropagation();
+                    });
+                }
+                for (i = 0; i < $(".FPclass>li").length; i++){
+                    j = i+1;
+                    $(".FPclass>li:nth-child(" + j + ")").click(function(e){
+                        e.stopPropagation();
+                    });
+                }
+                for (i = 0; i < $(".HSHclass>li").length; i++){
+                    j = i+1;
+                    $(".HSHclass>li:nth-child(" + j + ")").click(function(e){
+                        e.stopPropagation();
+                    });
+                }
+                for (i = 0; i < $(".NSclass>li").length; i++){
+                    j = i+1;
+                    $(".NSclass>li:nth-child(" + j + ")").click(function(e){
+                        e.stopPropagation();
+                    });
+                }
+                for (i = 0; i < $(".STclass>li").length; i++){
+                    j = i+1;
+                    $(".STclass>li:nth-child(" + j + ")").click(function(e){
+                        e.stopPropagation();
+                    });
+                }
+
+/*
+                var $subs = $(".sub>li");
+                console.log($subs);
+                for (i = 0; i < $subs.length; i++){
+                    console.log($subs[i]);
+
+                    $subs[i].click = function(e){
+                        e.stopPropagation();
+                    };
+                }*/
+
             },
             error: function(){
                 console.log("No,something wrong.");
@@ -130,4 +204,41 @@ $(function (){
     };
     pie_chart.setOption(pie_chart_option);
 
+    function split_string(str){
+        var strings = str.substring(1,str.length-1).split("},{");
+        if (strings.length === 1){
+            return strings
+        }
+        for (i = 0; i < strings.length; i++){ // Get rid of [] and split each item up.
+            if (i === 0) {
+                strings[i] += "}";
+            }else if (i === strings.length-1){
+                strings[i] = "{" + strings[i];
+            }else {
+                strings[i] = "{" + strings[i] + "}";
+            }
+        }
+        return strings;
+    }
+
+    function get_infos(symbols, msg){
+        var map = new Map;
+        if (symbols.length === 1){
+            map.put(symbols[0], msg.split(symbols[0])[1]);
+            return map;
+        }
+        var rest = "";
+        for (var i = 0; i < symbols.length; i++){
+            if (i === 0){
+                rest = msg.split(symbols[i])[1];
+            }else if (i < symbols.length - 1){
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                rest = rest.split(symbols[i])[1];
+            }else{
+                map.set(symbols[i-1],rest.split(symbols[i])[0]);
+                map.set(symbols[i],rest.split(symbols[i])[1]);
+            }
+        }
+        return map;
+    }
 })
