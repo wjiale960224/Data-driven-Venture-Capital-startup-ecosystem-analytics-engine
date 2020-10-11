@@ -30,7 +30,6 @@ public class CompanyFormServlet extends HttpServlet {
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
         } else { // update data in database
             String c = req.getParameter("company");
-//            System.out.println(c);
             companyService.updateCompanyInfo(c);
         }
     }

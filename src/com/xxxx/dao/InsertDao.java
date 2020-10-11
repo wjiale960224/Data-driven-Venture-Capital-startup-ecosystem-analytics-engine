@@ -19,6 +19,5 @@ public interface InsertDao {
 
     int addDeal(Deal deal);
 
-    // TODO implement this query
     int addValuation(Valuation valuation);
 }

@@ -1,29 +1,25 @@
 package com.xxxx.entity;
 
-import com.xxxx.dao.QueryDao;
-import com.xxxx.util.GetSqlSession;
-import org.apache.ibatis.session.SqlSession;
 import java.time.LocalDate;
 
 public class CompanyForm {
-    // Field name must match the form column name on webpage.
+    // Field name must match the form column name on webpage. checked
 
     // Company fields
     String Company_Name;
     String Theme;
-    int Year_Founded;
+    Integer Year_Founded;
     String Runway_Start_Date;
     String Runway_End_Date;
-    int Runway_Month;
-    double Raise_to_Date;
-    int Employee_No;
-    double Revenue;
-
+    Integer Runway_Month;
+    Double Raise_to_Date;
+    Integer Employee_No;
+    Double Revenue;
     // Valuation fields
-    double Post_Valuation;
+    Double Post_Valuation;
     String Valuation_Change_Reason;
-    double MSEQ_Investment_Cur_Val;
-    double Own_Percent;
+    Double MSEQ_Investment_Cur_Val;
+    Double Own_Percent;
 
     public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
         Company_Name = company_Name;

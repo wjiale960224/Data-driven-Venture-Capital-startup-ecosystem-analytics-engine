@@ -52,12 +52,23 @@
         order by theme, c_name, update_date
     </select>
 
-
     <select id="queryCid" parameterType="Integer" resultType="java.lang.Integer">
         select cid from company;
     </select>
 
     <select id="queryDeals" resultType="deal">
         select * from deal;
+    </select>
+
+    <select id="queryCidByCompanyName" parameterType="String" resultType="Integer">
+        select cid from company where c_name = #{companyName};
+    </select>
+
+    <select id="queryDrawnByFundname" parameterType="String" resultType="Double">
+        select drawn_capital from fund where fund_name = #{fund_name};
+    </select>
+
+    <select id="queryFeeByFundname" parameterType="String" resultType="Double">
+        select management_fee from fund where fund_name = #{fund_name};
     </select>
 </mapper>

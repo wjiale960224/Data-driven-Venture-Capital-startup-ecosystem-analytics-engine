@@ -7,7 +7,6 @@ import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.CompanyForm;
-import com.xxxx.entity.Portfolio;
 import com.xxxx.entity.Valuation;
 import com.xxxx.util.GetSqlSession;
 import com.xxxx.util.StringUtil;
@@ -40,7 +39,6 @@ public class CompanyService {
             companyValuationMap.put(company, valuation);
         }
         for (Company c : companyValuationMap.keySet()) {
-
             Valuation v = companyValuationMap.get(c);
             CompanyForm cf = new CompanyForm(c.getC_name(),c.getTheme().toString(),c.getYear_founded(),c.getRunway_start_date(),
                     c.getRunway_end_date(),c.getRunway_month(),c.getRaised_to_date(),c.getEmployee_no(),c.getRevenue(),v.getPost_value(),
@@ -61,6 +59,7 @@ public class CompanyService {
         QueryDao queryDao = session.getMapper((QueryDao.class));
         List<String> companys = queryDao.listCompanyByName(); // get companies in current table
         String[] updateInfo = StringUtil.SplitStrings(c);
+
         for (String str : updateInfo) {
             CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
             Company companyInForm = companyform.toCompany();
@@ -69,7 +68,7 @@ public class CompanyService {
             int cidInDB = 0;
             if (!companys.contains(companyInForm.getC_name())) { // Add company and valuation
                 companyInForm.setCid(); // generate a new cid for new company only
-                insertdao.addCompany(companyInForm); // no error, but no new entry in database
+                insertdao.addCompany(companyInForm);
                 valuationInForm.setVal_id();
                 valuationInForm.setCid(companyInForm.getCid()); // change
                 insertdao.addValuation(valuationInForm);
@@ -99,10 +98,10 @@ public class CompanyService {
                 c1.getRunway_end_date().equals(c2.getRunway_end_date()) && c1.getRunway_month() == c2.getRunway_month() &&
                 c1.getRaised_to_date() == c2.getRaised_to_date() && c1.getEmployee_no() == c2.getEmployee_no() &&
                 c1.getRevenue() == c2.getRevenue();
-
     }
 
     public static boolean HasPostValue(double[] postValuations, double v){
+        // check all past valuations in db, if any past valuation matches the new one, return True
         for (double pv : postValuations){
             if (pv == v){
                 return true;

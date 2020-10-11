@@ -13,9 +13,22 @@
         update company set runway_month = TIMESTAMPDIFF(MONTH,runway_start_date,DATE_FORMAT(NOW(), '%Y-%m-%d'));
     </update>
 
-    <update id="updateCompany">
+    <update id="updateCompany" parameterType="company">
         update company set theme = #{theme}, year_founded = #{year_founded}, runway_start_date=#{runway_start_date},
         runway_end_date = #{runway_end_date}, runway_month = #{runway_month}, raised_to_date = #{raised_to_date},
-        employee_no = #{employee_no}, revenue = #{revenue} where cid=#{cid};
+        employee_no = #{employee_no}, revenue = #{revenue}
+        where cid=#{cid};
+    </update>
+
+    <update id="updateDeal" parameterType="deal">
+        update deal set deal_size = #{deal_size}, deal_status = #{deal_status}, series=#{series},
+        mseq_invest_amt = #{mseq_invest_amt}, post_value = #{post_value}, raised_to_date = #{invest_vehicle},
+        co_investor = #{co_investor}, fund_percent = #{fund_percent}, own_percent = #{own_percent}, fund_name = #{fund_name}
+        where cid=#{cid} and deal_date=#{deal_date};
+    </update>
+
+    <update id="updateDrawnAndFee">
+        update fund set drawn_capital = #{drawn_capital}, management_fee = #{management_fee}
+        where fund_name=#{fund_name};
     </update>
 </mapper>

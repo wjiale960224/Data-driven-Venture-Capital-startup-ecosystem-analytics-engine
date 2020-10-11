@@ -12,7 +12,7 @@ public class Deal {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
     Integer deal_id;
     Integer cid;
-    String c_name; // to get company_id
+    String c_name;
     Date deal_date;
     Double deal_size;
     DealStatus deal_status;
@@ -23,6 +23,7 @@ public class Deal {
     String co_investor;
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
+    String fund_name; // TODO database need to update
 
     public Deal() {
     }
@@ -35,9 +36,11 @@ public class Deal {
         return deal_id;
     }
 
-    public void setDeal_id(Integer deal_id) {
-        this.deal_id = deal_id;
+    public void setDeal_id() {
+        this.deal_id = DealID.get_id();
     }
+
+    public void setDeal_id(Integer deal_id) {this.deal_id = deal_id;}
 
     public void setCid(Integer cid) {
         this.cid = cid;
@@ -161,6 +164,14 @@ public class Deal {
 
     public void setVehicle(Vehicle vehicle) {
         this.invest_vehicle = vehicle;
+    }
+
+    public String getFund_name() {
+        return fund_name;
+    }
+
+    public void setFund_name(String fund_name) {
+        this.fund_name = fund_name;
     }
 
     /*public void addCo_investor(String co_investor) {

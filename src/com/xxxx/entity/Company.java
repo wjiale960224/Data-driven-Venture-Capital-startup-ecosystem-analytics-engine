@@ -7,16 +7,16 @@ import java.util.List;
 
 public class Company {
     // Field name must match the attribute name in database, otherwise DAO cannot create instance correctly.
-    int cid;
+    Integer cid;
     String c_name;
     Theme theme;
-    int year_founded;
+    Integer year_founded;
     String runway_start_date;
     String runway_end_date;
-    int runway_month;
-    double raised_to_date;
-    int employee_no;
-    double revenue;
+    Integer runway_month;
+    Double raised_to_date;
+    Integer employee_no;
+    Double revenue;
 
     public Company() {
     }

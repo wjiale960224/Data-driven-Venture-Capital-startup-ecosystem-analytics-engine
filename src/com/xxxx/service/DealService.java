@@ -1,28 +1,26 @@
 package com.xxxx.service;
 
 import com.google.gson.Gson;
-import com.xxxx.dao.DeleteDao;
 import com.xxxx.dao.InsertDao;
 import com.xxxx.dao.QueryDao;
+import com.xxxx.dao.UpdateDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.*;
 import com.xxxx.util.GetSqlSession;
 import com.xxxx.util.StringUtil;
 import org.apache.ibatis.session.SqlSession;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DealService {
+
     public List<Integer> getDealId() {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
-        List<Integer> DealId = userdao.listDealById();
-        return DealId;
+        List<Integer> dealId = userdao.listDealById();
+        return dealId;
     }
 
     public String getDealInfo(List<Integer> deal_IDs) {
@@ -46,47 +44,61 @@ public class DealService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
-    // TODO deal_id, cid, post_val is not given in the input. Need to create deal_id, get cid, calculate post_val when add new Deal into database.
     public void updateDealInfo(String d) throws ParseException {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);
         QueryDao queryDao = session.getMapper(QueryDao.class);
-        String[] updateInfo = StringUtil.SplitStrings(d);
+        UpdateDao updateDao = session.getMapper(UpdateDao.class);
         List<Deal> dealsInDB = queryDao.queryDeals();
+        String[] updateInfo = StringUtil.SplitStrings(d);
+
         for (String str : updateInfo) {
             DealForm dealForm = gson.fromJson(str, DealForm.class); // Deal form instance
             Deal dealInForm = dealForm.toDeal(); // deal instance
+            dealInForm.setCid(queryDao.queryCidByCompanyName(dealInForm.getC_name())); // set cid
 
             for (Deal deal: dealsInDB){
-                if (deal.equals(dealInForm)){ // Compare two deals, if same return true.
+                // Assumption: one company has only one deal on the same day.
+                if (deal.getCid() == dealInForm.getCid() && deal.getDeal_date() == dealInForm.getDeal_date()){ // update a deal entry in db
+                    boolean same = CompareChange(deal, dealInForm);
+                    if (!same) {
+                        dealInForm.setDeal_id(deal.getDeal_id());
+                        updateDao.updateDeal(dealInForm);
 
+                        // adjust deal_size to drawn_capital in fund table, adjust management_fee in fund table
+                        if (!(deal.getDeal_size() == dealInForm.getDeal_size())) { // deal size is updated
+                            Double current_drawn = queryDao.queryDrawnByFundname(dealInForm.getFund_name());
+                            Double current_fee = queryDao.queryFeeByFundname(dealInForm.getFund_name());
+                            current_drawn -= deal.getDeal_size();
+                            current_drawn += dealInForm.getDeal_size();
+                            current_fee += dealInForm.getDeal_size() * 0.02;
+                            updateDao.updateDrawnAndFee(dealInForm.getFund_name(), current_drawn, current_fee);
+                        }
+                    }
+                } else { // create a new deal entry in db
+                    deal.setDeal_id();
+                    insertdao.addDeal(dealInForm);
+
+                    // add deal_size to drawn_capital in fund table, add 2% of deal_size to management_fee in fund table
+                    Double current_drawn = queryDao.queryDrawnByFundname(dealInForm.getFund_name());
+                    Double current_fee = queryDao.queryFeeByFundname(dealInForm.getFund_name());
+                    current_drawn += dealInForm.getDeal_size();
+                    current_fee += dealInForm.getDeal_size() * 0.02;
+                    updateDao.updateDrawnAndFee(dealInForm.getFund_name(), current_drawn, current_fee);
                 }
             }
         }
 
-        /*JSONObject jsonObject = new JSONObject(d);
-        org.json.JSONArray jsonArray = jsonObject.getJSONArray("deal");
-        int l = jsonArray.length();
-        for (int i = 0; i < l; i++) {
-            Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
-            insertdao.addDeal(deal); // insert new deal entry
-        }*/
+        session.commit();
+        session.close();
     }
 
-    // When to call this method?
-    public void deleteDealInfo(String d) {
-        Gson gson = new Gson();
-        SqlSession session = GetSqlSession.createSqlSession();
-        DeleteDao deleteDao = session.getMapper(DeleteDao.class);
-
-        JSONObject jsonObject = new JSONObject(d);
-        JSONArray jsonArray = jsonObject.getJSONArray("deal");
-        int l = jsonArray.length();
-        for (int i = 0; i < l; i++) {
-            Deal deal = gson.fromJson(jsonArray.getJSONObject(i).toString(), Deal.class);
-            deleteDao.delDeal(deal);
-        }
+    // check all fields except: deal_id, cid, c_name, deal_date
+    public static boolean CompareChange(Deal d1, Deal d2) {
+        return d1.getDeal_size() == d2.getDeal_size() && d1.getDeal_status() == d2.getDeal_status() && d1.getSeries() == d2.getSeries() &&
+                d1.getMSEQ_invest_amount() == d2.getMSEQ_invest_amount() && d1.getPost_value() == d2.getPost_value() &&
+                d1.getVehicle() == d2.getVehicle() && d1.getCo_investor() == d2.getCo_investor() &&
+                d1.getFund_percentage() == d2.getFund_percentage() && d1.getOwn_percentage() == d2.getOwn_percentage();
     }
-
 }

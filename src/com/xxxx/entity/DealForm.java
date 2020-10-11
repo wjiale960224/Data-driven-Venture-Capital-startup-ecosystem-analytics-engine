@@ -3,8 +3,9 @@ package com.xxxx.entity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+
 public class DealForm {
+    // Field name must match the form column name on webpage. checked
     String Company_Name;
     String Deal_Date;
     Double Deal_Size;
@@ -33,7 +34,14 @@ public class DealForm {
 
     public Deal toDeal() throws ParseException {
         Deal dl = new Deal();
-        switch (this.Deal_Status.toLowerCase()){
+
+        // set deal_id and cid in DealService
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = simpleDateFormat.parse(this.Deal_Date);
+        dl.setC_name(this.Company_Name);
+        dl.setDeal_date(date);
+        dl.setDeal_size(this.Deal_Size);
+        switch (this.Deal_Status.toLowerCase()) {
             case "completed":
                 dl.setDeal_status(DealStatus.Completed);
                 break;
@@ -44,7 +52,6 @@ public class DealForm {
                 dl.setDeal_status(DealStatus.Failed);
                 break;
         }
-
         switch (this.Series.toLowerCase()){
             case "series_a":
                 dl.setSeries(com.xxxx.entity.Series.Series_A);
@@ -59,31 +66,20 @@ public class DealForm {
                 dl.setSeries(com.xxxx.entity.Series.Series_D);
                 break;
         }
-
-        Integer deal_id;
-        Integer cid;
-        String c_name; // to get company_id
-        String co_investor;
-
-//        dl.setDeal_date(this.Deal_Date);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = simpleDateFormat.parse(this.Deal_Date);
-        dl.setC_name(this.Company_Name);
-        dl.setDeal_date(date);
-        dl.setDeal_size(this.Deal_Size);
-        dl.setFund_percentage(this.Fund_Percent);
         dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount);
-        dl.setOwn_percentage(this.Own_Percent);
         dl.setPost_value(this.Post_Valuation);
-        dl.setCo_investor(this.Co_Investor);
         if (this.Invest_Vehicle == null){
             dl.setVehicle(null);
-        }else {
-            if (this.Invest_Vehicle.toLowerCase().contains("equities"))
+        } else {
+            if (this.Invest_Vehicle.toLowerCase().contains("equit"))
                 dl.setVehicle(Vehicle.Equities);
-            if (this.Invest_Vehicle.toLowerCase().contains("notes"))
+            if (this.Invest_Vehicle.toLowerCase().contains("note"))
                 dl.setVehicle(Vehicle.Notes);
         }
+        dl.setCo_investor(this.Co_Investor);
+        dl.setFund_percentage(this.Fund_Percent);
+        dl.setOwn_percentage(this.Own_Percent);
+
         return dl;
     }
 }

@@ -23,13 +23,12 @@ public class DealFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String r = req.getParameter("refresh");
-        String d = req.getParameter("deal");
 
-        if (r != null && r.equals("[]")) {
+        if (r != null && r.equals("[]")) { // retrieve data from database
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(dealService.getDealInfo(dealService.getDealId()));
-        } else {
-            d = "{\"deal\": " + d + "}";
+        } else { // update data in database
+            String d = req.getParameter("deal");
             try {
                 dealService.updateDealInfo(d);
             } catch (ParseException e) {
