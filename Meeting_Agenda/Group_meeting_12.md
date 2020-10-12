@@ -1,4 +1,4 @@
-Meeting date: 24 September 2020
+Meeting date: 01 October 2020
 
 Location: Zoom, remotely
 
