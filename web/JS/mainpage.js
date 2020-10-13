@@ -196,7 +196,7 @@ $(function (){
                 }
                 for (i = 0; i < over_infos.length; i++){ // Reconstruct string format to object format
                     var obj2 = JSON.parse(over_infos[i]);
-                    document.getElementById("No_deals").innerHTML = "A$" + obj2["Total_Deals"] + "M";
+                    document.getElementById("No_deals").innerHTML = obj2["Total_Deals"];
                     document.getElementById("drawn_capital").innerHTML = "A$" + obj2["Drawn_Capital"] + "M";
                     document.getElementById("per_deal").innerHTML ="A$" + obj2["Per_Deal"] + "M";
                     document.getElementById("No_company").innerHTML ="A$" + obj2["Total_Companies"] + "M";

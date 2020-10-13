@@ -37,11 +37,11 @@
         <div class = "top_box">
             <div class = "top_column">
                 <div id="total_company_div">
-                    <div class="text_info"><span id="total_company">10</span><br><span>Total company in this theme</span></div>
+                    <div class="text_info"><span id="total_company"></span><br><span>Total company in this theme</span></div>
                     <div id = "total_company_pie"></div>
                 </div>
                 <div id="total_amount_div">
-                    <div class="text_info"><span id="total_amount">23 M</span><br><span>Total Inv amount in this theme</span></div>
+                    <div class="text_info"><span id="total_amount"></span><br><span>Total Inv amount in this theme</span></div>
                     <div id = "total_inv_pie"></div>
                 </div>
             </div>
