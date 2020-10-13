@@ -2,6 +2,7 @@ package com.xxxx.dao;
 
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
+import com.xxxx.entity.TotCapitalMngFee;
 
 public interface UpdateDao {
 
@@ -12,4 +13,6 @@ public interface UpdateDao {
     int updateDeal(Deal deal);
 
     void updateDrawnAndFee(String fund_name, Double drawn_capital, Double management_fee);
+
+    void updateCapitalMngFee(TotCapitalMngFee cf);
 }

@@ -28,17 +28,16 @@
                 <thead>
                 <tr  contenteditable="false">
                     <th scope="col">No.</th>
-                    <th>Company_Name</th>
-                    <th>Deal_Date</th>
-                    <th>Deal_Size</th>
-                    <th>Deal_Status</th>
+                    <th>Company Name</th>
+                    <th>Deal Date</th>
+                    <th>Deal Size</th>
                     <th>Series</th>
-                    <th>MSEQ_Invest_amount</th>
-                    <th>Post_Valuation</th>
-                    <th>Invest_Vehicle</th>
-                    <th>Co_Investor</th>
-                    <th>Fund_Percent</th>
-                    <th>Own_Percent</th>
+                    <th>MSEQ Invest amount</th>
+                    <th>Post Valuation</th>
+                    <th>Invest Vehicle</th>
+                    <th>Co Investor</th>
+                    <th>Fund Percent</th>
+                    <th>Own Percent</th>
                 </tr>
                 </thead>
                 <tbody></tbody>

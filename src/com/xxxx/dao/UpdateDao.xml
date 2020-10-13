@@ -16,7 +16,7 @@
     <update id="updateCompany" parameterType="company">
         update company set theme = #{theme}, year_founded = #{year_founded}, runway_start_date=#{runway_start_date},
         runway_end_date = #{runway_end_date}, runway_month = #{runway_month}, raised_to_date = #{raised_to_date},
-        employee_no = #{employee_no}, revenue = #{revenue}
+        employee_no = #{employee_no}, revenue = #{revenue}, irr=#{irr}
         where cid=#{cid};
     </update>
 
@@ -30,5 +30,9 @@
     <update id="updateDrawnAndFee">
         update fund set drawn_capital = #{drawn_capital}, management_fee = #{management_fee}
         where fund_name=#{fund_name};
+    </update>
+
+    <update id="updateCapitalMngFee">
+        update capital set total_capital = #{total_capital}, management_fee=#{management_fee};
     </update>
 </mapper>

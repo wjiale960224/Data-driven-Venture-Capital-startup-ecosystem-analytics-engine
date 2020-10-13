@@ -9,7 +9,6 @@ public class DealForm {
     String Company_Name;
     String Deal_Date;
     Double Deal_Size;
-    String Deal_Status;
     String Series;
     Double MSEQ_Invest_amount;
     Double Post_Valuation;
@@ -18,11 +17,10 @@ public class DealForm {
     Double Fund_Percent;
     Double Own_Percent;
 
-    public DealForm(String company_Name, String deal_Date, Double deal_Size, String deal_Status, String series, Double MSEQ_Invest_amount, Double post_Valuation, String invest_Vehicle, String co_Investor, Double fund_Percent, Double own_Percent) {
+    public DealForm(String company_Name, String deal_Date, Double deal_Size, String series, Double MSEQ_Invest_amount, Double post_Valuation, String invest_Vehicle, String co_Investor, Double fund_Percent, Double own_Percent) {
         Company_Name = company_Name;
         Deal_Date = deal_Date;
         Deal_Size = deal_Size;
-        Deal_Status = deal_Status;
         Series = series;
         this.MSEQ_Invest_amount = MSEQ_Invest_amount;
         Post_Valuation = post_Valuation;
@@ -41,7 +39,7 @@ public class DealForm {
         dl.setC_name(this.Company_Name);
         dl.setDeal_date(date);
         dl.setDeal_size(this.Deal_Size);
-        switch (this.Deal_Status.toLowerCase()) {
+        /*switch (this.Deal_Status.toLowerCase()) {
             case "completed":
                 dl.setDeal_status(DealStatus.Completed);
                 break;
@@ -51,7 +49,7 @@ public class DealForm {
             case "fail":
                 dl.setDeal_status(DealStatus.Failed);
                 break;
-        }
+        }*/
         switch (this.Series.toLowerCase()){
             case "series_a":
                 dl.setSeries(com.xxxx.entity.Series.Series_A);

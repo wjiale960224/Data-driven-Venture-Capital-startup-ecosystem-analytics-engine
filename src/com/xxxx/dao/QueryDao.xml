@@ -71,4 +71,8 @@
     <select id="queryFeeByFundname" parameterType="String" resultType="Double">
         select management_fee from fund where fund_name = #{fund_name};
     </select>
+
+    <select id="queryCapitalMngFee" resultType="TotCapitalMngFee">
+        select * from capital;
+    </select>
 </mapper>

@@ -44,6 +44,7 @@ $(function (){
                 for (i = 0; i < $(".EMclass>li").length; i++){
                     j = i+1;
                     $(".EMclass>li:nth-child(" + j + ")").click(function(e){
+
                         e.stopPropagation();
                     });
                 }

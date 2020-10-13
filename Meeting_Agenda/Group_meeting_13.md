@@ -29,11 +29,11 @@ Minutes (what was discussed):
 
 •	Slides preparation in Audit 3.
 
-•   Demo preparation in Audit 3.
+• Demo preparation in Audit 3.
 
 
 •	Next week's task: Finish Audit 3 slides.
-                      Have a reharsing Audit 3 preparation
+                      Rehearse Audit 3 presentation.
 
 __________________________________________________________________________________
 

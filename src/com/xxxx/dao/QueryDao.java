@@ -1,9 +1,6 @@
 package com.xxxx.dao;
 
-import com.xxxx.entity.Company;
-import com.xxxx.entity.Deal;
-import com.xxxx.entity.User;
-import com.xxxx.entity.Valuation;
+import com.xxxx.entity.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -45,4 +42,6 @@ public interface QueryDao {
     Double queryDrawnByFundname(String fund_name);
 
     Double queryFeeByFundname(String fund_name);
+
+    TotCapitalMngFee queryCapitalMngFee();
 }
