@@ -10,11 +10,6 @@ $(function() {
         var company_value_in_NS = [];
         var company_in_ST = [];
         var company_value_in_ST = [];
-        var total_company_No_EM = 0;
-        var total_company_No_FP = 0;
-        var total_company_No_HSH = 0;
-        var total_company_No_NS = 0;
-        var total_company_No_ST = 0;
         var total_invest_EM = 0;
         var total_invest_FP = 0;
         var total_invest_HSH = 0;
@@ -25,11 +20,7 @@ $(function() {
         var total_HSH = 0;
         var total_NS = 0;
         var total_ST = 0;
-        var total_company_no_EM = 0;
-        var total_company_no_FP = 0;
-        var total_company_no_HSH = 0;
-        var total_company_no_NS = 0;
-        var total_company_no_ST = 0;
+        var total_company_no = 0;
         let deal_set_EM = new Set();
         let deal_set_FP = new Set();
         let deal_set_HSH = new Set();
@@ -67,34 +58,25 @@ $(function() {
                     var obj3 = JSON.parse(theme_of_fund[i]);
                     menu_themes[i].innerHTML = obj3["theme"].replace(/_/g," ");
                     if(isContains(obj3["theme"],"Expon")){
-                        total_company_No_EM = obj3["company_No"];
                         total_invest_EM = obj3["total_investment_amount"];
                         total_EM = obj3["overall_investment"] - total_invest_EM;
-                        total_company_no_EM = obj3["total_company_No"] - total_company_No_EM;
+                        total_company_no = obj3["total_company_No"];
                     }
                     if (isContains(obj3["theme"],"Feed")){
-                        total_company_No_FP = obj3["company_No"];
                         total_invest_FP = obj3["total_investment_amount"];
                         total_FP = obj3["overall_investment"] - total_invest_FP;
-                        total_company_no_FP = obj3["total_company_No"] - total_company_No_FP;
                     }
                     if(isContains(obj3["theme"],"Human")){
-                        total_company_No_HSH = obj3["company_No"];
                         total_invest_HSH = obj3["total_investment_amount"];
                         total_HSH = obj3["overall_investment"] - total_invest_HSH;
-                        total_company_no_HSH = obj3["total_company_No"] - total_company_No_HSH;
                     }
                     if (isContains(obj3["theme"],"New")){
-                        total_company_No_NS = obj3["company_No"];
                         total_invest_NS = obj3["total_investment_amount"];
                         total_NS = obj3["overall_investment"] - total_invest_NS;
-                        total_company_no_NS = obj3["total_company_No"] - total_company_No_NS;
                     }
                     if (isContains(obj3["theme"],"Space")){
-                        total_company_No_ST = obj3["company_No"];
                         total_invest_ST = obj3["total_investment_amount"];
                         total_ST = obj3["overall_investment"] - total_invest_ST;
-                        total_company_no_ST = obj3["total_company_No"] - total_company_No_ST;
                     }
                 }
                 for(i = 0; i< company_total.length;i++){
@@ -351,8 +333,8 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_company_No_EM, name:'Exponential Machine'},
-                                    {value: total_company_no_EM, name:'others'},
+                                    {value: company_in_EM.length, name:'Exponential Machine'},
+                                    {value: total_company_no - company_in_EM.length, name:'others'},
                                 ],
                                 emphasis: {
                                     itemStyle: {
@@ -508,8 +490,8 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_company_No_FP, name:'Feeding 10B People'},
-                                    {value: total_company_no_FP, name:'others'},
+                                    {value: company_in_FP.length, name:'Feeding 10B People'},
+                                    {value: (total_company_no - company_in_FP.length) , name:'others'},
                                 ],
                                 emphasis: {
                                     itemStyle: {
@@ -665,8 +647,8 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_company_No_HSH, name:'Humanity Scale Healthcare'},
-                                    {value: total_company_no_HSH, name:'others'},
+                                    {value: company_in_HSH.length, name:'Humanity Scale Healthcare'},
+                                    {value: total_company_no - company_in_HSH.length, name:'others'},
                                 ],
                                 emphasis: {
                                     itemStyle: {
@@ -824,8 +806,8 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_company_No_NS, name:'New Society'},
-                                    {value: total_company_no_NS, name:'others'},
+                                    {value: company_in_NS.length, name:'New Society'},
+                                    {value: total_company_no - company_in_NS.length, name:'others'},
                                 ],
                                 emphasis: {
                                     itemStyle: {
@@ -853,7 +835,7 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_invest_NS, name:'New Society'},
+                                    {value: company_in_NS.length, name:'New Society'},
                                     {value: total_NS, name:'others'},
                                 ],
                                 emphasis: {
@@ -983,8 +965,8 @@ $(function() {
                                 center: ['50%', '60%'],
                                 label:{show:false},
                                 data: [
-                                    {value: total_company_No_ST, name:'Space Transport'},
-                                    {value: total_company_no_ST, name:'others'},
+                                    {value: company_in_ST.length, name:'Space Transport'},
+                                    {value: total_company_no - company_in_ST.length, name:'others'},
                                 ],
                                 emphasis: {
                                     itemStyle: {
