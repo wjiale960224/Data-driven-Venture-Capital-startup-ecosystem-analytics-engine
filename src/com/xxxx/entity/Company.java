@@ -17,6 +17,7 @@ public class Company {
     Double raised_to_date;
     Integer employee_no;
     Double revenue;
+    Integer irr;
 
     public Company() {
     }
@@ -34,7 +35,7 @@ public class Company {
     }
 
     public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_start_date, String runway_end_date,
-                   Double raised_to_date, Integer employee_no, Double revenue) {
+                   Double raised_to_date, Integer employee_no, Double revenue, Integer irr) {
         this.cid = cid;
         this.c_name = c_name;
         this.theme = theme;
@@ -44,6 +45,7 @@ public class Company {
         this.raised_to_date = raised_to_date;
         this.employee_no = employee_no;
         this.revenue = revenue;
+        this.irr = irr;
         // update Portfolio composition
         if (!Portfolio.portfolio.contains(c_name)) {
             Portfolio.portfolio.add(c_name);
@@ -134,6 +136,14 @@ public class Company {
 
     public void setRevenue(double revenue) {
         this.revenue = revenue;
+    }
+
+    public Integer getIrr() {
+        return irr;
+    }
+
+    public void setIrr(Integer irr) {
+        this.irr = irr;
     }
 
     // may be called manually, or automatically after certain event

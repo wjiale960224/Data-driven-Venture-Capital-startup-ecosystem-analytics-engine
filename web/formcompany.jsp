@@ -16,6 +16,12 @@
     <div class="table_whole_div">
         <div class="table_caption">
             <div><h2>Companies</h2></div>
+            <form id="capitalFee">
+                <label for="total_capital">Total capital</label>
+                <input id="total_capital" type="text">
+                <label for="management_fee">Management fee</label>
+                <input id="management_fee" type="text">
+            </form>
             <div class="edit_box">
                 <label for="edit">Edit</label>
                 <input type='checkbox' value='edit' id="edit">
@@ -26,19 +32,20 @@
                 <thead>
                     <tr  contenteditable="false">
                         <th>No.</th>
-                        <th>Company_Name</th>
+                        <th>Company Name</th>
                         <th>Theme</th>
-                        <th>Year_Founded</th>
-                        <th>Runway_Start_Date</th>
-                        <th>Runway_End_Date</th>
-                        <th>Runway_Month</th>
-                        <th>Raise_to_Date</th>
-                        <th>Employee_No</th>
+                        <th>Year Founded</th>
+                        <th>Runway Start Date</th>
+                        <th>Runway End Date</th>
+                        <th>Runway Month</th>
+                        <th>Raise to Date</th>
+                        <th>Employee No</th>
                         <th>Revenue</th>
-                        <th>Post_Valuation</th>
-                        <th>Valuation_Change_Reason</th>
-                        <th>MSEQ_Investment_Cur_Val</th>
-                        <th>Own_Percent</th>
+                        <th>IRR</th>
+                        <th>Post Valuation</th>
+                        <th>Valuation Change Reason</th>
+                        <th>MSEQ Investment Cur Val</th>
+                        <th>Own Percent</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

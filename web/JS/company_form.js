@@ -15,6 +15,9 @@ window.onload = function (){
             }
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
+            if ($index > 10){
+                $(".table_div").addClass("scroll_table");
+            }
             event.stopPropagation();
 
         });
@@ -27,6 +30,10 @@ window.onload = function (){
                 for (var i = 0; i < $index.length; i++){
                     $index.eq(i).html(i+1);
                 }
+            }
+            var $count = $(".table>tbody>tr").length;
+            if ($count < 11){
+                $(".table_div").removeClass("scroll_table");
             }
         });
 
@@ -48,24 +55,39 @@ window.onload = function (){
             var companyList = [];
             for (var i = 0; i < $tr.length; i++) {
                 var company = {};
+                var check_empty = 0;
                 for (var j = 1; j < $tr[i].cells.length; j++) {
                     var cont = $tr[i].cells[j].innerHTML;
-                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                    if (cont===""){
+                        check_empty++;
+                    }
+                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
                     company[col_head] = cont;
+                }
+                if (check_empty === $tr[i].cells.length-1){
+                    continue;
                 }
                 companyList[i] = company;
             }
             return companyList;
         }
+        function collect_capital(){
+            var capital = {};
+            capital["total_capital"] = document.getElementById("total_capital").value;
+            capital["management_fee"] =document.getElementById("management_fee").value;
+            return capital;
+        }
 
         // submit button
         $("#submit").click(function(){
             var company = JSON.stringify(collect_info());
+            var capital = JSON.stringify(collect_capital());
+
             $.ajax({
                 type: "POST",
                 url: "/workspace_Intellj_war_exploded/company_form",
                 data: {
-                    company: company,
+                    company: capital+"totalCapital&manageFee"+company,
                 },
                 success:function(msg){
                     have_submit = true; // Do not promp window if have submitted.
@@ -89,6 +111,12 @@ window.onload = function (){
                 },
                 success:function(company_info){
                     console.log("yes,refreshed.");
+                    var infos = company_info.split("totalCapital&manageFee");
+                    var capitalAFee = JSON.parse(infos[1]);
+                    document.getElementById("total_capital").value = capitalAFee["total_capital"];
+                    document.getElementById("management_fee").value = capitalAFee["management_fee"];
+
+                    company_info = infos[0];
                     if (company_info === "[]"){
                         for (var i = 0; i < 5; i++){
                             $("#add_row").click();
@@ -110,7 +138,7 @@ window.onload = function (){
                             $('#add_row').click();
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){ // Update table
-                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
                                 $trs[$trs.length-1].cells[j].innerHTML = $company[attr];
                             }
                         }

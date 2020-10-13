@@ -32,6 +32,13 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+#capitalFee{
+    margin: 20px 0 0;
+    font-weight: bold;
+}
+#capitalFee>#total_capital{
+    margin-right: 40px;
+}
 .edit_box{
     font-weight: bold;
 }
@@ -43,6 +50,11 @@ body{
 .table{
     table-layout: fixed;
     width: 100%;
+}
+
+.scroll_table{
+    height: 520px;
+    overflow-y: scroll;
 }
 
 .table, .table th, .table td{

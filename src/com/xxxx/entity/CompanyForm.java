@@ -15,13 +15,14 @@ public class CompanyForm {
     Double Raise_to_Date;
     Integer Employee_No;
     Double Revenue;
+    Integer IRR;
     // Valuation fields
     Double Post_Valuation;
     String Valuation_Change_Reason;
     Double MSEQ_Investment_Cur_Val;
     Double Own_Percent;
 
-    public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
+    public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Integer IRR, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
         Company_Name = company_Name;
         Theme = theme;
         Year_Founded = year_Founded;
@@ -31,6 +32,7 @@ public class CompanyForm {
         Raise_to_Date = raise_to_Date;
         Employee_No = employee_No;
         Revenue = revenue;
+        this.IRR = IRR;
         Post_Valuation = post_Valuation;
         Valuation_Change_Reason = valuation_Change_Reason;
         this.MSEQ_Investment_Cur_Val = MSEQ_Investment_Cur_Val;
@@ -44,6 +46,7 @@ public class CompanyForm {
 
         company.setC_name(this.Company_Name);
 
+        company.irr = this.IRR;
         if (this.Theme.toLowerCase().contains("exponential"))
             company.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
         if (this.Theme.toLowerCase().contains("feeding"))

@@ -15,6 +15,9 @@ window.onload = function (){
             }
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
+            if ($index > 10){
+                $(".table_div").addClass("scroll_table");
+            }
             event.stopPropagation();
 
         });
@@ -27,6 +30,11 @@ window.onload = function (){
                 for (var i = 0; i < $index.length; i++){
                     $index.eq(i).html(i+1);
                 }
+            }
+            var $count = $(".table>tbody>tr").length;
+            if ($count < 11){
+                $(".table_div").removeClass("scroll_table");
+
             }
         });
 
@@ -48,10 +56,15 @@ window.onload = function (){
             var companyList = [];
             for (var i = 0; i < $tr.length; i++) {
                 var company = {};
+                var check_empty = 0;
+
                 for (var j = 1; j < $tr[i].cells.length; j++) {
                     var cont = $tr[i].cells[j].innerHTML;
-                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
                     company[col_head] = cont;
+                }
+                if (check_empty === $tr[i].cells.length-1){
+                    continue;
                 }
                 companyList[i] = company;
             }
@@ -110,7 +123,7 @@ window.onload = function (){
                             $('#add_row').click();
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
-                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML;
+                                var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
                                 $trs[$trs.length-1].cells[j].innerHTML = $deal[attr];
                             }
                         }

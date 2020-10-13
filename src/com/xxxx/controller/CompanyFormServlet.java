@@ -27,10 +27,12 @@ public class CompanyFormServlet extends HttpServlet {
 
         if (r != null && r.equals("[]")) { // retrieve data from database
             ServletOutputStream sos = resp.getOutputStream();
-            sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()));
+            sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()) +"totalCapital&manageFee" + companyService.getCapitalMngFeeInfo());
         } else { // update data in database
             String c = req.getParameter("company");
-            companyService.updateCompanyInfo(c);
+            String[] cs =  c.split("totalCapital&manageFee");
+            companyService.updateTotCapitalMngFee(cs[0]);
+            companyService.updateCompanyInfo(cs[1]);
         }
     }
 }
