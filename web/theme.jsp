@@ -60,120 +60,13 @@
                     <th>Current Valuation<br>(AUD M\)</th>
                     <th>Investment Multiple</th>
                     <th>IRR</th>
-                    </thead>
                     <tr style="background-color: rgb(173,139,46);">
                         <td id="theme_table_cell" colspan="7">Exponential Machines</td>
                     </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
+                    </thead>
+                    <tbody>
 
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
-                    <tr>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-                        <td>.</td>
-
-                    </tr>
+                    </tbody>
 
 
                 </table>

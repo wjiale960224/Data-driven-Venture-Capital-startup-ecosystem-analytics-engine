@@ -17,7 +17,7 @@ public class Company {
     Double raised_to_date;
     Integer employee_no;
     Double revenue;
-    Integer irr;
+    Double irr;
 
     public Company() {
     }
@@ -35,7 +35,7 @@ public class Company {
     }
 
     public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_start_date, String runway_end_date,
-                   Double raised_to_date, Integer employee_no, Double revenue, Integer irr) {
+                   Double raised_to_date, Integer employee_no, Double revenue, Double irr) {
         this.cid = cid;
         this.c_name = c_name;
         this.theme = theme;
@@ -138,11 +138,11 @@ public class Company {
         this.revenue = revenue;
     }
 
-    public Integer getIrr() {
+    public Double getIrr() {
         return irr;
     }
 
-    public void setIrr(Integer irr) {
+    public void setIrr(Double irr) {
         this.irr = irr;
     }
 

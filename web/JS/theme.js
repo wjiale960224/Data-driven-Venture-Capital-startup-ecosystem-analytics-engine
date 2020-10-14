@@ -48,12 +48,84 @@ $(function() {
                 symbols.push("CompanyInFo");
                 symbols.push("ThemeOfFund");
                 symbols.push("CompanyTotal");
-                var map = get_infos(symbols,themepage_info);
-                var com_infos = split_string(map.get("CompanyInFo"));
-                var theme_of_fund = split_string(map.get("ThemeOfFund"));
-                var company_total = split_string(map.get("CompanyTotal"));
+                var map_theme = get_infos(symbols,themepage_info);
+                var com_infos = split_string(map_theme.get("CompanyInFo"));
+                var theme_of_fund = split_string(map_theme.get("ThemeOfFund"));
+                var company_total = split_string(map_theme.get("CompanyTotal"));
                 var menu_themes = $(".tet");
+                var company_fst_theme = [];
+                var company_snd_theme = [];
+                var company_trd_theme = [];
+                var company_fourth_theme = [];
+                var company_fifth_theme = [];
+                var map = new Map();
 
+                for (var i = 0; i < com_infos.length; i++){
+                    var obj = JSON.parse(com_infos[i]);
+                    switch (obj["theme"]){
+                        case "Exponential_Machines":
+                            company_fst_theme.push(obj);
+                            break;
+                        case "Feeding_10B_People":
+                            company_snd_theme.push(obj);
+                            break;
+                        case "Humanity_Scale_Healthcare":
+                            company_trd_theme.push(obj);
+                            break;
+                        case "New_Society":
+                            company_fourth_theme.push(obj);
+                            break;
+                        case "Space_Transport":
+                            company_fifth_theme.push(obj);
+                            break;
+                    }
+                }
+                map.set("Exponential_Machines", company_fst_theme);
+                map.set("Feeding_10B_People", company_snd_theme);
+                map.set("Humanity_Scale_Healthcare", company_trd_theme);
+                map.set("New_Society", company_fourth_theme);
+                map.set("Space_&_Transport", company_fifth_theme);
+
+                $("#EM").click(theme_click_table);
+                $("#FP").click(theme_click_table);
+                $("#HSH").click(theme_click_table);
+                $("#NS").click(theme_click_table);
+                $("#ST").click(theme_click_table);
+                function theme_click_table(){
+                    $("tbody").empty();
+                    var themeNodes = this.childNodes;
+                    document.getElementById("theme_table_cell").innerHTML = themeNodes[0].innerText;
+                    var theme = themeNodes[0].innerText.replace(/\s+/g,"_");
+                    for (var i = 0; i < map.get(theme).length; i++){
+                        var $td = "<td></td>";
+                        var $tds = "";
+                        for (var j = 0; j < $("thead th").length; j++){
+                            $tds += $td;
+                        }
+                        $("tbody").append("<tr contenteditable = false>"+ $tds +"</tr>");
+
+                        var $trs = $("tbody>tr");
+
+                        for (var k = 0; k < $trs[$trs.length-1].cells.length; k++){ // Update table
+                            var attr = $("table")[0].tHead.rows[0].cells[k].innerHTML;
+                            if (attr === "Company"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["company_name"];
+                            }else if (attr === "Investment Date"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_data"];
+                            }else if (attr === "Cost<br>(AUD M\\)"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"];
+                            }else if (attr === "% Owned"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["own"];
+                            }else if (attr === "Current Valuation<br>(AUD M\\)"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
+                            }else if (attr === "Investment Multiple"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_multiple"];
+                            }else if (attr === "IRR"){
+                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["irr"];
+                            }
+                        }
+                    }
+                }
                 for (i = 0; i < theme_of_fund.length; i++){
                     var obj3 = JSON.parse(theme_of_fund[i]);
                     menu_themes[i].innerHTML = obj3["theme"].replace(/_/g," ");
