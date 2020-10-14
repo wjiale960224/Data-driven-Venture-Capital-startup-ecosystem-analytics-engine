@@ -8,11 +8,29 @@ window.onload = function (){
             var $index = $(".table>tbody>tr").length+1;
             var $tbody = $(".table>tbody"); // table
             var $checked = $("#edit").is(":checked");
-            var $td = "<td></td>";
+            var $td = "<td><input class='td_input' type='text'></td>";
             var $tds = "";
             for (var i = 0; i < $("thead th").length-1; i++){
-                $tds += $td;
+                if (i === 1){
+                    $tds += "<td><select class='td_input dropdownchoice'><option>Exponential Machines</option><option>Feeding 10B People</option>" +
+                        "<option>Humanity Scale Healthcare</option><option>New Society</option>" +
+                        "<option>Space & Transport</option></select></td>"
+                }else if (i === 2){
+                    $tds += "<td><input class='td_input' type='number' placeholder='2008'></td>";
+                }else if (i === 3 || i === 4){
+                    $tds += "<td><input class='td_input' type='date'></td>";
+                }else if (i === 5){
+                    $tds += "<td><input class='td_input' type='number' placeholder='24'></td>";
+                }else if ((i>=8 && i<=10) || (i>=12 && i<=13) || i===6){
+                    $tds += "<td><input class='td_input' type='number'></td>";
+                }else if (i === 7){
+                    $tds += "<td><input class='td_input' type='number' placeholder='150'></td>";
+                } else {
+                    $tds += $td;
+                }
             }
+            $("input").attr({readOnly:!$checked});
+            $(".dropdownchoice").attr("disabled",!$checked);
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
             if ($index > 10){
@@ -39,12 +57,12 @@ window.onload = function (){
 
         // Change edit status.
         $("#edit").click(function(){
-            var $toby = $("tbody");
             if ($(this).is(":checked") === true){
-                $toby.children("tr").attr({contentEditable:true})
-                $toby.children("th").attr({contentEditable:false})
+                $("input").attr({readOnly: false});
+                $("select").attr("disabled",false);
             }else {
-                $toby.children("tr").attr({contentEditable:false})
+                $("input").attr({readOnly: true});
+                $("select").attr("disabled",true);
             }
         });
 
@@ -57,12 +75,14 @@ window.onload = function (){
                 var company = {};
                 var check_empty = 0;
                 for (var j = 1; j < $tr[i].cells.length; j++) {
-                    var cont = $tr[i].cells[j].innerHTML;
+                    var cont = $tr[i].cells[j].childNodes[0].value;
                     if (cont===""){
                         check_empty++;
+                    }else {
+                        var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
+                        company[col_head] = cont;
                     }
-                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                    company[col_head] = cont;
+
                 }
                 if (check_empty === $tr[i].cells.length-1){
                     continue;
@@ -90,6 +110,7 @@ window.onload = function (){
                     company: capital+"totalCapital&manageFee"+company,
                 },
                 success:function(msg){
+                    alert("Submit successfully");
                     have_submit = true; // Do not promp window if have submitted.
                     console.log("Submitted, have submit:" + have_submit);
                     console.log("yes,data delivered.");
@@ -133,13 +154,19 @@ window.onload = function (){
                             }
                         }
                         for (i = 0; i < companies.length; i++){ // Refresh table according to data in database
-                            console.log(companies[i]);
                             var $company = JSON.parse(companies[i]); // Reconstruct string format to object format
                             $('#add_row').click();
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){ // Update table
                                 var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                                $trs[$trs.length-1].cells[j].innerHTML = $company[attr];
+                                if (attr === "Theme"){
+                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].replace(/_/g," ");
+                                    if ($company[attr].replace(/_/g," ") === "Space Transport"){
+                                        $trs[$trs.length-1].cells[j].childNodes[0].value = "Space & Transport";
+                                    }
+                                }else {
+                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr];
+                                }
                             }
                         }
                     }

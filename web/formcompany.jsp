@@ -33,7 +33,7 @@
                     <tr  contenteditable="false">
                         <th>No.</th>
                         <th>Company Name</th>
-                        <th>Theme</th>
+                        <th style="width: 218px">Theme</th>
                         <th>Year Founded</th>
                         <th>Runway Start Date</th>
                         <th>Runway End Date</th>

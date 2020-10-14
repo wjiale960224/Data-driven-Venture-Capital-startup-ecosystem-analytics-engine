@@ -8,11 +8,23 @@ window.onload = function (){
             var $index = $(".table>tbody>tr").length+1;
             var $tbody = $(".table>tbody"); // table
             var $checked = $("#edit").is(":checked");
-            var $td = "<td></td>";
+            var $td = "<td><input class='td_input' type='text'></td>";
             var $tds = "";
             for (var i = 0; i < $("thead th").length-1; i++){
-                $tds += $td;
+                if (i === 1){
+                    $tds += "<td><input class='td_input' type='date'></td>";
+                }else if (i === 3){
+                    $tds += "<td><select class='td_input dropdownchoice'><option>Pre-seed</option><option>Seed</option>" +
+                        "<option>Series A</option><option>Series B</option>" +
+                        "<option>Series C</option></select></td>"
+                }else if (i === 6 || i === 7 || i===0){
+                    $tds += "<td><input class='td_input' type='text'></td>";
+                }else{
+                    $tds += "<td><input class='td_input' type='number'></td>";
+                }
             }
+            $("input").attr({readOnly:!$checked});
+            $(".dropdownchoice").attr("disabled",!$checked);
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
             if ($index > 10){
@@ -40,12 +52,12 @@ window.onload = function (){
 
         // Change edit status.
         $("#edit").click(function(){
-            var $toby = $("tbody");
             if ($(this).is(":checked") === true){
-                $toby.children("tr").attr({contentEditable:true})
-                $toby.children("th").attr({contentEditable:false})
+                $("input").attr({readOnly: false});
+                $("select").attr("disabled",false);
             }else {
-                $toby.children("tr").attr({contentEditable:false})
+                $("input").attr({readOnly: true});
+                $("select").attr("disabled",true);
             }
         });
 
@@ -59,9 +71,14 @@ window.onload = function (){
                 var check_empty = 0;
 
                 for (var j = 1; j < $tr[i].cells.length; j++) {
-                    var cont = $tr[i].cells[j].innerHTML;
-                    var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                    company[col_head] = cont;
+                    var cont = $tr[i].cells[j].childNodes[0].innerHTML;
+                    if (cont===""){
+                        check_empty++;
+                    }else {
+                        var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
+                        company[col_head] = cont;
+                    }
+
                 }
                 if (check_empty === $tr[i].cells.length-1){
                     continue;
@@ -124,7 +141,11 @@ window.onload = function (){
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
                                 var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                                $trs[$trs.length-1].cells[j].innerHTML = $deal[attr];
+                                if (attr === "Series" && $deal[attr] != null){
+                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].replace(/_/g," ");
+                                }else {
+                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr];
+                                }
                             }
                         }
                     }

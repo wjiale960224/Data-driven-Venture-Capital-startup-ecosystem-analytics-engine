@@ -22,6 +22,11 @@ public class CompanyForm {
     Double MSEQ_Investment_Cur_Val;
     Double Own_Percent;
 
+    public CompanyForm(String company_Name, String theme) {
+        Company_Name = company_Name;
+        Theme = theme;
+    }
+
     public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double IRR, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
         Company_Name = company_Name;
         Theme = theme;

@@ -54,7 +54,7 @@ public class Company {
 
 
 
-    public int getCid() {
+    public Integer getCid() {
         return cid;
     }
 
@@ -62,7 +62,7 @@ public class Company {
         this.cid = CompanyID.get_id();
     }
 
-    public void setCid(int ID) {
+    public void setCid(Integer ID) {
         this.cid = ID;
     }
 
@@ -82,11 +82,11 @@ public class Company {
         this.theme = theme;
     }
 
-    public int getYear_founded() {
+    public Integer getYear_founded() {
         return year_founded;
     }
 
-    public void setYear_founded(int year_founded) {
+    public void setYear_founded(Integer year_founded) {
         this.year_founded = year_founded;
     }
 
@@ -106,35 +106,35 @@ public class Company {
         this.runway_end_date = runway_end_date;
     }
 
-    public int getRunway_month() {
+    public Integer getRunway_month() {
         return runway_month;
     }
 
-    public void setRunway_month(int runway_month) {
+    public void setRunway_month(Integer runway_month) {
         this.runway_month = runway_month;
     }
 
-    public double getRaised_to_date() {
+    public Double getRaised_to_date() {
         return raised_to_date;
     }
 
-    public void setRaised_to_date(double raised_to_date) {
+    public void setRaised_to_date(Double raised_to_date) {
         this.raised_to_date = raised_to_date;
     }
 
-    public int getEmployee_no() {
+    public Integer getEmployee_no() {
         return employee_no;
     }
 
-    public void setEmployee_no(int employee_no) {
+    public void setEmployee_no(Integer employee_no) {
         this.employee_no = employee_no;
     }
 
-    public double getRevenue() {
+    public Double getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(double revenue) {
+    public void setRevenue(Double revenue) {
         this.revenue = revenue;
     }
 
