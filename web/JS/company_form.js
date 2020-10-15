@@ -12,7 +12,7 @@ window.onload = function (){
             var $tds = "";
             for (var i = 0; i < $("thead th").length-1; i++){
                 if (i === 1){
-                    $tds += "<td><select class='td_input dropdownchoice'><option>Exponential Machines</option><option>Feeding 10B People</option>" +
+                    $tds += "<td><select class='td_input dropdownchoice'><option></option><option>Exponential Machines</option><option>Feeding 10B People</option>" +
                         "<option>Humanity Scale Healthcare</option><option>New Society</option>" +
                         "<option>Space & Transport</option></select></td>"
                 }else if (i === 2){
@@ -148,9 +148,7 @@ window.onload = function (){
 
                     company_info = infos[0];
                     if (company_info === "[]"){
-                        for (var i = 0; i < 5; i++){
-                            $("#add_row").click();
-                        }
+
                     }else {
                         var companies = company_info.substring(1,company_info.length-1).split("},{"); // Get rid of "[]" in "[{},{}]", and split deals
                         for (i = 0; i < companies.length; i++){ // Get rid of [] and split each item up.
@@ -168,17 +166,21 @@ window.onload = function (){
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){ // Update table
                                 var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                                if (attr === "Theme"){
-                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].replace(/_/g," ");
-                                    if ($company[attr].replace(/_/g," ") === "Space Transport"){
-                                        $trs[$trs.length-1].cells[j].childNodes[0].value = "Space & Transport";
+                                if ($company[attr]){
+                                    if (typeof $company[attr] === "string"){
+                                        if (attr === "Theme" && $company[attr].replace(/_/g," ") === "Space Transport"){
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = "Space & Transport";
+                                        }else {
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].replace(/_/g," ");
+                                        }
+                                    }else if (typeof $company[attr] === "number"){
+                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr];
                                     }
-                                }else {
-                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr];
                                 }
                             }
                         }
                     }
+
 
                 },
                 error: function(){

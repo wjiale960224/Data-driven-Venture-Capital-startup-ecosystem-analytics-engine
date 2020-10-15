@@ -14,7 +14,7 @@ window.onload = function (){
                 if (i === 1){
                     $tds += "<td><input class='td_input' type='date'></td>";
                 }else if (i === 3){
-                    $tds += "<td><select class='td_input dropdownchoice'><option>Pre-seed</option><option>Seed</option>" +
+                    $tds += "<td><select class='td_input dropdownchoice'><option></option><option>Pre-seed</option><option>Seed</option>" +
                         "<option>Series A</option><option>Series B</option>" +
                         "<option>Series C</option></select></td>"
                 }else if (i === 6 || i === 7 || i===0){
@@ -142,10 +142,12 @@ window.onload = function (){
                             var $trs = $("tbody>tr");
                             for (var j = 1; j < $trs[$trs.length-1].cells.length; j++){
                                 var attr = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                                if (attr === "Series" && $deal[attr] != null){
-                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].replace(/_/g," ");
-                                }else {
-                                    $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr];
+                                if ($deal[attr]){
+                                    if (typeof $deal[attr] === "string"){
+                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].replace(/_/g," ");
+                                    }else if (typeof $deal[attr] === "number"){
+                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr];
+                                    }
                                 }
                             }
                         }
