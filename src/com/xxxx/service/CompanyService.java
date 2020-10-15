@@ -108,10 +108,10 @@ public class CompanyService {
     }
 
     public static boolean CompareChange(Company c1, Company c2) {
-        return c1.getTheme() == c2.getTheme() && c1.getYear_founded() == c2.getYear_founded() && c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
-                c1.getRunway_end_date().equals(c2.getRunway_end_date()) && c1.getRunway_month() == c2.getRunway_month() &&
-                c1.getRaised_to_date() == c2.getRaised_to_date() && c1.getEmployee_no() == c2.getEmployee_no() &&
-                c1.getRevenue() == c2.getRevenue() && c1.getIrr().equals(c2.getIrr());
+        return c1.getTheme().equals(c2.getTheme()) && c1.getYear_founded().equals(c2.getYear_founded()) && c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
+                c1.getRunway_end_date().equals(c2.getRunway_end_date()) && c1.getRunway_month().equals(c2.getRunway_month()) &&
+                c1.getRaised_to_date().equals(c2.getRaised_to_date()) && c1.getEmployee_no().equals(c2.getEmployee_no()) &&
+                c1.getRevenue().equals(c2.getRevenue()) && c1.getIrr().equals(c2.getIrr());
     }
 
     public static boolean HasPostValue(double[] postValuations, double v){

@@ -23,13 +23,14 @@ window.onload = function (){
                     $tds += "<td><input class='td_input' type='number'></td>";
                 }
             }
-            $("input").attr({readOnly:!$checked});
-            $(".dropdownchoice").attr("disabled",!$checked);
+
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
             if ($index > 10){
                 $(".table_div").addClass("scroll_table");
             }
+            $("input").attr({readOnly:!$checked});
+            $(".dropdownchoice").attr("disabled",!$checked);
             event.stopPropagation();
 
         });

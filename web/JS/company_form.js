@@ -29,13 +29,15 @@ window.onload = function (){
                     $tds += $td;
                 }
             }
-            $("input").attr({readOnly:!$checked});
-            $(".dropdownchoice").attr("disabled",!$checked);
+
             $tbody.append("<tr contenteditable = "+ $checked +"><th contenteditable='false'><div class='first_col_div'><div class='index'>" + $index + "</div>" +
                 "<div class='delete'>&#128683</div></div></th>"+ $tds +"</tr>");
             if ($index > 10){
                 $(".table_div").addClass("scroll_table");
             }
+
+            $("input").attr({readOnly:!$checked});
+            $(".dropdownchoice").attr("disabled",!$checked);
             event.stopPropagation();
 
         });
@@ -80,9 +82,12 @@ window.onload = function (){
                         check_empty++;
                     }else {
                         var col_head = $("table")[0].tHead.rows[0].cells[j].innerHTML.replace(/\s/g,"_");
-                        company[col_head] = cont;
+                        if (col_head === "Theme"){
+                            company[col_head] = cont.replace(/s+/g,"_");
+                        }else {
+                            company[col_head] = cont;
+                        }
                     }
-
                 }
                 if (check_empty === $tr[i].cells.length-1){
                     continue;
