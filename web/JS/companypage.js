@@ -11,67 +11,81 @@ $(function (){
                 // console.log(companypage_info);
                 var symbols = new Array();
                 symbols.push("CompanyInfo");
-                symbols.push("DealInfo");
+                symbols.push("DealSizeInfo");
+                symbols.push("PostChangeInfo");
                 var map = get_infos(symbols,companypage_info);
                 var com_infos = split_string(map.get("CompanyInfo"));
-                var deal_infos = split_string(map.get("DealInfo"));
-
+                var deal_size_infos = split_string(map.get("DealSizeInfo"));
+                var post_change_info = split_string(map.get("PostChangeInfo"));
                 var companies = [];
+                var deal_sizes = [];
+                var post_changes = [];
                 for (var i = 0; i < com_infos.length; i++){
                     companies[i] = JSON.parse(com_infos[i]);
                 }
+                for (var i = 0; i < deal_size_infos.length; i++){
+                    deal_sizes[i] = JSON.parse(deal_size_infos[i]);
+                }
+                for (var i = 0; i < post_change_info.length; i++){
+                    post_changes[i] = JSON.parse(post_change_info[i]);
+                }
 
                 for (i = 0; i < companies.length; i++){
-                    if (companies[i]["theme"] === "Exponential_Machines"){
-                        $(".EMclass").append("<li>" + companies[i]["company_name"] + "</li>");
-
-                    }else if (companies[i]["theme"] === "Feeding_10B_People"){
-                        $(".FPclass").append("<li>" + companies[i]["company_name"] + "</li>");
-
-                    }else if (companies[i]["theme"] === "Humanity_Scale_Healthcare"){
-                        $(".HSHclass").append("<li>" + companies[i]["company_name"] + "</li>");
-
-                    }else if (companies[i]["theme"] === "New_Society"){
-                        $(".NSclass").append("<li>" + companies[i]["company_name"] + "</li>");
-
-                    }else if (companies[i]["theme"] === "Space_Transport"){
-                        $(".STclass").append("<li>" + companies[i]["company_name"] + "</li>");
-
+                    console.log(companies[i]);
+                    if (companies[i]["Company_Theme"] === "Exponential_Machines"){
+                        $(".EMclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
+                    }else if (companies[i]["Company_Theme"] === "Feeding_10B_People"){
+                        $(".FPclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
+                    }else if (companies[i]["Company_Theme"] === "Humanity_Scale_Healthcare"){
+                        $(".HSHclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
+                    }else if (companies[i]["Company_Theme"] === "New_Society"){
+                        $(".NSclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
+                    }else if (companies[i]["Company_Theme"] === "Space_Transport"){
+                        $(".STclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
                     }
                 }
 
-                var j = -1;
+                $(".sub>li").click(function(e){
+
+                    console.log("here");
+                    e.stopPropagation();
+                })
+                /*var j = -1;
                 for (i = 0; i < $(".EMclass>li").length; i++){
                     j = i+1;
                     $(".EMclass>li:nth-child(" + j + ")").click(function(e){
-
+                        console.log(this.innerHTML);
                         e.stopPropagation();
                     });
                 }
                 for (i = 0; i < $(".FPclass>li").length; i++){
                     j = i+1;
                     $(".FPclass>li:nth-child(" + j + ")").click(function(e){
+
                         e.stopPropagation();
                     });
                 }
                 for (i = 0; i < $(".HSHclass>li").length; i++){
                     j = i+1;
                     $(".HSHclass>li:nth-child(" + j + ")").click(function(e){
+
                         e.stopPropagation();
                     });
                 }
                 for (i = 0; i < $(".NSclass>li").length; i++){
                     j = i+1;
                     $(".NSclass>li:nth-child(" + j + ")").click(function(e){
+
                         e.stopPropagation();
                     });
                 }
                 for (i = 0; i < $(".STclass>li").length; i++){
                     j = i+1;
                     $(".STclass>li:nth-child(" + j + ")").click(function(e){
+
                         e.stopPropagation();
                     });
-                }
+                }*/
 
 /*
                 var $subs = $(".sub>li");

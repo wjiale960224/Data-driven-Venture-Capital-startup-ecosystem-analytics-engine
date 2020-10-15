@@ -1,117 +1,55 @@
 package com.xxxx.entity.companypageinfo;
 
 public class CompanyInfomation {
-    String company_name;
-    String theme;
-    Double total_mseq_invest;
-    int deal_no;
-    Double current_valuation;
-    int runaway_month;
-    String stage;
-    Double return_fund;
-    Double own;
-    int employee_no;
-    Double revenue;
+    String Company_Name;
+    String Company_Theme;
+    Double Total_MSEQ_Investment;
+    Integer Total_deals;
+    Double Current_Valuation;
+    Integer Runaway_Month;
+    String Series;
+    Double Own;
+    Integer Employee_No;
+    Double Revenue;
+    Double MSEQ_Investment;
+    Double Others;
 
-    public CompanyInfomation(String company_name, String theme, Double total_mseq_invest, int deal_no, Double current_valuation, int runaway_month, String stage, Double return_fund, Double own, int employee_no, Double revenue) {
-        this.company_name = company_name;
-        this.theme = theme;
-        this.total_mseq_invest = total_mseq_invest;
-        this.deal_no = deal_no;
-        this.current_valuation = current_valuation;
-        this.runaway_month = runaway_month;
-        this.stage = stage;
-        this.return_fund = return_fund;
-        this.own = own;
-        this.employee_no = employee_no;
-        this.revenue = revenue;
+    public CompanyInfomation(String company_Name, String company_Theme, Double total_MSEQ_Investment, Integer total_deals, Double current_Valuation, Integer runaway_Month, String series, Double own, Integer employee_No, Double revenue, Double MSEQ_Investment, Double others) {
+        Company_Name = company_Name;
+        Company_Theme = company_Theme;
+        Total_MSEQ_Investment = total_MSEQ_Investment;
+        Total_deals = total_deals;
+        Current_Valuation = current_Valuation;
+        Runaway_Month = runaway_Month;
+        Series = series;
+        Own = own;
+        Employee_No = employee_No;
+        Revenue = revenue;
+        this.MSEQ_Investment = MSEQ_Investment;
+        Others = others;
     }
 
-    public String getCompany_name() {
-        return company_name;
+    public String getCompany_Name() {
+        return Company_Name;
     }
 
-    public void setCompany_name(String company_name) {
-        this.company_name = company_name;
+    public void setCompany_Name(String company_Name) {
+        Company_Name = company_Name;
     }
 
-    public String getTheme() {
-        return theme;
+    public Double getMSEQ_Investment() {
+        return MSEQ_Investment;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setMSEQ_Investment(Double MSEQ_Investment) {
+        this.MSEQ_Investment = MSEQ_Investment;
     }
 
-    public Double getTotal_mseq_invest() {
-        return total_mseq_invest;
+    public Double getOthers() {
+        return Others;
     }
 
-    public void setTotal_mseq_invest(Double total_mseq_invest) {
-        this.total_mseq_invest = total_mseq_invest;
-    }
-
-    public int getDeal_no() {
-        return deal_no;
-    }
-
-    public void setDeal_no(int deal_no) {
-        this.deal_no = deal_no;
-    }
-
-    public Double getCurrent_valuation() {
-        return current_valuation;
-    }
-
-    public void setCurrent_valuation(Double current_valuation) {
-        this.current_valuation = current_valuation;
-    }
-
-    public int getRunaway_month() {
-        return runaway_month;
-    }
-
-    public void setRunaway_month(int runaway_month) {
-        this.runaway_month = runaway_month;
-    }
-
-    public String getStage() {
-        return stage;
-    }
-
-    public void setStage(String stage) {
-        this.stage = stage;
-    }
-
-    public Double getReturn_fund() {
-        return return_fund;
-    }
-
-    public void setReturn_fund(Double return_fund) {
-        this.return_fund = return_fund;
-    }
-
-    public Double getOwn() {
-        return own;
-    }
-
-    public void setOwn(Double own) {
-        this.own = own;
-    }
-
-    public int getEmployee_no() {
-        return employee_no;
-    }
-
-    public void setEmployee_no(int employee_no) {
-        this.employee_no = employee_no;
-    }
-
-    public Double getRevenue() {
-        return revenue;
-    }
-
-    public void setRevenue(Double revenue) {
-        this.revenue = revenue;
+    public void setOthers(Double others) {
+        Others = others;
     }
 }

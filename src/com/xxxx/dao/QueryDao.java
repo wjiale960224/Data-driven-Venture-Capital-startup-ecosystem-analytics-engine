@@ -44,4 +44,10 @@ public interface QueryDao {
     Double queryFeeByFundname(String fund_name);
 
     TotCapitalMngFee queryCapitalMngFee();
+
+    Deal queryLatestDealByCompanyCID(Integer cid);
+
+    List<Deal> queryDealsByCompanyName(String c_name);
+
+    List<Valuation> queryValuationsByCompanyName(String c_name);
 }

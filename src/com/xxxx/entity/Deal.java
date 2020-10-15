@@ -74,7 +74,7 @@ public class Deal {
     }
 
     public Double getDeal_size() {
-        return deal_size;
+        return deal_size == null? null:deal_size;
     }
 
     public DealStatus getDeal_status() {
@@ -119,11 +119,7 @@ public class Deal {
     }
 
     public Double getOwn_percentage_toString() {
-        if (this.getOwn_percentage() == null){
-            return null;
-        }else {
-            return this.getOwn_percentage();
-        }
+        return own_percent == null? null:own_percent;
     }
 
     public void setCo_investor(String co_investor) {

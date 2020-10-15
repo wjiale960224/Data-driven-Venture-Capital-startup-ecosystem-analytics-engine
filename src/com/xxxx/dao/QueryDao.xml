@@ -75,4 +75,16 @@
     <select id="queryCapitalMngFee" resultType="TotCapitalMngFee">
         select * from capital;
     </select>
+
+    <select id="queryLatestDealByCompanyCID" parameterType="Integer" resultType="Deal">
+        SELECT * FROM deal WHERE cid = #{cid} ORDER BY deal_date desc LIMIT 1;
+    </select>
+
+    <select id="queryDealsByCompanyName" resultType="Deal">
+        SELECT * FROM deal WHERE c_name = #{c_name} ORDER BY deal_date asc;
+    </select>
+
+    <select id="queryValuationsByCompanyName" resultType="Valuation">
+        SELECT * FROM valuation WHERE c_name = #{c_name} ORDER BY update_date asc;
+    </select>
 </mapper>

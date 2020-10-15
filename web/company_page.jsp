@@ -58,16 +58,14 @@
                     <li><span>Total MSEQ Investment</span><span>A$10M</span></li>
                     <li><span>Total deals</span><span>3</span></li>
                     <li><span>Current Valuation(last update date: 21/09)</span><span>A$20M</span></li>
-                    <li><span>Runaway Month</span><span>11</span></li>
-                    <li><span>Stage</span><span>Growth</span></li>
                 </ul>
             </div>
             <div class="top_column" id = "TBD">
                 <ul >
-                    <li><span>Round</span><span>Series A</span></li>
-                    <li><span>Return</span><span>10M</span></li>
+                    <li><span>Runaway Month</span><span>11</span></li>
+                    <li><span>Series</span><span>Series A</span></li>
                     <li><span>Own</span><span>20%</span></li>
-                    <li><span>Employee.No</span><span>231</span></li>
+                    <li><span>Employee No</span><span>231</span></li>
                     <li><span>Revenue</span><span>4M</span></li>
                 </ul>
             </div>
