@@ -17,8 +17,10 @@ window.onload = function (){
                         "<option>Space & Transport</option></select></td>"
                 }else if (i === 2){
                     $tds += "<td><input class='td_input' type='number' placeholder='2008'></td>";
-                }else if (i === 3 || i === 4){
+                }else if (i === 3){
                     $tds += "<td><input class='td_input' type='date'></td>";
+                }else if (i === 4){
+                    $tds += "<td><input class='td_input date_input' type='date'></td>";
                 }else if (i === 5){
                     $tds += "<td><input class='td_input' type='number' placeholder='24'></td>";
                 }else if ((i>=8 && i<=10) || (i>=12 && i<=13) || i===6){
@@ -41,6 +43,8 @@ window.onload = function (){
             event.stopPropagation();
 
         });
+
+
 
         // Delete a row.
         $(".table").delegate(".delete", "click", function(){
@@ -185,14 +189,29 @@ window.onload = function (){
 
         // 1.5 minutes later add td onchange function.
         setTimeout(function (){
-            $("tbody").delegate("td", "DOMSubtreeModified", function(event){
+            $("body").delegate("input", "DOMSubtreeModified", function(event){
                 have_submit = false;
-                console.log("Td changed");
+                console.log("Input changed");
                 event.stopPropagation();
-                $("tbody").undelegate("td", "DOMSubtreeModified");
+                $("tbody").undelegate("input", "DOMSubtreeModified");
 
             });
-        },1500);
+            // $(".date_input").on("change", function(){console.log("here")});
+            $("body").delegate(".date_input","change",function(){
+                var d_start = new Date($(this).parent().prev().children(0).val());
+                var d_end = new Date(this.value);
+                var months = (d_end.getFullYear() - d_start.getFullYear())*12;
+                months += (d_end.getMonth() - d_start.getMonth());
+                if (d_end.getDate() < d_start.getDate()){
+                    months -= 1;
+                }
+                if(isNaN(months)){
+
+                }else {
+                    $(this).parent().next().children(0).val(months);
+                }
+            });
+        },3000);
 
         // -------Next function-----
 
