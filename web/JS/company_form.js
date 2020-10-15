@@ -198,7 +198,8 @@ window.onload = function (){
             });
             // $(".date_input").on("change", function(){console.log("here")});
             $("body").delegate(".date_input","change",function(){
-                var d_start = new Date($(this).parent().prev().children(0).val());
+                // var d_start = new Date($(this).parent().prev().children(0).val());
+                var d_start = new Date();
                 var d_end = new Date(this.value);
                 var months = (d_end.getFullYear() - d_start.getFullYear())*12;
                 months += (d_end.getMonth() - d_start.getMonth());
