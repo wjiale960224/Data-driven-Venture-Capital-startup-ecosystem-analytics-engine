@@ -104,6 +104,7 @@ window.onload = function (){
             var capital = {};
             capital["total_capital"] = document.getElementById("total_capital").value;
             capital["management_fee"] =document.getElementById("management_fee").value;
+            capital["total_capital_raised"] = document.getElementById("total_capital_raised").value;
             return capital;
         }
 
@@ -145,6 +146,8 @@ window.onload = function (){
                     var capitalAFee = JSON.parse(infos[1]);
                     document.getElementById("total_capital").value = capitalAFee["total_capital"];
                     document.getElementById("management_fee").value = capitalAFee["management_fee"];
+                    document.getElementById("total_capital_raised").value = capitalAFee["total_capital_raised"];
+
 
                     company_info = infos[0];
                     if (company_info === "[]"){

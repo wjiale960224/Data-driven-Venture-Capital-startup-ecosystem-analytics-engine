@@ -35,7 +35,7 @@
     </insert>
 
     <insert id="addValuation" parameterType="valuation">
-        insert into valuation(val_id, cid, c_name, update_date, post_value, valuation_change_reason, mseq_investment_cur_val, own_percent)
-        values (#{val_id},#{cid},#{c_name},#{update_date},#{post_value},#{valuation_change_reason},#{mseq_investment_cur_val},#{own_percent});
+        insert into valuation(val_id, cid, c_name, update_date, post_value, valuation_change_reason, mseq_investment_cur_val)
+        values (#{val_id},#{cid},#{c_name},#{update_date},#{post_value},#{valuation_change_reason},#{mseq_investment_cur_val});
     </insert>
 </mapper>
