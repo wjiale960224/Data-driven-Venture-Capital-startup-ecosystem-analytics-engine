@@ -52,21 +52,21 @@
     <div class = "column">
         <div class = "top_box">
             <div class="top_column" id="company_info">
-                <ul >
-                    <li><span>Company Name</span><span id = "company_name">Alibaba</span></li>
-                    <li><span>Company Theme</span><span>New Society</span></li>
-                    <li><span>Total MSEQ Investment</span><span>A$10M</span></li>
-                    <li><span>Total deals</span><span>3</span></li>
-                    <li><span>Current Valuation(last update date: 21/09)</span><span>A$20M</span></li>
+                <ul class="top_ul">
+                    <li><span>Company Name</span><span id = "company_name"></span></li>
+                    <li><span>Company Theme</span><span></span></li>
+                    <li><span>Total MSEQ Investment</span><span></span></li>
+                    <li><span>Total deals</span><span></span></li>
+                    <li><span>Current Valuation</span><span></span></li>
                 </ul>
             </div>
             <div class="top_column" id = "TBD">
-                <ul >
-                    <li><span>Runaway Month</span><span>11</span></li>
-                    <li><span>Series</span><span>Series A</span></li>
-                    <li><span>Own</span><span>20%</span></li>
-                    <li><span>Employee No</span><span>231</span></li>
-                    <li><span>Revenue</span><span>4M</span></li>
+                <ul class="top_ul">
+                    <li><span>Runaway Month</span><span></span></li>
+                    <li><span>Series</span><span></span></li>
+                    <li><span>Own</span><span></span></li>
+                    <li><span>Employee No</span><span></span></li>
+                    <li><span>Revenue</span><span></span></li>
                 </ul>
             </div>
         </div>

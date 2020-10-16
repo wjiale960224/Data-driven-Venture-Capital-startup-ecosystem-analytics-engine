@@ -68,7 +68,7 @@ public class CompanypageService {
             listds.add(dealSize);
             // Collect post valuation info
             PostChange postChange = new PostChange(company.getC_name(), new LinkedHashMap<>());
-            valuationsOneCompany = queryDao.queryValuationsByCompanyName(postChange.name);
+            valuationsOneCompany = queryDao.queryValuationsByCompanyName(postChange.Company_Name);
             for (Valuation v: valuationsOneCompany){
                 postChange.lhm.put(v.getUpdate_date().toString(),v.getPost_value());
             }
@@ -79,19 +79,6 @@ public class CompanypageService {
             deal.add(d);
         }
 
-
-        // --------
-        /*for (Company c : data){
-            int i = 1;
-            for(Deal d : deal){
-                String deal_no = "deal" + i;
-                if (c.getC_name().equals(d.getC_name())){
-                    Dealinfo dealinfo = new Dealinfo(c.getC_name(),c.getTheme().toString(),d.getDeal_size(),deal_no,d.getPost_value());
-                    dealinfostring += g.toJson(dealinfo) + ",";
-                    i = i + 1;
-                }
-            }
-        }*/
         // Collect company information and MSEQ invest pie chart
         for(Company c : data){
             Double mseq_total_invest = 0.0;
@@ -114,9 +101,9 @@ public class CompanypageService {
             if (ld.getDeal_size() == null || ld.getOwn_percentage() == null){
                 others = null;
             }else {
-                others = ld.getDeal_size() * (1-ld.getOwn_percentage());
+                others = ld.getDeal_size() * (100-ld.getOwn_percentage()) / 100;
             }
-            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),c.getRunway_month(),ld.getSeries_toString(),v.getOwn_percent(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
+            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),v.getUpdate_date().toString(),c.getRunway_month(),ld.getSeries_toString(),v.getOwn_percent(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
             companyinfostring += g.toJson(companyInfomation) + ",";
         }
 

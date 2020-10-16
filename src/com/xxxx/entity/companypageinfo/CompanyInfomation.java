@@ -6,6 +6,7 @@ public class CompanyInfomation {
     Double Total_MSEQ_Investment;
     Integer Total_deals;
     Double Current_Valuation;
+    String Update_Date;
     Integer Runaway_Month;
     String Series;
     Double Own;
@@ -14,12 +15,13 @@ public class CompanyInfomation {
     Double MSEQ_Investment;
     Double Others;
 
-    public CompanyInfomation(String company_Name, String company_Theme, Double total_MSEQ_Investment, Integer total_deals, Double current_Valuation, Integer runaway_Month, String series, Double own, Integer employee_No, Double revenue, Double MSEQ_Investment, Double others) {
+    public CompanyInfomation(String company_Name, String company_Theme, Double total_MSEQ_Investment, Integer total_deals, Double current_Valuation, String update_Date, Integer runaway_Month, String series, Double own, Integer employee_No, Double revenue, Double MSEQ_Investment, Double others) {
         Company_Name = company_Name;
         Company_Theme = company_Theme;
         Total_MSEQ_Investment = total_MSEQ_Investment;
         Total_deals = total_deals;
         Current_Valuation = current_Valuation;
+        Update_Date = update_Date;
         Runaway_Month = runaway_Month;
         Series = series;
         Own = own;

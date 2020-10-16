@@ -1,5 +1,117 @@
 $(function (){
     (function refresh(){
+
+        var bar_chart = echarts.init(document.querySelector("#bar_chart"));
+        var bar_chart_option = {
+            color: ['rgb(173,139,46)'],
+            title: {
+                left: 'center',
+                text: 'Deal Size'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'line'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['Deal1', 'Deal2', 'Deal3', 'Deal4',],
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Deal Size',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: [0.7, 1.1, 2.2, 1.3,]
+                }
+            ]
+        };
+        // bar_chart.setOption(bar_chart_option);
+        var line_chart = echarts.init(document.querySelector("#line_chart"));
+        var line_chart_option = {
+            title: {
+                left: 'center',
+                text: 'Post-Valuation Change'
+            },
+            tooltip: {
+                trigger: 'axis',
+            },
+            xAxis: {
+                type: 'category',
+                data: ['deal1', 'deal2', 'deal3', 'deal4',]
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: "Valuation",
+                data: [1.1, 1.3, 1.6, 2.1,],
+                type: 'line'
+            }]
+        };
+        // line_chart.setOption(line_chart_option);
+
+        var pie_chart = echarts.init(document.querySelector("#pie_chart"));
+        var pie_chart_option  = {
+            title: {
+                text: 'MSEQ Investment',
+                left: 'center',
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 10,
+                data: ['MSEQ', 'Other',]
+            },
+            series: [
+                {
+                    name: 'Investment',
+                    type: 'pie',
+                    radius: ['30%', '50%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '15',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: 8, name: 'MSEQ'},
+                        {value: 21, name: 'Other'},
+                    ]
+                }
+            ]
+        };
+        // pie_chart.setOption(pie_chart_option);
+
         $.ajax({
             type: "POST",
             url: "/workspace_Intellj_war_exploded/companypageinfo",  // Here to change back end receive url.
@@ -31,7 +143,6 @@ $(function (){
                 }
 
                 for (i = 0; i < companies.length; i++){
-                    console.log(companies[i]);
                     if (companies[i]["Company_Theme"] === "Exponential_Machines"){
                         $(".EMclass").append("<li>" + companies[i]["Company_Name"] + "</li>");
                     }else if (companies[i]["Company_Theme"] === "Feeding_10B_People"){
@@ -46,58 +157,56 @@ $(function (){
                 }
 
                 $(".sub>li").click(function(e){
+                    for (var i = 0; i < companies.length; i++){
+                        if (companies[i]["Company_Name"] === this.innerHTML){
+                            var company = companies[i];
+                        }
+                        if (deal_sizes[i]["Company_Name"] === this.innerHTML){
+                            var dealSize = deal_sizes[i];
+                        }
+                        if (post_changes[i]["Company_Name"] === this.innerHTML){
+                            var postChange = post_changes[i];
+                        }
+                    }
 
-                    console.log("here");
+                    /*-------update info board------------*/
+                    var lis = $(".top_ul").children("li");
+                    for (var i = 0; i < lis.length; i++){
+                        var spans = $(lis[i]).children();
+                        var attr = spans[0].innerHTML.replace(/\s+/g,"_");
+                        if (company[attr]){ // get rid of null value
+                            if (typeof company[attr] === "string"){
+                                if (attr === "Current_Valuation"){
+                                    spans[1].innerHTML = company[attr] + "  (last update date: "+ company["Update_Date"] + ")";
+                                }else {
+                                    spans[1].innerHTML = company[attr].replace(/_/g," ");
+                                }
+                            }else if (typeof company[attr] === "number"){
+                                spans[1].innerHTML = company[attr];
+                            }
+
+                        }
+                    }
+                    /*------Update Deal size bar chart -------*/
+                    // var dates = [];
+
+                    bar_chart_option.xAxis[0].data = Object.keys(dealSize["lhm"]);
+                    bar_chart_option.series[0].data = Object.entries(dealSize["lhm"]);
+                    bar_chart.setOption(bar_chart_option);
+
+                    /*------Update Post change chart -------*/
+                    line_chart_option.xAxis.data = Object.keys(postChange["lhm"]);
+                    line_chart_option.series[0].date = Object.entries(postChange["lhm"]);
+                    line_chart.setOption(line_chart_option);
+
+                    /*------Update MSEQ invest chart -------*/
+                    console.log(company);
+                    pie_chart_option.legend.data = [company["Company_Name"],"Others"];
+                    pie_chart_option.series[0].data = [{value: company["MSEQ_Investment"], name: company["Company_Name"]},
+                        {value: company["Others"], name: 'Others'}];
+                    pie_chart.setOption(pie_chart_option);
                     e.stopPropagation();
                 })
-                /*var j = -1;
-                for (i = 0; i < $(".EMclass>li").length; i++){
-                    j = i+1;
-                    $(".EMclass>li:nth-child(" + j + ")").click(function(e){
-                        console.log(this.innerHTML);
-                        e.stopPropagation();
-                    });
-                }
-                for (i = 0; i < $(".FPclass>li").length; i++){
-                    j = i+1;
-                    $(".FPclass>li:nth-child(" + j + ")").click(function(e){
-
-                        e.stopPropagation();
-                    });
-                }
-                for (i = 0; i < $(".HSHclass>li").length; i++){
-                    j = i+1;
-                    $(".HSHclass>li:nth-child(" + j + ")").click(function(e){
-
-                        e.stopPropagation();
-                    });
-                }
-                for (i = 0; i < $(".NSclass>li").length; i++){
-                    j = i+1;
-                    $(".NSclass>li:nth-child(" + j + ")").click(function(e){
-
-                        e.stopPropagation();
-                    });
-                }
-                for (i = 0; i < $(".STclass>li").length; i++){
-                    j = i+1;
-                    $(".STclass>li:nth-child(" + j + ")").click(function(e){
-
-                        e.stopPropagation();
-                    });
-                }*/
-
-/*
-                var $subs = $(".sub>li");
-                console.log($subs);
-                for (i = 0; i < $subs.length; i++){
-                    console.log($subs[i]);
-
-                    $subs[i].click = function(e){
-                        e.stopPropagation();
-                    };
-                }*/
-
             },
             error: function(){
                 console.log("No,something wrong.");
@@ -105,119 +214,6 @@ $(function (){
         });
     }());
 
-
-
-    var bar_chart = echarts.init(document.querySelector("#bar_chart"));
-    var bar_chart_option = {
-        color: ['rgb(173,139,46)'],
-        title: {
-          left: 'center',
-          text: 'Deal Size'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'line'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['Deal1', 'Deal2', 'Deal3', 'Deal4',],
-                axisTick: {
-                    alignWithLabel: true
-                }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: 'Deal Size',
-                type: 'bar',
-                barWidth: '60%',
-                data: [0.7, 1.1, 2.2, 1.3,]
-            }
-        ]
-    };
-    bar_chart.setOption(bar_chart_option);
-
-    var line_chart = echarts.init(document.querySelector("#line_chart"));
-    var line_chart_option = {
-        title: {
-            left: 'center',
-            text: 'Post-Valuation Change'
-        },
-        tooltip: {
-            trigger: 'axis',
-        },
-        xAxis: {
-            type: 'category',
-            data: ['deal1', 'deal2', 'deal3', 'deal4',]
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            name: "Valuation",
-            data: [1.1, 1.3, 1.6, 2.1,],
-            type: 'line'
-        }]
-    };
-    line_chart.setOption(line_chart_option);
-
-    var pie_chart = echarts.init(document.querySelector("#pie_chart"));
-    var pie_chart_option  = {
-        title: {
-            text: 'MSEQ Investment',
-            left: 'center',
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b}: {c} ({d}%)'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 10,
-            data: ['MSEQ', 'Other',]
-        },
-        series: [
-            {
-                name: 'Investment',
-                type: 'pie',
-                radius: ['30%', '50%'],
-                avoidLabelOverlap: false,
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: '15',
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: [
-                    {value: 8, name: 'MSEQ'},
-                    {value: 21, name: 'Other'},
-                ]
-            }
-        ]
-    };
-    pie_chart.setOption(pie_chart_option);
 
     function split_string(str){
         var strings = str.substring(1,str.length-1).split("},{");

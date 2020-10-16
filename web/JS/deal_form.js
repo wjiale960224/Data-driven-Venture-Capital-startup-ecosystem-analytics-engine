@@ -19,7 +19,9 @@ window.onload = function (){
                         "<option>Series C</option></select></td>"
                 }else if (i === 6 || i === 7 || i===0){
                     $tds += "<td><input class='td_input' type='text'></td>";
-                }else{
+                }else if (i === 4){
+                    $tds += "<td><input class='td_input mseq_invest_amt' type='number'></td>";
+                }else {
                     $tds += "<td><input class='td_input' type='number'></td>";
                 }
             }
@@ -136,7 +138,6 @@ window.onload = function (){
                             }
                         }
                         for (i = 0; i < deals.length; i++){ // Reconstruct string format to object format
-                            console.log(deals[i]);
                             var $deal = JSON.parse(deals[i]);
                             $('#add_row').click();
                             var $trs = $("tbody>tr");
@@ -161,14 +162,23 @@ window.onload = function (){
 
         // 1.5 minutes later add td onchange function.
         setTimeout(function (){
-            $("tbody").delegate("td", "DOMSubtreeModified", function(event){
+            $("body").delegate("input", "DOMSubtreeModified", function(event){
                 have_submit = false;
-                console.log("Td changed");
+                console.log("Input changed");
                 event.stopPropagation();
-                $("tbody").undelegate("td", "DOMSubtreeModified");
-
+                $("body").undelegate("input", "DOMSubtreeModified");
             });
-        },1500);
+
+            $("body").delegate(".mseq_invest_amt","change",function(){
+                var deal_size = $(this).parent().prev().prev().children(0).val();
+                var mseq_inv_amt = this.value;
+                if (deal_size || mseq_inv_amt){
+                    var own_percent = (mseq_inv_amt / deal_size * 100).toFixed(2);
+                    var last = $(this).parent().siblings(":last");
+                    last.children(0).val(own_percent);
+                }
+            });
+        },3000);
 
         // -------Next function-----
 
