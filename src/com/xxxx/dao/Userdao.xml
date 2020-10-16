@@ -56,4 +56,8 @@
         update company set runway_month = TIMESTAMPDIFF(MONTH,runway_start_date,DATE_FORMAT(NOW(), '%Y-%m-%d'));
     </update>
 
+    <select id = "listAllCapital" resultType="capital">
+        select * from capital;
+    </select>
+
 </mapper>

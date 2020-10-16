@@ -4,6 +4,7 @@ import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
 import com.xxxx.entity.User;
 import com.xxxx.entity.Valuation;
+import com.xxxx.entity.overview.Capital;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -34,7 +35,6 @@ public interface Userdao {
 
     int updateRunwayMonth();
 
-    //TODO complete this method in Userdao.xml if the code in CompanyService is necessary
     Valuation queryValuationByCID(Integer cid);
 
     Valuation queryLatestValuationByCID(Integer cid); // get the latest present value of the company
@@ -44,4 +44,6 @@ public interface Userdao {
     Deal queryDealById(Integer deal_id);
 
     int delDealByDealId( int deal_id);
+
+    Capital listAllCapital();
 }

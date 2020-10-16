@@ -2,47 +2,6 @@
 
 
 $(function (){
-    var pie = echarts.init(document.querySelector("#pie"));
-    var pie_option = {
-        title: {
-            text: 'Drawn & Undrawn Capital',
-            left: '50%',
-            textAlign: 'center',
-        },
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        legend: {
-            top: '10%',
-            orient: 'vertical',
-            left: 10,
-            data: ['Drawn', 'Undrawn',],
-        },
-        series: [
-            {
-                name: 'Total Fund',
-                type: 'pie',
-                radius: '55%',
-                center: ['50%', '60%'],
-                label:{show:false},
-                data: [
-                    {value: 2.53, name: 'Drawn'},
-                    {value: 10, name: 'Undrawn'},
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
-    pie.setOption(pie_option);
-
-
     var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
     var TVPI_curve_option = {
         title: {
@@ -132,36 +91,7 @@ $(function (){
     two_pie.setOption(two_pie_option);
 
 
-    var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
-    var mseq_bar_option = {
-        title: {
-            text: 'Invested and Raised',
-            left:'50%',
-            textAlign:'center',
-        },
-        tooltip:{
 
-        },
-        xAxis: {
-            data: ["MSEQ Invested","Total Capital Raised",],
-        },
-        yAxis: {},
-        series: [{
-            name: 'Value',
-            type: 'bar',
-            barWidth:40,
-            data: [5, 20,],
-            itemStyle:{
-                normal:{
-                    color: function(params) {
-                        var colorList = ['rgb(173,139,46)', 'rgb(0, 49, 60)'];
-                        return colorList[params.dataIndex]
-                    }
-                }
-            },
-        }]
-    };
-    mseq_bar.setOption(mseq_bar_option);
 
 
     (function refresh(){
@@ -169,6 +99,33 @@ $(function (){
         var fund = [];
         var mydata_company = [];
         var mydata_theme = [];
+        var drawn = 0;
+        var undrawn = 0;
+        var bar_data = [];
+        var double_pie = echarts.init(document.querySelector("#double_pie"));
+        var pie = echarts.init(document.querySelector("#pie"));
+        var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
+        double_pie.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        pie.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        mseq_bar.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
         $.ajax({
             type: "POST",
             url: "/workspace_Intellj_war_exploded/mainpagedata",  // Here to change back end receive url.
@@ -196,10 +153,19 @@ $(function (){
                 }
                 for (i = 0; i < over_infos.length; i++){ // Reconstruct string format to object format
                     var obj2 = JSON.parse(over_infos[i]);
+                    drawn = obj2["Drawn_Capital"];
+                    undrawn = obj2["Undrawn_Capital"];
+                    document.getElementById("total_fund_size").innerHTML = obj2["Total_Fund_Size"];
+                    document.getElementById("undrawn_capital").innerHTML = obj2["Undrawn_Capital"];
                     document.getElementById("No_deals").innerHTML = obj2["Total_Deals"];
                     document.getElementById("drawn_capital").innerHTML = "A$" + obj2["Drawn_Capital"] + "M";
                     document.getElementById("per_deal").innerHTML ="A$" + obj2["Per_Deal"] + "M";
-                    document.getElementById("No_company").innerHTML ="A$" + obj2["Total_Companies"] + "M";
+                    document.getElementById("No_company").innerHTML =obj2["Total_Companies"];
+                    document.getElementById("management_fee").innerHTML = obj2["Management_Fee"];
+                    document.getElementById("remaining_to_invest").innerHTML = obj2["Remaining_to_invest"];
+                    document.getElementById("total_capital_raised").innerHTML = obj2["Total_capital_raised"];
+                    bar_data = [obj2["Mseq_investment_amount"], obj2["Total_capital_raised"]];
+
                 }
 
                 for (i = 0; i < theme_of_fund.length; i++){
@@ -207,7 +173,7 @@ $(function (){
                     mydata_theme[i] = {value: obj3["fund"], name:obj3["theme"]};
                     console.log(obj3);
                 }
-                var double_pie = echarts.init(document.querySelector("#double_pie"));
+
                 var double_pie_option = {
                     title: {
                         text: 'Overview % of Fund',
@@ -250,6 +216,76 @@ $(function (){
                     ]
                 };
                 double_pie.setOption(double_pie_option);
+                double_pie.hideLoading();
+                var pie_option = {
+                    title: {
+                        text: 'Drawn & Undrawn Capital',
+                        left: '50%',
+                        textAlign: 'center',
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    legend: {
+                        top: '10%',
+                        orient: 'vertical',
+                        left: 10,
+                        data: ['Drawn', 'Undrawn',],
+                    },
+                    series: [
+                        {
+                            name: 'Total Fund',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            label:{show:false},
+                            data: [
+                                {value: drawn, name: 'Drawn'},
+                                {value: undrawn, name: 'Undrawn'},
+                            ],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                pie.setOption(pie_option);
+                pie.hideLoading();
+                var mseq_bar_option = {
+                    title: {
+                        text: 'Invested and Raised',
+                        left:'50%',
+                        textAlign:'center',
+                    },
+                    tooltip:{
+
+                    },
+                    xAxis: {
+                        data: ["MSEQ Invested","Total Capital Raised",],
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'Value',
+                        type: 'bar',
+                        barWidth:40,
+                        data: bar_data,
+                        itemStyle:{
+                            normal:{
+                                color: function(params) {
+                                    var colorList = ['rgb(173,139,46)', 'rgb(0, 49, 60)'];
+                                    return colorList[params.dataIndex]
+                                }
+                            }
+                        },
+                    }]
+                };
+                mseq_bar.setOption(mseq_bar_option);
+                mseq_bar.hideLoading();
 
 
             },
