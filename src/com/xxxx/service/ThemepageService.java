@@ -5,6 +5,7 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
+import com.xxxx.entity.Valuation;
 import com.xxxx.entity.overview.MainpageData;
 import com.xxxx.entity.overview.ThemeInfo;
 import com.xxxx.entity.themeinfo.CompanyInfo;
@@ -36,9 +37,11 @@ public class ThemepageService {
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
-        List<Deal> deal = new ArrayList<>();
-        List<Company> data = new ArrayList<>();
+        List<Deal> deal = new ArrayList<>(); // Latest deals for each company
+        List<Deal> earlistDeals = new ArrayList<>(); // Earliest company for each deal
+        List<Company> data = new ArrayList<>(); // All companies data
         List<CompanyInfo> companyInfos = new ArrayList<>();
+        List<Valuation> valuations = new ArrayList<>();
         String output = "";
         String company_total_investment = "";
         String companyInfoString = "";
@@ -47,19 +50,37 @@ public class ThemepageService {
         for(String c : c_name){
             Company company = queryDao.queryCompanyByName(c);
             data.add(company);
+
+            Deal lastDeal = queryDao.queryLatestDealByCompanyCID(company.getCid());
+            deal.add(lastDeal);
+
+            Valuation valuation = queryDao.queryLatestValuationByCID(company.getCid());
+            valuations.add(valuation);
+
+            Deal earlyDeal = queryDao.queryEarliestDealByCompanyCID(company.getCid());
+            earlistDeals.add(earlyDeal);
         }
 
-        for (Integer id: deal_id){
-            Deal d = userdao.queryDealById(id);
-            deal.add(d);
-        }
         for (Company c : data){
             int i = 1;
             Double fund = 0.0;
+            Valuation v = new Valuation();
+            for (Valuation vv : valuations){
+                if (vv.getC_name().equals(c.getC_name())){
+                    v = vv;
+                    break;
+                }
+            }
+            Deal earlyDeal = new Deal();
+            for (Deal earlyD : earlistDeals){
+                if (earlyD.getC_name().equals(c.getC_name())){
+                    earlyDeal = earlyD;
+                }
+            }
             for (Deal d : deal){
                 String deal_no = "deal" + i;
                 if (c.getC_name().equals(d.getC_name())){
-                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
+                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,earlyDeal.getDeal_date_toString(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),v.getPost_value(),d.getInvest_vehicle_toString(),c.getIrr(),v.getPost_value());
                     companyInfos.add(companyInfo);
                     companyInfoString += g.toJson(companyInfo) + ",";
                     i = i + 1;

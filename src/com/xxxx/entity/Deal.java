@@ -162,6 +162,18 @@ public class Deal {
         this.invest_vehicle = vehicle;
     }
 
+    public Vehicle getInvest_vehicle() {
+        return invest_vehicle;
+    }
+
+    public String getInvest_vehicle_toString() {
+        if (invest_vehicle == null){
+            return null;
+        }else {
+            return invest_vehicle.toString();
+        }
+    }
+
     public String getFund_name() {
         return fund_name;
     }

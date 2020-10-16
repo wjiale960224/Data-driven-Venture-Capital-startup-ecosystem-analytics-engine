@@ -50,4 +50,7 @@ public interface QueryDao {
     List<Deal> queryDealsByCompanyName(String c_name);
 
     List<Valuation> queryValuationsByCompanyName(String c_name);
+
+    Deal queryEarliestDealByCompanyCID(Integer cid);
+
 }

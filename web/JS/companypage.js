@@ -230,7 +230,9 @@ $(function (){
                     pie_chart.setOption(pie_chart_option);
                     pie_chart.hideLoading();
                     e.stopPropagation();
-                })
+                });
+                $(".sub>li")[0].click();
+
             },
             error: function(){
                 console.log("No,something wrong.");
