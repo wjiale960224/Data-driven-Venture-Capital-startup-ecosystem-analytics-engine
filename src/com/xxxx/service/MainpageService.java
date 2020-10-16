@@ -64,6 +64,9 @@ public class MainpageService {
         }
         int no_company = data.size();
         int no_deal = dealIds.size();
+        for (Deal d : deal){
+            total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
+        }
         double total_mseq_invest_output = total_mseq_invest;
         Gson g = new Gson();
 
