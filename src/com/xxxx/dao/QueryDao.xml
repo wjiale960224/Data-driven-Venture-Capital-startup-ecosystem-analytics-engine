@@ -87,4 +87,8 @@
     <select id="queryValuationsByCompanyName" resultType="Valuation">
         SELECT * FROM valuation WHERE c_name = #{c_name} ORDER BY update_date asc;
     </select>
+
+    <select id="queryEarliestDealByCompanyCID" resultType="Deal">
+        SELECT * FROM deal WHERE cid = #{cid} ORDER BY deal_date asc LIMIT 1;
+    </select>
 </mapper>

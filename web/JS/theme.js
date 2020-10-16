@@ -151,17 +151,29 @@ $(function() {
                             if (attr === "Company"){
                                 $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["company_name"];
                             }else if (attr === "Investment Date"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_data"];
+                                if (map.get(theme)[i]["investment_data"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_data"];
+                                }
                             }else if (attr === "Cost<br>(AUD M\\)"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"];
+                                if (map.get(theme)[i]["cost"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"] / 1000000;
+                                }
                             }else if (attr === "% Owned"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["own"];
+                                if (map.get(theme)[i]["own"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["own"];
+                                }
                             }else if (attr === "Current Valuation<br>(AUD M\\)"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
+                                if (map.get(theme)[i]["current_valuation"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"] / 1000000;
+                                }
                             }else if (attr === "Investment Multiple"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_multiple"];
+                                if(map.get(theme)[i]["investment_multiple"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["investment_multiple"];
+                                }
                             }else if (attr === "IRR"){
-                                $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["irr"];
+                                if (map.get(theme)[i]["irr"]){
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["irr"];
+                                }
                             }
                         }
                     }
