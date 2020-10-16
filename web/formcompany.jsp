@@ -18,9 +18,11 @@
             <div><h2>Companies</h2></div>
             <form id="capitalFee">
                 <label for="total_capital">Total capital</label>
-                <input id="total_capital" type="text">
+                <input id="total_capital" type="number">
+                <label for="total_capital_raised">Total Capital Raised</label>
+                <input id="total_capital_raised" type="number">
                 <label for="management_fee">Management fee</label>
-                <input id="management_fee" type="text">
+                <input id="management_fee" type="number">
             </form>
             <div class="edit_box">
                 <label for="edit">Edit</label>
