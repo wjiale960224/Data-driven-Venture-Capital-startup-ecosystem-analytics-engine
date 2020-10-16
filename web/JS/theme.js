@@ -88,10 +88,14 @@ $(function() {
                 symbols.push("CompanyInFo");
                 symbols.push("ThemeOfFund");
                 symbols.push("CompanyTotal");
+                symbols.push("tableInfo");
+
                 var map_theme = get_infos(symbols,themepage_info);
                 var com_infos = split_string(map_theme.get("CompanyInFo"));
                 var theme_of_fund = split_string(map_theme.get("ThemeOfFund"));
                 var company_total = split_string(map_theme.get("CompanyTotal"));
+                var tableInfo = split_string(map_theme.get("tableInfo"));
+
                 var menu_themes = $(".tet");
                 var company_fst_theme = [];
                 var company_snd_theme = [];
@@ -100,8 +104,8 @@ $(function() {
                 var company_fifth_theme = [];
                 var map = new Map();
 
-                for (var i = 0; i < com_infos.length; i++){
-                    var obj = JSON.parse(com_infos[i]);
+                for (var i = 0; i < tableInfo.length; i++){
+                    var obj = JSON.parse(tableInfo[i]);
                     switch (obj["theme"]){
                         case "Exponential_Machines":
                             company_fst_theme.push(obj);
@@ -164,7 +168,7 @@ $(function() {
                                 }
                             }else if (attr === "Current Valuation<br>(AUD M\\)"){
                                 if (map.get(theme)[i]["current_valuation"]){
-                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"] / 1000000;
                                 }
                             }else if (attr === "Investment Multiple"){
                                 if(map.get(theme)[i]["investment_multiple"]){

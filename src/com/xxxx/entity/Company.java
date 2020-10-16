@@ -139,7 +139,7 @@ public class Company {
     }
 
     public Double getIrr() {
-        return irr;
+        return irr == null? null:irr;
     }
 
     public void setIrr(Double irr) {

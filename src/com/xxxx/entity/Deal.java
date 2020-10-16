@@ -139,7 +139,7 @@ public class Deal {
     }
 
     public Double getPost_value() {
-        return post_value;
+        return post_value == null? null:post_value;
     }
 
     public void setPost_value(Double post_value) {

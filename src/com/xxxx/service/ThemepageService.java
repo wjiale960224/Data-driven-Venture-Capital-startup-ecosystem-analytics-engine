@@ -47,6 +47,7 @@ public class ThemepageService {
         String company_total_investment = "";
         String companyInfoString = "";
         String themeOffund="";
+        String tableInfo = "";
         Gson g = new Gson();
         for(String c : c_name){
             Company company = queryDao.queryCompanyByName(c);
@@ -69,10 +70,10 @@ public class ThemepageService {
         for (Company c : data){
             int i = 1;
             Double fund = 0.0;
-            Valuation v = new Valuation();
+            Valuation latestV = new Valuation();
             for (Valuation vv : valuations){
                 if (vv.getC_name().equals(c.getC_name())){
-                    v = vv;
+                    latestV = vv;
                     break;
                 }
             }
@@ -82,11 +83,16 @@ public class ThemepageService {
                     earlyDeal = earlyD;
                 }
             }
-            for (Deal latestD: latestDeal){
-                if (latestD.getC_name().equals(c.getC_name())){
-
+            Deal latestD = new Deal();
+            for (Deal lastD: latestDeal){
+                if (lastD.getC_name().equals(c.getC_name())){
+                    latestD = lastD;
                 }
             }
+
+            CompanyInfo cif = new CompanyInfo(c.getC_name(),c.getTheme().toString(),null,earlyDeal.getDeal_date_toString(),latestD.getMSEQ_invest_amount(),latestD.getOwn_percentage_toString(),latestD.getPost_value(),latestD.getInvest_vehicle_toString(),c.getIrr(),null);
+            tableInfo += g.toJson(cif) + ",";
+
             for (Deal d : deal){
                 String deal_no = "deal" + i;
                 if (c.getC_name().equals(d.getC_name())){
@@ -144,7 +150,8 @@ public class ThemepageService {
         themeOffund = "ThemeOfFund[" + themeOffund.substring(0,themeOffund.length()-1)+"]";
         companyInfoString = "CompanyInFo[" + companyInfoString.substring(0,companyInfoString.length()-1)+"]";
         company_total_investment = "CompanyTotal[" + company_total_investment.substring(0,company_total_investment.length()-1) + "]";
-        output = companyInfoString + themeOffund + company_total_investment;
+        tableInfo = "tableInfo[" + tableInfo.substring(0,tableInfo.length()-1) + "]";
+        output = companyInfoString + themeOffund + company_total_investment + tableInfo;
         return output;
     }
 }

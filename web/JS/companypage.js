@@ -210,8 +210,12 @@ $(function (){
                     var lis = $(".top_ul").children("li");
                     for (var i = 0; i < lis.length; i++){
                         var spans = $(lis[i]).children();
+                        $(spans[1]).empty();
                         var attr = spans[0].innerHTML.replace(/\s+/g,"_");
+                        console.log(spans[1]);
+                        console.log(company);
                         if (company[attr]){ // get rid of null value
+                            console.log(spans[1] + ":" + company[attr]);
                             if (typeof company[attr] === "string"){
                                 spans[1].innerHTML = company[attr].replace(/_/g," ");
                             }else if (typeof company[attr] === "number"){

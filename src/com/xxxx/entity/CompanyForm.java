@@ -20,14 +20,13 @@ public class CompanyForm {
     Double Post_Valuation;
     String Valuation_Change_Reason;
     Double MSEQ_Investment_Cur_Val;
-    Double Own_Percent;
 
     public CompanyForm(String company_Name, String theme) {
         Company_Name = company_Name;
         Theme = theme;
     }
 
-    public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double IRR, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val, Double own_Percent) {
+    public CompanyForm(String company_Name, String theme, Integer year_Founded, String runway_Start_Date, String runway_End_Date, Integer runway_Month, Double raise_to_Date, Integer employee_No, Double revenue, Double IRR, Double post_Valuation, String valuation_Change_Reason, Double MSEQ_Investment_Cur_Val) {
         Company_Name = company_Name;
         Theme = theme;
         Year_Founded = year_Founded;
@@ -41,7 +40,6 @@ public class CompanyForm {
         Post_Valuation = post_Valuation;
         Valuation_Change_Reason = valuation_Change_Reason;
         this.MSEQ_Investment_Cur_Val = MSEQ_Investment_Cur_Val;
-        Own_Percent = own_Percent;
     }
 
     public CompanyForm() {}
@@ -85,8 +83,6 @@ public class CompanyForm {
         valuation.setValuation_change_reason(this.Valuation_Change_Reason);
 
         valuation.setMseq_investment_cur_val(this.MSEQ_Investment_Cur_Val);
-
-        valuation.setOwn_percent(this.Own_Percent);
 
         return valuation;
     }

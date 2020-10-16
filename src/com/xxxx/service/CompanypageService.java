@@ -103,7 +103,7 @@ public class CompanypageService {
             }else {
                 others = ld.getDeal_size() * (100-ld.getOwn_percentage()) / 100;
             }
-            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),v.getUpdate_date().toString(),c.getRunway_month(),ld.getSeries_toString(),v.getOwn_percent(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
+            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),v.getUpdate_date().toString(),c.getRunway_month(),ld.getSeries_toString(),ld.getOwn_percentage_toString(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
             companyinfostring += g.toJson(companyInfomation) + ",";
         }
 
