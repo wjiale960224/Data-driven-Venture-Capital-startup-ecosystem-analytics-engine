@@ -169,7 +169,7 @@ window.onload = function (){
                 $("body").undelegate("input", "DOMSubtreeModified");
             });
 
-            $("body").delegate(".mseq_invest_amt","change",function(){
+            /*$("body").delegate(".mseq_invest_amt","change",function(){
                 var deal_size = $(this).parent().prev().prev().children(0).val();
                 var mseq_inv_amt = this.value;
                 if (deal_size || mseq_inv_amt){
@@ -177,7 +177,7 @@ window.onload = function (){
                     var last = $(this).parent().siblings(":last");
                     last.children(0).val(own_percent);
                 }
-            });
+            });*/
         },3000);
 
         // -------Next function-----
