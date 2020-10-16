@@ -212,10 +212,7 @@ $(function (){
                         var spans = $(lis[i]).children();
                         $(spans[1]).empty();
                         var attr = spans[0].innerHTML.replace(/\s+/g,"_");
-                        console.log(spans[1]);
-                        console.log(company);
                         if (company[attr]){ // get rid of null value
-                            console.log(spans[1] + ":" + company[attr]);
                             if (typeof company[attr] === "string"){
                                 spans[1].innerHTML = company[attr].replace(/_/g," ");
                             }else if (typeof company[attr] === "number"){
@@ -243,7 +240,6 @@ $(function (){
                     line_chart.hideLoading();
 
                     /*------Update MSEQ invest chart -------*/
-                    console.log(company);
                     pie_chart_option.legend.data = [company["Company_Name"],"Others"];
                     pie_chart_option.series[0].data = [{value: company["MSEQ_Investment"], name: company["Company_Name"]},
                         {value: company["Others"], name: 'Others'}];
