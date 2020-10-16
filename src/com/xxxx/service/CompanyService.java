@@ -38,7 +38,7 @@ public class CompanyService {
             CompanyForm cf = new CompanyForm(c.getC_name(),c.getTheme().toString(),c.getYear_founded(),c.getRunway_start_date(),
                     c.getRunway_end_date(),c.getRunway_month(),c.getRaised_to_date(),c.getEmployee_no(),c.getRevenue(),
                     c.getIrr(), v.getPost_value(),
-                    v.getValuation_change_reason(),v.getMseq_investment_cur_val());
+                    v.getValuation_change_reason(),v.getMseq_investment_cur_val(),v.getOwn_percent());
             output += g.toJson(cf) + ",";
         }
         System.out.println("check getCompanyInfo");

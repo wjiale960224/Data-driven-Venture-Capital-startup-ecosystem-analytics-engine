@@ -60,9 +60,11 @@ public class DealForm {
             case "series_c":
                 dl.setSeries(com.xxxx.entity.Series.Series_C);
                 break;
-            case "series_d":
-                dl.setSeries(com.xxxx.entity.Series.Series_D);
+            case "series_seed":
+                dl.setSeries(com.xxxx.entity.Series.Seed);
                 break;
+            case "series_pre_seed":
+                dl.setSeries(com.xxxx.entity.Series.Pre_seed);
         }
         dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount);
         dl.setPost_value(this.Post_Valuation);

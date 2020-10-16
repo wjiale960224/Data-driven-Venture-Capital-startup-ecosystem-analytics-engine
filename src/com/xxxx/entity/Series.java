@@ -4,5 +4,6 @@ public enum Series {
     Series_A,
     Series_B,
     Series_C,
-    Series_D,
+    Pre_seed,
+    Seed,
 }

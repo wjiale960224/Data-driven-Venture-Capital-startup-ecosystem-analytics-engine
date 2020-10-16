@@ -16,11 +16,12 @@ public class Valuation {
     Double post_value;
     String valuation_change_reason;
     Double mseq_investment_cur_val;
+    Double own_percent;
 
     public Valuation() {
     }
 
-    public Valuation(Integer cid, String c_name, LocalDate update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val) {
+    public Valuation(Integer cid, String c_name, LocalDate update_date, Double post_value, String val_change_reason, Double mseq_investment_cur_val, Double own_percent) {
         this.val_id = ValuationID.get_id();
         this.c_name = c_name;
         this.cid = cid;
@@ -28,6 +29,7 @@ public class Valuation {
         this.post_value = post_value;
         this.valuation_change_reason = val_change_reason;
         this.mseq_investment_cur_val = mseq_investment_cur_val;
+        this.own_percent = own_percent;
     }
 
     public Integer getVal_id() {
@@ -90,4 +92,11 @@ public class Valuation {
         this.mseq_investment_cur_val = mseq_investment_cur_val;
     }
 
+    public Double getOwn_percent() {
+        return own_percent;
+    }
+
+    public void setOwn_percent(Double own_percent) {
+        this.own_percent = own_percent;
+    }
 }

@@ -18,11 +18,9 @@
             <div><h2>Companies</h2></div>
             <form id="capitalFee">
                 <label for="total_capital">Total capital</label>
-                <input id="total_capital" type="number">
-                <label for="total_capital_raised">Total Capital Raised</label>
-                <input id="total_capital_raised" type="number">
+                <input id="total_capital" type="text">
                 <label for="management_fee">Management fee</label>
-                <input id="management_fee" type="number">
+                <input id="management_fee" type="text">
             </form>
             <div class="edit_box">
                 <label for="edit">Edit</label>
@@ -47,6 +45,7 @@
                         <th>Post Valuation</th>
                         <th>Valuation Change Reason</th>
                         <th>MSEQ Investment Cur Val</th>
+                        <th>Own Percent</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

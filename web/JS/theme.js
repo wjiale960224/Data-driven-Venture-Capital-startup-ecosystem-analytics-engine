@@ -36,6 +36,46 @@ $(function() {
         var deal_cost_in_HSH = [];
         var deal_cost_in_NS = [];
         var deal_cost_in_ST = [];
+        var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
+        var myChart_total = echarts.init(document.querySelector("#total_company_pie"));
+        var myChart_amount = echarts.init(document.querySelector("#total_inv_pie"));
+        var myChart_post = echarts.init(document.querySelector("#valuation"));
+        var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
+        myChart_bar.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        myChart_invest.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        myChart_total.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        myChart_amount.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
+        myChart_post.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
         $.ajax({
             type: "POST",
             url: "/workspace_Intellj_war_exploded/themepagedata",  // Here to change back end receive url.
@@ -352,12 +392,166 @@ $(function() {
 
                     }
                 }
+                document.getElementById("total_company").innerHTML = "" + company_in_EM.length;
+                document.getElementById("total_amount").innerHTML = total_invest_EM;
+
+                var option_invest = {
+                    title: {
+                        text: 'Inv Amount',
+                        left: 'right'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                        data: company_in_EM,
+                    },
+                    series: [
+                        {
+                            name: 'total investment',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            label:{show:false},
+                            data: company_value_in_EM,
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart_invest.setOption(option_invest,true);
+                myChart_invest.hideLoading();
+
+                var option_total = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    series: [
+                        {
+                            name: 'total',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            label:{show:false},
+                            data: [
+                                {value: company_in_EM.length, name:'Exponential Machine'},
+                                {value: total_company_no - company_in_EM.length, name:'others'},
+                            ],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart_total.setOption(option_total);
+                myChart_total.hideLoading();
+
+                var option_amount = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    series: [
+                        {
+                            name: 'total',
+                            type: 'pie',
+                            radius: '55%',
+                            center: ['50%', '60%'],
+                            label:{show:false},
+                            data: [
+                                {value: total_invest_EM, name:'Exponential Machine'},
+                                {value: total_EM, name:'others'},
+                            ],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart_amount.setOption(option_amount,true);
+                myChart_amount.hideLoading();
+                var option_valuation = {
+                    title: {
+                        text: 'Post Valuation',
+                        left: 'left'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: company_in_EM
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: deal_list_EM,
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: post_valuation_data_EM,
+                };
+                myChart_post.setOption(option_valuation,true);
+                myChart_post.hideLoading();
+                var option_bar = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: deal_list_EM
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value'
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: company_in_EM
+                    },
+                    series: deal_cost_in_EM
+                };
+                myChart_bar.setOption(option_bar,true);
+                myChart_bar.hideLoading();
                 $("#EM").click(function () {
                         document.getElementById("total_company").innerHTML = "" + company_in_EM.length;
                         document.getElementById("total_amount").innerHTML = total_invest_EM;
 
-
-                        var myChart_invest = echarts.init(document.querySelector("#MSEQ_investment"));
                         var option_invest = {
                             title: {
                                 text: 'Inv Amount',
@@ -391,6 +585,7 @@ $(function() {
                             ]
                         };
                         myChart_invest.setOption(option_invest,true);
+                        myChart_invest.hideLoading();
                     var myChart_total = echarts.init(document.querySelector("#total_company_pie"));
                     var option_total = {
                         tooltip: {

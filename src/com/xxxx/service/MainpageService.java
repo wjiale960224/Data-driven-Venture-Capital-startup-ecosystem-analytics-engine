@@ -49,6 +49,11 @@ public class MainpageService {
         String perOfFund = "";
         String themeOfFund = "";
         double total_mseq_invest = 0;
+        int number_of_series_a = 0;
+        int number_of_series_b = 0;
+        int number_of_series_c = 0;
+        int number_of_series_seed = 0;
+        int number_of_series_preseed = 0;
         for(String c : company_names){
             Company company = queryDao.queryCompanyByName(c);
             data.add(company);
@@ -61,6 +66,21 @@ public class MainpageService {
         int no_deal = dealIds.size();
         for(Deal d : deal){
             total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
+            if(d.getSeries().toString().contains("A")){
+                number_of_series_a ++;
+            }
+            else if(d.getSeries().toString().contains("B")){
+                number_of_series_b ++;
+            }
+            else if(d.getSeries().toString().contains("C")){
+                number_of_series_c ++;
+            }
+            else if(d.getSeries().toString().equals("Seed")){
+                number_of_series_seed ++;
+            }
+            else if(d.getSeries().toString().contains("Pre")){
+                number_of_series_preseed ++;
+            }
         }
         double total_mseq_invest_output = total_mseq_invest;
         Gson g = new Gson();
@@ -107,7 +127,7 @@ public class MainpageService {
 
         themeOfFund = "ThemeOfFund[" + themeOfFund.substring(0,themeOfFund.length()-1)+"]";
         perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
-        OverviewInfo oi = new OverviewInfo(capital.getTotal_fund(),total_mseq_invest_output + capital.getManagement_fee(),capital.getTotal_fund() - total_mseq_invest_output - capital.getManagement_fee(), capital.getManagement_fee(), no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()-capital.getManagement_fee()-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output);
+        OverviewInfo oi = new OverviewInfo(capital.getTotal_fund(),total_mseq_invest_output + capital.getManagement_fee(),capital.getTotal_fund() - total_mseq_invest_output - capital.getManagement_fee(), capital.getManagement_fee(), no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()-capital.getManagement_fee()-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output,number_of_series_a,number_of_series_b,number_of_series_c,number_of_series_seed,number_of_series_preseed);
         String ovInfo = g.toJson(oi);
         ovInfo = "OvInfo[" + ovInfo + "]";
 

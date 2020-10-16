@@ -1,7 +1,29 @@
 $(function (){
+    var bar_chart = echarts.init(document.querySelector("#bar_chart"));
+    var line_chart = echarts.init(document.querySelector("#line_chart"));
+    var pie_chart = echarts.init(document.querySelector("#pie_chart"));
+    pie_chart.showLoading({
+        text: 'loading',
+        color: '#c23531',
+        textColor: '#000',
+        maskColor: 'rgba(255, 255, 255, 0.2)',
+        zlevel: 0,
+    });
+    bar_chart.showLoading({
+        text: 'loading',
+        color: '#c23531',
+        textColor: '#000',
+        maskColor: 'rgba(255, 255, 255, 0.2)',
+        zlevel: 0,
+    });
+    line_chart.showLoading({
+        text: 'loading',
+        color: '#c23531',
+        textColor: '#000',
+        maskColor: 'rgba(255, 255, 255, 0.2)',
+        zlevel: 0,
+    });
     (function refresh(){
-
-        var bar_chart = echarts.init(document.querySelector("#bar_chart"));
         var bar_chart_option = {
             color: ['rgb(173,139,46)'],
             title: {
@@ -44,7 +66,6 @@ $(function (){
             ]
         };
         // bar_chart.setOption(bar_chart_option);
-        var line_chart = echarts.init(document.querySelector("#line_chart"));
         var line_chart_option = {
             title: {
                 left: 'center',
@@ -68,7 +89,7 @@ $(function (){
         };
         // line_chart.setOption(line_chart_option);
 
-        var pie_chart = echarts.init(document.querySelector("#pie_chart"));
+
         var pie_chart_option  = {
             title: {
                 text: 'MSEQ Investment',
@@ -193,11 +214,13 @@ $(function (){
                     bar_chart_option.xAxis[0].data = Object.keys(dealSize["lhm"]);
                     bar_chart_option.series[0].data = Object.entries(dealSize["lhm"]);
                     bar_chart.setOption(bar_chart_option);
+                    bar_chart.hideLoading();
 
                     /*------Update Post change chart -------*/
                     line_chart_option.xAxis.data = Object.keys(postChange["lhm"]);
                     line_chart_option.series[0].date = Object.entries(postChange["lhm"]);
                     line_chart.setOption(line_chart_option);
+                    line_chart.hideLoading();
 
                     /*------Update MSEQ invest chart -------*/
                     console.log(company);
@@ -205,6 +228,7 @@ $(function (){
                     pie_chart_option.series[0].data = [{value: company["MSEQ_Investment"], name: company["Company_Name"]},
                         {value: company["Others"], name: 'Others'}];
                     pie_chart.setOption(pie_chart_option);
+                    pie_chart.hideLoading();
                     e.stopPropagation();
                 })
             },
