@@ -12,7 +12,7 @@ window.onload = function (){
             var $tds = "";
             for (var i = 0; i < $("thead th").length-1; i++){
                 if (i === 1){
-                    $tds += "<td><select class='td_input dropdownchoice'><option></option><option>Exponential Machines</option><option>Feeding 10B People</option>" +
+                    $tds += "<td><select class='td_input dropdownchoice'><option>Exponential Machines</option><option>Feeding 10B People</option>" +
                         "<option>Humanity Scale Healthcare</option><option>New Society</option>" +
                         "<option>Space & Transport</option></select></td>"
                 }else if (i === 2){

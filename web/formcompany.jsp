@@ -45,7 +45,6 @@
                         <th>Post Valuation</th>
                         <th>Valuation Change Reason</th>
                         <th>MSEQ Investment Cur Val</th>
-                        <th>Own Percent</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

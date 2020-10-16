@@ -17,7 +17,10 @@ window.onload = function (){
                     $tds += "<td><select class='td_input dropdownchoice'><option></option><option>Pre-seed</option><option>Seed</option>" +
                         "<option>Series A</option><option>Series B</option>" +
                         "<option>Series C</option></select></td>"
-                }else if (i === 6 || i === 7 || i===0){
+                }else if (i === 6){
+                    $tds += "<td><select class='td_input dropdownchoice'><option></option><option>Equities</option><option>Notes</option>" +
+                        "</select></td>"
+                }else if (i === 7 || i===0){
                     $tds += "<td><input class='td_input' type='text'></td>";
                 }else if (i === 4){
                     $tds += "<td><input class='td_input mseq_invest_amt' type='number'></td>";
