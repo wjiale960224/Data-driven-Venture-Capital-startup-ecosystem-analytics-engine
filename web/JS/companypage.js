@@ -32,8 +32,13 @@ $(function (){
             },
             tooltip: {
                 trigger: 'axis',
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'line'        // 默认为直线，可选为：'line' | 'shadow'
+                axisPointer: {
+                    type: 'line'
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
                 }
             },
             grid: {
@@ -72,7 +77,13 @@ $(function (){
                 text: 'Post-Valuation Change'
             },
             tooltip: {
+
                 trigger: 'axis',
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
             },
             xAxis: {
                 type: 'category',
@@ -98,6 +109,11 @@ $(function (){
             tooltip: {
                 trigger: 'item',
                 formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
             },
             legend: {
                 orient: 'vertical',

@@ -190,6 +190,11 @@ $(function () {
                         trigger: 'item',
                         formatter: '{a} <br/>{b}: {c} ({d}%)'
                     },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
                     series: [
                         {
                             name: 'theme',
@@ -234,6 +239,11 @@ $(function () {
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
                     },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
                     legend: {
                         top: '10%',
                         orient: 'vertical',
@@ -271,6 +281,11 @@ $(function () {
                     },
                     tooltip:{
 
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     xAxis: {
                         data: ["MSEQ Invested","Total Capital Raised",],
