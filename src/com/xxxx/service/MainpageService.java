@@ -64,23 +64,8 @@ public class MainpageService {
         }
         int no_company = data.size();
         int no_deal = dealIds.size();
-        for(Deal d : deal){
+        for (Deal d : deal){
             total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
-            if(d.getSeries().toString().contains("A")){
-                number_of_series_a ++;
-            }
-            else if(d.getSeries().toString().contains("B")){
-                number_of_series_b ++;
-            }
-            else if(d.getSeries().toString().contains("C")){
-                number_of_series_c ++;
-            }
-            else if(d.getSeries().toString().equals("Seed")){
-                number_of_series_seed ++;
-            }
-            else if(d.getSeries().toString().contains("Pre")){
-                number_of_series_preseed ++;
-            }
         }
         double total_mseq_invest_output = total_mseq_invest;
         Gson g = new Gson();
