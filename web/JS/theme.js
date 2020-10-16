@@ -232,6 +232,7 @@ $(function() {
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         deal_set_EM.add(obj2["deal_no"]);
+                        console.log(obj2["deal_no"]);
                         if(company_in_EM[i] == obj2["company_name"]){
                             data_info.push(obj2["post_valuation"]);
                         }
@@ -294,13 +295,14 @@ $(function() {
                 var deal_list_HSH = Array.from(deal_set_HSH);
                 var deal_list_NS = Array.from(deal_set_NS);
                 var deal_list_ST = Array.from(deal_set_ST);
+                console.log(deal_list_EM)
                 for (i = 0 ; i < deal_list_EM.length; i++){
                     var deal_data = [];
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Expon")){
                             if (deal_list_EM[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
+                                deal_data.push(obj2["cost"]/1000000);
                             }
                         }
                     }
@@ -322,7 +324,7 @@ $(function() {
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Feed")){
                             if (deal_list_FP[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
+                                deal_data.push(obj2["cost"]/1000000);
                             }
                         }
                     }
@@ -344,7 +346,7 @@ $(function() {
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Human")){
                             if (deal_list_HSH[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
+                                deal_data.push(obj2["cost"]/1000000);
                             }
                         }
                     }
@@ -366,7 +368,7 @@ $(function() {
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"New")){
                             if (deal_list_NS[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
+                                deal_data.push(obj2["cost"]/1000000);
                             }
                         }
                     }
@@ -388,7 +390,7 @@ $(function() {
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Space")){
                             if (deal_list_ST[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
+                                deal_data.push(obj2["cost"]/1000000);
                             }
                         }
                     }
@@ -410,7 +412,7 @@ $(function() {
                 var option_invest = {
                     title: {
                         text: 'Inv Amount',
-                        left: 'right'
+                        left: 'center'
                     },
                     tooltip: {
                         trigger: 'item',
@@ -420,6 +422,11 @@ $(function() {
                         orient: 'vertical',
                         left: 'left',
                         data: company_in_EM,
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     series: [
                         {
@@ -446,6 +453,11 @@ $(function() {
                     tooltip: {
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     series: [
                         {
@@ -475,6 +487,11 @@ $(function() {
                     tooltip: {
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
                     },
                     series: [
                         {
@@ -540,6 +557,11 @@ $(function() {
                             type: 'shadow'
                         }
                     },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
                     legend: {
                         data: deal_list_EM
                     },
@@ -567,11 +589,16 @@ $(function() {
                         var option_invest = {
                             title: {
                                 text: 'Inv Amount',
-                                left: 'right'
+                                left: 'center'
                             },
                             tooltip: {
                                 trigger: 'item',
                                 formatter: '{a} <br/>{b} : {c} ({d}%)'
+                            },
+                            toolbox: {
+                                feature: {
+                                    saveAsImage: {}
+                                }
                             },
                             legend: {
                                 orient: 'vertical',
@@ -604,6 +631,11 @@ $(function() {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
                         },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
                         series: [
                             {
                                 name: 'total',
@@ -632,6 +664,11 @@ $(function() {
                         tooltip: {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -664,6 +701,7 @@ $(function() {
                         tooltip: {
                             trigger: 'axis'
                         },
+
                         legend: {
                             data: company_in_EM
                         },
@@ -693,9 +731,15 @@ $(function() {
                     var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
                     var option_bar = {
                         tooltip: {
+
                             trigger: 'axis',
                             axisPointer: {
                                 type: 'shadow'
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
                             }
                         },
                         legend: {
@@ -725,11 +769,16 @@ $(function() {
                     var option_invest = {
                         title: {
                             text: 'Inv Amount',
-                            left: 'right'
+                            left: 'center'
                         },
                         tooltip: {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         legend: {
                             orient: 'vertical',
@@ -758,8 +807,14 @@ $(function() {
                     var myChart_total = echarts.init(document.querySelector("#total_company_pie"));
                     var option_total = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -787,8 +842,14 @@ $(function() {
                     var myChart_amount = echarts.init(document.querySelector("#total_inv_pie"));
                     var option_amount = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -819,8 +880,10 @@ $(function() {
                             left: 'left'
                         },
                         tooltip: {
+
                             trigger: 'axis'
                         },
+
                         legend: {
                             data: company_in_FP
                         },
@@ -850,9 +913,15 @@ $(function() {
                     var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
                     var option_bar = {
                         tooltip: {
+
                             trigger: 'axis',
                             axisPointer: {
                                 type: 'shadow'
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
                             }
                         },
                         legend: {
@@ -882,7 +951,7 @@ $(function() {
                         var option_invest = {
                             title: {
                                 text: 'Inv Amount',
-                                left: 'right'
+                                left: 'center'
                             },
                             tooltip: {
                                 trigger: 'item',
@@ -892,6 +961,11 @@ $(function() {
                                 orient: 'vertical',
                                 left: 'left',
                                 data: company_in_HSH
+                            },
+                            toolbox: {
+                                feature: {
+                                    saveAsImage: {}
+                                }
                             },
                             series: [
                                 {
@@ -915,8 +989,14 @@ $(function() {
                     var myChart_total = echarts.init(document.querySelector("#total_company_pie"));
                     var option_total = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -944,8 +1024,14 @@ $(function() {
                     var myChart_amount = echarts.init(document.querySelector("#total_inv_pie"));
                     var option_amount = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -976,6 +1062,7 @@ $(function() {
                                 left: 'left'
                             },
                             tooltip: {
+
                                 trigger: 'axis'
                             },
                             legend: {
@@ -1007,9 +1094,15 @@ $(function() {
                         var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
                         var option_bar = {
                             tooltip: {
+
                                 trigger: 'axis',
                                 axisPointer: {
                                     type: 'shadow'
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    saveAsImage: {}
                                 }
                             },
                             legend: {
@@ -1041,11 +1134,16 @@ $(function() {
                     var option_invest = {
                         title: {
                             text: 'Inv Amount',
-                            left: 'right'
+                            left: 'center'
                         },
                         tooltip: {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         legend: {
                             orient: 'vertical',
@@ -1077,6 +1175,11 @@ $(function() {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
                         },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
                         series: [
                             {
                                 name: 'total',
@@ -1105,6 +1208,11 @@ $(function() {
                         tooltip: {
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -1135,8 +1243,10 @@ $(function() {
                             left: 'left'
                         },
                         tooltip: {
+
                             trigger: 'axis'
                         },
+
                         legend: {
                             data: company_in_NS
                         },
@@ -1166,9 +1276,15 @@ $(function() {
                     var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
                     var option_bar = {
                         tooltip: {
+
                             trigger: 'axis',
                             axisPointer: {
                                 type: 'shadow'
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
                             }
                         },
                         legend: {
@@ -1200,11 +1316,17 @@ $(function() {
                     var option_invest = {
                         title: {
                             text: 'Inv Amount',
-                            left: 'right'
+                            left: 'center'
                         },
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         legend: {
                             orient: 'vertical',
@@ -1233,8 +1355,14 @@ $(function() {
                     var myChart_total = echarts.init(document.querySelector("#total_company_pie"));
                     var option_total = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -1262,8 +1390,14 @@ $(function() {
                     var myChart_amount = echarts.init(document.querySelector("#total_inv_pie"));
                     var option_amount = {
                         tooltip: {
+
                             trigger: 'item',
                             formatter: '{a} <br/>{b} : {c} ({d}%)'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
                         },
                         series: [
                             {
@@ -1294,6 +1428,7 @@ $(function() {
                             left: 'left'
                         },
                         tooltip: {
+
                             trigger: 'axis'
                         },
                         legend: {
@@ -1325,9 +1460,15 @@ $(function() {
                     var myChart_bar = echarts.init(document.querySelector("#bar_chart"));
                     var option_bar = {
                         tooltip: {
+
                             trigger: 'axis',
                             axisPointer: {
                                 type: 'shadow'
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
                             }
                         },
                         legend: {
