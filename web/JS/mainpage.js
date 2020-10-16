@@ -12,13 +12,13 @@ if (strDate >= 0 && strDate <= 9) {
 
 var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate;
 
-$(function (){
+$(function () {
     var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
     var TVPI_curve_option = {
         title: {
             text: 'TVPI curve',
             left: '50%',
-            textAlign:'center',
+            textAlign: 'center',
         },
         tooltip: {
             trigger: 'axis',
@@ -33,7 +33,7 @@ $(function (){
         },
         xAxis: {
             type: 'category',
-            data: ['0.0', '0.3', '0.6', '0.9', '1.2', '1.5', '1.8','2.1'],
+            data: ['0.0', '0.3', '0.6', '0.9', '1.2', '1.5', '1.8', '2.1'],
             boundaryGap: false,
         },
         yAxis: {
@@ -47,19 +47,19 @@ $(function (){
     TVPI_curve.setOption(TVPI_curve_option);
 
     var two_pie = echarts.init(document.querySelector("#two_pie"));
-    var two_pie_option  = {
-        title:[
+    var two_pie_option = {
+        title: [
             {
                 text: nowDate,
-                left:'50%',
-                textAlign:'center',
+                left: '50%',
+                textAlign: 'center',
             },
 
             {
                 text: 'Initial Date',
-                left:'50%',
+                left: '50%',
                 top: '52.5%',
-                textAlign:'center'
+                textAlign: 'center'
             }
         ],
         tooltip: {
@@ -100,10 +100,6 @@ $(function (){
     };
 
     two_pie.setOption(two_pie_option);
-
-
-
-
 
     (function refresh(){
         var company_name = [];
@@ -305,6 +301,7 @@ $(function (){
             }
         });
     }());
+
 
     function split_string(str){
         var strings = str.substring(1,str.length-1).split("},{");
