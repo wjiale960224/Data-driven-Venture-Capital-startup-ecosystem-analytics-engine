@@ -6,6 +6,7 @@ import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
 import com.xxxx.entity.Valuation;
 import com.xxxx.entity.companypageinfo.CompanyInfomation;
+import com.xxxx.entity.overview.Capital;
 import com.xxxx.entity.themeinfo.CompanyInfo;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
@@ -43,40 +44,8 @@ public class Test {
 
     public static void main(String[] args) {
         SqlSession session = GetSqlSession.createSqlSession();
-        QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
-        List<String> company_names = userdao.listCompanyByName();
-        List<Integer> dealIds = userdao.listDealById();
-        List<Deal> deal = new ArrayList<>();
-        List<Company> data = new ArrayList<>();
-        List<CompanyInfo> companyInfos = new ArrayList<>();
-        String output = "";
-        List<CompanyInfomation> companyInfomations = new ArrayList<>();
-        Map<Company, Valuation> companyValuationMap = new HashMap<>();
-        for(String c : company_names){
-            Company company = queryDao.queryCompanyByName(c);
-            Valuation valuation = queryDao.queryLatestValuationByCID(company.getCid());
-            companyValuationMap.put(company, valuation);
-            data.add(company);
-        }
-        for (Integer id: dealIds){
-            Deal d = userdao.queryDealById(id);
-            deal.add(d);
-        }
-        for(Company c : data){
-            Double mseq_total_invest = 0.0;
-            Valuation v = companyValuationMap.get(c);
-            int deal_no = 0;
-            for(Deal d : deal){
-                if (c.getC_name().equals(d.getC_name())){
-                    mseq_total_invest = mseq_total_invest + d.getMSEQ_invest_amount();
-                    deal_no++;
-                }
-
-            }
-            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),c.getRunway_month(),"",0.0,v.getOwn_percent(),c.getEmployee_no(),c.getRevenue());
-            companyInfomations.add(companyInfomation);
-
-        }
+        Capital capital = userdao.listAllCapital();
+        System.out.println(capital);
     }
 }
