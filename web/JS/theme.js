@@ -164,7 +164,7 @@ $(function() {
                                 }
                             }else if (attr === "Current Valuation<br>(AUD M\\)"){
                                 if (map.get(theme)[i]["current_valuation"]){
-                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"] / 1000000;
+                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
                                 }
                             }else if (attr === "Investment Multiple"){
                                 if(map.get(theme)[i]["investment_multiple"]){

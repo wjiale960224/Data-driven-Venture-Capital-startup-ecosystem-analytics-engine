@@ -37,7 +37,8 @@ public class ThemepageService {
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
-        List<Deal> deal = new ArrayList<>(); // Latest deals for each company
+        List<Deal> deal = new ArrayList<>();
+        List<Deal> latestDeal = new ArrayList<>();// Latest deals for each company
         List<Deal> earlistDeals = new ArrayList<>(); // Earliest company for each deal
         List<Company> data = new ArrayList<>(); // All companies data
         List<CompanyInfo> companyInfos = new ArrayList<>();
@@ -52,13 +53,17 @@ public class ThemepageService {
             data.add(company);
 
             Deal lastDeal = queryDao.queryLatestDealByCompanyCID(company.getCid());
-            deal.add(lastDeal);
+            latestDeal.add(lastDeal);
 
             Valuation valuation = queryDao.queryLatestValuationByCID(company.getCid());
             valuations.add(valuation);
 
             Deal earlyDeal = queryDao.queryEarliestDealByCompanyCID(company.getCid());
             earlistDeals.add(earlyDeal);
+        }
+        for (int i : deal_id){
+            Deal d = queryDao.queryDealById(i);
+            deal.add(d);
         }
 
         for (Company c : data){
@@ -77,10 +82,15 @@ public class ThemepageService {
                     earlyDeal = earlyD;
                 }
             }
+            for (Deal latestD: latestDeal){
+                if (latestD.getC_name().equals(c.getC_name())){
+
+                }
+            }
             for (Deal d : deal){
                 String deal_no = "deal" + i;
                 if (c.getC_name().equals(d.getC_name())){
-                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,earlyDeal.getDeal_date_toString(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),v.getPost_value(),d.getInvest_vehicle_toString(),c.getIrr(),v.getPost_value());
+                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date_toString(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
                     companyInfos.add(companyInfo);
                     companyInfoString += g.toJson(companyInfo) + ",";
                     i = i + 1;
