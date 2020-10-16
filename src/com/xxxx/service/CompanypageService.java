@@ -98,12 +98,13 @@ public class CompanypageService {
                 }
             }
             Double others = 0.0;
-            if (ld.getDeal_size() == null || ld.getOwn_percentage() == null){
+            if (ld.getOwn_percentage() == null || ld.getMSEQ_invest_amount() == null){
                 others = null;
             }else {
-                others = ld.getDeal_size() * (100-ld.getOwn_percentage()) / 100;
+                others = (ld.getMSEQ_invest_amount() / ld.getOwn_percentage()) - ld.getMSEQ_invest_amount();
+                System.out.println(others);
             }
-            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),v.getUpdate_date().toString(),c.getRunway_month(),ld.getSeries_toString(),v.getOwn_percent(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
+            CompanyInfomation companyInfomation = new CompanyInfomation(c.getC_name(),c.getTheme().toString(),mseq_total_invest,deal_no,v.getMseq_investment_cur_val(),v.getUpdate_date().toString(),c.getRunway_month(),ld.getSeries_toString(),ld.getOwn_percentage(),c.getEmployee_no(),c.getRevenue(), ld.getMSEQ_invest_amount(), others);
             companyinfostring += g.toJson(companyInfomation) + ",";
         }
 

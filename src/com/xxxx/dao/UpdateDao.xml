@@ -33,6 +33,6 @@
     </update>
 
     <update id="updateCapitalMngFee">
-        update capital set total_capital = #{total_capital}, management_fee=#{management_fee};
+        update capital set total_capital = #{total_capital}, management_fee=#{management_fee}, total_capital_raised=#{total_capital_raised};
     </update>
 </mapper>
