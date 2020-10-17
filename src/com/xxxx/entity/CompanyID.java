@@ -8,11 +8,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * @author Zihang
- * @date 2020/9/14
- */
-
 public class CompanyID {
 //    private static AtomicInteger atomicInteger = new AtomicInteger();
 

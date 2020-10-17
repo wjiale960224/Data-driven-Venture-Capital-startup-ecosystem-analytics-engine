@@ -5,6 +5,7 @@ import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -13,9 +14,8 @@ public class Deal {
     Integer deal_id;
     Integer cid;
     String c_name;
-    Date deal_date;
+    LocalDate deal_date;
     Double deal_size;
-    DealStatus deal_status;
     Series series;
     Double mseq_invest_amt;
     Double post_value;
@@ -23,9 +23,24 @@ public class Deal {
     String co_investor;
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
-    String fund_name; // TODO database need to update
+    //String fund_name; // TODO database need to update
 
     public Deal() {
+    }
+
+    public Deal(Integer deal_id, Integer cid, String c_name, LocalDate deal_date, Double deal_size, Series series, Double mseq_invest_amt, Double post_value, Vehicle invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
+        this.deal_id = deal_id;
+        this.cid = cid;
+        this.c_name = c_name;
+        this.deal_date = deal_date;
+        this.deal_size = deal_size;
+        this.series = series;
+        this.mseq_invest_amt = mseq_invest_amt;
+        this.post_value = post_value;
+        this.invest_vehicle = invest_vehicle;
+        this.co_investor = co_investor;
+        this.fund_percent = fund_percent;
+        this.own_percent = own_percent;
     }
 
     public Integer getCid() {
@@ -64,7 +79,7 @@ public class Deal {
         this.c_name = c_name;
     }
 
-    public Date getDeal_date() {
+    public LocalDate getDeal_date() {
         return deal_date;
     }
 
@@ -75,10 +90,6 @@ public class Deal {
 
     public Double getDeal_size() {
         return deal_size == null? null:deal_size;
-    }
-
-    public DealStatus getDeal_status() {
-        return deal_status;
     }
 
     public Series getSeries() {
@@ -130,7 +141,7 @@ public class Deal {
         return co_investor;
     }
 
-    public void setDeal_date(Date deal_date) {
+    public void setDeal_date(LocalDate deal_date) {
         this.deal_date = deal_date;
     }
 
@@ -144,10 +155,6 @@ public class Deal {
 
     public void setPost_value(Double post_value) {
         this.post_value = post_value;
-    }
-
-    public void setDeal_status(DealStatus deal_status) {
-        this.deal_status = deal_status;
     }
 
     public void setSeries(Series series) {
@@ -174,13 +181,13 @@ public class Deal {
         }
     }
 
-    public String getFund_name() {
-        return fund_name;
-    }
-
-    public void setFund_name(String fund_name) {
-        this.fund_name = fund_name;
-    }
+//    public String getFund_name() {
+//        return fund_name;
+//    }
+//
+//    public void setFund_name(String fund_name) {
+//        this.fund_name = fund_name;
+//    }
 
     /*public void addCo_investor(String co_investor) {
         this.co_investor.add(co_investor);
@@ -208,7 +215,6 @@ public class Deal {
         boolean cName = this.c_name.equals(B.c_name);
         boolean dealDate = this.deal_date.equals(B.deal_date);
         boolean deaSize = this.deal_size.equals(B.deal_size);
-        boolean dealStatus = this.deal_status.equals(B.deal_status);
         boolean dealSeries = this.CompareString(this.series,B.series);
 
         boolean mseq = this.mseq_invest_amt.equals(B.mseq_invest_amt) ;
@@ -226,7 +232,7 @@ public class Deal {
         boolean fundPct = this.fund_percent.equals(B.fund_percent);
         boolean ownPct = this.CompareString(this.own_percent, B.own_percent);
 
-        return cName & dealDate & deaSize & dealStatus & dealSeries & mseq & postV & investV & coInv & fundPct & ownPct;
+        return cName & dealDate & deaSize & dealSeries & mseq & postV & investV & coInv & fundPct & ownPct;
     }
 
     public boolean CompareString(Object a, Object b){

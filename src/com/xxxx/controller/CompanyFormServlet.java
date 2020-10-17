@@ -30,6 +30,8 @@ public class CompanyFormServlet extends HttpServlet {
             sos.print(companyService.getCompanyInfo(companyService.getCompanyNames()) +"totalCapital&manageFee" + companyService.getCapitalMngFeeInfo());
         } else { // update data in database
             String c = req.getParameter("company");
+            System.out.println(c);
+
             String[] cs =  c.split("totalCapital&manageFee");
             companyService.updateTotCapitalMngFee(cs[0]);
             companyService.updateCompanyInfo(cs[1]);

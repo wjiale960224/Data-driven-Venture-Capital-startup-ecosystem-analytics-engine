@@ -49,17 +49,19 @@ public class CompanyForm {
 
         company.setC_name(this.Company_Name);
 
-        company.irr = this.IRR;
-        if (this.Theme.toLowerCase().contains("exponential"))
-            company.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
-        if (this.Theme.toLowerCase().contains("feeding"))
-            company.setTheme(com.xxxx.entity.Theme.Feeding_10B_People);
-        if (this.Theme.toLowerCase().contains("humanity"))
-            company.setTheme(com.xxxx.entity.Theme.Humanity_Scale_Healthcare);
-        if (this.Theme.toLowerCase().contains("society"))
-            company.setTheme(com.xxxx.entity.Theme.New_Society);
-        if (this.Theme.toLowerCase().contains("space"))
-            company.setTheme(com.xxxx.entity.Theme.Space_Transport);
+
+        if (this.Theme != null) {
+            if (this.Theme.toLowerCase().contains("exponential"))
+                company.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
+            if (this.Theme.toLowerCase().contains("feeding"))
+                company.setTheme(com.xxxx.entity.Theme.Feeding_10B_People);
+            if (this.Theme.toLowerCase().contains("humanity"))
+                company.setTheme(com.xxxx.entity.Theme.Humanity_Scale_Healthcare);
+            if (this.Theme.toLowerCase().contains("society"))
+                company.setTheme(com.xxxx.entity.Theme.New_Society);
+            if (this.Theme.toLowerCase().contains("space"))
+                company.setTheme(com.xxxx.entity.Theme.Space_Transport);
+        }
 
         company.setYear_founded(this.Year_Founded);
         company.setRunway_start_date(this.Runway_Start_Date);
@@ -68,6 +70,7 @@ public class CompanyForm {
         company.setRaised_to_date(this.Raise_to_Date);
         company.setEmployee_no(this.Employee_No);
         company.setRevenue(this.Revenue);
+        company.setIrr(this.IRR);
         return company;
     }
 

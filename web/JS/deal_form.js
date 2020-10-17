@@ -77,7 +77,7 @@ window.onload = function (){
                 var check_empty = 0;
 
                 for (var j = 1; j < $tr[i].cells.length; j++) {
-                    var cont = $tr[i].cells[j].childNodes[0].innerHTML;
+                    var cont = $tr[i].cells[j].childNodes[0].value; // use .value to correctly get string from dropdown selection
                     if (cont===""){
                         check_empty++;
                     }else {

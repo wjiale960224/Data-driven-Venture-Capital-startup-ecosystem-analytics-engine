@@ -77,15 +77,21 @@ public class CompanyService {
         for (String str : updateInfo) {
             CompanyForm companyform = gson.fromJson(str, CompanyForm.class);
             Company companyInForm = companyform.toCompany();
+            System.out.println(companyInForm.getC_name());
+            System.out.println(companyInForm.getEmployee_no());
             Valuation valuationInForm = companyform.toValuation();
+
             double[] valuationsInDB = null;
             int cidInDB = 0;
             if (!companys.contains(companyInForm.getC_name())) { // Add company and valuation
                 companyInForm.setCid(); // generate a new cid for new company only
                 insertdao.addCompany(companyInForm);
+                System.out.println("Insert company finish");
                 valuationInForm.setVal_id();
                 valuationInForm.setCid(companyInForm.getCid()); // change
                 insertdao.addValuation(valuationInForm);
+                System.out.println("Insert val finish");
+
             }else{
                 valuationsInDB = queryDao.queryValueByName(companyInForm.getC_name());
                 Company companyInDB = queryDao.queryCompanyByName(companyInForm.getC_name());

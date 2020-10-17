@@ -29,6 +29,8 @@ public class DealFormServlet extends HttpServlet {
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else { // update data in database
             String d = req.getParameter("deal");
+            System.out.println(d);
+
             try {
                 dealService.updateDealInfo(d);
             } catch (ParseException e) {

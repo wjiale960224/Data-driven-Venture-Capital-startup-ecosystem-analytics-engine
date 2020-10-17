@@ -30,12 +30,12 @@
     </insert>
 
     <insert id="addDeal" parameterType="deal">
-        insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
-        values (#{deal_id},#{cid},#{c_name},#{deal_date},#{deal_size},#{status},#{series},#{mseq_invest_amt_},#{post_value},#{invest_vehicle},#{co_investor},#{fund_percent},{own_percent})
+        insert into deal(deal_id, cid, c_name, deal_date, deal_size, series, mseq_invest_amt, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
+        values (#{deal_id},#{cid},#{c_name},#{deal_date},#{deal_size},#{series},#{mseq_invest_amt},#{post_value},#{invest_vehicle},#{co_investor},#{fund_percent},#{own_percent});
     </insert>
 
     <insert id="addValuation" parameterType="valuation">
-        insert into valuation(val_id, cid, c_name, update_date, post_value, valuation_change_reason, mseq_investment_cur_val, own_percent)
-        values (#{val_id},#{cid},#{c_name},#{update_date},#{post_value},#{valuation_change_reason},#{mseq_investment_cur_val},#{own_percent});
+        insert into valuation(val_id, cid, c_name, update_date, post_value, valuation_change_reason, mseq_investment_cur_val)
+        values (#{val_id},#{cid},#{c_name},#{update_date},#{post_value},#{valuation_change_reason},#{mseq_investment_cur_val});
     </insert>
 </mapper>
