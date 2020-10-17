@@ -36,4 +36,12 @@ public class TVPIForm {
         call.executeQuery();
         System.out.println("Procedure Execute Ready.");
     }
+
+    public void setDate(String date) {this.date = date;}
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        TVPIForm tf = new TVPIForm();
+        tf.setDate("2019-10-01");
+        tf.executeGetTVPI();
+    }
 }
