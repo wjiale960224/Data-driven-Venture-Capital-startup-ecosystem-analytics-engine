@@ -33,12 +33,12 @@ public class DealForm {
         Own_Percent = own_Percent;
     }
 
-    public Deal toDeal() throws ParseException {
+    public Deal toDeal() {
         Deal dl = new Deal();
 
-        dl.setC_name(this.Company_Name==null?null:this.Company_Name);
-        dl.setDeal_date(LocalDate.parse(this.Deal_Date)==null?null:LocalDate.parse(this.Deal_Date));
-        dl.setDeal_size(this.Deal_Size);
+        dl.setC_name(this.Company_Name==null ? null : this.Company_Name);
+        dl.setDeal_date(LocalDate.parse(this.Deal_Date)==null ? null : LocalDate.parse(this.Deal_Date));
+        dl.setDeal_size(this.Deal_Size==null ? null : this.Deal_Size);
         if (this.Series == null) {
             dl.setSeries(null);
         } else if (this.Series.contains("P")) {
@@ -52,8 +52,8 @@ public class DealForm {
         } else {
             dl.setSeries(com.xxxx.entity.Series.Seed);
         }
-        dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount);
-        dl.setPost_value(this.Post_Valuation);
+        dl.setMSEQ_invest_amount(this.MSEQ_Invest_amount==null ? null : this.MSEQ_Invest_amount);
+        dl.setPost_value(this.Post_Valuation==null ? null : this.Post_Valuation);
         if (this.Invest_Vehicle == null){
             dl.setVehicle(null);
         } else {
@@ -62,9 +62,9 @@ public class DealForm {
             if (this.Invest_Vehicle.toLowerCase().contains("note"))
                 dl.setVehicle(Vehicle.Notes);
         }
-        dl.setCo_investor(this.Co_Investor);
-        dl.setFund_percentage(this.Fund_Percent);
-        dl.setOwn_percentage(this.Own_Percent);
+        dl.setCo_investor(this.Co_Investor==null ? null : this.Co_Investor);
+        dl.setFund_percentage(this.Fund_Percent==null ? null : this.Fund_Percent);
+        dl.setOwn_percentage(this.Own_Percent==null ? null : this.Own_Percent);
 
         return dl;
     }

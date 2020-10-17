@@ -30,12 +30,7 @@ public class DealFormServlet extends HttpServlet {
         } else { // update data in database
             String d = req.getParameter("deal");
             System.out.println(d);
-
-            try {
-                dealService.updateDealInfo(d);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            dealService.updateDealInfo(d);
         }
     }
 }

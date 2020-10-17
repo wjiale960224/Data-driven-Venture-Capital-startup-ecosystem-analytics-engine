@@ -44,7 +44,7 @@ public class DealService {
         return "[" + output.substring(0, output.length() - 1) + "]";
     }
 
-    public void updateDealInfo(String d) throws ParseException {
+    public void updateDealInfo(String d) {
         Gson gson = new Gson();
         SqlSession session = GetSqlSession.createSqlSession();
         InsertDao insertdao = session.getMapper(InsertDao.class);

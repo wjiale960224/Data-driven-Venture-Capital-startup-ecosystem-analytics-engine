@@ -48,8 +48,6 @@ public class CompanyForm {
         Company company = new Company();
 
         company.setC_name(this.Company_Name);
-
-
         if (this.Theme != null) {
             if (this.Theme.toLowerCase().contains("exponential"))
                 company.setTheme(com.xxxx.entity.Theme.Exponential_Machines);
@@ -62,7 +60,6 @@ public class CompanyForm {
             if (this.Theme.toLowerCase().contains("space"))
                 company.setTheme(com.xxxx.entity.Theme.Space_Transport);
         }
-
         company.setYear_founded(this.Year_Founded);
         company.setRunway_start_date(this.Runway_Start_Date);
         company.setRunway_end_date(this.Runway_End_Date);
