@@ -10,31 +10,31 @@
         "com.xxxx.entity.Valuation" => "valuation" -->
 
     <select id="queryUserByname" parameterType="String" resultType="user">
-        select * from tb_user where user_name = #{user_name}
+        select * from tb_user where user_name = #{user_name};
     </select>
 
     <insert id="add">
-        insert into tb_user(user_name, user_pwd) values (#{user_name},#{user_pwd})
+        insert into tb_user(user_name, user_pwd) values (#{user_name},#{user_pwd});
     </insert>
 
     <select id="queryPostValueByCompany" parameterType="String" resultType="java.lang.Double">
-        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
+        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name};
     </select>
 
     <select id="queryCompanyByName" parameterType="String" resultType="company">
-        select * from company where c_name = #{company_name}
+        select * from company where c_name = #{company_name};
     </select>
 
     <select id="listCompanyByName" resultType="java.lang.String">
-        select c_name from company
+        select c_name from company;
     </select>
 
     <select id="queryValuationByCID" parameterType="Integer" resultType="valuation">
-        select * from valuation where cid = #{cid}
+        select * from valuation where cid = #{cid};
     </select>
 
     <select id="listDealById" resultType="java.lang.Integer">
-        select deal_id from deal
+        select deal_id from deal;
     </select>
 
     <select id="queryDealById" parameterType="Integer" resultType="deal">
@@ -49,7 +49,7 @@
 
     <insert id="addDeal" parameterType="deal">
         insert into deal(deal_id, cid, c_name, deal_date, deal_size, deal status, series, mseq_invest_amt_, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
-        values ()
+        values ();
     </insert>
 
     <update id="updateRunwayMonth" >

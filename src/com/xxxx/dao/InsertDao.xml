@@ -10,7 +10,7 @@
         "com.xxxx.entity.Valuation" => "valuation" -->
 
     <insert id="add">
-        insert into tb_user(user_name, user_pwd) values (#{user_name},#{user_pwd})
+        insert into tb_user(user_name, user_pwd) values (#{user_name},#{user_pwd});
     </insert>
 
     <insert id="addCompany" parameterType="company">

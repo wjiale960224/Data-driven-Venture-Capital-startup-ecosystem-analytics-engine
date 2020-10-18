@@ -28,10 +28,6 @@ public class Company {
         this.theme = theme;
         this.raised_to_date = 0.00;
         this.revenue = 0.00;
-        // update Portfolio composition
-        if (!Portfolio.portfolio.contains(company_name)) {
-            Portfolio.portfolio.add(company_name);
-        }
     }
 
     public Company(Integer cid, String c_name, Theme theme, Integer year_founded, String runway_start_date, String runway_end_date,
@@ -46,10 +42,6 @@ public class Company {
         this.employee_no = employee_no;
         this.revenue = revenue;
         this.irr = irr;
-        // update Portfolio composition
-        if (!Portfolio.portfolio.contains(c_name)) {
-            Portfolio.portfolio.add(c_name);
-        }
     }
 
 
@@ -146,9 +138,4 @@ public class Company {
         this.irr = irr;
     }
 
-    // may be called manually, or automatically after certain event
-    public void delete(String company_name) {
-        Portfolio.portfolio.remove(company_name);
-        // TODO What need to be updated when a company is removed from the portfolio?
-    }
 }

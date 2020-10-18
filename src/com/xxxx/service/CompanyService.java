@@ -81,30 +81,38 @@ public class CompanyService {
             System.out.println(companyInForm.getEmployee_no());
             Valuation valuationInForm = companyform.toValuation();
 
-            double[] valuationsInDB = null;
-            int cidInDB = 0;
+            Double[] valuationsInDB = null;
+            Integer cidInDB = 0;
             if (!companys.contains(companyInForm.getC_name())) { // Add company and valuation
+                System.out.println("Need to add new company/valuation");
                 companyInForm.setCid(); // generate a new cid for new company only
                 insertdao.addCompany(companyInForm);
                 System.out.println("Insert company finish");
                 valuationInForm.setVal_id();
                 valuationInForm.setCid(companyInForm.getCid()); // change
                 insertdao.addValuation(valuationInForm);
-                System.out.println("Insert val finish");
+                System.out.println("Insert valuation finish");
 
-            }else{
+            } else {
+                System.out.println("Need to update existing company/valuation");
                 valuationsInDB = queryDao.queryValueByName(companyInForm.getC_name());
+                System.out.println("queryValueByName finish");
                 Company companyInDB = queryDao.queryCompanyByName(companyInForm.getC_name());
+                System.out.println("queryCompanyByName finish");
                 cidInDB = companyInDB.getCid();
-                boolean same = CompareChange(companyInForm, companyInDB);
+                System.out.println("cid obtained");
+                Boolean same = CompareChange(companyInDB, companyInForm);
+                System.out.println("Compare company finish: " + (same ? "same" : "not same"));
                 if (!same){ // Update company info
                     companyInForm.setCid(companyInDB.getCid());
                     updateDao.updateCompany(companyInForm);
+                    System.out.println("Update company finish");
                 }
                 if (!HasPostValue(valuationsInDB, valuationInForm.getPost_value())){ // Update post value info
                     valuationInForm.setVal_id();
                     valuationInForm.setCid(cidInDB);
                     insertdao.addValuation(valuationInForm);
+                    System.out.println("Update valuation finish");
                 }
             }
 
@@ -113,17 +121,22 @@ public class CompanyService {
         session.close();
     }
 
-    public static boolean CompareChange(Company c1, Company c2) {
-        return c1.getTheme().equals(c2.getTheme()) && c1.getYear_founded().equals(c2.getYear_founded()) && c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
-                c1.getRunway_end_date().equals(c2.getRunway_end_date()) && c1.getRunway_month().equals(c2.getRunway_month()) &&
-                c1.getRaised_to_date().equals(c2.getRaised_to_date()) && c1.getEmployee_no().equals(c2.getEmployee_no()) &&
-                c1.getRevenue().equals(c2.getRevenue()) && c1.getIrr().equals(c2.getIrr());
+    public static Boolean CompareChange(Company c1, Company c2) { // NullPointerException if only use equals()
+        return c1.getTheme()==null ? c2.getTheme()==null : c1.getTheme().equals(c2.getTheme()) &&
+                c1.getYear_founded()==null ? c2.getYear_founded()==null : c1.getYear_founded().equals(c2.getYear_founded()) &&
+                c1.getRunway_start_date()==null ? c2.getRunway_start_date()==null : c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
+                c1.getRunway_end_date()==null ? c2.getRunway_end_date()==null : c1.getRunway_end_date().equals(c2.getRunway_end_date()) &&
+                c1.getRunway_month()==null ? c2.getRunway_month()==null : c1.getRunway_month().equals(c2.getRunway_month()) &&
+                c1.getRaised_to_date()==null ? c2.getRaised_to_date()==null : c1.getRaised_to_date().equals(c2.getRaised_to_date()) &&
+                c1.getEmployee_no()==null ? c2.getEmployee_no()==null : c1.getEmployee_no().equals(c2.getEmployee_no()) &&
+                c1.getRevenue()==null ? c2.getRevenue()==null : c1.getRevenue().equals(c2.getRevenue()) &&
+                c1.getIrr()==null ? c2.getIrr()==null : c1.getIrr().equals(c2.getIrr());
     }
 
-    public static boolean HasPostValue(double[] postValuations, double v){
+    public static Boolean HasPostValue(Double[] postValuations, Double v){
         // check all past valuations in db, if any past valuation matches the new one, return True
-        for (double pv : postValuations){
-            if (pv == v){
+        for (Double pv : postValuations){
+            if (pv.equals(v)){
                 return true;
             }
         }

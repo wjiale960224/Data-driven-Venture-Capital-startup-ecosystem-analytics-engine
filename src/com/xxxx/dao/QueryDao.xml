@@ -10,27 +10,27 @@
         "com.xxxx.entity.Valuation" => "valuation" -->
 
     <select id="queryUserByname" parameterType="String" resultType="user">
-        select * from tb_user where user_name = #{user_name}
+        select * from tb_user where user_name = #{user_name};
     </select>
 
     <select id="queryPostValueByCompany" parameterType="String" resultType="java.lang.Double">
-        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name}
+        select post_value from valuation join on company.cid = valuation.cid where c_name = #{company_name};
     </select>
 
     <select id="queryCompanyByName" parameterType="String" resultType="company">
-        select * from company where c_name = #{company_name}
+        select * from company where c_name = #{company_name};
     </select>
 
     <select id="queryValueByName" parameterType="String" resultType="double">
-        select post_value from valuation where c_name = #{company_name}
+        select post_value from valuation where c_name = #{company_name};
     </select>
 
     <select id="listCompanyByName" resultType="java.lang.String">
-        select c_name from company
+        select c_name from company;
     </select>
 
     <select id="queryValuationByCID" parameterType="Integer" resultType="valuation">
-        select * from valuation where cid = #{cid}
+        select * from valuation where cid = #{cid};
     </select>
 
     <select id="queryLatestValuationByCID" parameterType="Integer" resultType="valuation">
@@ -38,7 +38,7 @@
     </select>
 
     <select id="listDealById" resultType="java.lang.Integer">
-        select deal_id from deal
+        select deal_id from deal;
     </select>
 
     <select id="queryDealById" parameterType="Integer" resultType="deal">
@@ -49,7 +49,7 @@
         select c.theme, v.c_name, convert(v.post_value, char), v.update_date
         from valuation v,company c
         where v.cid = c.cid and c.theme = 'Space_Transport' and c.c_name = 'lakeba'
-        order by theme, c_name, update_date
+        order by theme, c_name, update_date;
     </select>
 
     <select id="queryCid" parameterType="Integer" resultType="java.lang.Integer">

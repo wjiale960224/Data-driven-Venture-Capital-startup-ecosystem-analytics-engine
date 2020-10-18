@@ -19,7 +19,7 @@ public interface QueryDao {
 
     Company queryCompanyByName(String company_name);
 
-    double[] queryValueByName(String company_name);
+    Double[] queryValueByName(String company_name);
 
     List<String> listCompanyByName();
 
