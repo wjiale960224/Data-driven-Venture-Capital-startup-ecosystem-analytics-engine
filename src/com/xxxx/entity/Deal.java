@@ -83,10 +83,6 @@ public class Deal {
         return deal_date;
     }
 
-    public String getDeal_date_toString() {
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
-        return ft.format(this.getDeal_date());
-    }
 
     public Double getDeal_size() {
         return deal_size == null? null:deal_size;

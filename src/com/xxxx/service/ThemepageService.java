@@ -79,24 +79,30 @@ public class ThemepageService {
             }
             Deal earlyDeal = new Deal();
             for (Deal earlyD : earlistDeals){
+                if (earlyD == null){
+                    continue;
+                }
                 if (earlyD.getC_name().equals(c.getC_name())){
                     earlyDeal = earlyD;
                 }
             }
             Deal latestD = new Deal();
             for (Deal lastD: latestDeal){
+                if (lastD == null){
+                    continue;
+                }
                 if (lastD.getC_name().equals(c.getC_name())){
                     latestD = lastD;
                 }
             }
 
-            CompanyInfo cif = new CompanyInfo(c.getC_name(),c.getTheme().toString(),null,earlyDeal.getDeal_date_toString(),latestD.getMSEQ_invest_amount(),latestD.getOwn_percentage_toString(),latestD.getPost_value(),latestD.getInvest_vehicle_toString(),c.getIrr(),null);
+            CompanyInfo cif = new CompanyInfo(c.getC_name(),c.getTheme().toString(),null,earlyDeal.getDeal_date(),latestD.getMSEQ_invest_amount(),latestD.getOwn_percentage_toString(),latestD.getPost_value(),latestD.getInvest_vehicle_toString(),c.getIrr(),null);
             tableInfo += g.toJson(cif) + ",";
 
             for (Deal d : deal){
                 String deal_no = "deal" + i;
                 if (c.getC_name().equals(d.getC_name())){
-                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date_toString(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
+                    CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
                     companyInfos.add(companyInfo);
                     companyInfoString += g.toJson(companyInfo) + ",";
                     i = i + 1;

@@ -63,7 +63,7 @@ public class CompanypageService {
             DealSize dealSize = new DealSize(company.getC_name(),new LinkedHashMap<>());
             dealsOneCompany = queryDao.queryDealsByCompanyName(dealSize.Company_Name);
             for (Deal d: dealsOneCompany){
-                dealSize.lhm.put(d.getDeal_date_toString(),d.getDeal_size());
+                dealSize.lhm.put(d.getDeal_date(),d.getDeal_size());
             }
             listds.add(dealSize);
             // Collect post valuation info
@@ -92,6 +92,9 @@ public class CompanypageService {
                 }
             }
             for (Deal d: latestDeals){
+                if (d==null){
+                    continue;
+                }
                 if (c.getCid().equals(d.getCid())){
                     ld = d;
                     break;
