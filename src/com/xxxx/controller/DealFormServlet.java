@@ -30,6 +30,7 @@ public class DealFormServlet extends HttpServlet {
             ServletOutputStream sos = resp.getOutputStream();
             sos.print(dealService.getDealInfo(dealService.getDealId()));
         } else { // update data in database
+            // UPDATE CONDITION: company_name and deal_date match a record in the deal table.
             String d = req.getParameter("deal");
             System.out.println(d);
             dealService.updateDealInfo(d);

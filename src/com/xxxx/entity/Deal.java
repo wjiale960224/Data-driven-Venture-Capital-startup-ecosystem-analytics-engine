@@ -23,7 +23,7 @@ public class Deal {
     String co_investor;
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
-    //String fund_name; // TODO database need to update
+    String fund_name; // TODO database need to update
 
     public Deal() {
     }
@@ -181,13 +181,13 @@ public class Deal {
         }
     }
 
-//    public String getFund_name() {
-//        return fund_name;
-//    }
-//
-//    public void setFund_name(String fund_name) {
-//        this.fund_name = fund_name;
-//    }
+    public String getFund_name() {
+        return fund_name;
+    }
+
+    public void setFund_name(String fund_name) {
+        this.fund_name = fund_name;
+    }
 
     /*public void addCo_investor(String co_investor) {
         this.co_investor.add(co_investor);

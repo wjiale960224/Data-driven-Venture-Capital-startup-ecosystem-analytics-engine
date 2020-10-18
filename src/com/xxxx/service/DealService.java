@@ -56,29 +56,32 @@ public class DealService {
         for (String str : updateInfo) {
             DealForm dealForm = gson.fromJson(str, DealForm.class); // DealForm instance
             Deal dealInForm = dealForm.toDeal(); // Deal instance
-            System.out.println("c_name: "+dealInForm.getC_name());
-            System.out.println("deal_size: "+dealInForm.getDeal_size());
-            System.out.println("deal_date: "+dealInForm.getDeal_date());
-            System.out.println("series: "+dealInForm.getSeries());
-            System.out.println("mseq_invest_amt: "+dealInForm.getMSEQ_invest_amount());
-            System.out.println("post_value: "+dealInForm.getPost_value());
-            System.out.println("vehicle: "+dealInForm.getVehicle());
-            System.out.println("co-investor: "+dealInForm.getCo_investor());
-            System.out.println("fund_percent: "+dealInForm.getFund_percentage());
-            System.out.println("own_percent: "+dealInForm.getOwn_percentage());
+//            System.out.println("c_name: "+dealInForm.getC_name());
+//            System.out.println("deal_size: "+dealInForm.getDeal_size());
+//            System.out.println("deal_date: "+dealInForm.getDeal_date());
+//            System.out.println("series: "+dealInForm.getSeries());
+//            System.out.println("mseq_invest_amt: "+dealInForm.getMSEQ_invest_amount());
+//            System.out.println("post_value: "+dealInForm.getPost_value());
+//            System.out.println("vehicle: "+dealInForm.getVehicle());
+//            System.out.println("co-investor: "+dealInForm.getCo_investor());
+//            System.out.println("fund_percent: "+dealInForm.getFund_percentage());
+//            System.out.println("own_percent: "+dealInForm.getOwn_percentage());
 
             dealInForm.setCid(queryDao.queryCidByCompanyName(dealInForm.getC_name())); // set cid in
             System.out.println("cid: " + dealInForm.getCid());
 
             int update = 0;
             for (Deal deal: dealsInDB){
-                // Assumption: one company has only one deal on the same day.
-                if (deal.getCid().equals(dealInForm.getCid()) && deal.getDeal_date().equals(dealInForm.getDeal_date())) { // update a deal entry in db
+                // Assumption: one company can only have one deal on the same day.
+                boolean match = (deal.getCid()==null ? dealInForm.getCid()==null : deal.getCid().equals(dealInForm.getCid())) &&
+                        (deal.getDeal_date()==null ? dealInForm.getDeal_date()==null : deal.getDeal_date().equals(dealInForm.getDeal_date()));
+                if (match) {
                     boolean same = CompareChange(deal, dealInForm);
                     if (!same) {
                         System.out.println("Need to update existing deal");
                         dealInForm.setDeal_id(deal.getDeal_id());
                         updateDao.updateDeal(dealInForm);
+                        System.out.println("Update deal finish");
 
                         // adjust deal_size to drawn_capital in fund table, adjust management_fee in fund table
 //                        if (!(deal.getDeal_size().equals(dealInForm.getDeal_size()))) { // deal size is updated
@@ -118,13 +121,13 @@ public class DealService {
 
     // check all fields except: deal_id, cid, c_name, deal_date
     public static boolean CompareChange(Deal d1, Deal d2) {
-        return d1.getDeal_size().equals(d2.getDeal_size()) &&
-                d1.getSeries().equals(d2.getSeries()) &&
-                d1.getMSEQ_invest_amount().equals(d2.getMSEQ_invest_amount()) &&
-                d1.getPost_value().equals(d2.getPost_value()) &&
-                d1.getVehicle().equals(d2.getVehicle()) &&
-                d1.getCo_investor().equals(d2.getCo_investor()) &&
-                d1.getFund_percentage().equals(d2.getFund_percentage()) &&
-                d1.getOwn_percentage().equals(d2.getOwn_percentage());
+        return  (d1.getDeal_size()==null ? d2.getDeal_size()==null : d1.getDeal_size().equals(d2.getDeal_size())                                         ) &&
+                (d1.getSeries()==null ? d2.getSeries()==null : d1.getSeries().equals(d2.getSeries())                                                     ) &&
+                (d1.getMSEQ_invest_amount()==null ? d2.getMSEQ_invest_amount()==null : d1.getMSEQ_invest_amount().equals(d2.getMSEQ_invest_amount())     ) &&
+                (d1.getPost_value()==null ? d2.getPost_value()==null : d1.getPost_value().equals(d2.getPost_value())                                     ) &&
+                (d1.getVehicle()==null ? d2.getVehicle()==null : d1.getVehicle().equals(d2.getVehicle())                                                 ) &&
+                (d1.getCo_investor()==null ? d2.getCo_investor()==null : d1.getCo_investor().equals(d2.getCo_investor())                                 ) &&
+                (d1.getFund_percentage()==null ? d2.getFund_percentage()==null : d1.getFund_percentage().equals(d2.getFund_percentage())                 ) &&
+                (d1.getOwn_percentage()==null ? d2.getOwn_percentage()==null : d1.getOwn_percentage().equals(d2.getOwn_percentage())                     );
     }
 }

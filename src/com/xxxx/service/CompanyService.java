@@ -101,7 +101,8 @@ public class CompanyService {
                 System.out.println("queryCompanyByName finish");
                 cidInDB = companyInDB.getCid();
                 System.out.println("cid obtained");
-                Boolean same = CompareChange(companyInDB, companyInForm);
+
+                Boolean same = CompareChange(companyInForm, companyInDB);
                 System.out.println("Compare company finish: " + (same ? "same" : "not same"));
                 if (!same){ // Update company info
                     companyInForm.setCid(companyInDB.getCid());
@@ -109,6 +110,7 @@ public class CompanyService {
                     System.out.println("Update company finish");
                 }
                 if (!HasPostValue(valuationsInDB, valuationInForm.getPost_value())){ // Update post value info
+                    System.out.println("Found new post value");
                     valuationInForm.setVal_id();
                     valuationInForm.setCid(cidInDB);
                     insertdao.addValuation(valuationInForm);
@@ -122,21 +124,24 @@ public class CompanyService {
     }
 
     public static Boolean CompareChange(Company c1, Company c2) { // NullPointerException if only use equals()
-        return c1.getTheme()==null ? c2.getTheme()==null : c1.getTheme().equals(c2.getTheme()) &&
-                c1.getYear_founded()==null ? c2.getYear_founded()==null : c1.getYear_founded().equals(c2.getYear_founded()) &&
-                c1.getRunway_start_date()==null ? c2.getRunway_start_date()==null : c1.getRunway_start_date().equals(c2.getRunway_start_date()) &&
-                c1.getRunway_end_date()==null ? c2.getRunway_end_date()==null : c1.getRunway_end_date().equals(c2.getRunway_end_date()) &&
-                c1.getRunway_month()==null ? c2.getRunway_month()==null : c1.getRunway_month().equals(c2.getRunway_month()) &&
-                c1.getRaised_to_date()==null ? c2.getRaised_to_date()==null : c1.getRaised_to_date().equals(c2.getRaised_to_date()) &&
-                c1.getEmployee_no()==null ? c2.getEmployee_no()==null : c1.getEmployee_no().equals(c2.getEmployee_no()) &&
-                c1.getRevenue()==null ? c2.getRevenue()==null : c1.getRevenue().equals(c2.getRevenue()) &&
-                c1.getIrr()==null ? c2.getIrr()==null : c1.getIrr().equals(c2.getIrr());
+        return  (  c1.getTheme()==null ? c2.getTheme()==null : c1.getTheme().equals(c2.getTheme())                                                  )&&
+                (  c1.getYear_founded()==null ? c2.getYear_founded()==null : c1.getYear_founded().equals(c2.getYear_founded())                      )&&
+                (  c1.getRunway_start_date()==null ? c2.getRunway_start_date()==null : c1.getRunway_start_date().equals(c2.getRunway_start_date())  )&&
+                (  c1.getRunway_end_date()==null ? c2.getRunway_end_date()==null : c1.getRunway_end_date().equals(c2.getRunway_end_date())          )&&
+                (  c1.getRunway_month()==null ? c2.getRunway_month()==null : c1.getRunway_month().equals(c2.getRunway_month())                      )&&
+                (  c1.getRaised_to_date()==null ? c2.getRaised_to_date()==null : c1.getRaised_to_date().equals(c2.getRaised_to_date())              )&&
+                (  c1.getEmployee_no()==null ? c2.getEmployee_no()==null : c1.getEmployee_no().equals(c2.getEmployee_no())                          )&&
+                (  c1.getRevenue()==null ? c2.getRevenue()==null : c1.getRevenue().equals(c2.getRevenue())                                          )&&
+                (  c1.getIrr()==null ? c2.getIrr()==null : c1.getIrr().equals(c2.getIrr())                                                          );
     }
 
     public static Boolean HasPostValue(Double[] postValuations, Double v){
         // check all past valuations in db, if any past valuation matches the new one, return True
+        if (postValuations.length == 0)
+            return false;
         for (Double pv : postValuations){
-            if (pv.equals(v)){
+            boolean match = (pv==null ? v==null : pv.equals(v));
+            if (match){
                 return true;
             }
         }

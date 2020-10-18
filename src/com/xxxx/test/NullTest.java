@@ -39,5 +39,8 @@ public class NullTest {
         NullTest nt = new NullTest();
         System.out.println(nt.getT());
         System.out.println(nt.getTheme());
+
+        // instance test
+        System.out.println(null instanceof Double);
     }
 }

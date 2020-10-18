@@ -21,9 +21,9 @@
     </update>
 
     <update id="updateDeal" parameterType="deal">
-        update deal set deal_size = #{deal_size}, deal_status = #{deal_status}, series=#{series},
-        mseq_invest_amt = #{mseq_invest_amt}, post_value = #{post_value}, raised_to_date = #{invest_vehicle},
-        co_investor = #{co_investor}, fund_percent = #{fund_percent}, own_percent = #{own_percent}, fund_name = #{fund_name}
+        update deal set deal_size = #{deal_size}, series=#{series},
+        mseq_invest_amt = #{mseq_invest_amt}, post_value = #{post_value}, invest_vehicle = #{invest_vehicle},
+        co_investor = #{co_investor}, fund_percent = #{fund_percent}, own_percent = #{own_percent}
         where cid=#{cid} and deal_date=#{deal_date};
     </update>
 
