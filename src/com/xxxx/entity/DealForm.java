@@ -37,7 +37,8 @@ public class DealForm {
         Deal dl = new Deal();
 
         dl.setC_name(this.Company_Name==null ? null : this.Company_Name);
-        dl.setDeal_date(LocalDate.parse(this.Deal_Date)==null ? null : LocalDate.parse(this.Deal_Date));
+        //dl.setDeal_date(LocalDate.parse(this.Deal_Date)==null ? null : LocalDate.parse(this.Deal_Date));
+        dl.setDeal_date(this.Deal_Date==null ? null : this.Deal_Date);
         dl.setDeal_size(this.Deal_Size==null ? null : this.Deal_Size);
         if (this.Series == null) {
             dl.setSeries(null);

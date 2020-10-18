@@ -14,7 +14,7 @@ public class Deal {
     Integer deal_id;
     Integer cid;
     String c_name;
-    LocalDate deal_date;
+    String deal_date;
     Double deal_size;
     Series series;
     Double mseq_invest_amt;
@@ -28,7 +28,7 @@ public class Deal {
     public Deal() {
     }
 
-    public Deal(Integer deal_id, Integer cid, String c_name, LocalDate deal_date, Double deal_size, Series series, Double mseq_invest_amt, Double post_value, Vehicle invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
+    public Deal(Integer deal_id, Integer cid, String c_name, String deal_date, Double deal_size, Series series, Double mseq_invest_amt, Double post_value, Vehicle invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
         this.deal_id = deal_id;
         this.cid = cid;
         this.c_name = c_name;
@@ -79,7 +79,7 @@ public class Deal {
         this.c_name = c_name;
     }
 
-    public LocalDate getDeal_date() {
+    public String getDeal_date() {
         return deal_date;
     }
 
@@ -141,7 +141,7 @@ public class Deal {
         return co_investor;
     }
 
-    public void setDeal_date(LocalDate deal_date) {
+    public void setDeal_date(String deal_date) {
         this.deal_date = deal_date;
     }
 
