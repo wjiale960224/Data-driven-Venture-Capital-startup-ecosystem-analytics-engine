@@ -150,13 +150,13 @@ $(function () {
                     var obj2 = JSON.parse(over_infos[i]);
                     drawn = obj2["Drawn_Capital"];
                     undrawn = obj2["Undrawn_Capital"];
-                    document.getElementById("total_fund_size").innerHTML = "A$" + obj2["Total_Fund_Size"]/1000000 + "M";
+                    document.getElementById("total_fund_size").innerHTML = "A$" + obj2["Total_Fund_Size"] + "M";
                     document.getElementById("undrawn_capital").innerHTML = "A$" + obj2["Undrawn_Capital"] + "M";
                     document.getElementById("No_deals").innerHTML = obj2["Total_Deals"];
                     document.getElementById("drawn_capital").innerHTML = "A$" + obj2["Drawn_Capital"] + "M";
                     document.getElementById("per_deal").innerHTML ="A$" + obj2["Per_Deal"] + "M";
                     document.getElementById("No_company").innerHTML =obj2["Total_Companies"];
-                    document.getElementById("management_fee").innerHTML = "A$" + obj2["Management_Fee"]/1000000 + "M";
+                    document.getElementById("management_fee").innerHTML = "A$" + obj2["Management_Fee"] + "M";
                     document.getElementById("remaining_to_invest").innerHTML = "A$" + obj2["Remaining_to_invest"] + "M";
                     document.getElementById("total_capital_raised").innerHTML = "A$" + obj2["Total_capital_raised"] + "M";
                     bar_data = [obj2["Mseq_investment_amount"], obj2["Total_capital_raised"]];

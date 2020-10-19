@@ -61,9 +61,9 @@ public class Test {
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
         Capital capital = userdao.listAllCapital();
-        List<TvpiData> tvpiData = userdao.listAllTvpi();
         List<String> company_names = userdao.listCompanyByName();
         List<Integer> dealIds = userdao.listDealById();
+        List<TvpiData> tvpiData = userdao.listAllTvpi();
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
         List<MainpageData> dataMainpage = new ArrayList<>();
@@ -88,7 +88,6 @@ public class Test {
             Deal d = userdao.queryDealById(id);
             deal.add(d);
         }
-        List<IndividualSeries> series = new ArrayList<>();
         int no_company = data.size();
         int no_deal = dealIds.size();
         for (Deal d : deal){
@@ -102,7 +101,7 @@ public class Test {
             update_date.add(d.getUpdate_date().toString());
         }
 
-        System.out.println(update_date);
+
 
         for (String s: update_date){
             int No_of_A = 0;
@@ -144,6 +143,7 @@ public class Test {
         }
 
         double total_mseq_invest_output = total_mseq_invest;
+        System.out.println(total_mseq_invest_output);
 
         for (TvpiData t : tvpiData){
             TvpiOutput tvpiOutput = new TvpiOutput(t.getDate(), t.getTvpi());
@@ -211,12 +211,12 @@ public class Test {
         themeOfFund = "ThemeOfFund[" + themeOfFund.substring(0,themeOfFund.length()-1)+"]";
         perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
         tvpioutput = "Tvpi[" + tvpioutput.substring(0, tvpioutput.length()-1) + "]";
-        OverviewInfo oi = new OverviewInfo(capital.getTotal_fund(),total_mseq_invest_output + capital.getManagement_fee(),capital.getTotal_fund() - total_mseq_invest_output - capital.getManagement_fee(), capital.getManagement_fee(), no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()-capital.getManagement_fee()-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output,number_of_series_a,number_of_series_b,number_of_series_c,number_of_series_seed,number_of_series_preseed);
+        OverviewInfo oi = new OverviewInfo(capital.getTotal_fund()/1000000,total_mseq_invest_output + capital.getManagement_fee()/1000000,capital.getTotal_fund()/1000000 - total_mseq_invest_output - capital.getManagement_fee()/1000000, capital.getManagement_fee()/1000000, no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()/1000000-capital.getManagement_fee()/1000000-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output,number_of_series_a,number_of_series_b,number_of_series_c,number_of_series_seed,number_of_series_preseed);
         String ovInfo = g.toJson(oi);
         ovInfo = "OvInfo[" + ovInfo + "]";
-        seriesoutput = "Series[" + seriesoutput.substring(0,seriesoutput.length()-1)+"]";
+        seriesoutput = "SeriesData[" + seriesoutput.substring(0,seriesoutput.length()-1)+"]";
 
         output = perOfFund + ovInfo + themeOfFund + tvpioutput + seriesoutput;
-        System.out.println(output);
+        System.out.println(output);;
     }
 }
