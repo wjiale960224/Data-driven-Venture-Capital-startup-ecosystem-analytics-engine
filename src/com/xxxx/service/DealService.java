@@ -26,6 +26,7 @@ public class DealService {
     public String getDealInfo(List<Integer> deal_IDs) {
         SqlSession session = GetSqlSession.createSqlSession();
         Userdao userdao = session.getMapper(Userdao.class);
+        QueryDao queryDao = session.getMapper(QueryDao.class);
         List<Deal> dealList = new ArrayList<>();
         String output = "";
         Gson g = new Gson();
@@ -41,7 +42,13 @@ public class DealService {
                     d.getOwn_percentage_toString(),d.getUpdate_date());
             output += g.toJson(df) + ",";
         }
-        return "[" + output.substring(0, output.length() - 1) + "]";
+
+        TotCapitalMngFee totCapitalMngFee = queryDao.queryCapitalMngFee();
+        if (totCapitalMngFee == null){
+            totCapitalMngFee = new TotCapitalMngFee(0.0,0.0,0.0);
+        }
+        output =  "[" + output.substring(0, output.length() - 1) + "]" + "totalCapital" + g.toJson(totCapitalMngFee);
+        return output;
     }
 
     public void updateDealInfo(String d) {

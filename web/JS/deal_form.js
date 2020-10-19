@@ -117,6 +117,7 @@ window.onload = function (){
             });
         });
 
+        var GlobelCapital;
         // Refresh table according to database info.
         (function refresh(){
             $.ajax({
@@ -127,6 +128,9 @@ window.onload = function (){
                 },
                 success:function(deal_info){
                     console.log("yes,refreshed.");
+                    var infos = deal_info.split("totalCapital");
+                    deal_info = infos[0];
+                    GlobelCapital = JSON.parse(infos[1]);
                     if (deal_info === "[]"){
                         for (var i = 0; i < 5; i++){
                             $("#add_row").click();
@@ -174,15 +178,18 @@ window.onload = function (){
                 $("body").undelegate("input", "DOMSubtreeModified");
             });
 
-            /*$("body").delegate(".mseq_invest_amt","change",function(){
-                var deal_size = $(this).parent().prev().prev().children(0).val();
+            $("body").delegate(".mseq_invest_amt","change",function(){
+                var fund_size = GlobelCapital["total_capital"];
+                console.log(GlobelCapital);
+                console.log(GlobelCapital["total_capital"]);
+                console.log(fund_size);
                 var mseq_inv_amt = this.value;
-                if (deal_size || mseq_inv_amt){
-                    var own_percent = (mseq_inv_amt / deal_size * 100).toFixed(2);
-                    var last = $(this).parent().siblings(":last");
-                    last.children(0).val(own_percent);
+                console.log(mseq_inv_amt);
+                if (fund_size !== 0 || mseq_inv_amt){
+                    var fund_percent = $(this).parent().siblings(":last").prev().children(0);
+                    fund_percent.val(mseq_inv_amt / fund_size);
                 }
-            });*/
+            });
         },3000);
 
         // -------Next function-----
