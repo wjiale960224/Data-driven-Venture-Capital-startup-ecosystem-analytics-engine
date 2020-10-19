@@ -2,6 +2,7 @@ package com.xxxx.dao;
 
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
+import com.xxxx.entity.TotCapitalMngFee;
 import com.xxxx.entity.Valuation;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,4 +21,6 @@ public interface InsertDao {
     int addDeal(Deal deal);
 
     int addValuation(Valuation valuation);
+
+    int addCapital(TotCapitalMngFee totcapitalmngfee);
 }

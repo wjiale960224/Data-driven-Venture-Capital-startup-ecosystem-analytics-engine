@@ -9,8 +9,10 @@ import com.xxxx.entity.Company;
 import com.xxxx.entity.CompanyForm;
 import com.xxxx.entity.TotCapitalMngFee;
 import com.xxxx.entity.Valuation;
+import com.xxxx.entity.overview.Capital;
 import com.xxxx.util.GetSqlSession;
 import com.xxxx.util.StringUtil;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.ArrayList;
@@ -49,17 +51,27 @@ public class CompanyService {
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         TotCapitalMngFee capitalFee = queryDao.queryCapitalMngFee();
+        if (capitalFee == null){
+            capitalFee = new TotCapitalMngFee(0.0,0.0,0.0);
+        }
         Gson gson = new Gson();
         return gson.toJson(capitalFee);
     }
 
     public void updateTotCapitalMngFee(String c){
         SqlSession session = GetSqlSession.createSqlSession();
+        QueryDao queryDao = session.getMapper(QueryDao.class);
+        InsertDao insertDao = session.getMapper(InsertDao.class);
+
         UpdateDao updateDao = session.getMapper(UpdateDao.class);
         Gson gson = new Gson();
         TotCapitalMngFee cf = gson.fromJson(c,TotCapitalMngFee.class);
-
-        updateDao.updateCapitalMngFee(cf);
+        TotCapitalMngFee capitalFee = queryDao.queryCapitalMngFee();
+        if (capitalFee == null){
+            insertDao.addCapital(cf);
+        }else {
+            updateDao.updateCapitalMngFee(cf);
+        }
         session.commit();
         session.close();
     }

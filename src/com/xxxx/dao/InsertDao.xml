@@ -38,4 +38,9 @@
         insert into valuation(val_id, cid, c_name, update_date, post_value, valuation_change_reason, mseq_investment_cur_val)
         values (#{val_id},#{cid},#{c_name},#{update_date},#{post_value},#{valuation_change_reason},#{mseq_investment_cur_val});
     </insert>
+
+    <insert id="addCapital" parameterType="totcapitalmngfee">
+        insert into capital(total_capital, management_fee, total_capital_raised)
+        values (#{total_capital}, #{management_fee}, #{total_capital_raised});
+    </insert>
 </mapper>
