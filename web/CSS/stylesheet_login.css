@@ -1,0 +1,82 @@
+
+header{
+    position: relative;
+    height: 60px;
+    background-color: white;
+}
+header .first {
+    position: absolute;
+    top: 0;
+    width: 280px;
+    line-height: 60px;
+}
+
+.login_style{
+    margin: 20px auto;
+    width: 300px;
+    min-height: 150px;
+    padding: 10px;
+    position:relative;
+    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#f3f3f3), to(#fff), color-stop(.1,#f3f3f3));
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    -webkit-border-bottom-right-radius: 60px 60px;
+    -webkit-box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.2);
+
+}
+.login_style:before{
+    content:'';
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    bottom:0;
+    right:0;
+    -webkit-border-bottom-right-radius: 30px;
+    -webkit-box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.3);
+    -webkit-transform:
+            rotate(-20deg)
+            skew(-40deg,-3deg)
+            translate(-13px,-13px);
+}
+
+.login_style:after{
+    content: '';
+    z-index: -1;
+    width: 100px;
+    height: 100px;
+    position:absolute;
+    bottom:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    -webkit-box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(0deg)
+    translate(-45px,-20px)
+    skew(20deg);
+}
+
+
+
+
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.label_input {
+    font-size: 14px;
+
+    width: 65px;
+    height: 28px;
+    line-height: 28px;
+    text-align: start;
+
+    color: rgb(0,49,60);
+}
+
+
+.text_field {
+    width: 278px;
+    height: 28px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

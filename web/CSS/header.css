@@ -1,0 +1,48 @@
+
+
+
+header{
+    position: relative;
+    height: 60px;
+    background-color: white;
+}
+header .first {
+    position: absolute;
+    top: 0;
+    width: 280px;
+    line-height: 60px;
+}
+
+header .second{
+    position: absolute;
+    top: 0;
+    left: 250px;
+    width: 180px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+header .third{
+    position: absolute;
+    top: 0;
+    left: 400px;
+    width: 180px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: black;
+}
+
+a:hover{
+    color: rgb(173,139,46);
+}
+
+
