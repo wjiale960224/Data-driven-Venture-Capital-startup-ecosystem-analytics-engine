@@ -37,7 +37,7 @@ public class InsertTest {
             Deal d = queryDao.queryDealById(133361);
             DealForm df = new DealForm(d.getC_name(),d.getDeal_date(),d.getDeal_size(),d.getSeries_toString(),
                     d.getMSEQ_invest_amount(),d.getPost_value(),d.getVehicle_toString(),d.getCo_investor(),d.getFund_percentage(),
-                    d.getOwn_percentage_toString());
+                    d.getOwn_percentage_toString(),d.getUpdate_date());
             Deal d2 = df.toDeal();
 
             DealService ds = new DealService();

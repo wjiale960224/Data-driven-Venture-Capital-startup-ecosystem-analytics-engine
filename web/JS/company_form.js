@@ -113,6 +113,7 @@ window.onload = function (){
         $("#submit").click(function(){
             var company = JSON.stringify(collect_info());
             var capital = JSON.stringify(collect_capital());
+            alert("Submitting Data");
 
             $.ajax({
                 type: "POST",

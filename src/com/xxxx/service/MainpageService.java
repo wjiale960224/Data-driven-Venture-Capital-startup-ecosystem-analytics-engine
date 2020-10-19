@@ -10,7 +10,9 @@ import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainpageService {
 
@@ -50,16 +52,19 @@ public class MainpageService {
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
         List<MainpageData> dataMainpage = new ArrayList<>();
+        Gson g = new Gson();
         String output = "";
         String perOfFund = "";
         String themeOfFund = "";
         String tvpioutput = "";
+        String seriesoutput = "";
         double total_mseq_invest = 0;
         int number_of_series_a = 0;
         int number_of_series_b = 0;
         int number_of_series_c = 0;
         int number_of_series_seed = 0;
         int number_of_series_preseed = 0;
+        Set<String> update_date = new HashSet<>();
         for(String c : company_names){
             Company company = queryDao.queryCompanyByName(c);
             data.add(company);
@@ -75,9 +80,54 @@ public class MainpageService {
                 continue;
             }
             total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
+            if (d.getUpdate_date() == null){
+                continue;
+            }
+            update_date.add(d.getUpdate_date().toString());
         }
+
+
+
+        for (String s: update_date){
+            int No_of_A = 0;
+            int No_of_B = 0;
+            int No_of_C = 0;
+            int No_of_pre = 0;
+            int No_of_seed = 0;
+            int No_of_null = 0;
+            for (Deal d : deal){
+                if (d.getUpdate_date() == null){
+                    continue;
+                }
+                if (s.equals(d.getUpdate_date().toString())){
+                    if (d.getSeries() == null){
+                        No_of_null ++;
+                    }
+                    else {
+                        if (d.getSeries().toString().contains("A")) {
+                            No_of_A++;
+                        }
+                        if (d.getSeries().toString().contains("B")) {
+                            No_of_B++;
+                        }
+                        if (d.getSeries().toString().contains("C")) {
+                            No_of_C++;
+                        }
+                        if (d.getSeries().toString().contains("P")) {
+                            No_of_pre++;
+                        }
+                        if (d.getSeries().toString().equals("Seed")){
+                            No_of_seed++;
+                        }
+                    }
+                }
+
+            }
+            SeriesData seriesData = new SeriesData(No_of_A,No_of_B,No_of_C,No_of_pre,No_of_seed,No_of_null,s);
+            seriesoutput += g.toJson(seriesData) + ",";
+        }
+
         double total_mseq_invest_output = total_mseq_invest;
-        Gson g = new Gson();
 
         for (TvpiData t : tvpiData){
             TvpiOutput tvpiOutput = new TvpiOutput(t.getDate(), t.getTvpi());
@@ -148,8 +198,9 @@ public class MainpageService {
         OverviewInfo oi = new OverviewInfo(capital.getTotal_fund(),total_mseq_invest_output + capital.getManagement_fee(),capital.getTotal_fund() - total_mseq_invest_output - capital.getManagement_fee(), capital.getManagement_fee(), no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()-capital.getManagement_fee()-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output,number_of_series_a,number_of_series_b,number_of_series_c,number_of_series_seed,number_of_series_preseed);
         String ovInfo = g.toJson(oi);
         ovInfo = "OvInfo[" + ovInfo + "]";
+        seriesoutput = "SeriesData[" + seriesoutput.substring(0,seriesoutput.length()-1)+"]";
 
-        output = perOfFund + ovInfo + themeOfFund + tvpioutput;
+        output = perOfFund + ovInfo + themeOfFund + tvpioutput + seriesoutput;
         return output;
     }
 }

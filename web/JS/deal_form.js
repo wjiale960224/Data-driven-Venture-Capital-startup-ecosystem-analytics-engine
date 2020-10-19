@@ -96,6 +96,7 @@ window.onload = function (){
 
         // submit button
         $("#submit").click(function(){
+            alert("Submitting Data");
             var deal = JSON.stringify(collect_info());
             $.ajax({
                 type: "POST",
@@ -104,6 +105,7 @@ window.onload = function (){
                     deal: deal,
                 },
                 success:function(msg){
+                    alert("Submit successfully");
                     have_submit = true; // Do not promp window if have submitted.
                     console.log("Submitted, have submit:" + have_submit);
                     console.log("yes,data delivered.");

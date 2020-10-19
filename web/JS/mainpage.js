@@ -15,60 +15,7 @@ var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate;
 $(function () {
 
 
-    var two_pie = echarts.init(document.querySelector("#two_pie"));
-    var two_pie_option = {
-        title: [
-            {
-                text: nowDate,
-                left: '50%',
-                textAlign: 'center',
-            },
 
-            {
-                text: 'Initial Date',
-                left: '50%',
-                top: '52.5%',
-                textAlign: 'center'
-            }
-        ],
-        tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        series: [
-            {
-                name: 'Current Date',
-                type: 'pie',
-                radius: '35%',
-                center: ['50%', '30%'],
-                data: [],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            },
-
-            {
-                name: 'Initial Date',
-                type: 'pie',
-                radius: '35%',
-                center: ['50%', '80%'],
-                data: [],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
-
-    two_pie.setOption(two_pie_option);
 
     (function refresh(){
         var company_name = [];
@@ -80,10 +27,31 @@ $(function () {
         var bar_data = [];
         var tvpidata = [];
         var tvpidate = [];
+        var initial_A = 0;
+        var initial_B = 0;
+        var initial_C = 0;
+        var initial_Pre = 0;
+        var initial_Seed = 0;
+        var initial_null = 0;
+        var Current_A = 0;
+        var Current_B = 0;
+        var Current_C = 0;
+        var Current_Pre = 0;
+        var Current_Seed = 0;
+        var Current_null = 0;
+        var initial_date = "";
         var double_pie = echarts.init(document.querySelector("#double_pie"));
         var pie = echarts.init(document.querySelector("#pie"));
         var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
         var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
+        var two_pie = echarts.init(document.querySelector("#two_pie"));
+        two_pie.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
         TVPI_curve.showLoading({
             text: 'loading',
             color: '#c23531',
@@ -126,12 +94,40 @@ $(function () {
                 symbols.push("PerOfFun");
                 symbols.push("OvInfo");
                 symbols.push("ThemeOfFund");
-                symbols.push("Tvpi")
+                symbols.push("Tvpi");
+                symbols.push("SeriesData");
                 var map = get_infos(symbols,mainpage_info);
                 var per_of_funds = split_string(map.get("PerOfFun"));
                 var over_infos = split_string(map.get("OvInfo"));
                 var theme_of_fund = split_string(map.get("ThemeOfFund"));
                 var tvpi = split_string(map.get("Tvpi"));
+                var series = split_string(map.get("SeriesData"));
+
+                var obj_initial = JSON.parse(series[0]);
+                initial_A = obj_initial["No_Series_A"];
+                initial_B = obj_initial["No_Series_B"];
+                initial_C = obj_initial["No_Series_C"];
+                initial_Pre = obj_initial["No_Series_Pre"];
+                initial_Seed = obj_initial["No_Series_Seed"];
+                initial_null = obj_initial["No_Series_null_value"];
+                initial_date = obj_initial["update_date"];
+                if (series.length>1) {
+                    var obj_current = JSON.parse(series[1]);
+                    Current_A = obj_current["No_Series_A"];
+                    Current_B = obj_current["No_Series_B"];
+                    Current_C = obj_current["No_Series_C"];
+                    Current_Pre = obj_current["No_Series_Pre"];
+                    Current_Seed = obj_current["No_Series_Seed"];
+                    Current_null = obj_current["No_Series_null_value"];
+                }
+                else{
+                    Current_A = initial_A;
+                    Current_B = initial_B;
+                    Current_C = initial_C;
+                    Current_Pre = initial_Pre;
+                    Current_Seed = initial_Seed;
+                    Current_null = initial_null;
+                }
 
                 for(var i = 0 ; i<tvpi.length;i++){
                     var obj = JSON.parse(tvpi[i]);
@@ -172,6 +168,70 @@ $(function () {
                     mydata_theme[i] = {value: obj3["fund"], name:obj3["theme"]};
                     console.log(obj3);
                 }
+                var two_pie_option = {
+                    title: [
+                        {
+                            text: nowDate,
+                            left: '50%',
+                            textAlign: 'center',
+                        },
+
+                        {
+                            text: initial_date,
+                            left: '50%',
+                            top: '52.5%',
+                            textAlign: 'center'
+                        }
+                    ],
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    series: [
+                        {
+                            name: nowDate,
+                            type: 'pie',
+                            radius: '35%',
+                            center: ['50%', '30%'],
+                            data: [{value: Current_A, name: "Series A"},
+                                {value: Current_B, name: "Series B"},
+                                {value: Current_C, name: "Series C"},
+                                {value: Current_Pre, name: "Series Preseed"},
+                                {value: Current_Seed, name: "Series Seed"},
+                                {value: Current_null, name: "null value"},],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        },
+
+                        {
+                            name: initial_date,
+                            type: 'pie',
+                            radius: '35%',
+                            center: ['50%', '80%'],
+                            data: [{value: initial_A, name: "Series A"},
+                                {value: initial_B, name: "Series B"},
+                                {value: initial_C, name: "Series C"},
+                                {value: initial_Pre, name: "Series Preseed"},
+                                {value: initial_Seed, name: "Series Seed"},
+                                {value: initial_null, name: "null value"},],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                two_pie.setOption(two_pie_option);
+                two_pie.hideLoading();
 
                 var TVPI_curve_option = {
                     title: {

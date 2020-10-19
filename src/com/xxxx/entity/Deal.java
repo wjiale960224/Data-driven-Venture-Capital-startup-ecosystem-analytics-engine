@@ -24,11 +24,12 @@ public class Deal {
     Double fund_percent; // auto-generated
     Double own_percent; // manually input
     String fund_name; // TODO database need to update
+    LocalDate update_date;
 
     public Deal() {
     }
 
-    public Deal(Integer deal_id, Integer cid, String c_name, String deal_date, Double deal_size, Series series, Double mseq_invest_amt, Double post_value, Vehicle invest_vehicle, String co_investor, Double fund_percent, Double own_percent) {
+    public Deal(Integer deal_id, Integer cid, String c_name, String deal_date, Double deal_size, Series series, Double mseq_invest_amt, Double post_value, Vehicle invest_vehicle, String co_investor, Double fund_percent, Double own_percent, LocalDate update_date) {
         this.deal_id = deal_id;
         this.cid = cid;
         this.c_name = c_name;
@@ -41,6 +42,15 @@ public class Deal {
         this.co_investor = co_investor;
         this.fund_percent = fund_percent;
         this.own_percent = own_percent;
+        this.update_date = update_date;
+    }
+
+    public LocalDate getUpdate_date() {
+        return update_date;
+    }
+
+    public void setUpdate_date(LocalDate update_date) {
+        this.update_date = update_date;
     }
 
     public Integer getCid() {

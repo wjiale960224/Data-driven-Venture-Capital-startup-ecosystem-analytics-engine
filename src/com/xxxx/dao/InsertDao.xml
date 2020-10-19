@@ -30,8 +30,8 @@
     </insert>
 
     <insert id="addDeal" parameterType="deal">
-        insert into deal(deal_id, cid, c_name, deal_date, deal_size, series, mseq_invest_amt, post_value, invest_vehicle, co_investor, fund_percent, own_percent)
-        values (#{deal_id},#{cid},#{c_name},#{deal_date},#{deal_size},#{series},#{mseq_invest_amt},#{post_value},#{invest_vehicle},#{co_investor},#{fund_percent},#{own_percent});
+        insert into deal(deal_id, cid, c_name, deal_date, deal_size, series, mseq_invest_amt, post_value, invest_vehicle, co_investor, fund_percent, own_percent, update_date)
+        values (#{deal_id},#{cid},#{c_name},#{deal_date},#{deal_size},#{series},#{mseq_invest_amt},#{post_value},#{invest_vehicle},#{co_investor},#{fund_percent},#{own_percent},#{update_date});
     </insert>
 
     <insert id="addValuation" parameterType="valuation">

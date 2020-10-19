@@ -15,12 +15,13 @@ public class DealForm {
     String Co_Investor;
     Double Fund_Percent;
     Double Own_Percent;
+    LocalDate update_date;
 
     public DealForm(String company_Name) {
         Company_Name = company_Name;
     }
 
-    public DealForm(String company_Name, String deal_Date, Double deal_Size, String series, Double MSEQ_Invest_amount, Double post_Valuation, String invest_Vehicle, String co_Investor, Double fund_Percent, Double own_Percent) {
+    public DealForm(String company_Name, String deal_Date, Double deal_Size, String series, Double MSEQ_Invest_amount, Double post_Valuation, String invest_Vehicle, String co_Investor, Double fund_Percent, Double own_Percent, LocalDate update_date) {
         Company_Name = company_Name;
         Deal_Date = deal_Date;
         Deal_Size = deal_Size;
@@ -31,6 +32,8 @@ public class DealForm {
         Co_Investor = co_Investor;
         Fund_Percent = fund_Percent;
         Own_Percent = own_Percent;
+        this.update_date = update_date;
+
     }
 
     public Deal toDeal() {
@@ -66,6 +69,7 @@ public class DealForm {
         dl.setCo_investor(this.Co_Investor==null ? null : this.Co_Investor);
         dl.setFund_percentage(this.Fund_Percent==null ? null : this.Fund_Percent);
         dl.setOwn_percentage(this.Own_Percent==null ? null : this.Own_Percent);
+        dl.setUpdate_date(LocalDate.now());
 
         return dl;
     }
