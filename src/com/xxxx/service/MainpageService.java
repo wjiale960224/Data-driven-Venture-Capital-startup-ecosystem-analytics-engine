@@ -5,10 +5,7 @@ import com.xxxx.dao.QueryDao;
 import com.xxxx.dao.Userdao;
 import com.xxxx.entity.Company;
 import com.xxxx.entity.Deal;
-import com.xxxx.entity.overview.Capital;
-import com.xxxx.entity.overview.MainpageData;
-import com.xxxx.entity.overview.OverviewInfo;
-import com.xxxx.entity.overview.ThemeInfo;
+import com.xxxx.entity.overview.*;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
@@ -37,17 +34,26 @@ public class MainpageService {
         return capital;
     }
 
+    public List<TvpiData> getTvpiInfo(){
+        SqlSession session = GetSqlSession.createSqlSession();
+        Userdao userdao = session.getMapper(Userdao.class);
+        List<TvpiData> tvpiData = userdao.listAllTvpi();
+        return tvpiData;
+    }
+
     public String getMainpageDataInfo(List<String> company_names, List<Integer> dealIds){
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
         Capital capital = getCapitalInfo();
+        List<TvpiData> tvpiData = getTvpiInfo();
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
         List<MainpageData> dataMainpage = new ArrayList<>();
         String output = "";
         String perOfFund = "";
         String themeOfFund = "";
+        String tvpioutput = "";
         double total_mseq_invest = 0;
         int number_of_series_a = 0;
         int number_of_series_b = 0;
@@ -65,15 +71,26 @@ public class MainpageService {
         int no_company = data.size();
         int no_deal = dealIds.size();
         for (Deal d : deal){
+            if (d.getMSEQ_invest_amount() == null){
+                continue;
+            }
             total_mseq_invest = total_mseq_invest + d.getMSEQ_invest_amount();
         }
         double total_mseq_invest_output = total_mseq_invest;
         Gson g = new Gson();
 
+        for (TvpiData t : tvpiData){
+            TvpiOutput tvpiOutput = new TvpiOutput(t.getDate(), t.getTvpi());
+            tvpioutput += g.toJson(tvpiOutput) + ",";
+        }
+
         for(Company c : data){
             double fund = 0;
             for(Deal d : deal){
                 if(c.getC_name().equals(d.getC_name())){
+                    if(d.getMSEQ_invest_amount() == null){
+                        continue;
+                    }
                     fund = fund + d.getMSEQ_invest_amount();
                 }
             }
@@ -88,18 +105,33 @@ public class MainpageService {
         double human_fund = 0;
         for(MainpageData m: dataMainpage){
             if(m.getTheme().contains("Spa")){
+                if(m.getFund() == null){
+                    continue;
+                }
                 spa_fund = spa_fund + m.getFund();
             }
             else if (m.getTheme().contains("New")){
+                if(m.getFund() == null){
+                    continue;
+                }
                 new_fund = new_fund + m.getFund();
             }
             else if (m.getTheme().contains("Human")){
+                if(m.getFund() == null){
+                    continue;
+                }
                 human_fund = human_fund + m.getFund();
             }
             else if (m.getTheme().contains("Exp")){
+                if(m.getFund() == null){
+                    continue;
+                }
                 Exp_fund = Exp_fund + m.getFund();
             }
             else if (m.getTheme().contains("Feed")){
+                if(m.getFund() == null){
+                    continue;
+                }
                 feed_fund = feed_fund + m.getFund();
             }
         }
@@ -112,11 +144,12 @@ public class MainpageService {
 
         themeOfFund = "ThemeOfFund[" + themeOfFund.substring(0,themeOfFund.length()-1)+"]";
         perOfFund = "PerOfFun[" + perOfFund.substring(0, perOfFund.length() - 1) + "]";
+        tvpioutput = "Tvpi[" + tvpioutput.substring(0, tvpioutput.length()-1) + "]";
         OverviewInfo oi = new OverviewInfo(capital.getTotal_fund(),total_mseq_invest_output + capital.getManagement_fee(),capital.getTotal_fund() - total_mseq_invest_output - capital.getManagement_fee(), capital.getManagement_fee(), no_company,no_deal,total_mseq_invest_output/no_deal,capital.getTotal_fund()-capital.getManagement_fee()-total_mseq_invest_output, capital.getTotal_capital_raised(),total_mseq_invest_output,number_of_series_a,number_of_series_b,number_of_series_c,number_of_series_seed,number_of_series_preseed);
         String ovInfo = g.toJson(oi);
         ovInfo = "OvInfo[" + ovInfo + "]";
 
-        output = perOfFund + ovInfo + themeOfFund;
+        output = perOfFund + ovInfo + themeOfFund + tvpioutput;
         return output;
     }
 }

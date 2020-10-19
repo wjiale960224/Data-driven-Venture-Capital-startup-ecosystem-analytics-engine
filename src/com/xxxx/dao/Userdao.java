@@ -5,6 +5,7 @@ import com.xxxx.entity.Deal;
 import com.xxxx.entity.User;
 import com.xxxx.entity.Valuation;
 import com.xxxx.entity.overview.Capital;
+import com.xxxx.entity.overview.TvpiData;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -46,4 +47,6 @@ public interface Userdao {
     int delDealByDealId( int deal_id);
 
     Capital listAllCapital();
+
+    List<TvpiData> listAllTvpi();
 }

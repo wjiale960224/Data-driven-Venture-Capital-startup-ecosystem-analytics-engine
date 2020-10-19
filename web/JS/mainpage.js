@@ -13,38 +13,7 @@ if (strDate >= 0 && strDate <= 9) {
 var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate;
 
 $(function () {
-    var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
-    var TVPI_curve_option = {
-        title: {
-            text: 'TVPI curve',
-            left: '50%',
-            textAlign: 'center',
-        },
-        tooltip: {
-            trigger: 'axis',
-        },
-        grid: {
-            left: '3%',
-            right: "20px",
-            bottom: '3%',
-            width: "730px",
-            // height: "100%",
-            containLabel: true,
-        },
-        xAxis: {
-            type: 'category',
-            data: ['0.0', '0.3', '0.6', '0.9', '1.2', '1.5', '1.8', '2.1'],
-            boundaryGap: false,
-        },
-        yAxis: {
-            type: 'value',
-        },
-        series: [{
-            data: [0, 0.8, 1.5, 3.8, 6, 6.7, 6, 4],
-            type: 'line',
-        }]
-    };
-    TVPI_curve.setOption(TVPI_curve_option);
+
 
     var two_pie = echarts.init(document.querySelector("#two_pie"));
     var two_pie_option = {
@@ -109,9 +78,19 @@ $(function () {
         var drawn = 0;
         var undrawn = 0;
         var bar_data = [];
+        var tvpidata = [];
+        var tvpidate = [];
         var double_pie = echarts.init(document.querySelector("#double_pie"));
         var pie = echarts.init(document.querySelector("#pie"));
         var mseq_bar = echarts.init(document.querySelector("#mseq_bar"));
+        var TVPI_curve = echarts.init(document.querySelector("#TVPI_curve"));
+        TVPI_curve.showLoading({
+            text: 'loading',
+            color: '#c23531',
+            textColor: '#000',
+            maskColor: 'rgba(255, 255, 255, 0.2)',
+            zlevel: 0,
+        });
         double_pie.showLoading({
             text: 'loading',
             color: '#c23531',
@@ -147,11 +126,24 @@ $(function () {
                 symbols.push("PerOfFun");
                 symbols.push("OvInfo");
                 symbols.push("ThemeOfFund");
+                symbols.push("Tvpi")
                 var map = get_infos(symbols,mainpage_info);
                 var per_of_funds = split_string(map.get("PerOfFun"));
                 var over_infos = split_string(map.get("OvInfo"));
                 var theme_of_fund = split_string(map.get("ThemeOfFund"));
+                var tvpi = split_string(map.get("Tvpi"));
 
+                for(var i = 0 ; i<tvpi.length;i++){
+                    var obj = JSON.parse(tvpi[i]);
+                    tvpidate.push(obj["date"]);
+                    if (tvpidate.length > 15){
+                        tvpidate.unshift();
+                    }
+                    tvpidata.push(obj["tvpi"]);
+                    if (tvpidata.length>15){
+                        tvpidata.unshift();
+                    }
+                }
                 for (var i = 0; i < per_of_funds.length; i++){ // Reconstruct string format to object format
                     var obj = JSON.parse(per_of_funds[i]);
                     company_name.push(obj["company_name"]);
@@ -180,6 +172,44 @@ $(function () {
                     mydata_theme[i] = {value: obj3["fund"], name:obj3["theme"]};
                     console.log(obj3);
                 }
+
+                var TVPI_curve_option = {
+                    title: {
+                        text: 'TVPI curve',
+                        left: '50%',
+                        textAlign: 'center',
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                    },
+                    grid: {
+                        left: '3%',
+                        right: "20px",
+                        bottom: '3%',
+                        width: "730px",
+                        // height: "100%",
+                        containLabel: true,
+                    },
+
+                    xAxis: {
+                        type: 'category',
+                        data: tvpidate,
+                        boundaryGap: false,
+                        axisLabel:{
+                            interval: 0,
+                            rotate: -60,
+                        },
+                    },
+                    yAxis: {
+                        type: 'value',
+                    },
+                    series: [{
+                        data: tvpidata,
+                        type: 'line',
+                    }]
+                };
+                TVPI_curve.setOption(TVPI_curve_option);
+                TVPI_curve.hideLoading();
 
                 var double_pie_option = {
                     title: {

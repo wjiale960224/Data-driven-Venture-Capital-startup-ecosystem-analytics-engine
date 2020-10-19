@@ -106,7 +106,10 @@ public class ThemepageService {
                     companyInfos.add(companyInfo);
                     companyInfoString += g.toJson(companyInfo) + ",";
                     i = i + 1;
-                    fund = fund + d.getMSEQ_invest_amount();
+                    if (d.getMSEQ_invest_amount() == null){
+                        fund = fund + 0;
+                    }
+                    else{fund = fund + d.getMSEQ_invest_amount();}
                 }
 
             }
@@ -126,24 +129,49 @@ public class ThemepageService {
         HashSet human_company_no = new HashSet();
         for(CompanyInfo c: companyInfos){
             if(c.getTheme().contains("Spa")){
-                spa_fund = spa_fund + c.getCost();
-                spa_company_no.add(c.getCompany_name());
+                if (c.getCost() == null){
+                    spa_fund = spa_fund + 0;
+                }
+                else {
+                    spa_fund = spa_fund + c.getCost();
+                    spa_company_no.add(c.getCompany_name());
+                }
             }
             else if (c.getTheme().contains("New")){
-                new_fund = new_fund + c.getCost();
-                new_company_no.add(c.getCompany_name());
+                if (c.getCost() == null){
+                    new_fund = new_fund + 0;
+                }
+                else {
+                    new_fund = new_fund + c.getCost();
+                    new_company_no.add(c.getCompany_name());
+                }
             }
             else if (c.getTheme().contains("Human")){
-                human_fund = human_fund + c.getCost();
-                human_company_no.add(c.getCompany_name());
+                if (c.getCost() == null){
+                    human_fund = human_fund + 0;
+                }
+                else {
+                    human_fund = human_fund + c.getCost();
+                    human_company_no.add(c.getCompany_name());
+                }
             }
             else if (c.getTheme().contains("Exponential")){
-                Exp_fund = Exp_fund + c.getCost();
-                Exp_company_no.add(c.getCompany_name());
+                if (c.getCost() == null){
+                    Exp_fund = Exp_fund + 0;
+                }
+                else {
+                    Exp_fund = Exp_fund + c.getCost();
+                    Exp_company_no.add(c.getCompany_name());
+                }
             }
             else if (c.getTheme().contains("Feed")){
-                feed_fund = feed_fund + c.getCost();
-                feed_company_no.add(c.getCompany_name());
+                if (c.getCost() == null){
+                    feed_fund = feed_fund + 0;
+                }
+                else {
+                    feed_fund = feed_fund + c.getCost();
+                    feed_company_no.add(c.getCompany_name());
+                }
             }
         }
         over_all = Exp_fund + feed_fund + human_fund + new_fund + spa_fund;

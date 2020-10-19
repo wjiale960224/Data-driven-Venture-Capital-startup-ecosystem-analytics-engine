@@ -3,9 +3,9 @@ package com.xxxx.entity.overview;
 public class MainpageData {
     String company_name;
     String theme;
-    double fund;
+    Double fund;
 
-    public MainpageData(String company_name, String theme, double fund) {
+    public MainpageData(String company_name, String theme, Double fund) {
         this.company_name = company_name;
         this.theme = theme;
         this.fund = fund;
@@ -27,7 +27,7 @@ public class MainpageData {
         this.theme = theme;
     }
 
-    public double getFund() {
+    public Double getFund() {
         return fund;
     }
 

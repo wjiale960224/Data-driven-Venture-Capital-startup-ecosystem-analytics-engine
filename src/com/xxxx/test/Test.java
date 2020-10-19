@@ -10,6 +10,9 @@ import com.xxxx.entity.companypageinfo.CompanyInfomation;
 import com.xxxx.entity.companypageinfo.DealSize;
 import com.xxxx.entity.companypageinfo.PostChange;
 import com.xxxx.entity.overview.Capital;
+import com.xxxx.entity.overview.MainpageData;
+import com.xxxx.entity.overview.OverviewInfo;
+import com.xxxx.entity.overview.ThemeInfo;
 import com.xxxx.entity.themeinfo.CompanyInfo;
 import com.xxxx.entity.themeinfo.CompanyTotalInvestment;
 import com.xxxx.entity.themeinfo.ThemeInfomation;
@@ -35,11 +38,20 @@ public class Test {
         return DealId;
     }
 
+    public Capital getCapitalInfo(){
+        SqlSession session = GetSqlSession.createSqlSession();
+        Userdao userdao = session.getMapper(Userdao.class);
+        Capital capital = userdao.listAllCapital();
+        return capital;
+    }
+
 
     public static void main(String[] args) {
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
+        List<String> c_name = userdao.listCompanyByName();
+        List<Integer> deal_id = userdao.listDealById();
         List<Deal> deal = new ArrayList<>();
         List<Company> data = new ArrayList<>();
         Map<Company, Valuation> companyValuationMap = new HashMap<>();
@@ -51,8 +63,6 @@ public class Test {
         List<Deal> latestDeals = new ArrayList<>();
         List<Deal> dealsOneCompany;
         List<DealSize> listds = new ArrayList<>();
-        List<String> c_name = userdao.listCompanyByName();
-        List<Integer> deal_id = userdao.listDealById();
 
         List<Valuation> valuationsOneCompany;
         List<PostChange> listpc = new ArrayList<>();
@@ -95,6 +105,10 @@ public class Test {
             Integer deal_no = 0;
             for(Deal d : deal){
                 if (c.getC_name().equals(d.getC_name())){
+                    if (d.getMSEQ_invest_amount() == null){
+                        mseq_total_invest = mseq_total_invest + 0;
+                    }
+
                     mseq_total_invest = mseq_total_invest + d.getMSEQ_invest_amount();
                     deal_no++;
                 }
@@ -124,6 +138,6 @@ public class Test {
         postChangeInfo = "PostChangeInfo" + postChangeInfo;
         companyinfostring = "CompanyInfo[" + companyinfostring.substring(0,companyinfostring.length()-1)+ "]";
         output = companyinfostring + dealSizeInfo + postChangeInfo;
-        System.out.println(output);
+        System.out.println(output);;
     }
 }
