@@ -234,8 +234,11 @@ $(function (){
                     bar_chart.hideLoading();
 
                     /*------Update Post change chart -------*/
+                    console.log( Object.keys(postChange["lhm"]));
+                    console.log(Object.values(postChange["lhm"]));
                     line_chart_option.xAxis.data = Object.keys(postChange["lhm"]);
-                    line_chart_option.series[0].date = Object.entries(postChange["lhm"]);
+                    line_chart_option.series[0].data = Object.values(postChange["lhm"]);
+                    console.log( line_chart_option.series);
                     line_chart.setOption(line_chart_option);
                     line_chart.hideLoading();
 

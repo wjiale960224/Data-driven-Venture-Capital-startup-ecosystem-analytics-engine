@@ -58,6 +58,7 @@ public class CompanyService {
         UpdateDao updateDao = session.getMapper(UpdateDao.class);
         Gson gson = new Gson();
         TotCapitalMngFee cf = gson.fromJson(c,TotCapitalMngFee.class);
+
         updateDao.updateCapitalMngFee(cf);
         session.commit();
         session.close();

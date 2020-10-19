@@ -86,11 +86,7 @@ public class CompanypageService {
             Deal ld = new Deal();
             Integer deal_no = 0;
             for(Deal d : deal){
-                if (d.getMSEQ_invest_amount() == null){
-                    mseq_total_invest = mseq_total_invest + 0;
-                    deal_no++;
-                }
-                else{
+                if (c.getC_name().equals(d.getC_name()) && d.getMSEQ_invest_amount() != null){
                     mseq_total_invest = mseq_total_invest + d.getMSEQ_invest_amount();
                     deal_no++;
                 }
