@@ -178,7 +178,7 @@ window.onload = function (){
                                             $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].replace(/_/g," ");
                                         }
                                     }else if (typeof $company[attr] === "number"){
-                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr];
+                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].toFixed(6);
                                     }
                                 }
                             }
