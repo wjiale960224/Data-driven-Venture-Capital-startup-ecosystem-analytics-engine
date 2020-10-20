@@ -112,13 +112,15 @@ $(function () {
                 initial_null = obj_initial["No_Series_null_value"];
                 initial_date = obj_initial["update_date"];
                 if (series.length>1) {
-                    var obj_current = JSON.parse(series[1]);
-                    Current_A = obj_current["No_Series_A"];
-                    Current_B = obj_current["No_Series_B"];
-                    Current_C = obj_current["No_Series_C"];
-                    Current_Pre = obj_current["No_Series_Pre"];
-                    Current_Seed = obj_current["No_Series_Seed"];
-                    Current_null = obj_current["No_Series_null_value"];
+                    for (var i = 0; i < series.length; i++) {
+                        var obj_current = JSON.parse(series[i]);
+                        Current_A += obj_current["No_Series_A"];
+                        Current_B += obj_current["No_Series_B"];
+                        Current_C += obj_current["No_Series_C"];
+                        Current_Pre += obj_current["No_Series_Pre"];
+                        Current_Seed += obj_current["No_Series_Seed"];
+                        Current_null += obj_current["No_Series_null_value"];
+                    }
                 }
                 else{
                     Current_A = initial_A;
