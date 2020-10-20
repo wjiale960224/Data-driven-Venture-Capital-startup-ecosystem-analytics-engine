@@ -216,6 +216,11 @@ $(function (){
                             if (typeof company[attr] === "string"){
                                 spans[1].innerHTML = company[attr].replace(/_/g," ");
                             }else if (typeof company[attr] === "number"){
+                                if (company[attr]%1 === 0){
+
+                                }else {
+                                    company[attr] = company[attr].toFixed(6);
+                                }
                                 if (attr === "Current_Valuation"){
                                     spans[1].innerHTML = company[attr] + "  (last update date: "+ company["Update_Date"] + ")";
                                 }else {

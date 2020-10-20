@@ -156,7 +156,11 @@ window.onload = function (){
                                     if (typeof $deal[attr] === "string"){
                                         $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].replace(/_/g," ");
                                     }else if (typeof $deal[attr] === "number"){
-                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].toFixed(6);
+                                        if ($deal[attr]%1 === 0){
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr];
+                                        }else {
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = $deal[attr].toFixed(6);
+                                        }
                                     }
                                 }
                             }

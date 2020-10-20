@@ -178,7 +178,11 @@ window.onload = function (){
                                             $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].replace(/_/g," ");
                                         }
                                     }else if (typeof $company[attr] === "number"){
-                                        $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].toFixed(6);
+                                        if ($company[attr]%1 === 0){
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr];
+                                        }else {
+                                            $trs[$trs.length-1].cells[j].childNodes[0].value = $company[attr].toFixed(6);
+                                        }
                                     }
                                 }
                             }
