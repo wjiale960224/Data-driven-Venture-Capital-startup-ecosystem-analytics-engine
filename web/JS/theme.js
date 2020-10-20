@@ -135,6 +135,8 @@ $(function() {
                 $("#HSH").click(theme_click_table);
                 $("#NS").click(theme_click_table);
                 $("#ST").click(theme_click_table);
+
+                $("#EM").click();
                 function theme_click_table(){
                     $("tbody").empty();
                     var themeNodes = this.childNodes;
@@ -160,7 +162,11 @@ $(function() {
                                 }
                             }else if (attr === "Cost<br>(AUD M\\)"){
                                 if (map.get(theme)[i]["cost"]){
-                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"];
+                                    if (map.get(theme)[i]["cost"]%1 === 0){
+                                        $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"];
+                                    }else {
+                                        $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["cost"].toFixed(6);
+                                    }
                                 }
                             }else if (attr === "% Owned"){
                                 if (map.get(theme)[i]["own"]){
@@ -168,7 +174,11 @@ $(function() {
                                 }
                             }else if (attr === "Current Valuation<br>(AUD M\\)"){
                                 if (map.get(theme)[i]["current_valuation"]){
-                                    $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
+                                    if (map.get(theme)[i]["current_valuation"]%1 === 0){
+                                        $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"];
+                                    }else {
+                                        $trs[$trs.length-1].cells[k].innerHTML = map.get(theme)[i]["current_valuation"].toFixed(6);
+                                    }
                                 }
                             }else if (attr === "Investment Multiple"){
                                 if(map.get(theme)[i]["investment_multiple"]){
