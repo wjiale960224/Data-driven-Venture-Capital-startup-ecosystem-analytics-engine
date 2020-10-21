@@ -53,6 +53,6 @@ public interface QueryDao {
 
     Deal queryEarliestDealByCompanyCID(Integer cid);
 
-
+    List<Deal> listAlldealsBydate();
 
 }

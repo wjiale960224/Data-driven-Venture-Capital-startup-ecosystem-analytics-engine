@@ -91,4 +91,8 @@
     <select id="queryEarliestDealByCompanyCID" resultType="Deal">
         SELECT * FROM deal WHERE cid = #{cid} ORDER BY deal_date asc LIMIT 1;
     </select>
+
+    <select id="listAlldealsBydate" resultType="Deal">
+        SELECT * FROM deal ORDER BY deal_date asc;
+    </select>
 </mapper>

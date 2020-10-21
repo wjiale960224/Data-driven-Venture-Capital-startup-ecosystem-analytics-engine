@@ -38,6 +38,7 @@ public class ThemepageService {
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
         List<Deal> deal = new ArrayList<>();
+        List<Deal> deal_sort_by_date = queryDao.listAlldealsBydate();
         List<Deal> latestDeal = new ArrayList<>();// Latest deals for each company
         List<Deal> earlistDeals = new ArrayList<>(); // Earliest company for each deal
         List<Company> data = new ArrayList<>(); // All companies data
@@ -99,7 +100,7 @@ public class ThemepageService {
             CompanyInfo cif = new CompanyInfo(c.getC_name(),c.getTheme().toString(),null,earlyDeal.getDeal_date(),latestD.getMSEQ_invest_amount(),latestD.getOwn_percentage_toString(),latestD.getPost_value(),latestD.getInvest_vehicle_toString(),c.getIrr(),null);
             tableInfo += g.toJson(cif) + ",";
 
-            for (Deal d : deal){
+            for (Deal d : deal_sort_by_date){
                 String deal_no = "deal" + i;
                 if (c.getC_name().equals(d.getC_name())){
                     CompanyInfo companyInfo = new CompanyInfo(c.getC_name(),c.getTheme().toString(),deal_no,d.getDeal_date(),d.getMSEQ_invest_amount(),d.getOwn_percentage(),10000.0,"ok",20.1,d.getPost_value());
