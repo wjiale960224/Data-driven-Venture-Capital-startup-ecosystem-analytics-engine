@@ -246,7 +246,7 @@ $(function() {
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         deal_set_EM.add(obj2["deal_no"]);
-                        console.log(obj2["deal_no"]);
+                        // console.log(obj2["deal_no"]);
                         if(company_in_EM[i] == obj2["company_name"]){
                             data_info.push(obj2["post_valuation"]);
                         }
@@ -309,17 +309,23 @@ $(function() {
                 var deal_list_HSH = Array.from(deal_set_HSH);
                 var deal_list_NS = Array.from(deal_set_NS);
                 var deal_list_ST = Array.from(deal_set_ST);
-                console.log(deal_list_EM)
                 for (i = 0 ; i < deal_list_EM.length; i++){
-                    var deal_data = [];
+                    var map2 = {};
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Expon")){
-                            if (deal_list_EM[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
-                            }
+                            map2[obj2["company_name"]] =  "";
                         }
                     }
+                    for(j = 0; j < com_infos.length;j++){
+                        var obj2 = JSON.parse(com_infos[j]);
+                        if (isContains(obj2["theme"],"Expon") && deal_list_EM[i] === obj2["deal_no"]){
+                            map2[obj2["company_name"]] = obj2["cost"];
+                        }
+                    }
+                    var deal_data = [];
+                    deal_data = Object.values(map2);
+
                     deal_cost_in_EM[i] = {
                         name: deal_list_EM[i],
                         type: 'bar',
@@ -333,15 +339,22 @@ $(function() {
                     }
                 }
                 for (i = 0 ; i < deal_list_FP.length; i++){
-                    var deal_data = [];
+                    var map2 = {};
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Feed")){
-                            if (deal_list_FP[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
-                            }
+                            map2[obj2["company_name"]] =  "";
                         }
                     }
+                    for(j = 0; j < com_infos.length;j++){
+                        var obj2 = JSON.parse(com_infos[j]);
+                        if (isContains(obj2["theme"],"Feed") && deal_list_EM[i] === obj2["deal_no"]){
+                            map2[obj2["company_name"]] = obj2["cost"];
+                        }
+                    }
+                    var deal_data = [];
+                    deal_data = Object.values(map2);
+
                     deal_cost_in_FP[i] = {
                         name: deal_list_FP[i],
                         type: 'bar',
@@ -355,15 +368,22 @@ $(function() {
                     }
                 }
                 for (i = 0 ; i < deal_list_HSH.length; i++){
-                    var deal_data = [];
+                    var map2 = {};
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Human")){
-                            if (deal_list_HSH[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
-                            }
+                            map2[obj2["company_name"]] =  "";
                         }
                     }
+                    for(j = 0; j < com_infos.length;j++){
+                        var obj2 = JSON.parse(com_infos[j]);
+                        if (isContains(obj2["theme"],"Human") && deal_list_EM[i] === obj2["deal_no"]){
+                            map2[obj2["company_name"]] = obj2["cost"];
+                        }
+                    }
+                    var deal_data = [];
+                    deal_data = Object.values(map2);
+
                     deal_cost_in_HSH[i] = {
                         name: deal_list_HSH[i],
                         type: 'bar',
@@ -377,15 +397,22 @@ $(function() {
                     }
                 }
                 for (i = 0 ; i < deal_list_NS.length; i++){
-                    var deal_data = [];
+                    var map2 = {};
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"New")){
-                            if (deal_list_NS[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
-                            }
+                            map2[obj2["company_name"]] =  "";
                         }
                     }
+                    for(j = 0; j < com_infos.length;j++){
+                        var obj2 = JSON.parse(com_infos[j]);
+                        if (isContains(obj2["theme"],"New") && deal_list_EM[i] === obj2["deal_no"]){
+                            map2[obj2["company_name"]] = obj2["cost"];
+                        }
+                    }
+                    var deal_data = [];
+                    deal_data = Object.values(map2);
+
                     deal_cost_in_NS[i] = {
                         name: deal_list_NS[i],
                         type: 'bar',
@@ -399,15 +426,22 @@ $(function() {
                     }
                 }
                 for (i = 0 ; i < deal_list_ST.length; i++){
-                    var deal_data = [];
+                    var map2 = {};
                     for(j = 0; j < com_infos.length;j++){
                         var obj2 = JSON.parse(com_infos[j]);
                         if (isContains(obj2["theme"],"Space")){
-                            if (deal_list_ST[i] == obj2["deal_no"]){
-                                deal_data.push(obj2["cost"]);
-                            }
+                            map2[obj2["company_name"]] =  "";
                         }
                     }
+                    for(j = 0; j < com_infos.length;j++){
+                        var obj2 = JSON.parse(com_infos[j]);
+                        if (isContains(obj2["theme"],"Space") && deal_list_EM[i] === obj2["deal_no"]){
+                            map2[obj2["company_name"]] = obj2["cost"];
+                        }
+                    }
+                    var deal_data = [];
+                    deal_data = Object.values(map2);
+
                     deal_cost_in_ST[i] = {
                         name: deal_list_ST[i],
                         type: 'bar',
