@@ -62,14 +62,20 @@
     border: none;
 }
 
+.top_column>ul>li:nth-child(0){
+    display: flex;
+    justify-content: space-between;
+}
 #pie{
-    flex: 2;
-    margin: 0 20px;
+    width: 60px;
+    height: 60px;
+    /*flex: 1;*/
+    /*margin: 0 20px;*/
     background-color: ghostwhite;
 }
 
 #TVPI_curve{
-    flex: 3;
+    flex: 4.5;
     background-color: ghostwhite;
     border-radius: 20px;
     margin: 0 20px;

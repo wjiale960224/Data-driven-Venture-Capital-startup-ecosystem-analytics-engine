@@ -142,6 +142,8 @@ $(function () {
                         tvpidata.unshift();
                     }
                 }
+                console.log(tvpidate);
+                console.log(tvpidata);
                 for (var i = 0; i < per_of_funds.length; i++){ // Reconstruct string format to object format
                     var obj = JSON.parse(per_of_funds[i]);
                     company_name.push(obj["company_name"]);
@@ -332,26 +334,26 @@ $(function () {
                 double_pie.setOption(double_pie_option);
                 double_pie.hideLoading();
                 var pie_option = {
-                    title: {
+                    /*title: {
                         text: 'Drawn & Undrawn Capital',
                         left: '50%',
                         textAlign: 'center',
-                    },
+                    },*/
                     tooltip: {
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
                     },
-                    toolbox: {
+                    /*toolbox: {
                         feature: {
                             saveAsImage: {}
                         }
-                    },
-                    legend: {
+                    },*/
+                    /*legend: {
                         top: '10%',
                         orient: 'vertical',
                         left: 10,
                         data: ['Drawn', 'Undrawn',],
-                    },
+                    },*/
                     series: [
                         {
                             name: 'Total Fund',

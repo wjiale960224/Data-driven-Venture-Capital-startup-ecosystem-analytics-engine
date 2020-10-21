@@ -22,7 +22,9 @@
         <div class = "top_box">
             <div class="top_column" id="overview_info">
                 <ul >
-                    <li><span>Total Fund Size</span><span id = "total_fund_size"></span></li>
+                    <li><span>Total Fund Size</span><span id = "total_fund_size"></span>
+                        <div id = "pie"></div>
+                    </li>
                     <li><span>Drawn Capital</span><span id = "drawn_capital"></span></li>
                     <li><span>Undrawn Capital</span><span id = "undrawn_capital"></span></li>
                     <li><span>Management Fee</span><span id = "management_fee"></span></li>
@@ -33,7 +35,6 @@
                     <li><span>Total Capital Raised</span><span id = "total_capital_raised"></span></li>
                 </ul>
             </div>
-            <div class = "top_column" id = "pie"></div>
             <div class="top_column" id="TVPI_curve"></div>
         </div>
         <div class = "bot_box">
