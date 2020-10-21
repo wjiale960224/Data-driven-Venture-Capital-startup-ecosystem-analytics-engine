@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
 
 
 @WebServlet("/companypageinfo")
@@ -25,7 +26,11 @@ public class CompanyPageInfoServlet extends HttpServlet {
 
         if (r != null && r.equals("[]")) { // retrieve data from database
             ServletOutputStream sos = resp.getOutputStream();
-            sos.print(companypageService.getCompanypageDataInfo(companypageService.getCompanyNames(),companypageService.getDealId()));
+            try {
+                sos.print(companypageService.getCompanypageDataInfo(companypageService.getCompanyNames(),companypageService.getDealId()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

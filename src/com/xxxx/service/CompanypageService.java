@@ -14,6 +14,8 @@ import com.xxxx.entity.overview.MainpageData;
 import com.xxxx.util.GetSqlSession;
 import org.apache.ibatis.session.SqlSession;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CompanypageService {
@@ -30,7 +32,7 @@ public class CompanypageService {
         return DealId;
     }
 
-    public String getCompanypageDataInfo(List<String> company_names, List<Integer> dealIds){
+    public String getCompanypageDataInfo(List<String> company_names, List<Integer> dealIds) throws ParseException {
         SqlSession session = GetSqlSession.createSqlSession();
         QueryDao queryDao = session.getMapper(QueryDao.class);
         Userdao userdao = session.getMapper(Userdao.class);
@@ -69,9 +71,26 @@ public class CompanypageService {
             // Collect post valuation info
             PostChange postChange = new PostChange(company.getC_name(), new LinkedHashMap<>());
             valuationsOneCompany = queryDao.queryValuationsByCompanyName(postChange.Company_Name);
+
+            for (Deal d: dealsOneCompany){
+                postChange.lhm.put(d.getDeal_date(), d.getPost_value());
+            }
             for (Valuation v: valuationsOneCompany){
                 postChange.lhm.put(v.getUpdate_date().toString(),v.getPost_value());
             }
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            List<Date> dates = new LinkedList<>();
+            LinkedHashMap<String,Double> lhmNew = new LinkedHashMap<>();
+            for (String s: postChange.lhm.keySet()){
+                Date d = sdf.parse(s);
+                dates.add(d);
+            }
+            Collections.sort(dates);
+            for (Date date: dates){
+                String dateString = sdf.format(date);
+                lhmNew.put(dateString,postChange.lhm.get(dateString));
+            }
+            postChange.lhm = lhmNew;
             listpc.add(postChange);
         }
         for (Integer id: dealIds){
